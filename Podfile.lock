@@ -1,0 +1,47 @@
+PODS:
+  - Adjust (4.1.0)
+  - AFNetworking (2.5.2):
+    - AFNetworking/NSURLConnection (= 2.5.2)
+    - AFNetworking/NSURLSession (= 2.5.2)
+    - AFNetworking/Reachability (= 2.5.2)
+    - AFNetworking/Security (= 2.5.2)
+    - AFNetworking/Serialization (= 2.5.2)
+    - AFNetworking/UIKit (= 2.5.2)
+  - AFNetworking/NSURLConnection (2.5.2):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.5.2):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.5.2)
+  - AFNetworking/Security (2.5.2)
+  - AFNetworking/Serialization (2.5.2)
+  - AFNetworking/UIKit (2.5.2):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - JSONModel (1.0.2)
+  - SDWebImage (3.7.2):
+    - SDWebImage/Core (= 3.7.2)
+  - SDWebImage/Core (3.7.2)
+  - UIColor+Hex (1.0.1):
+    - UIColor+Hex/NSColor (= 1.0.1)
+    - UIColor+Hex/UIColor (= 1.0.1)
+  - UIColor+Hex/UIColor (1.0.1)
+
+DEPENDENCIES:
+  - Adjust (~> 4.1)
+  - AFNetworking (~> 2.5)
+  - JSONModel (~> 1.0)
+  - SDWebImage (~> 3.7)
+  - UIColor+Hex (~> 1.0)
+
+SPEC CHECKSUMS:
+  Adjust: 51505358029ceffa383421efd9e4f55afd8a54fb
+  AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
+  JSONModel: cbdef0fdff1cc70e913a860861d3072860efd3a1
+  SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
+  UIColor+Hex: ac7e1ae4eeea4f522fe3f6eda35de4af69244432
+
+COCOAPODS: 0.35.0
