@@ -10,4 +10,16 @@
 
 @implementation FUNavigationController
 
+#pragma mark - UIViewController
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 @end

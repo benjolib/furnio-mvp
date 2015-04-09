@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FUCatalogViewController">
+            <connections>
+                <outlet property="buttonContainerView" destination="zQk-Uc-5Zs" id="YSt-pw-oaU"/>
+                <outlet property="buttonContainerViewBottomConstraint" destination="mfk-sd-nVh" id="eFN-Xk-Cdt"/>
+                <outlet property="filterButton" destination="B2J-5w-RpI" id="NR4-FI-4I8"/>
+                <outlet property="horizontalCollectionView" destination="yfK-qn-eIf" id="T3j-kq-3QR"/>
+                <outlet property="searchButton" destination="Vr7-is-IYG" id="aL0-Wv-VVK"/>
+                <outlet property="sortButton" destination="3Xt-9C-LT7" id="6ef-sw-mC1"/>
+                <outlet property="view" destination="iN0-l3-epB" id="opY-kq-rrD"/>
+                <outlet property="viewModeButton" destination="dR9-mG-0Lj" id="Rvg-rG-ITG"/>
+                <outlet property="wishlistButton" destination="eqz-TR-bmO" id="tYV-FV-N78"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="yfK-qn-eIf" userLabel="horizontalCollectionView" customClass="FUCollectionView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <inset key="scrollIndicatorInsets" minX="1" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="1" minimumInteritemSpacing="1" id="mPL-7k-EZo">
+                        <size key="itemSize" width="160" height="536"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zQk-Uc-5Zs" userLabel="buttonContainerView">
+                    <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B2J-5w-RpI">
+                            <rect key="frame" x="0.0" y="0.0" width="107" height="44"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                            <state key="normal" title="FILTER">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="filterButtonTapped:" destination="-1" eventType="touchUpInside" id="pwz-M5-Njf"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Xt-9C-LT7">
+                            <rect key="frame" x="107" y="0.0" width="106" height="44"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                            <state key="normal" title="SORT BY">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="sortButtonTapped:" destination="-1" eventType="touchUpInside" id="ueX-V7-2ta"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dR9-mG-0Lj">
+                            <rect key="frame" x="213" y="0.0" width="107" height="44"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                            <state key="normal" title="VIEW">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="viewModeButtonTapped:" destination="-1" eventType="touchUpInside" id="94l-F0-Mbm"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstItem="B2J-5w-RpI" firstAttribute="top" secondItem="zQk-Uc-5Zs" secondAttribute="top" id="0Jf-Db-ECf"/>
+                        <constraint firstAttribute="width" constant="320" id="0ar-mj-Beh"/>
+                        <constraint firstItem="B2J-5w-RpI" firstAttribute="leading" secondItem="zQk-Uc-5Zs" secondAttribute="leading" id="Dta-0L-bgg"/>
+                        <constraint firstItem="dR9-mG-0Lj" firstAttribute="leading" secondItem="3Xt-9C-LT7" secondAttribute="trailing" id="E1K-H4-Y3h"/>
+                        <constraint firstItem="3Xt-9C-LT7" firstAttribute="leading" secondItem="B2J-5w-RpI" secondAttribute="trailing" id="MoT-vb-mwx"/>
+                        <constraint firstAttribute="width" secondItem="dR9-mG-0Lj" secondAttribute="width" multiplier="3" id="QDC-6S-xKu"/>
+                        <constraint firstItem="dR9-mG-0Lj" firstAttribute="top" secondItem="zQk-Uc-5Zs" secondAttribute="top" id="WKP-G5-gaM"/>
+                        <constraint firstAttribute="width" secondItem="B2J-5w-RpI" secondAttribute="width" multiplier="3" id="WcZ-vn-6xA"/>
+                        <constraint firstAttribute="height" constant="44" id="ayh-1Z-90m"/>
+                        <constraint firstAttribute="bottom" secondItem="3Xt-9C-LT7" secondAttribute="bottom" id="cTO-eE-o5v"/>
+                        <constraint firstAttribute="trailing" secondItem="dR9-mG-0Lj" secondAttribute="trailing" id="dEb-xx-yG5"/>
+                        <constraint firstItem="3Xt-9C-LT7" firstAttribute="top" secondItem="zQk-Uc-5Zs" secondAttribute="top" id="hSD-yG-UZq"/>
+                        <constraint firstAttribute="bottom" secondItem="B2J-5w-RpI" secondAttribute="bottom" id="qK3-lZ-0xK"/>
+                        <constraint firstAttribute="bottom" secondItem="dR9-mG-0Lj" secondAttribute="bottom" id="x8Y-Hn-miI"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vr7-is-IYG" userLabel="searchButton">
+                    <rect key="frame" x="15" y="15" width="50" height="50"/>
+                    <color key="backgroundColor" red="1" green="0.72941176470000002" blue="0.14117647059999999" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="7g6-XB-Um5"/>
+                        <constraint firstAttribute="width" constant="50" id="Hkg-CT-Qak"/>
+                    </constraints>
+                    <state key="normal" title="S">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="25"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="searchButtonTapped:" destination="-1" eventType="touchUpInside" id="hZ6-qF-zJN"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqz-TR-bmO" userLabel="wishlistButton">
+                    <rect key="frame" x="255" y="15" width="50" height="50"/>
+                    <color key="backgroundColor" red="1" green="0.72941176470000002" blue="0.14117647059999999" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="bnV-wq-Xby"/>
+                        <constraint firstAttribute="width" constant="50" id="h7x-V9-fet"/>
+                    </constraints>
+                    <state key="normal" title="W">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="25"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="wishlistButtonTapped:" destination="-1" eventType="touchUpInside" id="hJn-Pg-k1U"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="yfK-qn-eIf" secondAttribute="bottom" id="5Ew-id-FMI"/>
+                <constraint firstAttribute="trailing" secondItem="zQk-Uc-5Zs" secondAttribute="trailing" id="8PC-e1-btV"/>
+                <constraint firstItem="Vr7-is-IYG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="Fd5-b5-l49"/>
+                <constraint firstAttribute="trailing" secondItem="eqz-TR-bmO" secondAttribute="trailing" constant="15" id="Pmq-vf-JKw"/>
+                <constraint firstItem="eqz-TR-bmO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="Rja-wV-kKJ"/>
+                <constraint firstItem="yfK-qn-eIf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="UpJ-Pc-hJK"/>
+                <constraint firstItem="yfK-qn-eIf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="XnJ-6n-7uJ"/>
+                <constraint firstAttribute="trailing" secondItem="yfK-qn-eIf" secondAttribute="trailing" id="gkN-TD-Dy4"/>
+                <constraint firstItem="Vr7-is-IYG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="lIL-9G-Z1u"/>
+                <constraint firstAttribute="bottom" secondItem="zQk-Uc-5Zs" secondAttribute="bottom" id="mfk-sd-nVh"/>
+                <constraint firstItem="zQk-Uc-5Zs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pDV-oT-uDP"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <point key="canvasLocation" x="432" y="293"/>
+        </view>
+    </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
