@@ -1,5 +1,5 @@
 PODS:
-  - Adjust (4.1.0)
+  - Adjust (4.2.0)
   - AFNetworking (2.5.2):
     - AFNetworking/NSURLConnection (= 2.5.2)
     - AFNetworking/NSURLSession (= 2.5.2)
@@ -42,7 +42,7 @@ DEPENDENCIES:
   - UIColor+Hex (~> 1.0)
 
 SPEC CHECKSUMS:
-  Adjust: 51505358029ceffa383421efd9e4f55afd8a54fb
+  Adjust: ac716a8ce53b97459095ce9aea86bca538f4c177
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
   Appirater: 8783318c36414e8de3ea023443028df94c1b784b
   DeepLinkSDK: 82f36ed1bbf8fb549bb0dfb14b21852219c95384

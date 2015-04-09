@@ -51,7 +51,7 @@
 // Adjust
 #define COCOAPODS_POD_AVAILABLE_Adjust
 #define COCOAPODS_VERSION_MAJOR_Adjust 4
-#define COCOAPODS_VERSION_MINOR_Adjust 1
+#define COCOAPODS_VERSION_MINOR_Adjust 2
 #define COCOAPODS_VERSION_PATCH_Adjust 0
 
 // Appirater
