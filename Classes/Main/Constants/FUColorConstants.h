@@ -18,4 +18,6 @@
 #define FUColorDarkGray FUHexColor(@"5B5B5B")
 #define FUColorLightGray FUHexColor(@"B5B5B5")
 
+#define FUColorLightRed FUHexColor(@"FF6666")
+
 #endif

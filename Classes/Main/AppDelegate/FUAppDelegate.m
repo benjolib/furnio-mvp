@@ -16,6 +16,7 @@
 
 #import "FUProduct.h"
 #import "FUProductList.h"
+#import "FUNotifyManager.h"
 
 
 @implementation FUAppDelegate
@@ -28,6 +29,8 @@
     [FUDeepLinkHandler setupWithURLScheme:@"furn"];
 
     [self setupRootController];
+    
+    [FUNotifyManager setup];
 
     return YES;
 }
