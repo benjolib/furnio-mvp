@@ -21,6 +21,8 @@ PODS:
   - AFNetworking/UIKit (2.5.2):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Appirater (2.0.4)
+  - DeepLinkSDK (0.2.4)
   - JSONModel (1.0.2)
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
@@ -33,6 +35,8 @@ PODS:
 DEPENDENCIES:
   - Adjust (~> 4.1)
   - AFNetworking (~> 2.5)
+  - Appirater (~> 2.0)
+  - DeepLinkSDK (~> 0.2)
   - JSONModel (~> 1.0)
   - SDWebImage (~> 3.7)
   - UIColor+Hex (~> 1.0)
@@ -40,8 +44,10 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Adjust: 51505358029ceffa383421efd9e4f55afd8a54fb
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
-  JSONModel: cbdef0fdff1cc70e913a860861d3072860efd3a1
+  Appirater: 8783318c36414e8de3ea023443028df94c1b784b
+  DeepLinkSDK: 82f36ed1bbf8fb549bb0dfb14b21852219c95384
+  JSONModel: 6ffcb4ffa3659c9e9a2e5d45d6c7705bab187c03
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
-  UIColor+Hex: ac7e1ae4eeea4f522fe3f6eda35de4af69244432
+  UIColor+Hex: 9fee91bb8e19f17dd40a79ae1e98949a6a84489d
 
 COCOAPODS: 0.35.0

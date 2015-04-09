@@ -4,12 +4,27 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Appirater.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-AFNetworking.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-Adjust.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Appirater.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-DeepLinkSDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,32 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2F84766784C2456B3845191E</key>
+		<key>34A7E3A31083F1B67F40D5FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5BF761A14C4FF0343CBA9A47</key>
+		<key>44260088CEB66F7BD6B5780C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>666E5FB9F5D48D754D07D6FF</key>
+		<key>6E823BE3A6F555A6046A8CCC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8D0CAE1A7307D2D7940117CF</key>
+		<key>84492539E2B504200FE530BE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>959AC3533CE462730889DB2A</key>
+		<key>B5D8B636658D6A56F65126ED</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F498FA7B6AF9FA60C7EA9476</key>
+		<key>C0E1840132B5B4681A815EB7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C8994BA3A9F6E50C7B47D58C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DDC1721DD032DA566E69C532</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F45275F0B890DB853F9AC827</key>
 		<dict>
 			<key>primary</key>
 			<true/>
