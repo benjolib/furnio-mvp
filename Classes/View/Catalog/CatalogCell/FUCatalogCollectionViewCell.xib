@@ -18,14 +18,14 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="140" translatesAutoresizingMaskIntoConstraints="NO" id="Hcl-mx-eJj" userLabel="priceLabel">
-                        <rect key="frame" x="10" y="228" width="140" height="17"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                        <color key="textColor" red="1" green="0.72941176470588232" blue="0.14117647058823529" alpha="1" colorSpace="deviceRGB"/>
+                        <rect key="frame" x="10" y="225" width="140" height="20"/>
+                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
+                        <color key="textColor" red="0.99215686270000003" green="0.72549019609999998" blue="0.2274509804" alpha="1" colorSpace="deviceRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="140" translatesAutoresizingMaskIntoConstraints="NO" id="5AA-gR-vD8" userLabel="nameLabel">
-                        <rect key="frame" x="10" y="202" width="140" height="16"/>
-                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                        <rect key="frame" x="10" y="201" width="140" height="20"/>
+                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -39,7 +39,7 @@
                 <constraint firstItem="Jsz-3a-uad" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="ArQ-A5-Rfp"/>
                 <constraint firstAttribute="trailing" secondItem="Jsz-3a-uad" secondAttribute="trailing" constant="5" id="CWP-T8-52W"/>
                 <constraint firstAttribute="bottom" secondItem="Jsz-3a-uad" secondAttribute="bottom" constant="100" id="DIT-uW-Y6f"/>
-                <constraint firstItem="Hcl-mx-eJj" firstAttribute="top" secondItem="5AA-gR-vD8" secondAttribute="bottom" constant="10" id="DZM-fF-qBN"/>
+                <constraint firstItem="Hcl-mx-eJj" firstAttribute="top" secondItem="5AA-gR-vD8" secondAttribute="bottom" constant="4" id="DZM-fF-qBN"/>
                 <constraint firstItem="Hcl-mx-eJj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="FxQ-W8-87G"/>
                 <constraint firstItem="5AA-gR-vD8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="jCJ-I1-XEW"/>
                 <constraint firstAttribute="trailing" secondItem="5AA-gR-vD8" secondAttribute="trailing" constant="10" id="nrC-UP-u1m"/>

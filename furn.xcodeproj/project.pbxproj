@@ -11,6 +11,9 @@
 		28117C211AD67EA1007C8DB9 /* FUImagePrefetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 28117C201AD67EA1007C8DB9 /* FUImagePrefetcher.m */; };
 		28117C241AD68B8B007C8DB9 /* FUProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 28117C231AD68B8B007C8DB9 /* FUProperties.m */; };
 		28117C261AD68F40007C8DB9 /* FUCatalogCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28117C251AD68F40007C8DB9 /* FUCatalogCollectionViewCell.xib */; };
+		28117C351AD714E9007C8DB9 /* UIView+FUAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = 28117C341AD714E9007C8DB9 /* UIView+FUAnimations.m */; };
+		28117C391AD71E89007C8DB9 /* FUWishlistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28117C371AD71E89007C8DB9 /* FUWishlistViewController.m */; };
+		28117C3A1AD71E89007C8DB9 /* FUWishlistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28117C381AD71E89007C8DB9 /* FUWishlistViewController.xib */; };
 		2815EAB51AC843F300F97AEF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2815EAB41AC843F300F97AEF /* main.m */; };
 		2815EAB81AC843F300F97AEF /* FUAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2815EAB71AC843F300F97AEF /* FUAppDelegate.m */; };
 		2815EABB1AC843F300F97AEF /* FUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2815EABA1AC843F300F97AEF /* FUViewController.m */; };
@@ -44,6 +47,13 @@
 		28117C221AD68B8B007C8DB9 /* FUProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUProperties.h; sourceTree = "<group>"; };
 		28117C231AD68B8B007C8DB9 /* FUProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUProperties.m; sourceTree = "<group>"; };
 		28117C251AD68F40007C8DB9 /* FUCatalogCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FUCatalogCollectionViewCell.xib; path = CatalogCell/FUCatalogCollectionViewCell.xib; sourceTree = "<group>"; };
+		28117C291AD70A0B007C8DB9 /* FUColorConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUColorConstants.h; sourceTree = "<group>"; };
+		28117C2A1AD70C15007C8DB9 /* FUFontConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUFontConstants.h; sourceTree = "<group>"; };
+		28117C331AD714E9007C8DB9 /* UIView+FUAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FUAnimations.h"; sourceTree = "<group>"; };
+		28117C341AD714E9007C8DB9 /* UIView+FUAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FUAnimations.m"; sourceTree = "<group>"; };
+		28117C361AD71E89007C8DB9 /* FUWishlistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUWishlistViewController.h; sourceTree = "<group>"; };
+		28117C371AD71E89007C8DB9 /* FUWishlistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUWishlistViewController.m; sourceTree = "<group>"; };
+		28117C381AD71E89007C8DB9 /* FUWishlistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FUWishlistViewController.xib; sourceTree = "<group>"; };
 		2815EAAF1AC843F300F97AEF /* furn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = furn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2815EAB31AC843F300F97AEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2815EAB41AC843F300F97AEF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -133,6 +143,34 @@
 			path = ImagePrefetcher;
 			sourceTree = "<group>";
 		};
+		28117C271AD70890007C8DB9 /* Wishlist */ = {
+			isa = PBXGroup;
+			children = (
+				28117C361AD71E89007C8DB9 /* FUWishlistViewController.h */,
+				28117C371AD71E89007C8DB9 /* FUWishlistViewController.m */,
+				28117C381AD71E89007C8DB9 /* FUWishlistViewController.xib */,
+			);
+			path = Wishlist;
+			sourceTree = "<group>";
+		};
+		28117C281AD70A00007C8DB9 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				28117C291AD70A0B007C8DB9 /* FUColorConstants.h */,
+				28117C2A1AD70C15007C8DB9 /* FUFontConstants.h */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		28117C321AD714D3007C8DB9 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				28117C331AD714E9007C8DB9 /* UIView+FUAnimations.h */,
+				28117C341AD714E9007C8DB9 /* UIView+FUAnimations.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 		2815EAA61AC843F300F97AEF = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +205,7 @@
 		2815EADB1AC8466800F97AEF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				28117C271AD70890007C8DB9 /* Wishlist */,
 				2815EAF51AC8570300F97AEF /* CollectionView */,
 				2815EAEF1AC8548C00F97AEF /* Catalog */,
 				2815EAE61AC847C400F97AEF /* NavigationController */,
@@ -197,6 +236,8 @@
 		2815EADE1AC8467500F97AEF /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				28117C321AD714D3007C8DB9 /* Categories */,
+				28117C281AD70A00007C8DB9 /* Constants */,
 				28117C181AD5B889007C8DB9 /* Helper */,
 				2815EADF1AC846D800F97AEF /* AppDelegate */,
 			);
@@ -446,6 +487,7 @@
 				2815EB041AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.xib in Resources */,
 				28362DFE1AD52013000B4E99 /* products.json in Resources */,
 				2815EAC31AC843F300F97AEF /* LaunchScreen.xib in Resources */,
+				28117C3A1AD71E89007C8DB9 /* FUWishlistViewController.xib in Resources */,
 				28362E0B1AD53613000B4E99 /* productList.json in Resources */,
 				28117C261AD68F40007C8DB9 /* FUCatalogCollectionViewCell.xib in Resources */,
 				2815EAC01AC843F300F97AEF /* Images.xcassets in Resources */,
@@ -499,7 +541,9 @@
 				28362DF91AD47FF4000B4E99 /* FUProduct.m in Sources */,
 				28117C1B1AD5B89A007C8DB9 /* FUNumberFormatter.m in Sources */,
 				28117C211AD67EA1007C8DB9 /* FUImagePrefetcher.m in Sources */,
+				28117C351AD714E9007C8DB9 /* UIView+FUAnimations.m in Sources */,
 				2815EABB1AC843F300F97AEF /* FUViewController.m in Sources */,
+				28117C391AD71E89007C8DB9 /* FUWishlistViewController.m in Sources */,
 				2815EAB81AC843F300F97AEF /* FUAppDelegate.m in Sources */,
 				2815EAEA1AC847E900F97AEF /* FUNavigationController.m in Sources */,
 				28362E051AD5243B000B4E99 /* FUSeller.m in Sources */,

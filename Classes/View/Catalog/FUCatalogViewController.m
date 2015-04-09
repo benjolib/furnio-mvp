@@ -11,6 +11,10 @@
 #import "FUCollectionView.h"
 #import "FUCatalogColumnCollectionViewCell.h"
 #import "FUProduct.h"
+#import "UIView+FUAnimations.h"
+#import "FUWishlistViewController.h"
+#import "FUNavigationController.h"
+
 
 @interface FUCatalogViewController () <FUCollectionViewDelegate>
 
@@ -100,6 +104,8 @@
 - (IBAction)viewModeButtonTapped:(id)sender
 {
     [self.horizontalCollectionView toggleViewMode];
+    
+    [self toggleViewModeButtonImage];
 }
 
 - (IBAction)filterButtonTapped:(id)sender
@@ -115,13 +121,20 @@
 
 - (IBAction)searchButtonTapped:(id)sender
 {
+    [sender animateScaling];
+
     // TODO: Attach Search VC here
-    
 }
 
-- (IBAction)wishlistButtonTapped:(id)sender
+- (IBAction)wishlistButtonTapped:(UIButton *)sender
 {
-    // TODO: Attach Wishlist VC here
+    [sender animateScaling];
+    
+    FUWishlistViewController *wishlistViewController = [FUWishlistViewController new];
+    
+    FUNavigationController *wishlistNavigationController = [[FUNavigationController alloc] initWithRootViewController:wishlistViewController];
+    
+    [self.navigationController presentViewController:wishlistNavigationController animated:YES completion:nil];
 }
 
 
@@ -132,6 +145,15 @@
     // TODO: Open PDP after tapping on product
 
     NSLog(@"%@: %@ ($%.2f)", @(index), product.name, product.price.floatValue);
+}
+
+#pragma mark - Private
+
+- (void)toggleViewModeButtonImage
+{
+    NSString *imageName = self.horizontalCollectionView.viewMode == FUCollectionViewModeMatrix ? @"grid-view" : @"matrix-view";
+    
+    [self.viewModeButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
 }
 
 @end

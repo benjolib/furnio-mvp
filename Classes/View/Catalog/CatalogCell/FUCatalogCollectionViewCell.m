@@ -10,6 +10,7 @@
 
 #import "FUProduct.h"
 #import "FUNumberFormatter.h"
+#import "FUColorConstants.h"
 
 #import <UIImageView+WebCache.h>
 

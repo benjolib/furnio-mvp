@@ -39,38 +39,54 @@
                     <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B2J-5w-RpI">
-                            <rect key="frame" x="0.0" y="0.0" width="107" height="44"/>
-                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
-                            <state key="normal" title="FILTER">
-                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
+                            <rect key="frame" x="0.0" y="0.0" width="116" height="44"/>
+                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="11"/>
+                            <color key="tintColor" red="0.35686274509803922" green="0.35686274509803922" blue="0.35686274509803922" alpha="1" colorSpace="deviceRGB"/>
+                            <inset key="titleEdgeInsets" minX="44" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="22" maxY="0.0"/>
+                            <state key="normal" title="FILTER" image="filter"/>
                             <connections>
                                 <action selector="filterButtonTapped:" destination="-1" eventType="touchUpInside" id="pwz-M5-Njf"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Xt-9C-LT7">
-                            <rect key="frame" x="107" y="0.0" width="106" height="44"/>
-                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
-                            <state key="normal" title="SORT BY">
-                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
+                            <rect key="frame" x="116" y="0.0" width="119" height="44"/>
+                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="11"/>
+                            <color key="tintColor" red="0.35686274509803922" green="0.35686274509803922" blue="0.35686274509803922" alpha="1" colorSpace="deviceRGB"/>
+                            <inset key="titleEdgeInsets" minX="28" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="27" maxY="0.0"/>
+                            <state key="normal" title="SORT BY" image="sorting"/>
                             <connections>
                                 <action selector="sortButtonTapped:" destination="-1" eventType="touchUpInside" id="ueX-V7-2ta"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dR9-mG-0Lj">
-                            <rect key="frame" x="213" y="0.0" width="107" height="44"/>
-                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
-                            <state key="normal" title="VIEW">
-                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
+                            <rect key="frame" x="235" y="0.0" width="85" height="44"/>
+                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="11"/>
+                            <color key="tintColor" red="0.35686274509999999" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="deviceRGB"/>
+                            <inset key="titleEdgeInsets" minX="18" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="10" maxY="0.0"/>
+                            <state key="normal" title="VIEW" image="grid-view"/>
                             <connections>
                                 <action selector="viewModeButtonTapped:" destination="-1" eventType="touchUpInside" id="94l-F0-Mbm"/>
                             </connections>
                         </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J4e-nW-Ccz" userLabel="separator">
+                            <rect key="frame" x="124" y="0.0" width="1" height="44"/>
+                            <color key="backgroundColor" red="0.70980392156862748" green="0.70980392156862748" blue="0.70980392156862748" alpha="1" colorSpace="deviceRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="ie2-bp-G21"/>
+                                <constraint firstAttribute="height" constant="44" id="tXB-H9-9mW"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zfz-NY-kIR" userLabel="separator">
+                            <rect key="frame" x="235" y="0.0" width="1" height="44"/>
+                            <color key="backgroundColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="deviceRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="LCn-qY-g5i"/>
+                                <constraint firstAttribute="width" constant="1" id="NnD-5D-oIL"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
@@ -79,25 +95,29 @@
                         <constraint firstItem="B2J-5w-RpI" firstAttribute="leading" secondItem="zQk-Uc-5Zs" secondAttribute="leading" id="Dta-0L-bgg"/>
                         <constraint firstItem="dR9-mG-0Lj" firstAttribute="leading" secondItem="3Xt-9C-LT7" secondAttribute="trailing" id="E1K-H4-Y3h"/>
                         <constraint firstItem="3Xt-9C-LT7" firstAttribute="leading" secondItem="B2J-5w-RpI" secondAttribute="trailing" id="MoT-vb-mwx"/>
-                        <constraint firstAttribute="width" secondItem="dR9-mG-0Lj" secondAttribute="width" multiplier="3" id="QDC-6S-xKu"/>
+                        <constraint firstItem="zfz-NY-kIR" firstAttribute="top" secondItem="zQk-Uc-5Zs" secondAttribute="top" id="Osw-d4-IYb"/>
+                        <constraint firstAttribute="width" secondItem="dR9-mG-0Lj" secondAttribute="width" multiplier="3.78" id="QDC-6S-xKu"/>
+                        <constraint firstItem="zfz-NY-kIR" firstAttribute="leading" secondItem="3Xt-9C-LT7" secondAttribute="trailing" id="Qsc-TQ-M0Z"/>
+                        <constraint firstItem="J4e-nW-Ccz" firstAttribute="leading" secondItem="B2J-5w-RpI" secondAttribute="trailing" constant="8" id="VPi-gq-otR"/>
                         <constraint firstItem="dR9-mG-0Lj" firstAttribute="top" secondItem="zQk-Uc-5Zs" secondAttribute="top" id="WKP-G5-gaM"/>
-                        <constraint firstAttribute="width" secondItem="B2J-5w-RpI" secondAttribute="width" multiplier="3" id="WcZ-vn-6xA"/>
+                        <constraint firstAttribute="width" secondItem="B2J-5w-RpI" secondAttribute="width" multiplier="2.75" id="WcZ-vn-6xA"/>
                         <constraint firstAttribute="height" constant="44" id="ayh-1Z-90m"/>
                         <constraint firstAttribute="bottom" secondItem="3Xt-9C-LT7" secondAttribute="bottom" id="cTO-eE-o5v"/>
                         <constraint firstAttribute="trailing" secondItem="dR9-mG-0Lj" secondAttribute="trailing" id="dEb-xx-yG5"/>
                         <constraint firstItem="3Xt-9C-LT7" firstAttribute="top" secondItem="zQk-Uc-5Zs" secondAttribute="top" id="hSD-yG-UZq"/>
+                        <constraint firstItem="J4e-nW-Ccz" firstAttribute="top" secondItem="zQk-Uc-5Zs" secondAttribute="top" id="kuH-Ph-bBQ"/>
                         <constraint firstAttribute="bottom" secondItem="B2J-5w-RpI" secondAttribute="bottom" id="qK3-lZ-0xK"/>
                         <constraint firstAttribute="bottom" secondItem="dR9-mG-0Lj" secondAttribute="bottom" id="x8Y-Hn-miI"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vr7-is-IYG" userLabel="searchButton">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vr7-is-IYG" userLabel="searchButton">
                     <rect key="frame" x="15" y="15" width="50" height="50"/>
-                    <color key="backgroundColor" red="1" green="0.72941176470000002" blue="0.14117647059999999" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="backgroundColor" red="0.99215686274509807" green="0.72549019607843135" blue="0.22745098039215686" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="7g6-XB-Um5"/>
                         <constraint firstAttribute="width" constant="50" id="Hkg-CT-Qak"/>
                     </constraints>
-                    <state key="normal" title="S">
+                    <state key="normal" image="search">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -110,14 +130,14 @@
                         <action selector="searchButtonTapped:" destination="-1" eventType="touchUpInside" id="hZ6-qF-zJN"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqz-TR-bmO" userLabel="wishlistButton">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqz-TR-bmO" userLabel="wishlistButton">
                     <rect key="frame" x="255" y="15" width="50" height="50"/>
-                    <color key="backgroundColor" red="1" green="0.72941176470000002" blue="0.14117647059999999" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="backgroundColor" red="0.99215686270000003" green="0.72549019609999998" blue="0.2274509804" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="bnV-wq-Xby"/>
                         <constraint firstAttribute="width" constant="50" id="h7x-V9-fet"/>
                     </constraints>
-                    <state key="normal" title="W">
+                    <state key="normal" image="wishlist">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -150,6 +170,13 @@
             <point key="canvasLocation" x="432" y="293"/>
         </view>
     </objects>
+    <resources>
+        <image name="filter" width="25" height="25"/>
+        <image name="grid-view" width="25" height="25"/>
+        <image name="search" width="24" height="26"/>
+        <image name="sorting" width="15" height="25"/>
+        <image name="wishlist" width="24" height="25"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
