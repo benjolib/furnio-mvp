@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FUWishlistCollectionViewCellReuseIdentifier" id="gTV-IL-0wX" userLabel="FUWishlistCollectionViewCell" customClass="FUWishlistCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="160" height="250"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="160" height="250"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJy-sU-den" userLabel="imageViewContainer">
+                        <rect key="frame" x="5" y="5" width="150" height="150"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oek-UA-Fye">
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Pu-gC-tAM" userLabel="deleteButton" customClass="FUWishlistActionButton">
+                                <rect key="frame" x="15" y="50" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="FhW-YO-jNr"/>
+                                    <constraint firstAttribute="height" constant="50" id="whc-wt-Tv8"/>
+                                </constraints>
+                                <state key="normal" image="delete"/>
+                                <connections>
+                                    <action selector="deleteButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="h7s-QO-qU9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NbJ-TM-Iku" userLabel="shareButton" customClass="FUWishlistActionButton">
+                                <rect key="frame" x="85" y="50" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="MrY-Kh-Dun"/>
+                                    <constraint firstAttribute="height" constant="50" id="r0F-AZ-LtO"/>
+                                </constraints>
+                                <state key="normal" image="share-yellow"/>
+                                <connections>
+                                    <action selector="shareButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="MgI-xo-yqZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Oek-UA-Fye" firstAttribute="top" secondItem="XJy-sU-den" secondAttribute="top" id="FrE-tS-EEs"/>
+                            <constraint firstItem="Oek-UA-Fye" firstAttribute="leading" secondItem="XJy-sU-den" secondAttribute="leading" id="G1n-8U-dEn"/>
+                            <constraint firstAttribute="centerX" secondItem="NbJ-TM-Iku" secondAttribute="centerX" constant="-35" id="Jek-gG-9cb"/>
+                            <constraint firstAttribute="trailing" secondItem="Oek-UA-Fye" secondAttribute="trailing" id="Kfe-7h-LZv"/>
+                            <constraint firstAttribute="centerY" secondItem="NbJ-TM-Iku" secondAttribute="centerY" id="VaZ-79-7MM"/>
+                            <constraint firstAttribute="centerX" secondItem="1Pu-gC-tAM" secondAttribute="centerX" constant="35" id="k47-cB-SwS"/>
+                            <constraint firstAttribute="bottom" secondItem="Oek-UA-Fye" secondAttribute="bottom" id="obc-C2-ujy"/>
+                            <constraint firstAttribute="width" secondItem="XJy-sU-den" secondAttribute="height" multiplier="1:1" id="q2e-b6-urK"/>
+                            <constraint firstAttribute="centerY" secondItem="1Pu-gC-tAM" secondAttribute="centerY" id="wSS-IY-zSQ"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="140" translatesAutoresizingMaskIntoConstraints="NO" id="EJE-fs-Iza" userLabel="nameLabel">
+                        <rect key="frame" x="10" y="205" width="140" height="20"/>
+                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="140" translatesAutoresizingMaskIntoConstraints="NO" id="8Q9-8g-9oU" userLabel="priceLabel">
+                        <rect key="frame" x="10" y="225" width="140" height="20"/>
+                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
+                        <color key="textColor" red="0.99215686270000003" green="0.72549019609999998" blue="0.2274509804" alpha="1" colorSpace="deviceRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="8Q9-8g-9oU" firstAttribute="top" secondItem="EJE-fs-Iza" secondAttribute="bottom" id="119-oz-0h2"/>
+                <constraint firstAttribute="trailing" secondItem="8Q9-8g-9oU" secondAttribute="trailing" constant="10" id="4dk-eO-qCa"/>
+                <constraint firstItem="8Q9-8g-9oU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="EhB-RW-pNO"/>
+                <constraint firstItem="XJy-sU-den" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="JXH-aZ-QQa"/>
+                <constraint firstAttribute="trailing" secondItem="EJE-fs-Iza" secondAttribute="trailing" constant="10" id="VLx-dT-vmC"/>
+                <constraint firstAttribute="trailing" secondItem="XJy-sU-den" secondAttribute="trailing" constant="5" id="hT0-4T-ggq"/>
+                <constraint firstItem="EJE-fs-Iza" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="mIM-8m-qX7"/>
+                <constraint firstItem="XJy-sU-den" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="vQC-5h-Iuf"/>
+                <constraint firstAttribute="bottom" secondItem="8Q9-8g-9oU" secondAttribute="bottom" constant="5" id="xy4-vz-UQb"/>
+            </constraints>
+            <connections>
+                <outlet property="deleteButton" destination="1Pu-gC-tAM" id="jdy-ae-jun"/>
+                <outlet property="imageView" destination="Oek-UA-Fye" id="5gv-jq-CLc"/>
+                <outlet property="imageViewContainerRatioConstraint" destination="q2e-b6-urK" id="tTC-fL-m0E"/>
+                <outlet property="nameLabel" destination="EJE-fs-Iza" id="HOa-2I-pmh"/>
+                <outlet property="priceLabel" destination="8Q9-8g-9oU" id="HJB-if-mRf"/>
+                <outlet property="shareButton" destination="NbJ-TM-Iku" id="x83-Bm-Yyj"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="delete" width="21" height="25"/>
+        <image name="share-yellow" width="25" height="23"/>
+    </resources>
+</document>

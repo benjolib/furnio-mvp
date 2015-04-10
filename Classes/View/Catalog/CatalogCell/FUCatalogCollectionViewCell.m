@@ -90,7 +90,7 @@ static CGFloat const FUCatalogCellShadowAnimationDuration = 0.25f;
     self.priceLabel.hidden = (viewMode == FUCollectionViewModeMatrix);
 }
 
-#pragma mark - Shadow state
+#pragma mark - Animation state
 
 - (void)toggleAnimationEnabled:(BOOL)enabled
 {

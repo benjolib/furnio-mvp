@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class UIColor;
+
 @interface FUNotifyManager : NSObject
 
 + (void)setup;
@@ -16,6 +18,7 @@
 
 - (void)showMessageWithText:(NSString *)text;
 - (void)showMessageWithText:(NSString *)text backgroundColor:(UIColor *)backgroundColor;
+- (void)showMessageWithText:(NSString *)text hideAfterTimeInterval:(NSTimeInterval)timeInterval;
 
 - (void)hideMessage;
 

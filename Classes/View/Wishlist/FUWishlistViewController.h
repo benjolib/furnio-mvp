@@ -8,10 +8,7 @@
 
 #import "FUViewController.h"
 
-typedef NS_ENUM(NSInteger, FUWishlistViewState) {
-    FUWishlistViewStateNormal,
-    FUWishlistViewStateEdit
-};
+#import "FUWishlistCollectionViewCell.h"
 
 @interface FUWishlistViewController : FUViewController
 

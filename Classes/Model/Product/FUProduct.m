@@ -32,7 +32,11 @@
 
 - (NSURL<Ignore> *)catalogImageURL
 {
-    return self.imageURLs.firstObject;
+    if (self.imageURLs.count > 0) {
+        return [NSURL URLWithString:self.imageURLs.firstObject];
+    }
+    
+    return nil;
 }
 
 @end
