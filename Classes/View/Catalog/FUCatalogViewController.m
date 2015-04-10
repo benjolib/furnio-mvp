@@ -14,6 +14,7 @@
 #import "UIView+FUAnimations.h"
 #import "FUWishlistViewController.h"
 #import "FUNavigationController.h"
+#import "UIControl+HitTest.h"
 
 
 @interface FUCatalogViewController () <FUCollectionViewDelegate>
@@ -77,6 +78,9 @@
     [self.horizontalCollectionView scrollToCenterAnimated:NO];
     
     self.navigationController.navigationBarHidden = YES;
+    
+    self.searchButton.hitTestEdgeInsets = UIEdgeInsetsMake(-15, -15, -5, -5);
+    self.wishlistButton.hitTestEdgeInsets = UIEdgeInsetsMake(-15, -5, -5, -15);
 }
 
 #pragma mark - Notifications

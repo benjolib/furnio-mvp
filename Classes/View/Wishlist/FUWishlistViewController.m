@@ -12,7 +12,7 @@
 #import "FUWishlistManager.h"
 #import "FUWishlistEmptyCollectionViewCell.h"
 #import "FUSharingManager.h"
-
+#import "UIControl+HitTest.h"
 
 @interface FUWishlistViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, FUWishlistCollectionViewCellDelegate, FUWishlistEmptyCollectionViewCellDelegate>
 
@@ -48,6 +48,9 @@
     [self.wishlistCollectionView registerNib:[FUWishlistCollectionViewCell nib] forCellWithReuseIdentifier:FUWishlistCollectionViewCellReuseIdentifier];
     
     [self.wishlistCollectionView registerNib:[FUWishlistEmptyCollectionViewCell nib] forCellWithReuseIdentifier:FUWishlistEmptyCollectionViewCellReuseIdentifier];
+    
+    self.closeButton.hitTestEdgeInsets = UIEdgeInsetsMake(-25, -15, 0, -15);
+    self.editButton.hitTestEdgeInsets = UIEdgeInsetsMake(-25, -15, 0, -15);
 }
 
 #pragma mark - Actions

@@ -44,6 +44,7 @@
 		28B0E5CB1AD8047600C0932E /* FUWishlistEmptyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B0E5C91AD8047600C0932E /* FUWishlistEmptyCollectionViewCell.xib */; };
 		28B0E5D01AD8052A00C0932E /* FUActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0E5CF1AD8052A00C0932E /* FUActionButton.m */; };
 		28B0E5D41AD80F8E00C0932E /* FUSharingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0E5D31AD80F8E00C0932E /* FUSharingManager.m */; };
+		28B0E5D81AD8228700C0932E /* UIControl+HitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0E5D71AD8228700C0932E /* UIControl+HitTest.m */; };
 		33F237418860FD871BBB6843 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70434F8189787034BBDD21B6 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +116,8 @@
 		28B0E5CF1AD8052A00C0932E /* FUActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUActionButton.m; sourceTree = "<group>"; };
 		28B0E5D21AD80F8E00C0932E /* FUSharingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUSharingManager.h; sourceTree = "<group>"; };
 		28B0E5D31AD80F8E00C0932E /* FUSharingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUSharingManager.m; sourceTree = "<group>"; };
+		28B0E5D61AD8228700C0932E /* UIControl+HitTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+HitTest.h"; sourceTree = "<group>"; };
+		28B0E5D71AD8228700C0932E /* UIControl+HitTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+HitTest.m"; sourceTree = "<group>"; };
 		70434F8189787034BBDD21B6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DD1A01C30046235F217826A /* Pods.store.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.store.xcconfig; path = "Pods/Target Support Files/Pods/Pods.store.xcconfig"; sourceTree = "<group>"; };
 		9CE78E8A0458EED4BE60A736 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -193,6 +196,7 @@
 		28117C321AD714D3007C8DB9 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				28B0E5D51AD8227F00C0932E /* UIControl */,
 				28117C331AD714E9007C8DB9 /* UIView+FUAnimations.h */,
 				28117C341AD714E9007C8DB9 /* UIView+FUAnimations.m */,
 			);
@@ -528,6 +532,15 @@
 			path = SharingManager;
 			sourceTree = "<group>";
 		};
+		28B0E5D51AD8227F00C0932E /* UIControl */ = {
+			isa = PBXGroup;
+			children = (
+				28B0E5D61AD8228700C0932E /* UIControl+HitTest.h */,
+				28B0E5D71AD8228700C0932E /* UIControl+HitTest.m */,
+			);
+			path = UIControl;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -653,6 +666,7 @@
 				28117C351AD714E9007C8DB9 /* UIView+FUAnimations.m in Sources */,
 				28B0E5C51AD7F40500C0932E /* FUWishlistActionButton.m in Sources */,
 				2815EABB1AC843F300F97AEF /* FUViewController.m in Sources */,
+				28B0E5D81AD8228700C0932E /* UIControl+HitTest.m in Sources */,
 				28B0E5BC1AD7E2C900C0932E /* FUWishlistCollectionViewCell.m in Sources */,
 				28117C391AD71E89007C8DB9 /* FUWishlistViewController.m in Sources */,
 				2815EAB81AC843F300F97AEF /* FUAppDelegate.m in Sources */,
