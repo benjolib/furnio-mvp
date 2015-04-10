@@ -47,7 +47,27 @@ install_resource()
       ;;
   esac
 }
-          install_resource "${BUILT_PRODUCTS_DIR}/Appirater.bundle"
+          install_resource "AQSFacebookActivity/AQSFacebookActivity/Classes/AQSFacebookActivity.xcassets/AQSFacebookActivity.imageset/AQSFacebookActivity.png"
+                    install_resource "AQSFacebookActivity/AQSFacebookActivity/Classes/AQSFacebookActivity.xcassets/AQSFacebookActivity.imageset/AQSFacebookActivity@2x.png"
+                    install_resource "AQSFacebookActivity/AQSFacebookActivity/Classes/AQSFacebookActivity.xcassets/AQSFacebookActivity.imageset/AQSFacebookActivity@2x~ipad.png"
+                    install_resource "AQSFacebookActivity/AQSFacebookActivity/Classes/AQSFacebookActivity.xcassets/AQSFacebookActivity.imageset/AQSFacebookActivity@3x.png"
+                    install_resource "AQSFacebookActivity/AQSFacebookActivity/Classes/AQSFacebookActivity.xcassets/AQSFacebookActivity.imageset/AQSFacebookActivity~ipad.png"
+                    install_resource "AQSFacebookActivity/AQSFacebookActivity/Classes/AQSFacebookActivity.xcassets/color_AQSFacebookActivity.imageset/color_AQSFacebookActivity.png"
+                    install_resource "AQSFacebookActivity/AQSFacebookActivity/Classes/AQSFacebookActivity.xcassets/color_AQSFacebookActivity.imageset/color_AQSFacebookActivity@2x.png"
+                    install_resource "AQSFacebookActivity/AQSFacebookActivity/Classes/AQSFacebookActivity.xcassets/color_AQSFacebookActivity.imageset/color_AQSFacebookActivity@2x~ipad.png"
+                    install_resource "AQSFacebookActivity/AQSFacebookActivity/Classes/AQSFacebookActivity.xcassets/color_AQSFacebookActivity.imageset/color_AQSFacebookActivity@3x.png"
+                    install_resource "AQSFacebookActivity/AQSFacebookActivity/Classes/AQSFacebookActivity.xcassets/color_AQSFacebookActivity.imageset/color_AQSFacebookActivity~ipad.png"
+                    install_resource "AQSTwitterActivity/AQSTwitterActivity/Classes/AQSTwitterActivity.xcassets/AQSTwitterActivity.imageset/AQSTwitterActivity.png"
+                    install_resource "AQSTwitterActivity/AQSTwitterActivity/Classes/AQSTwitterActivity.xcassets/AQSTwitterActivity.imageset/AQSTwitterActivity@2x.png"
+                    install_resource "AQSTwitterActivity/AQSTwitterActivity/Classes/AQSTwitterActivity.xcassets/AQSTwitterActivity.imageset/AQSTwitterActivity@2x~ipad.png"
+                    install_resource "AQSTwitterActivity/AQSTwitterActivity/Classes/AQSTwitterActivity.xcassets/AQSTwitterActivity.imageset/AQSTwitterActivity@3x.png"
+                    install_resource "AQSTwitterActivity/AQSTwitterActivity/Classes/AQSTwitterActivity.xcassets/AQSTwitterActivity.imageset/AQSTwitterActivity~ipad.png"
+                    install_resource "AQSTwitterActivity/AQSTwitterActivity/Classes/AQSTwitterActivity.xcassets/color_AQSTwitterActivity.imageset/color_AQSTwitterActivity.png"
+                    install_resource "AQSTwitterActivity/AQSTwitterActivity/Classes/AQSTwitterActivity.xcassets/color_AQSTwitterActivity.imageset/color_AQSTwitterActivity@2x.png"
+                    install_resource "AQSTwitterActivity/AQSTwitterActivity/Classes/AQSTwitterActivity.xcassets/color_AQSTwitterActivity.imageset/color_AQSTwitterActivity@2x~ipad.png"
+                    install_resource "AQSTwitterActivity/AQSTwitterActivity/Classes/AQSTwitterActivity.xcassets/color_AQSTwitterActivity.imageset/color_AQSTwitterActivity@3x.png"
+                    install_resource "AQSTwitterActivity/AQSTwitterActivity/Classes/AQSTwitterActivity.xcassets/color_AQSTwitterActivity.imageset/color_AQSTwitterActivity~ipad.png"
+                    install_resource "${BUILT_PRODUCTS_DIR}/Appirater.bundle"
           
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 if [[ "${ACTION}" == "install" ]]; then

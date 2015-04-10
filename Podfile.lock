@@ -22,6 +22,8 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Appirater (2.0.4)
+  - AQSFacebookActivity (0.1.0)
+  - AQSTwitterActivity (0.1.0)
   - DeepLinkSDK (0.2.4)
   - JSONModel (1.0.2)
   - SDWebImage (3.7.2):
@@ -36,6 +38,8 @@ DEPENDENCIES:
   - Adjust (~> 4.1)
   - AFNetworking (~> 2.5)
   - Appirater (~> 2.0)
+  - AQSFacebookActivity (~> 0.1)
+  - AQSTwitterActivity (~> 0.1)
   - DeepLinkSDK (~> 0.2)
   - JSONModel (~> 1.0)
   - SDWebImage (~> 3.7)
@@ -45,6 +49,8 @@ SPEC CHECKSUMS:
   Adjust: ac716a8ce53b97459095ce9aea86bca538f4c177
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
   Appirater: 8783318c36414e8de3ea023443028df94c1b784b
+  AQSFacebookActivity: 1c726691eb632894638b51f04a69426ca3905b94
+  AQSTwitterActivity: e24f68a672aee615ed1d45996b7ef352f3a7ed09
   DeepLinkSDK: 82f36ed1bbf8fb549bb0dfb14b21852219c95384
   JSONModel: 6ffcb4ffa3659c9e9a2e5d45d6c7705bab187c03
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29

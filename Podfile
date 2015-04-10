@@ -11,6 +11,8 @@ pod 'Appirater', '~> 2.0'
 pod 'DeepLinkSDK', '~> 0.2'
 pod 'JSONModel', '~> 1.0'
 pod 'UIColor+Hex', '~> 1.0'
+pod 'AQSFacebookActivity', '~> 0.1'
+pod 'AQSTwitterActivity', '~> 0.1'
 
 
 # Disable logging of SDWebImagePrefetcher

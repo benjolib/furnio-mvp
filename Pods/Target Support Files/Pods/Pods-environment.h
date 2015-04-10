@@ -48,6 +48,18 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 5
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 2
 
+// AQSFacebookActivity
+#define COCOAPODS_POD_AVAILABLE_AQSFacebookActivity
+#define COCOAPODS_VERSION_MAJOR_AQSFacebookActivity 0
+#define COCOAPODS_VERSION_MINOR_AQSFacebookActivity 1
+#define COCOAPODS_VERSION_PATCH_AQSFacebookActivity 0
+
+// AQSTwitterActivity
+#define COCOAPODS_POD_AVAILABLE_AQSTwitterActivity
+#define COCOAPODS_VERSION_MAJOR_AQSTwitterActivity 0
+#define COCOAPODS_VERSION_MINOR_AQSTwitterActivity 1
+#define COCOAPODS_VERSION_PATCH_AQSTwitterActivity 0
+
 // Adjust
 #define COCOAPODS_POD_AVAILABLE_Adjust
 #define COCOAPODS_VERSION_MAJOR_Adjust 4

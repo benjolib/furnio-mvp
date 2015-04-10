@@ -14,6 +14,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-AQSFacebookActivity.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-AQSTwitterActivity.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Adjust.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,47 +62,57 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>051F916B44D13747084473CD</key>
+		<key>1B40DFF72DFAA00352C379C6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3F42118C91BB616D75C58EFE</key>
+		<key>204E3C95B2D5F86D070B992E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>40350461B104E2E5A12A5519</key>
+		<key>54C5B4A3358FFF2038693490</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>44F9D391750A4C405BEC1223</key>
+		<key>6D9C783300104319A15EF8E0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>46E1717D2DC916DDCBF04730</key>
+		<key>736DCAF892615B1B8B18D83B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>565F6E2AB9BB5D6442179ADB</key>
+		<key>888BAA7EAAFCA055CC46F07F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>87C1567821A1E8600001F002</key>
+		<key>8ECBAB3FAD79E13110DC45E4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D22EEDFECBA4FF85E3C7715A</key>
+		<key>A592C6713C189E3C4C7C873A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DBC16749848FF2E805D86EAA</key>
+		<key>AB9064764319DC50CDEFE0E7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CA929EBF3C3F337689285116</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EEB66E53AD82BFD0C9C95F50</key>
 		<dict>
 			<key>primary</key>
 			<true/>
