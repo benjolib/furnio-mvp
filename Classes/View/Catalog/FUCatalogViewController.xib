@@ -91,7 +91,6 @@
                     <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
                         <constraint firstItem="B2J-5w-RpI" firstAttribute="top" secondItem="zQk-Uc-5Zs" secondAttribute="top" id="0Jf-Db-ECf"/>
-                        <constraint firstAttribute="width" constant="320" id="0ar-mj-Beh"/>
                         <constraint firstItem="B2J-5w-RpI" firstAttribute="leading" secondItem="zQk-Uc-5Zs" secondAttribute="leading" id="Dta-0L-bgg"/>
                         <constraint firstItem="dR9-mG-0Lj" firstAttribute="leading" secondItem="3Xt-9C-LT7" secondAttribute="trailing" id="E1K-H4-Y3h"/>
                         <constraint firstItem="3Xt-9C-LT7" firstAttribute="leading" secondItem="B2J-5w-RpI" secondAttribute="trailing" id="MoT-vb-mwx"/>

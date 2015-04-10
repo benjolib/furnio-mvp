@@ -24,16 +24,9 @@ static CGFloat const FUCatalogCellShadowAnimationDuration = 0.25f;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewTopConstraint;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewBottomConstraint;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewLeftConstraint;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewRightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewRatioConstraint;
 
 @end
 
@@ -91,22 +84,8 @@ static CGFloat const FUCatalogCellShadowAnimationDuration = 0.25f;
 {
     _viewMode = viewMode;
 
-    if (viewMode == FUCollectionViewModeMatrix) {
-        self.imageViewTopConstraint.constant = 0;
-        self.imageViewBottomConstraint.constant = 0;
-        self.imageViewLeftConstraint.constant = 0;
-        self.imageViewRightConstraint.constant = 0;
-    } else {
-        CGFloat margin = 5;
-        CGFloat width = self.contentView.frame.size.width - (2 * margin);
-        CGFloat bottomConstant = self.contentView.frame.size.height - width - margin;
-        
-        self.imageViewTopConstraint.constant = 5;
-        self.imageViewBottomConstraint.constant = bottomConstant;
-        self.imageViewLeftConstraint.constant = 5;
-        self.imageViewRightConstraint.constant = 5;
-    }
-    
+    [self updateImageViewRatioConstraintWithViewMode:viewMode];
+
     self.nameLabel.hidden = (viewMode == FUCollectionViewModeMatrix);
     self.priceLabel.hidden = (viewMode == FUCollectionViewModeMatrix);
 }
@@ -147,6 +126,31 @@ static CGFloat const FUCatalogCellShadowAnimationDuration = 0.25f;
     [UIView animateWithDuration:duration animations:^{
         self.imageView.transform = CGAffineTransformIdentity;
     }];
+}
+
+#pragma mark - Private
+
+- (void)updateImageViewRatioConstraintWithViewMode:(FUCollectionViewMode)viewMode
+{
+    CGFloat multiplier;
+    CGFloat constant;
+
+    if (viewMode == FUCollectionViewModeMatrix) {
+        multiplier = self.frame.size.width / self.frame.size.height;
+        constant = 0;
+    } else {
+        multiplier = 1;
+        
+        constant = [UIScreen mainScreen].bounds.size.height > 568 ? 15 : -10;
+    }
+    
+    if (self.imageViewRatioConstraint) {
+        [self.imageView removeConstraint:self.imageViewRatioConstraint];
+    }
+
+    self.imageViewRatioConstraint = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.imageView attribute:NSLayoutAttributeHeight multiplier:multiplier constant:constant];
+    
+    [self.imageView addConstraint:self.imageViewRatioConstraint];
 }
 
 @end

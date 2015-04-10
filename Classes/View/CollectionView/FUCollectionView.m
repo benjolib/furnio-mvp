@@ -47,6 +47,8 @@
     [super awakeFromNib];
     
     [self registerClass:[FUCatalogColumnCollectionViewCell class] forCellWithReuseIdentifier:FUCatalogColumnCollectionViewCellReuseIdentifier];
+    
+    self.frame = [UIScreen mainScreen].bounds;
 }
 
 
@@ -80,9 +82,9 @@
 {
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)collectionViewLayout;
 
-    CGFloat width = (self.frame.size.width - layout.minimumInteritemSpacing);
-    CGFloat height = self.frame.size.height;
-    
+    CGFloat width = (collectionView.frame.size.width - layout.minimumInteritemSpacing);
+    CGFloat height = collectionView.frame.size.height - layout.sectionInset.top - layout.sectionInset.bottom;
+
     if (self.viewMode == FUCollectionViewModeMatrix) {
         width /= 2;
     }
@@ -122,7 +124,7 @@
 {
     NSUInteger item = [self collectionView:self numberOfItemsInSection:0] / 2;
     
-    [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:animated];
+    [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:animated];
 }
 
 #pragma mark - Private
