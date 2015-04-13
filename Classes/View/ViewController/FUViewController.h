@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import "FUNavigationBar.h"
+
 @interface FUViewController : UIViewController
 
+@property (strong, nonatomic) FUNavigationBar *navigationBar;
+
+- (void)configureNavigationBar;
 
 @end
 

@@ -16,9 +16,7 @@
 
 @interface FUWishlistViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, FUWishlistCollectionViewCellDelegate, FUWishlistEmptyCollectionViewCellDelegate>
 
-@property (weak, nonatomic) IBOutlet UIButton *closeButton;
-
-@property (weak, nonatomic) IBOutlet UIButton *editButton;
+@property (strong, nonatomic, readonly) UIButton *editButton;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *wishlistCollectionView;
 
@@ -43,26 +41,18 @@
 {
     [super viewDidLoad];
     
+    self.title = @"WISHLIST";
+
     self.viewState = FUWishlistViewStateNormal;
 
     [self.wishlistCollectionView registerNib:[FUWishlistCollectionViewCell nib] forCellWithReuseIdentifier:FUWishlistCollectionViewCellReuseIdentifier];
     
     [self.wishlistCollectionView registerNib:[FUWishlistEmptyCollectionViewCell nib] forCellWithReuseIdentifier:FUWishlistEmptyCollectionViewCellReuseIdentifier];
-    
-    self.closeButton.hitTestEdgeInsets = UIEdgeInsetsMake(-25, -15, 0, -15);
-    self.editButton.hitTestEdgeInsets = UIEdgeInsetsMake(-25, -15, 0, -15);
 }
 
 #pragma mark - Actions
 
-- (IBAction)closeButtonTapped:(UIButton *)sender
-{
-    [sender animateScaling];
-
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (IBAction)editButtonTapped:(UIButton *)sender
+- (void)editButtonTapped:(UIButton *)sender
 {
     [sender animateScaling];
 
@@ -72,6 +62,8 @@
 - (IBAction)deleteAllButtonTapped:(id)sender
 {
     [[FUWishlistManager sharedManager] removeAllProducts];
+    
+    self.viewState = FUWishlistViewStateNormal;
 
     [self.wishlistCollectionView reloadData];
 }
@@ -193,9 +185,19 @@
 
 #pragma mark - Private
 
+- (void)configureNavigationBar
+{
+    self.navigationBar.rightButton = [self.navigationBar newButtonWithImage:[UIImage imageNamed:@"edit"] target:self selector:@selector(editButtonTapped:) position:FUNavigationBarButtonPositionRight];
+}
+
 - (NSArray *)products
 {
     return [FUWishlistManager sharedManager].products;
+}
+
+- (UIButton *)editButton
+{
+    return self.navigationBar.rightButton;
 }
 
 @end

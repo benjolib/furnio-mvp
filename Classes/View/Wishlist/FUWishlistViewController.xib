@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1077" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
@@ -9,9 +9,7 @@
             <connections>
                 <outlet property="allItemsContainer" destination="Qcy-T7-770" id="FXW-CR-9ER"/>
                 <outlet property="allItemsContainerHeightConstraint" destination="3Pl-VX-aAQ" id="caT-Lg-mnA"/>
-                <outlet property="closeButton" destination="yes-Vd-erg" id="uap-Ht-LYc"/>
                 <outlet property="deleteAllButton" destination="Mi6-vU-Gu6" id="xvV-Gy-GKS"/>
-                <outlet property="editButton" destination="0qJ-hV-7rk" id="Ppd-hA-08P"/>
                 <outlet property="shareAllButton" destination="j4a-rH-pNv" id="gjP-So-u3e"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="wishlistCollectionView" destination="442-iK-Gij" id="SlX-I3-P6n"/>
@@ -78,52 +76,14 @@
                         <constraint firstItem="j4a-rH-pNv" firstAttribute="top" secondItem="Qcy-T7-770" secondAttribute="top" id="z6W-kl-ycJ"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yes-Vd-erg" userLabel="closeButton">
-                    <rect key="frame" x="15" y="25" width="25" height="25"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="25" id="fHY-eX-10p"/>
-                        <constraint firstAttribute="width" constant="25" id="ngN-uO-mWr"/>
-                    </constraints>
-                    <state key="normal" image="close">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="closeButtonTapped:" destination="-1" eventType="touchUpInside" id="8KD-ct-BZQ"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qJ-hV-7rk" userLabel="editButton">
-                    <rect key="frame" x="335" y="25" width="25" height="25"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="25" id="H2l-c2-Mzl"/>
-                        <constraint firstAttribute="width" constant="25" id="TxF-ZL-STY"/>
-                    </constraints>
-                    <state key="normal" image="edit">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="editButtonTapped:" destination="-1" eventType="touchUpInside" id="Cbe-Hg-fMF"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WISHLIST" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1AA-nu-umV" userLabel="titleLabel">
-                    <rect key="frame" x="141" y="24" width="93" height="28"/>
-                    <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
-                    <color key="textColor" red="0.35686274509803922" green="0.35686274509803922" blue="0.35686274509803922" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="442-iK-Gij" secondAttribute="trailing" id="2C8-A4-Djd"/>
-                <constraint firstAttribute="trailing" secondItem="0qJ-hV-7rk" secondAttribute="trailing" constant="15" id="4HJ-rB-bVS"/>
                 <constraint firstAttribute="centerX" secondItem="Qcy-T7-770" secondAttribute="centerX" id="84M-IP-906"/>
-                <constraint firstItem="0qJ-hV-7rk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="25" id="A8o-S4-wtT"/>
-                <constraint firstItem="1AA-nu-umV" firstAttribute="centerY" secondItem="yes-Vd-erg" secondAttribute="centerY" id="EqY-bS-Hxr"/>
                 <constraint firstItem="442-iK-Gij" firstAttribute="top" secondItem="Qcy-T7-770" secondAttribute="bottom" id="H2C-hL-UWA"/>
                 <constraint firstItem="Qcy-T7-770" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="75" id="Pze-Rt-dMR"/>
                 <constraint firstItem="442-iK-Gij" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Tii-QQ-7je"/>
-                <constraint firstItem="yes-Vd-erg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="VDy-OA-ftz"/>
-                <constraint firstAttribute="centerX" secondItem="1AA-nu-umV" secondAttribute="centerX" id="Zof-14-R1R"/>
-                <constraint firstItem="yes-Vd-erg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="25" id="mX7-x5-vlq"/>
                 <constraint firstAttribute="bottom" secondItem="442-iK-Gij" secondAttribute="bottom" id="t2g-yN-mpJ"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -132,9 +92,7 @@
         </view>
     </objects>
     <resources>
-        <image name="close" width="25" height="25"/>
         <image name="delete" width="21" height="25"/>
-        <image name="edit" width="23" height="26"/>
         <image name="share-yellow" width="25" height="23"/>
     </resources>
 </document>

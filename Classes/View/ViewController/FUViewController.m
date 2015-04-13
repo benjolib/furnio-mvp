@@ -8,10 +8,6 @@
 
 #import "FUViewController.h"
 
-@interface FUViewController ()
-
-@end
-
 @implementation FUViewController
 
 
@@ -22,6 +18,15 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBarHidden = YES;
+    
+    [self setupNavigationBar];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
+    [self.view bringSubviewToFront:self.navigationBar];
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -29,15 +34,32 @@
     return YES;
 }
 
-#pragma mark - Helper
+#pragma mark - Setter
 
-- (void)setupTransparentNavigationBar
+- (void)setTitle:(NSString *)title
+{    
+    self.navigationBar.title = title;
+}
+
+#pragma mark - Private
+
+- (void)setupNavigationBar
 {
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.navigationController.navigationBar.translucent = YES;
-    self.navigationController.view.backgroundColor = [UIColor clearColor];
-    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+    if (self.navigationBar) {
+        [self.navigationBar removeFromSuperview];
+        self.navigationBar = nil;
+    }
+
+    self.navigationBar = [[FUNavigationBar alloc] initWithNavigationController:self.navigationController];
+    
+    [self.view addSubview:self.navigationBar];
+    
+    [self configureNavigationBar];
+}
+
+- (void)configureNavigationBar
+{
+    
 }
 
 @end

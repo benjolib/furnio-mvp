@@ -10,4 +10,6 @@
 
 @interface FUActionButton : UIButton
 
+@property (assign, nonatomic) BOOL useInvertedColors;
+
 @end

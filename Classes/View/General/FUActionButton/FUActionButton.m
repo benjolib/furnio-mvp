@@ -30,9 +30,38 @@
 
 - (void)setHighlighted:(BOOL)highlighted
 {
-    self.backgroundColor = highlighted ? FUColorOrange : [UIColor whiteColor];
+    if (highlighted) {
+        if (self.useInvertedColors) {
+            self.backgroundColor = [UIColor whiteColor];
+            self.titleLabel.textColor = FUColorOrange;
+        } else {
+            self.backgroundColor = FUColorOrange;
+            self.titleLabel.textColor = [UIColor whiteColor];
+        }
+    } else {
+        if (self.useInvertedColors) {
+            self.backgroundColor = FUColorOrange;
+            self.titleLabel.textColor = [UIColor whiteColor];
+        } else {
+            self.backgroundColor = [UIColor whiteColor];
+            self.titleLabel.textColor = FUColorOrange;
+        }
+    }    
+}
+
+- (void)setUseInvertedColors:(BOOL)useInvertedColors
+{
+    _useInvertedColors = useInvertedColors;
     
-    self.titleLabel.textColor = highlighted ? [UIColor whiteColor] : FUColorOrange;
+    UIColor *normalColor = self.useInvertedColors ? [UIColor whiteColor] : FUColorOrange;
+    UIColor *highlightedColor = self.useInvertedColors ? FUColorOrange : [UIColor whiteColor];
+    
+    [self setTitleColor:normalColor forState:UIControlStateNormal];
+    [self setTitleColor:highlightedColor forState:UIControlStateHighlighted];
+    
+    self.backgroundColor = self.useInvertedColors ? FUColorOrange : [UIColor whiteColor];
+    
+    self.layer.borderColor = normalColor.CGColor;
 }
 
 #pragma mark - Private
@@ -48,8 +77,11 @@
     
     self.contentEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20);
     
-    [self setTitleColor:FUColorOrange forState:UIControlStateNormal];
-    [self setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    UIColor *normalColor = FUColorOrange;
+    UIColor *highlightedColor = [UIColor whiteColor];
+
+    [self setTitleColor:normalColor forState:UIControlStateNormal];
+    [self setTitleColor:highlightedColor forState:UIControlStateHighlighted];
 }
 
 @end

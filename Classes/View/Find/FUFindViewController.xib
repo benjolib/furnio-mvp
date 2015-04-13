@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1077" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FUFindViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="tW8-qX-XsN" userLabel="searchImageView">
+                    <rect key="frame" x="130" y="95" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="p8z-Op-G7Z"/>
+                        <constraint firstAttribute="height" constant="60" id="wk1-4c-rji"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="ryb-iY-24Y" userLabel="categoryImageView">
+                    <rect key="frame" x="130" y="307" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="75H-bt-u08"/>
+                        <constraint firstAttribute="height" constant="60" id="WdF-Pb-L21"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOv-OI-zVZ" customClass="FUActionButton">
+                    <rect key="frame" x="15" y="175" width="290" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="zOI-ON-4Os"/>
+                    </constraints>
+                    <state key="normal" title="SEARCH">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="useInvertedColors" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="searchButtonTapped:" destination="-1" eventType="touchUpInside" id="6kp-27-Ew9"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfQ-hR-3Ek" customClass="FUActionButton">
+                    <rect key="frame" x="15" y="387" width="290" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="bun-Wp-arK"/>
+                    </constraints>
+                    <state key="normal" title="CATEGORIES">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="useInvertedColors" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="categoryButtonTapped:" destination="-1" eventType="touchUpInside" id="FXG-Lr-nRr"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="nfQ-hR-3Ek" secondAttribute="trailing" constant="15" id="Ew8-ZL-nLI"/>
+                <constraint firstItem="nfQ-hR-3Ek" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="HFr-w2-4z7"/>
+                <constraint firstAttribute="centerX" secondItem="ryb-iY-24Y" secondAttribute="centerX" id="NK8-mS-gdT"/>
+                <constraint firstAttribute="centerY" secondItem="zOv-OI-zVZ" secondAttribute="centerY" constant="79" id="Vkd-Gz-hoc"/>
+                <constraint firstItem="nfQ-hR-3Ek" firstAttribute="top" secondItem="ryb-iY-24Y" secondAttribute="bottom" constant="20" id="Yjd-AW-NEL"/>
+                <constraint firstAttribute="centerY" secondItem="nfQ-hR-3Ek" secondAttribute="centerY" constant="-133" id="dNh-yO-YWb"/>
+                <constraint firstAttribute="trailing" secondItem="zOv-OI-zVZ" secondAttribute="trailing" constant="15" id="dT3-2w-6hV"/>
+                <constraint firstAttribute="centerX" secondItem="tW8-qX-XsN" secondAttribute="centerX" id="e9o-kw-5Pv"/>
+                <constraint firstItem="zOv-OI-zVZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="gg0-0K-El9"/>
+                <constraint firstItem="zOv-OI-zVZ" firstAttribute="top" secondItem="tW8-qX-XsN" secondAttribute="bottom" constant="20" id="xZs-NM-1pi"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="search" width="24" height="26"/>
+    </resources>
+</document>

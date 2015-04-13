@@ -1,0 +1,93 @@
+//
+//  FUNavigationBar.m
+//  furn
+//
+//  Created by Markus Bösch on 13/04/15.
+//
+//
+
+#import "FUNavigationBar.h"
+
+#import "UIView+FUAnimations.h"
+
+static const CGFloat FUNavigationBarDefaultOriginY = 25;
+static const CGFloat FUNavigationBarHeight = 25;
+
+static const CGFloat FUNavigationBarButtonMarginX = 15;
+static const CGFloat FUNavigationBarButtonDimension = FUNavigationBarHeight;
+
+@implementation FUNavigationBar
+
+- (instancetype)initWithNavigationController:(UINavigationController *)navigationController
+{
+    return [self initWithNavigationController:navigationController originY:FUNavigationBarDefaultOriginY];
+}
+
+- (instancetype)initWithNavigationController:(UINavigationController *)navigationController originY:(CGFloat)originY
+{
+    NSParameterAssert(navigationController);
+    
+    CGRect frame = CGRectMake(0, originY, [UIScreen mainScreen].bounds.size.width, FUNavigationBarHeight);
+    self = [super initWithFrame:frame];
+    
+    if (self) {
+        self.leftButton = [FUNavigationBar closeButton];
+        
+    }
+    
+    return self;
+}
+
++ (UIButton *)closeButton
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [button setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+    
+    button.frame = CGRectMake(FUNavigationBarButtonMarginX, 0, FUNavigationBarButtonDimension, FUNavigationBarButtonDimension);
+    
+    [button addTarget:self action:@selector(closeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    
+    return button;
+}
+
+#pragma mark - Setter
+
+- (void)setLeftButton:(UIButton *)leftButton
+{
+    if (self.leftButton) {
+        [self.leftButton removeFromSuperview];
+        
+        self.leftButton = nil;
+    }
+    
+    if (leftButton) {
+        self.leftButton = leftButton;
+        
+        [self addSubview:self.leftButton];
+    }
+}
+
+- (void)setRightButton:(UIButton *)rightButton
+{
+    if (self.rightButton) {
+        [self.rightButton removeFromSuperview];
+        
+        self.rightButton = nil;
+    }
+    
+    if (rightButton) {
+        self.rightButton = rightButton;
+        
+        [self addSubview:self.rightButton];
+    }
+}
+
+#pragma mark - Actions
+
+- (void)closeButtonTapped:(id)sender
+{
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+@end

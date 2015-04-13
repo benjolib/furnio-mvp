@@ -15,6 +15,7 @@
 #import "FUWishlistViewController.h"
 #import "FUNavigationController.h"
 #import "UIControl+HitTest.h"
+#import "FUFindViewController.h"
 
 
 @interface FUCatalogViewController () <FUCollectionViewDelegate>
@@ -26,14 +27,8 @@
 @property (weak, nonatomic) IBOutlet UIView *buttonContainerView;
 
 @property (weak, nonatomic) IBOutlet UIButton *filterButton;
-
 @property (weak, nonatomic) IBOutlet UIButton *sortButton;
-
 @property (weak, nonatomic) IBOutlet UIButton *viewModeButton;
-
-@property (weak, nonatomic) IBOutlet UIButton *searchButton;
-
-@property (weak, nonatomic) IBOutlet UIButton *wishlistButton;
 
 @end
 
@@ -78,9 +73,6 @@
     [self.horizontalCollectionView scrollToCenterAnimated:NO];
     
     self.navigationController.navigationBarHidden = YES;
-    
-    self.searchButton.hitTestEdgeInsets = UIEdgeInsetsMake(-15, -15, -5, -5);
-    self.wishlistButton.hitTestEdgeInsets = UIEdgeInsetsMake(-15, -5, -5, -15);
 }
 
 #pragma mark - Notifications
@@ -123,14 +115,16 @@
     // TODO: Attach Sort VC here
 }
 
-- (IBAction)searchButtonTapped:(id)sender
+- (void)searchButtonTapped:(UIButton *)sender
 {
     [sender animateScaling];
 
-    // TODO: Attach Search VC here
+    FUNavigationController *findNavigationController = [[FUNavigationController alloc] initWithRootViewController:[FUFindViewController new]];
+    
+    [self.navigationController presentViewController:findNavigationController animated:YES completion:nil];
 }
 
-- (IBAction)wishlistButtonTapped:(UIButton *)sender
+- (void)wishlistButtonTapped:(UIButton *)sender
 {
     [sender animateScaling];
     
@@ -158,6 +152,16 @@
     NSString *imageName = self.horizontalCollectionView.viewMode == FUCollectionViewModeMatrix ? @"grid-view" : @"matrix-view";
     
     [self.viewModeButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+}
+
+- (void)configureNavigationBar
+{
+    self.navigationBar.originY = FUNavigationBarButtonMarginX;
+    self.navigationBar.height = FUNavigationBarDefaultHeight * 2;
+
+    self.navigationBar.leftButton = [self.navigationBar newRoundedYellowButtonWithImage:[UIImage imageNamed:@"search"] target:self selector:@selector(searchButtonTapped:) position:FUNavigationBarButtonPositionLeft];
+    
+    self.navigationBar.rightButton = [self.navigationBar newRoundedYellowButtonWithImage:[UIImage imageNamed:@"wishlist"] target:self selector:@selector(wishlistButtonTapped:) position:FUNavigationBarButtonPositionRight];
 }
 
 @end
