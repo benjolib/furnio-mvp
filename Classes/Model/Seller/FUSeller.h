@@ -8,7 +8,7 @@
 
 #import "JSONModel.h"
 
-@interface FUSeller : JSONModel
+@interface FUSeller : JSONModel <NSCoding>
 
 @property (strong, nonatomic) NSString *identifier;
 

@@ -22,11 +22,26 @@
     [self setupNavigationBar];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self configureLoadingView];
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
 
     [self.view bringSubviewToFront:self.navigationBar];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+
+    [FULoadingViewManager sharedManger].text = nil;
+    [FULoadingViewManager sharedManger].allowLoadingView = NO;
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -57,9 +72,19 @@
     [self configureNavigationBar];
 }
 
+- (void)setAllowLoadingView:(BOOL)allowLoadingView
+{
+    [FULoadingViewManager sharedManger].allowLoadingView = allowLoadingView;
+}
+
 - (void)configureNavigationBar
 {
-    
+    // Optional. Subclasses may override this.
+}
+
+- (void)configureLoadingView
+{
+    // Optional. Subclasses may override this.
 }
 
 @end

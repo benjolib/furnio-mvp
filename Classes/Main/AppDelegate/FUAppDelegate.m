@@ -17,6 +17,9 @@
 #import "FUProduct.h"
 #import "FUProductList.h"
 #import "FUNotifyManager.h"
+#import "FULoadingViewManager.h"
+#import "FUProductManager.h"
+#import "FUCategoryManager.h"
 
 
 @implementation FUAppDelegate
@@ -27,6 +30,11 @@
     [FUSDKManager setup];
     
     [FUDeepLinkHandler setupWithURLScheme:@"furn"];
+    
+    [FULoadingViewManager setup];
+    
+    [FUProductManager setup];
+    [FUCategoryManager setup];
 
     [self setupRootController];
     

@@ -9,15 +9,24 @@
 #import "FUProductManager.h"
 
 #import "FUProductList.h"
+#import "FUAPIConstants.h"
+#import "FUCategory.h"
+#import "FULoadingViewManager.h"
 
-#import <JSONHTTPClient.h>
 
 static NSUInteger const FUProductManagerRowLimit = 20;
 
+static NSUInteger const FUProductManagerPageSize = 200;
+
+NSString *const FUProductManagerDidFinishLoadingPageNotification = @"FUProductManagerDidFinishLoadingPageNotification";
 
 @interface FUProductManager ()
 
-@property (strong, nonatomic) FUProductList *productList;
+@property (strong, nonatomic) NSMutableArray *products;
+
+@property (assign, nonatomic) BOOL isLoading;
+
+@property (copy, nonatomic) NSNumber *foundRows;
 
 @end
 
@@ -25,6 +34,11 @@ static NSUInteger const FUProductManagerRowLimit = 20;
 @implementation FUProductManager
 
 #pragma mark - Initialization
+
++ (void)setup
+{
+    [self sharedManager];
+}
 
 + (instancetype)sharedManager
 {
@@ -49,7 +63,6 @@ static NSUInteger const FUProductManagerRowLimit = 20;
     return self;
 }
 
-
 #pragma mark - Public
 
 - (NSArray *)productsForColumnAtIndex:(NSInteger)index
@@ -57,8 +70,8 @@ static NSUInteger const FUProductManagerRowLimit = 20;
     NSInteger productStart = (index * FUProductManagerRowLimit);
     NSInteger productLimit = productStart + FUProductManagerRowLimit - 1;
     
-    if (productLimit < self.productList.products.count) {
-        return [self.productList.products subarrayWithRange:NSMakeRange(productStart, FUProductManagerRowLimit)];
+    if (productLimit < self.products.count) {
+        return [self.products subarrayWithRange:NSMakeRange(productStart, FUProductManagerRowLimit)];
     }
     
     return nil;
@@ -66,8 +79,12 @@ static NSUInteger const FUProductManagerRowLimit = 20;
 
 - (FUProduct *)productAtIndex:(NSInteger)index
 {
-    if (index < self.productList.products.count) {
-        return [self.productList.products objectAtIndex:index];
+    if (index < self.products.count) {
+        if ((self.products.count - index) < FUProductManagerRowLimit && self.products.count < self.foundRows.integerValue) {
+            [self loadProducts];
+        }
+
+        return [self.products objectAtIndex:index];
     }
 
     return nil;
@@ -77,16 +94,12 @@ static NSUInteger const FUProductManagerRowLimit = 20;
 {
     NSInteger index = [self absoluteIndexForIndexPath:indexPath];
     
-    if (index < self.productList.products.count) {
-        return [self.productList.products objectAtIndex:index];
-    }
-    
-    return nil;
+    return [self productAtIndex:index];
 }
 
 - (NSInteger)productCount
 {
-    return self.productList.products.count;
+    return self.products.count;
 }
 
 - (NSInteger)columnCount
@@ -100,7 +113,7 @@ static NSUInteger const FUProductManagerRowLimit = 20;
     
     NSInteger sectionItemCount = ([indexPath indexAtPosition:0] % self.columnCount) * FUProductManagerRowLimit;
     NSInteger rowItemCount = ([indexPath indexAtPosition:1] % FUProductManagerRowLimit);
-
+    
     return sectionItemCount + rowItemCount;
 }
 
@@ -116,19 +129,82 @@ static NSUInteger const FUProductManagerRowLimit = 20;
     return indexPath;
 }
 
+- (void)reset
+{
+    self.category = nil;
+    
+    self.foundRows = @0;
+
+    [self loadProducts];
+}
+
+#pragma mark - Getter
+
+- (NSUInteger)currentOffset
+{
+    return self.products.count;
+}
+
+#pragma mark - Setter
+
+- (void)setCategory:(FUCategory *)category
+{
+    if (_category.identifier && category.identifier && [_category.identifier isEqualToNumber:category.identifier]) {
+        return;
+    }
+    
+    _category = category;
+    
+    [self.products removeAllObjects];
+
+    [self loadProducts];
+}
+
+- (void)setFoundRows:(NSNumber *)foundRows
+{
+    _foundRows = foundRows;
+    
+    [FULoadingViewManager sharedManger].allowLoadingView = foundRows.integerValue == 0;
+}
+
 #pragma mark - Private
 
 - (void)loadProducts
 {
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"productList" ofType:@"json"];
-    NSData *data = [NSData dataWithContentsOfFile:filePath];
-    
-    NSError *error;
-    self.productList = [[FUProductList alloc] initWithData:data error:&error];
-    
-    if (error) {
-        NSLog(@"%@", error.localizedDescription);
+    if (self.isLoading) {
+        return;
     }
+
+    self.isLoading = YES;
+    
+    if (!self.products) {
+        self.products = [NSMutableArray array];
+    }
+
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    [parameters setValue:@([self currentOffset]) forKey:@"start"];
+    [parameters setValue:@(FUProductManagerPageSize) forKey:@"limit"];
+
+    if (self.category) {
+        [parameters setValue:self.category.identifier.stringValue forKey:@"category[]"];
+    }
+
+    [JSONHTTPClient getJSONFromURLWithString:FUAPIProducts params:parameters completion:^(id json, JSONModelError *error) {
+        FUProductList *productList = [[FUProductList alloc] initWithDictionary:json error:&error];
+
+        [self.products addObjectsFromArray:productList.products];
+
+        self.foundRows = productList.totalCount;
+
+        if (error) {
+            NSLog(@"%@", error.localizedDescription);
+        } else {
+            [[NSNotificationCenter defaultCenter] postNotificationName:FUProductManagerDidFinishLoadingPageNotification object:nil];
+        }
+        
+        self.isLoading = NO;
+    }];
 }
 
 @end

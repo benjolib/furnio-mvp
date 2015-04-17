@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "FUNavigationBar.h"
+#import "FULoadingViewManager.h"
 
 @interface FUViewController : UIViewController
 
@@ -16,5 +17,6 @@
 
 - (void)configureNavigationBar;
 
-@end
+- (void)configureLoadingView;
 
+@end

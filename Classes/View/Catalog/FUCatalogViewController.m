@@ -16,6 +16,8 @@
 #import "FUNavigationController.h"
 #import "UIControl+HitTest.h"
 #import "FUFindViewController.h"
+#import "FUProductManager.h"
+#import "FUWishlistManager.h"
 
 
 @interface FUCatalogViewController () <FUCollectionViewDelegate>
@@ -57,7 +59,7 @@
 - (void)setupNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideButtonBar) name:FUCatalogColumnCollectionViewCellScrollingDidStartNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showButtonBar) name:FUCatalogColumnCollectionViewCellScrollingDidFinishNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showButtonBar) name:FUCatalogColumnCollectionViewCellScrollingDidFinishNotification object:nil];    
 }
 
 #pragma mark - UIViewController
@@ -73,6 +75,24 @@
     [self.horizontalCollectionView scrollToCenterAnimated:NO];
     
     self.navigationController.navigationBarHidden = YES;
+}
+
+#pragma mark - FUViewController
+
+- (void)configureLoadingView
+{
+    [FULoadingViewManager sharedManger].text = @"LOADING PRODUCTS";
+    [FULoadingViewManager sharedManger].allowLoadingView = YES;
+}
+
+- (void)configureNavigationBar
+{
+    self.navigationBar.originY = FUNavigationBarButtonMarginX;
+    self.navigationBar.height = FUNavigationBarDefaultHeight * 2;
+    
+    self.navigationBar.leftButton = [self.navigationBar newRoundedYellowButtonWithImage:[UIImage imageNamed:@"search"] target:self selector:@selector(searchButtonTapped:) position:FUNavigationBarButtonPositionLeft];
+    
+    self.navigationBar.rightButton = [self.navigationBar newRoundedYellowButtonWithImage:[UIImage imageNamed:@"wishlist"] target:self selector:@selector(wishlistButtonTapped:) position:FUNavigationBarButtonPositionRight];
 }
 
 #pragma mark - Notifications
@@ -143,6 +163,9 @@
     // TODO: Open PDP after tapping on product
 
     NSLog(@"%@: %@ ($%.2f)", @(index), product.name, product.price.floatValue);
+    
+    // TODO: Remove this temporary code. Just for testing.
+    [[FUWishlistManager sharedManager] addProduct:product];
 }
 
 #pragma mark - Private
@@ -152,16 +175,6 @@
     NSString *imageName = self.horizontalCollectionView.viewMode == FUCollectionViewModeMatrix ? @"grid-view" : @"matrix-view";
     
     [self.viewModeButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
-}
-
-- (void)configureNavigationBar
-{
-    self.navigationBar.originY = FUNavigationBarButtonMarginX;
-    self.navigationBar.height = FUNavigationBarDefaultHeight * 2;
-
-    self.navigationBar.leftButton = [self.navigationBar newRoundedYellowButtonWithImage:[UIImage imageNamed:@"search"] target:self selector:@selector(searchButtonTapped:) position:FUNavigationBarButtonPositionLeft];
-    
-    self.navigationBar.rightButton = [self.navigationBar newRoundedYellowButtonWithImage:[UIImage imageNamed:@"wishlist"] target:self selector:@selector(wishlistButtonTapped:) position:FUNavigationBarButtonPositionRight];
 }
 
 @end

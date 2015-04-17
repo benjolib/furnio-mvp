@@ -86,10 +86,10 @@ static CGFloat const FUNotifyManagerMessageAnimationDuration = 0.35f;
     [self showMessageWithText:text backgroundColor:FUColorLightRed];
 }
 
-- (void)showMessageWithText:(NSString *)text hideAfterTimeInterval:(NSTimeInterval)timeInterval
+- (void)showMessageWithText:(NSString *)text backgroundColor:(UIColor *)backgroundColor hideAfterTimeInterval:(NSTimeInterval)timeInterval
 {
-    [self showMessageWithText:text];
-    
+    [self showMessageWithText:text backgroundColor:backgroundColor];
+
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(timeInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self hideMessage];
     });
@@ -138,6 +138,7 @@ static CGFloat const FUNotifyManagerMessageAnimationDuration = 0.35f;
     messageLabel.textColor = [UIColor whiteColor];
     messageLabel.textAlignment = NSTextAlignmentCenter;
     messageLabel.numberOfLines = 0;
+    messageLabel.alpha = 0.8f;
     
     return messageLabel;
 }

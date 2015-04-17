@@ -9,6 +9,7 @@
 #ifndef furn_FUColorConstants_h
 #define furn_FUColorConstants_h
 
+#import <UIKit/UIKit.h>
 #import <UIColor+Hex.h>
 
 #define FUHexColor(hex) [UIColor colorWithCSS:hex]
@@ -19,5 +20,7 @@
 #define FUColorLightGray FUHexColor(@"B5B5B5")
 
 #define FUColorLightRed FUHexColor(@"FF6666")
+
+#define FUColorLightGreen FUHexColor(@"52CE28")
 
 #endif

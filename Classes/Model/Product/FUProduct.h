@@ -15,7 +15,7 @@
 
 @end
 
-@interface FUProduct : JSONModel
+@interface FUProduct : JSONModel <NSCoding>
 
 @property (strong, nonatomic) NSString *identifier;
 

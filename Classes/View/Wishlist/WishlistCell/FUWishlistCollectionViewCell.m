@@ -31,9 +31,6 @@ static CGFloat const FUWishlistCellShadowAnimationDuration = 0.25f;
 
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 
-@property (weak, nonatomic) IBOutlet FUWishlistActionButton *deleteButton;
-@property (weak, nonatomic) IBOutlet FUWishlistActionButton *shareButton;
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewContainerRatioConstraint;
 
 
@@ -51,7 +48,7 @@ static CGFloat const FUWishlistCellShadowAnimationDuration = 0.25f;
     self.deleteButton.normalBackgroundColor = [UIColor clearColor];
 
     self.shareButton.normalTintColor = FUColorOrange;
-    self.shareButton.normalBackgroundColor = [FUColorLightGray colorWithAlphaComponent:0.5f];
+    self.shareButton.normalBackgroundColor = [UIColor clearColor];
     
     self.imageViewContainerRatioConstraint.constant = [UIScreen mainScreen].bounds.size.height > 568 ? 15 : -10;
 }
@@ -148,10 +145,12 @@ static CGFloat const FUWishlistCellShadowAnimationDuration = 0.25f;
 
 #pragma mark - Actions
 
-- (IBAction)deleteButtonTapped:(id)sender
+- (IBAction)deleteButtonTapped:(UIButton *)sender
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(wishlistCollectionViewCell:didTapDeleteButtonWithProduct:)]) {
-        [self.delegate wishlistCollectionViewCell:self didTapDeleteButtonWithProduct:self.product];
+    sender.selected = !sender.selected;
+
+    if (self.delegate && [self.delegate respondsToSelector:@selector(wishlistCollectionViewCell:didTapDeleteButtonWithProduct:isSelected:)]) {
+        [self.delegate wishlistCollectionViewCell:self didTapDeleteButtonWithProduct:self.product isSelected:sender.selected];
     }
 }
 

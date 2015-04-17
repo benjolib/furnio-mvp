@@ -8,7 +8,7 @@
 
 #import "JSONModel.h"
 
-@interface FUProperties : JSONModel
+@interface FUProperties : JSONModel <NSCoding>
 
 @property (strong, nonatomic) NSString *category;
 @property (strong, nonatomic) NSString *color;

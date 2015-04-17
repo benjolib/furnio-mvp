@@ -25,4 +25,6 @@
 
 - (void)removeProductAtIndex:(NSUInteger)index;
 
+- (void)removeProductsAtIndexes:(NSIndexSet *)indexes;
+
 @end

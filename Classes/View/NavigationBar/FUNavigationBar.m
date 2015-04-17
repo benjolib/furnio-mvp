@@ -17,6 +17,7 @@ const CGFloat FUNavigationBarDefaultOriginY = 25;
 const CGFloat FUNavigationBarDefaultHeight = 25;
 
 const CGFloat FUNavigationBarButtonMarginX = 15;
+const CGFloat FUNavigationBarBackButtonMarginX = 9;
 const CGFloat FUNavigationBarButtonDimension = FUNavigationBarDefaultHeight;
 
 static const CGFloat FUNavigationBarButtonHitMargin = 5;
@@ -163,7 +164,7 @@ static const CGFloat FUNavigationBarButtonHitMargin = 5;
     
     [button setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
     
-    button.frame = CGRectMake(FUNavigationBarButtonMarginX, [self originY], FUNavigationBarButtonDimension, FUNavigationBarButtonDimension);
+    button.frame = CGRectMake(FUNavigationBarBackButtonMarginX, [self originY], FUNavigationBarButtonDimension, FUNavigationBarButtonDimension);
     
     [button addTarget:self action:@selector(backButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
 

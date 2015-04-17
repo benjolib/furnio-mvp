@@ -9,8 +9,11 @@
 #import "FUCollectionView.h"
 
 #import "FUCatalogColumnCollectionViewCell.h"
+#import "FUCatalogEmptyCollectionViewCell.h"
+#import "FUProductManager.h"
 
-@interface FUCollectionView () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, FUCatalogColumnCollectionViewCellDelegate>
+
+@interface FUCollectionView () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, FUCatalogColumnCollectionViewCellDelegate, FUCatalogEmptyCollectionViewCellDelegate>
 
 @property (assign, nonatomic) FUCollectionViewMode viewMode;
 
@@ -26,6 +29,8 @@
     self.dataSource = nil;
     self.delegate = nil;
     self.furnCollectionDelegate = nil;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -34,9 +39,13 @@
     
     if (self) {
         self.viewMode = FUCollectionViewModeMatrix;
+        
+        self.hidden = YES;
 
         self.dataSource = self;
         self.delegate = self;
+        
+        [self setupNotifications];
     }
     
     return self;
@@ -47,7 +56,8 @@
     [super awakeFromNib];
     
     [self registerClass:[FUCatalogColumnCollectionViewCell class] forCellWithReuseIdentifier:FUCatalogColumnCollectionViewCellReuseIdentifier];
-    
+    [self registerNib:[FUCatalogEmptyCollectionViewCell nib] forCellWithReuseIdentifier:FUCatalogEmptyCollectionViewCellReuseIdentifier];
+
     self.frame = [UIScreen mainScreen].bounds;
 }
 
@@ -61,19 +71,35 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
+    NSUInteger columnCount = [FUProductManager sharedManager].columnCount;
+
+    if (columnCount == 0) {
+        return 1;
+    }
+
     return self.viewMode == FUCollectionViewModeMatrix ? 10000 : 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    FUCatalogColumnCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:FUCatalogColumnCollectionViewCellReuseIdentifier forIndexPath:indexPath];
-    
-    cell.viewMode = self.viewMode;
-    cell.columnIndex = ABS(indexPath.row - [collectionView numberOfItemsInSection:0] / 2);
+    NSUInteger columnCount = [FUProductManager sharedManager].columnCount;
 
-    cell.delegate = self;
+    if (columnCount == 0) {
+        FUCatalogEmptyCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:FUCatalogEmptyCollectionViewCellReuseIdentifier forIndexPath:indexPath];
+        
+        cell.delegate = self;
+        
+        return cell;
+    } else {
+        FUCatalogColumnCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:FUCatalogColumnCollectionViewCellReuseIdentifier forIndexPath:indexPath];
+        
+        cell.viewMode = self.viewMode;
+        cell.columnIndex = ABS(indexPath.row - [collectionView numberOfItemsInSection:0] / 2);
+        
+        cell.delegate = self;
 
-    return cell;
+        return cell;
+    }
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
@@ -85,7 +111,7 @@
     CGFloat width = (collectionView.frame.size.width - layout.minimumInteritemSpacing);
     CGFloat height = collectionView.frame.size.height - layout.sectionInset.top - layout.sectionInset.bottom;
 
-    if (self.viewMode == FUCollectionViewModeMatrix) {
+    if (self.viewMode == FUCollectionViewModeMatrix && [FUProductManager sharedManager].productCount > 0) {
         width /= 2;
     }
 
@@ -99,6 +125,13 @@
     if (self.furnCollectionDelegate && [self.furnCollectionDelegate respondsToSelector:@selector(collectionView:didSelectProduct:atIndex:)]) {
         [self.furnCollectionDelegate collectionView:self didSelectProduct:product atIndex:index];
     }
+}
+
+#pragma mark - FUCatalogEmptyCollectionViewCellDelegate
+
+- (void)didTapResetButton
+{
+    [[FUProductManager sharedManager] reset];
 }
 
 - (void)toggleViewMode
@@ -122,9 +155,29 @@
 
 - (void)scrollToCenterAnimated:(BOOL)animated
 {
-    NSUInteger item = [self collectionView:self numberOfItemsInSection:0] / 2;
+    NSUInteger itemCount = [self collectionView:self numberOfItemsInSection:0];
     
+    if (itemCount == 0) {
+        return;
+    }
+
+    NSUInteger item = itemCount / 2;
+
     [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:animated];
+}
+
+#pragma mark - Notifications
+
+- (void)setupNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:FUProductManagerDidFinishLoadingPageNotification object:nil];
+}
+
+- (void)reload
+{
+    self.hidden = NO;
+
+    [self reloadData];
 }
 
 #pragma mark - Private

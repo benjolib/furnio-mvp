@@ -13,6 +13,7 @@
 #import "FUWishlistEmptyCollectionViewCell.h"
 #import "FUSharingManager.h"
 #import "UIControl+HitTest.h"
+#import "FUWishlistActionButton.h"
 
 @interface FUWishlistViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, FUWishlistCollectionViewCellDelegate, FUWishlistEmptyCollectionViewCellDelegate>
 
@@ -30,6 +31,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *shareAllButton;
 
+@property (strong, nonatomic) NSMutableIndexSet *selectedIndices;
+
 @end
 
 @implementation FUWishlistViewController
@@ -43,11 +46,13 @@
     
     self.title = @"WISHLIST";
 
-    self.viewState = FUWishlistViewStateNormal;
-
     [self.wishlistCollectionView registerNib:[FUWishlistCollectionViewCell nib] forCellWithReuseIdentifier:FUWishlistCollectionViewCellReuseIdentifier];
     
     [self.wishlistCollectionView registerNib:[FUWishlistEmptyCollectionViewCell nib] forCellWithReuseIdentifier:FUWishlistEmptyCollectionViewCellReuseIdentifier];
+    
+    self.selectedIndices = [NSMutableIndexSet indexSet];
+    
+    self.viewState = FUWishlistViewStateNormal;
 }
 
 #pragma mark - Actions
@@ -86,8 +91,31 @@
 
     self.allItemsContainerHeightConstraint.constant = viewState == FUWishlistViewStateNormal ? 0 : 40;
     self.allItemsContainer.hidden = viewState == FUWishlistViewStateNormal;
-    
-    [self.wishlistCollectionView reloadData];
+
+    if (viewState == FUWishlistViewStateNormal && self.selectedIndices.count > 0 && self.products.count > 0) {
+        [[FUWishlistManager sharedManager] removeProductsAtIndexes:self.selectedIndices];
+        
+        NSMutableArray *indexPaths = [NSMutableArray array];
+        
+        [self.selectedIndices enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop) {
+            [indexPaths addObject:[NSIndexPath indexPathForItem:index inSection:0]];
+        }];
+
+        if ([FUWishlistManager sharedManager].products.count > 0) {
+            [self.wishlistCollectionView performBatchUpdates:^{
+                [self.wishlistCollectionView deleteItemsAtIndexPaths:indexPaths];
+                
+            } completion:^(BOOL finished) {
+                [self.selectedIndices removeAllIndexes];
+
+                [self.wishlistCollectionView reloadData];
+            }];
+        } else {
+            [self.wishlistCollectionView reloadData];
+        }
+    } else {
+        [self.wishlistCollectionView reloadData];
+    }
 }
 
 #pragma mark - Private
@@ -122,6 +150,8 @@
         cell.viewState = self.viewState;
 
         cell.delegate = self;
+        
+        cell.deleteButton.selected = [self.selectedIndices containsIndex:indexPath.item];
         
         return cell;
     } else {
@@ -158,16 +188,14 @@
 
 #pragma mark - FUWishlistCollectionViewCellDelegate
 
-- (void)wishlistCollectionViewCell:(FUWishlistCollectionViewCell *)wishlistCollectionViewCell didTapDeleteButtonWithProduct:(FUProduct *)product
+- (void)wishlistCollectionViewCell:(FUWishlistCollectionViewCell *)wishlistCollectionViewCell didTapDeleteButtonWithProduct:(FUProduct *)product isSelected:(BOOL)selected
 {
     NSIndexPath *indexPath = [self.wishlistCollectionView indexPathForCell:wishlistCollectionViewCell];
 
-    [[FUWishlistManager sharedManager] removeProductAtIndex:indexPath.item];
-
-    if (self.products.count == 0) {
-        self.viewState = FUWishlistViewStateNormal;
+    if (selected) {
+        [self.selectedIndices addIndex:indexPath.item];
     } else {
-        [self.wishlistCollectionView deleteItemsAtIndexPaths:@[indexPath]];
+        [self.selectedIndices removeIndex:indexPath.item];
     }
 }
 

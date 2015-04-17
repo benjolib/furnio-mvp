@@ -23,7 +23,8 @@ NSString *const FUWishlistEmptyCollectionViewCellReuseIdentifier = @"FUWishlistE
 
 @implementation FUWishlistEmptyCollectionViewCell
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     [super awakeFromNib];
     
     self.emptyImageView.image = [[UIImage imageNamed:@"empty"] resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeTile];

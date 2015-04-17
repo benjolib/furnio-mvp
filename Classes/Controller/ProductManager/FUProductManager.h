@@ -10,8 +10,15 @@
 
 @class FUProductList;
 @class FUProduct;
+@class FUCategory;
+
+extern NSString *const FUProductManagerDidFinishLoadingPageNotification;
 
 @interface FUProductManager : NSObject
+
+@property (strong, nonatomic) FUCategory *category;
+
++ (void)setup;
 
 + (instancetype)sharedManager;
 
@@ -28,5 +35,7 @@
 - (NSInteger)productCount;
 
 - (NSInteger)columnCount;
+
+- (void)reset;
 
 @end

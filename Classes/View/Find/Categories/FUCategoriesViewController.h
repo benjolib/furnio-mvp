@@ -8,6 +8,12 @@
 
 #import "FUViewController.h"
 
+@class FUCategory;
+
 @interface FUCategoriesViewController : FUViewController
+
+- (instancetype)initWithCategories:(NSArray *)categories;
+
+- (instancetype)initWithCategories:(NSArray *)categories selectedCategory:(FUCategory *)category;
 
 @end

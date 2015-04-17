@@ -18,7 +18,7 @@
 
 - (void)showMessageWithText:(NSString *)text;
 - (void)showMessageWithText:(NSString *)text backgroundColor:(UIColor *)backgroundColor;
-- (void)showMessageWithText:(NSString *)text hideAfterTimeInterval:(NSTimeInterval)timeInterval;
+- (void)showMessageWithText:(NSString *)text backgroundColor:(UIColor *)backgroundColor hideAfterTimeInterval:(NSTimeInterval)timeInterval;
 
 - (void)hideMessage;
 

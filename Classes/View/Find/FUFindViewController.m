@@ -10,8 +10,10 @@
 
 #import "FUColorConstants.h"
 #import "FUCategoriesViewController.h"
+#import "FUCategoryManager.h"
 #import "UIView+FUAnimations.h"
 #import "FUNavigationController.h"
+#import "FUCategoryList.h"
 
 @interface FUFindViewController ()
 
@@ -42,8 +44,10 @@
 - (IBAction)categoryButtonTapped:(UIButton *)sender
 {
     [sender animateScaling];
+
+    FUCategoriesViewController *categoryViewController = [[FUCategoriesViewController alloc] initWithCategories:[FUCategoryManager sharedManager].categoryList.categories];
     
-    [self.navigationController pushViewController:[FUCategoriesViewController new] animated:YES];
+    [self.navigationController pushViewController:categoryViewController animated:YES];
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "FUSharingManager.h"
 #import "FUProduct.h"
 #import "FUNotifyManager.h"
+#import "FUColorConstants.h"
 
 #import <SDWebImageManager.h>
 #import <AQSFacebookActivity.h>
@@ -67,8 +68,8 @@ static NSUInteger finishedCount;
             
             NSString *productURLString = @"";
             
-            if (product.houzzURL) {
-                productURLString = product.houzzURL.absoluteString;
+            if (product.seller.houzzURL) {
+                productURLString = product.seller.houzzURL.absoluteString;
             }
 
             NSString *text = [NSString stringWithFormat:@"%@ ($%.2f):\n%@\n\n", product.name, product.price.floatValue, productURLString];
@@ -97,16 +98,19 @@ static NSUInteger finishedCount;
 
     activityController.completionHandler = ^(NSString *activityType, BOOL completed) {
         NSString *message;
+        UIColor *backgroundColor;
         
         if (completed) {
             message = @"Successfully shared product.";
+            backgroundColor = FUColorLightGreen;
             
             [[NSNotificationCenter defaultCenter] postNotificationName:FUSharingManagerDidShareWithSuccessNotification object:nil];
         } else {
             message = @"Couldn't share product.";
+            backgroundColor = FUColorLightRed;
         }
         
-        [[FUNotifyManager sharedManager] showMessageWithText:message hideAfterTimeInterval:3.0f];
+        [[FUNotifyManager sharedManager] showMessageWithText:message backgroundColor:backgroundColor hideAfterTimeInterval:3.0f];
         
         NSLog(@"%@ completed: %@", activityType, completed ? @"YES" : @"NO");
     };
