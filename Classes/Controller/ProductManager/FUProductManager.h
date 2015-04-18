@@ -38,4 +38,8 @@ extern NSString *const FUProductManagerDidFinishLoadingPageNotification;
 
 - (void)reset;
 
+- (void)removeProduct:(FUProduct *)product;
+
+- (FUProduct *)nextProduct:(FUProduct *)product;
+
 @end

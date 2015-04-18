@@ -18,6 +18,7 @@
 #import "FUFindViewController.h"
 #import "FUProductManager.h"
 #import "FUWishlistManager.h"
+#import "FUProductDetailPageViewController.h"
 
 
 @interface FUCatalogViewController () <FUCollectionViewDelegate>
@@ -160,7 +161,10 @@
 
 - (void)collectionView:(FUCollectionView *)collectionView didSelectProduct:(FUProduct *)product atIndex:(NSInteger)index
 {
-    // TODO: Open PDP after tapping on product
+    FUProductDetailPageViewController *detailPageViewController = [FUProductDetailPageViewController new];
+    detailPageViewController.product = product;
+    
+    [self.navigationController pushViewController:detailPageViewController animated:YES];
 
     NSLog(@"%@: %@ ($%.2f)", @(index), product.name, product.price.floatValue);
     

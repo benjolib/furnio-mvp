@@ -90,6 +90,17 @@ NSString *const FUProductManagerDidFinishLoadingPageNotification = @"FUProductMa
     return nil;
 }
 
+- (void)removeProduct:(FUProduct *)product {
+    [self.products removeObject:product];
+    //TODO: make sure this product is not shown again if it is loaded again from the server
+}
+
+- (FUProduct *)nextProduct:(FUProduct *)product {
+    NSUInteger index = [self.products indexOfObject:product];
+    return [self productAtIndex:index + 1];
+}
+
+
 - (FUProduct *)productForColumnAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger index = [self absoluteIndexForIndexPath:indexPath];
