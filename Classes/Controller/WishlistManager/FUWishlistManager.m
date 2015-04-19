@@ -56,6 +56,10 @@
 
 - (void)addProduct:(FUProduct *)product
 {
+    if (!product) {
+        return;
+    }
+
     if (![self.products containsObject:product]) {
         [self.products addObject:product];
         self.isDirty = YES;
@@ -70,6 +74,10 @@
 
 - (void)removeProduct:(FUProduct *)product
 {
+    if (!product) {
+        return;
+    }
+
     [self.products removeObject:product];
     self.isDirty = YES;
 }
