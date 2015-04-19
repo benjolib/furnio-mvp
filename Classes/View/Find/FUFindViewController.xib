@@ -15,14 +15,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="tW8-qX-XsN" userLabel="searchImageView">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search-big" translatesAutoresizingMaskIntoConstraints="NO" id="tW8-qX-XsN" userLabel="searchImageView">
                     <rect key="frame" x="130" y="95" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="p8z-Op-G7Z"/>
                         <constraint firstAttribute="height" constant="60" id="wk1-4c-rji"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="ryb-iY-24Y" userLabel="categoryImageView">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="category" translatesAutoresizingMaskIntoConstraints="NO" id="ryb-iY-24Y" userLabel="categoryImageView">
                     <rect key="frame" x="130" y="307" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="75H-bt-u08"/>
@@ -79,6 +79,7 @@
         </view>
     </objects>
     <resources>
-        <image name="search" width="24" height="26"/>
+        <image name="category" width="76" height="53"/>
+        <image name="search-big" width="73" height="76"/>
     </resources>
 </document>

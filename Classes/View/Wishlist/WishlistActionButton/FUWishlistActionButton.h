@@ -13,6 +13,4 @@
 @property (strong, nonatomic) UIColor *normalTintColor;
 @property (strong, nonatomic) UIColor *normalBackgroundColor;
 
-@property (assign, nonatomic) BOOL selected;
-
 @end
