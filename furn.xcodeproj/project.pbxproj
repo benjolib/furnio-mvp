@@ -20,6 +20,9 @@
 		28140EE61AE130B100359EAA /* FULoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28140EE51AE130B100359EAA /* FULoadingView.xib */; };
 		28140EEB1AE160FC00359EAA /* FUCatalogEmptyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28140EE91AE160FC00359EAA /* FUCatalogEmptyCollectionViewCell.m */; };
 		28140EEC1AE160FC00359EAA /* FUCatalogEmptyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28140EEA1AE160FC00359EAA /* FUCatalogEmptyCollectionViewCell.xib */; };
+		28140EF11AE4150300359EAA /* FUSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28140EEF1AE4150300359EAA /* FUSearchViewController.m */; };
+		28140EF21AE4150300359EAA /* FUSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28140EF01AE4150300359EAA /* FUSearchViewController.xib */; };
+		28140EF91AE450B900359EAA /* FUSearchTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 28140EF81AE450B900359EAA /* FUSearchTextField.m */; };
 		2815EAB51AC843F300F97AEF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2815EAB41AC843F300F97AEF /* main.m */; };
 		2815EAB81AC843F300F97AEF /* FUAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2815EAB71AC843F300F97AEF /* FUAppDelegate.m */; };
 		2815EABB1AC843F300F97AEF /* FUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2815EABA1AC843F300F97AEF /* FUViewController.m */; };
@@ -94,6 +97,11 @@
 		28140EE81AE160FC00359EAA /* FUCatalogEmptyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUCatalogEmptyCollectionViewCell.h; sourceTree = "<group>"; };
 		28140EE91AE160FC00359EAA /* FUCatalogEmptyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUCatalogEmptyCollectionViewCell.m; sourceTree = "<group>"; };
 		28140EEA1AE160FC00359EAA /* FUCatalogEmptyCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FUCatalogEmptyCollectionViewCell.xib; sourceTree = "<group>"; };
+		28140EEE1AE4150300359EAA /* FUSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUSearchViewController.h; sourceTree = "<group>"; };
+		28140EEF1AE4150300359EAA /* FUSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUSearchViewController.m; sourceTree = "<group>"; };
+		28140EF01AE4150300359EAA /* FUSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FUSearchViewController.xib; sourceTree = "<group>"; };
+		28140EF71AE450B900359EAA /* FUSearchTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUSearchTextField.h; sourceTree = "<group>"; };
+		28140EF81AE450B900359EAA /* FUSearchTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUSearchTextField.m; sourceTree = "<group>"; };
 		2815EAAF1AC843F300F97AEF /* furn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = furn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2815EAB31AC843F300F97AEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2815EAB41AC843F300F97AEF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -292,6 +300,18 @@
 				28140EEA1AE160FC00359EAA /* FUCatalogEmptyCollectionViewCell.xib */,
 			);
 			path = CatalogEmptyCell;
+			sourceTree = "<group>";
+		};
+		28140EED1AE413ED00359EAA /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				28140EEE1AE4150300359EAA /* FUSearchViewController.h */,
+				28140EEF1AE4150300359EAA /* FUSearchViewController.m */,
+				28140EF01AE4150300359EAA /* FUSearchViewController.xib */,
+				28140EF71AE450B900359EAA /* FUSearchTextField.h */,
+				28140EF81AE450B900359EAA /* FUSearchTextField.m */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		2815EAA61AC843F300F97AEF = {
@@ -563,6 +583,7 @@
 		287F4D021ADB9BA60076FC53 /* Find */ = {
 			isa = PBXGroup;
 			children = (
+				28140EED1AE413ED00359EAA /* Search */,
 				287F4D0E1ADBBC400076FC53 /* Categories */,
 				287F4D091ADBA0030076FC53 /* FUFindViewController.h */,
 				287F4D0A1ADBA0030076FC53 /* FUFindViewController.m */,
@@ -776,6 +797,7 @@
 				28140EEC1AE160FC00359EAA /* FUCatalogEmptyCollectionViewCell.xib in Resources */,
 				5EEFC4E71AE2B0A0004CB533 /* FUProductDetailPageViewController.xib in Resources */,
 				287F4D131ADBBC4F0076FC53 /* FUCategoriesViewController.xib in Resources */,
+				28140EF21AE4150300359EAA /* FUSearchViewController.xib in Resources */,
 				2815EB041AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.xib in Resources */,
 				287F4D371ADEC88D0076FC53 /* categoryList.json in Resources */,
 				28B0E5BD1AD7E2C900C0932E /* FUWishlistCollectionViewCell.xib in Resources */,
@@ -862,9 +884,11 @@
 				2815EAB51AC843F300F97AEF /* main.m in Sources */,
 				2815EB031AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.m in Sources */,
 				2815EAFC1AC85DE600F97AEF /* FUCatalogCollectionViewCell.m in Sources */,
+				28140EF11AE4150300359EAA /* FUSearchViewController.m in Sources */,
 				28B0E5C11AD7E63100C0932E /* FUWishlistManager.m in Sources */,
 				28362E091AD53383000B4E99 /* FUProductManager.m in Sources */,
 				2815EAEE1AC852BC00F97AEF /* FUSDKManager.m in Sources */,
+				28140EF91AE450B900359EAA /* FUSearchTextField.m in Sources */,
 				28362E011AD5207B000B4E99 /* FUProductList.m in Sources */,
 				28B0E5CA1AD8047600C0932E /* FUWishlistEmptyCollectionViewCell.m in Sources */,
 				2815EAF21AC854F900F97AEF /* FUCatalogViewController.m in Sources */,

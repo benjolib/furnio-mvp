@@ -10,6 +10,7 @@
 
 #import "FUColorConstants.h"
 #import "FUCategoriesViewController.h"
+#import "FUSearchViewController.h"
 #import "FUCategoryManager.h"
 #import "UIView+FUAnimations.h"
 #import "FUNavigationController.h"
@@ -39,6 +40,9 @@
 {
     [sender animateScaling];
     
+    FUSearchViewController *searchviewController = [FUSearchViewController new];
+    
+    [self.navigationController pushViewController:searchviewController animated:YES];
 }
 
 - (IBAction)categoryButtonTapped:(UIButton *)sender
