@@ -78,6 +78,13 @@
     self.navigationController.navigationBarHidden = YES;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    [self showButtonBar];
+}
+
 #pragma mark - FUViewController
 
 - (void)configureLoadingView
