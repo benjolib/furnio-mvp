@@ -8,16 +8,41 @@
 
 #import "FUSearchTextField.h"
 
+#import "FUColorConstants.h"
+
 @implementation FUSearchTextField
+
+#pragma mark - Initialization
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    
+    if (self) {
+        [self setupLayerBorder];
+    }
+    
+    return self;
+}
+
+#pragma mark - UITextField
 
 - (CGRect)textRectForBounds:(CGRect)bounds
 {
-    return CGRectMake(10, bounds.origin.y, bounds.size.width - 40, bounds.size.height);
+    return CGRectMake(15, bounds.origin.y, bounds.size.width - 45, bounds.size.height);
 }
 
 - (CGRect)editingRectForBounds:(CGRect)bounds
 {
-    return CGRectMake(10, bounds.origin.y, bounds.size.width - 40, bounds.size.height);
+    return CGRectMake(15, bounds.origin.y, bounds.size.width - 45, bounds.size.height);
+}
+
+#pragma mark - Private
+
+- (void)setupLayerBorder
+{
+    self.layer.borderColor = FUColorLightGray.CGColor;
+    self.layer.borderWidth = 1;
 }
 
 @end
