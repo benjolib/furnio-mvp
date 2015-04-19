@@ -13,6 +13,7 @@
 #import "FUMacros.h"
 #import "FUWishlistManager.h"
 #import "FUProductManager.h"
+#import "FUNumberFormatter.h"
 
 @interface FUProductDetailPageViewController ()
 
@@ -20,12 +21,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *productNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *styleNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *priceOldLabel;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *imageScrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *verticalScrollView;
+
+@property (weak, nonatomic) IBOutlet UIButton *buyButton;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageScrollViewWidthConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageScrollViewHeightConstriant;
@@ -80,14 +82,10 @@
     
     self.imageViews = [NSMutableArray array];
     self.productNameLabel.text = self.product.name;
-    self.priceLabel.text = [NSString stringWithFormat:@"%@ %@", self.product.price, self.product.currency];
-    
-    //TODO: we need the old price here
-    NSString *oldPrice = [NSString stringWithFormat:@"%@ %@", self.product.price, self.product.currency];
-    NSAttributedString* oldPriveText = [[NSAttributedString alloc] initWithString:oldPrice attributes:@{NSStrikethroughStyleAttributeName: @(NSUnderlineStyleSingle)}];
-    self.priceOldLabel.attributedText = oldPriveText;
-    
-    
+    self.priceLabel.text = [[FUNumberFormatter currencyNumberFormatter] stringFromNumber:self.product.price];
+    self.brandNameLabel.text = self.product.properties.manufacturer;
+    self.styleNameLabel.text = self.product.properties.designer;
+
     [self setupImagePages];
 }
 
