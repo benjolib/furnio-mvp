@@ -174,9 +174,6 @@
     [self.navigationController pushViewController:detailPageViewController animated:YES];
 
     NSLog(@"%@: %@ ($%.2f)", @(index), product.name, product.price.floatValue);
-    
-    // TODO: Remove this temporary code. Just for testing.
-    [[FUWishlistManager sharedManager] addProduct:product];
 }
 
 #pragma mark - Private
