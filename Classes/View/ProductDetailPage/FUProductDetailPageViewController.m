@@ -6,6 +6,8 @@
 //
 //
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "FUProductDetailPageViewController.h"
 #import "FUProduct.h"
 
@@ -14,6 +16,8 @@
 #import "FUWishlistManager.h"
 #import "FUProductManager.h"
 #import "FUNumberFormatter.h"
+#import "FUProductAction.h"
+#import "FUProductDetailBrowserViewController.h"
 
 @interface FUProductDetailPageViewController ()
 
@@ -22,12 +26,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *styleNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *likeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *discardLabel;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *undoButton;
+
 @property (weak, nonatomic) IBOutlet UIScrollView *imageScrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *verticalScrollView;
-
-@property (weak, nonatomic) IBOutlet UIButton *buyButton;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageScrollViewWidthConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageScrollViewHeightConstriant;
@@ -35,9 +43,12 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *priceBottomSpaceConstraint;
 
 @property (strong, nonatomic) NSMutableArray *imageViews;
+@property (strong, nonatomic) NSMutableArray *actions;
 
 @property (assign, nonatomic) BOOL detectLike;
 @property (assign, nonatomic) BOOL detectDiscard;
+
+@property (strong, nonatomic) UIView *noProductView;
 
 @end
 
@@ -45,6 +56,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.actions = [NSMutableArray array];
+    
     CGRect frame = self.imageScrollView.frame;
     frame.size.width = DEVICE_WIDTH;
     frame.size.height = DEVICE_WIDTH;
@@ -65,17 +79,52 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
     [self setupView];
 }
 
 - (void)setupView {
     
+    if(self.product == nil || [self.actions count] == 0) {
+        self.undoButton.enabled = NO;
+    }
+    else {
+        self.undoButton.enabled = YES;
+    }
+    
     if(self.product == nil) {
-        //no product is available any more
-        //TODO: show different view
+        
+        // Instantiate the nib content without any reference to it.
+        NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:@"FUNoProductView" owner:nil options:nil];
+        
+        // Find the view among nib contents (not too hard assuming there is only one view in it).
+        self.noProductView = [nibContents lastObject];
+        self.noProductView.frame = CGRectMake(0, 60, DEVICE_WIDTH, DEVICE_HEIGHT - 50 - 20);
+        
+        
+        UIButton *goBackButton;
+        
+        for(UIView *subView in self.noProductView.subviews) {
+            if ([subView isKindOfClass:[UIButton class]]) {
+                goBackButton = (UIButton *)subView;
+            }
+        }
+        
+        goBackButton.layer.borderWidth = 1.5f;
+        goBackButton.layer.borderColor = [[UIColor colorWithRed:244.0/255.0 green:170.0/255.0 blue:56.0/255.0 alpha:1.0] CGColor];
+        [goBackButton addTarget:self action:@selector(clickedClose:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.view addSubview:self.noProductView];
+        
+        self.verticalScrollView.scrollEnabled = NO;
+        
+        NSLog(@"No product left!!");
         return;
     }
+    else {
+        self.verticalScrollView.scrollEnabled = YES;
+        [self.noProductView removeFromSuperview];
+    }
+    
     
     self.detectDiscard = NO;
     self.detectLike = NO;
@@ -159,15 +208,26 @@
 }
 
 - (IBAction)clickedBuy:(id)sender {
-    //TODO open URL in browser view controller
+    FUProductDetailBrowserViewController *productBrowserViewController = [[FUProductDetailBrowserViewController alloc] init];
+    productBrowserViewController.product = self.product;
+    
+    [self.navigationController pushViewController:productBrowserViewController animated:YES];
 }
 
 - (IBAction)clickedClose:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)clickedReload:(id)sender {
-    //TODO implement
+- (IBAction)clickedUndo:(id)sender {
+    
+    FUProductAction *lastAction = [self.actions lastObject];
+    if (lastAction) {
+        [self.actions removeObject:lastAction];
+        [lastAction undo];
+        self.product = lastAction.product;
+        [self loadProduct];
+        //TODO: animation is missing
+    }
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -175,7 +235,7 @@
     return YES;
 }
 
-- (void)loadNextProduct {
+- (void)loadProduct {
     [self setupView];
 }
 
@@ -188,32 +248,82 @@
     
     if (scrollView == self.verticalScrollView) {
 //        NSLog(@"offset.y: %f", scrollView.contentOffset.y);
-        if (scrollView.contentOffset.y < -50.0f) {
+        
+        if (scrollView.contentOffset.y < -20.0f) {
+            self.likeLabel.hidden = YES;
             self.detectLike = YES;
-            self.detectDiscard = NO;
         }
-        else if(scrollView.contentOffset.y > 50.0f) {
-            self.detectDiscard = YES;
+        else {
+            self.likeLabel.hidden = NO;
             self.detectLike = NO;
+        }
+        
+        if(scrollView.contentOffset.y > 20.0f) {
+            self.discardLabel.hidden = YES;
+            self.detectDiscard = YES;
+        }
+        else {
+            self.discardLabel.hidden = NO;
+            self.detectDiscard = NO;
         }
     }
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    if(self.detectLike == YES) {
+-(UIImage*) makeImage {
+    
+    UIGraphicsBeginImageContext(self.view.bounds.size);
+    
+    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    
+    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return viewImage;
+}
+
+- (void) animateAction:(FUActionType)actionType {
+    
+    CGFloat targetHeight = actionType == FUActionTypeLike ? DEVICE_HEIGHT : -DEVICE_HEIGHT;
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT)];
+    imageView.image = [self makeImage];
+    [self.view addSubview:imageView];
+    
+    [UIView animateWithDuration:1.0 animations:^{
         
-        [[FUWishlistManager sharedManager] addProduct:self.product];
-        self.product = [[FUProductManager sharedManager] nextProduct:self.product];
-        [self loadNextProduct];
+        CGRect frame = imageView.frame;
+        frame.origin.y = targetHeight;
+        imageView.frame = frame;
+    } completion:^(BOOL finished) {
+        [imageView removeFromSuperview];
+    }];
+}
+
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    
+    FUActionType actionType;
+    
+    if(self.detectLike == YES) {
+        actionType = FUActionTypeLike;
+    }
+    else if(self.detectDiscard == YES) {
+        actionType = FUActionTypeDiscard;
+    }
+    else {
+        return;
     }
     
-    if(self.detectDiscard == YES) {
-        FUProduct *newProduct = [[FUProductManager sharedManager] nextProduct:self.product];
-        [[FUProductManager sharedManager] removeProduct:self.product];
-        self.product = newProduct;
-        [self loadNextProduct];
-    }
+    FUProductAction *action = [[FUProductAction alloc] initWithProduct:self.product action:actionType];
+    [self.actions addObject:action];
+    [action execute];
+    
+    [self animateAction:action.actionType];
+    
+    self.product = [[FUProductManager sharedManager] nextProduct:self.product];
+    [self loadProduct];
 }
+
 
 
 @end

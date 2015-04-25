@@ -66,6 +66,10 @@
 		28B0E5D41AD80F8E00C0932E /* FUSharingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0E5D31AD80F8E00C0932E /* FUSharingManager.m */; };
 		28B0E5D81AD8228700C0932E /* UIControl+HitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0E5D71AD8228700C0932E /* UIControl+HitTest.m */; };
 		33F237418860FD871BBB6843 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70434F8189787034BBDD21B6 /* libPods.a */; };
+		5E943BEB1AEBD5E7004012F5 /* FUProductAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E943BEA1AEBD5E7004012F5 /* FUProductAction.m */; };
+		5E943BF21AEBD9D3004012F5 /* FUProductDetailBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E943BF01AEBD9D3004012F5 /* FUProductDetailBrowserViewController.m */; };
+		5E943BF31AEBD9D3004012F5 /* FUProductDetailBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E943BF11AEBD9D3004012F5 /* FUProductDetailBrowserViewController.xib */; };
+		5E943BF51AEBE58A004012F5 /* FUNoProductView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E943BF41AEBE58A004012F5 /* FUNoProductView.xib */; };
 		5EEFC4E61AE2B0A0004CB533 /* FUProductDetailPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EEFC4E41AE2B0A0004CB533 /* FUProductDetailPageViewController.m */; };
 		5EEFC4E71AE2B0A0004CB533 /* FUProductDetailPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EEFC4E51AE2B0A0004CB533 /* FUProductDetailPageViewController.xib */; };
 /* End PBXBuildFile section */
@@ -173,6 +177,12 @@
 		28B0E5D31AD80F8E00C0932E /* FUSharingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUSharingManager.m; sourceTree = "<group>"; };
 		28B0E5D61AD8228700C0932E /* UIControl+HitTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+HitTest.h"; sourceTree = "<group>"; };
 		28B0E5D71AD8228700C0932E /* UIControl+HitTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+HitTest.m"; sourceTree = "<group>"; };
+		5E943BE91AEBD5E7004012F5 /* FUProductAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUProductAction.h; path = ProductDetailPage/FUProductAction.h; sourceTree = "<group>"; };
+		5E943BEA1AEBD5E7004012F5 /* FUProductAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUProductAction.m; path = ProductDetailPage/FUProductAction.m; sourceTree = "<group>"; };
+		5E943BEF1AEBD9D3004012F5 /* FUProductDetailBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUProductDetailBrowserViewController.h; path = ProductDetailPage/FUProductDetailBrowserViewController.h; sourceTree = "<group>"; };
+		5E943BF01AEBD9D3004012F5 /* FUProductDetailBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUProductDetailBrowserViewController.m; path = ProductDetailPage/FUProductDetailBrowserViewController.m; sourceTree = "<group>"; };
+		5E943BF11AEBD9D3004012F5 /* FUProductDetailBrowserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FUProductDetailBrowserViewController.xib; path = ProductDetailPage/FUProductDetailBrowserViewController.xib; sourceTree = "<group>"; };
+		5E943BF41AEBE58A004012F5 /* FUNoProductView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FUNoProductView.xib; path = ProductDetailPage/FUNoProductView.xib; sourceTree = "<group>"; };
 		5EEFC4E31AE2B0A0004CB533 /* FUProductDetailPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUProductDetailPageViewController.h; path = ProductDetailPage/FUProductDetailPageViewController.h; sourceTree = "<group>"; };
 		5EEFC4E41AE2B0A0004CB533 /* FUProductDetailPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUProductDetailPageViewController.m; path = ProductDetailPage/FUProductDetailPageViewController.m; sourceTree = "<group>"; };
 		5EEFC4E51AE2B0A0004CB533 /* FUProductDetailPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FUProductDetailPageViewController.xib; path = ProductDetailPage/FUProductDetailPageViewController.xib; sourceTree = "<group>"; };
@@ -729,6 +739,12 @@
 				5EEFC4E31AE2B0A0004CB533 /* FUProductDetailPageViewController.h */,
 				5EEFC4E41AE2B0A0004CB533 /* FUProductDetailPageViewController.m */,
 				5EEFC4E51AE2B0A0004CB533 /* FUProductDetailPageViewController.xib */,
+				5E943BE91AEBD5E7004012F5 /* FUProductAction.h */,
+				5E943BEA1AEBD5E7004012F5 /* FUProductAction.m */,
+				5E943BEF1AEBD9D3004012F5 /* FUProductDetailBrowserViewController.h */,
+				5E943BF01AEBD9D3004012F5 /* FUProductDetailBrowserViewController.m */,
+				5E943BF11AEBD9D3004012F5 /* FUProductDetailBrowserViewController.xib */,
+				5E943BF41AEBE58A004012F5 /* FUNoProductView.xib */,
 			);
 			name = ProductDetailPage;
 			sourceTree = "<group>";
@@ -794,10 +810,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2815EAF41AC8564400F97AEF /* FUCatalogViewController.xib in Resources */,
+				5E943BF51AEBE58A004012F5 /* FUNoProductView.xib in Resources */,
 				28140EEC1AE160FC00359EAA /* FUCatalogEmptyCollectionViewCell.xib in Resources */,
 				5EEFC4E71AE2B0A0004CB533 /* FUProductDetailPageViewController.xib in Resources */,
 				287F4D131ADBBC4F0076FC53 /* FUCategoriesViewController.xib in Resources */,
 				28140EF21AE4150300359EAA /* FUSearchViewController.xib in Resources */,
+				5E943BF31AEBD9D3004012F5 /* FUProductDetailBrowserViewController.xib in Resources */,
 				2815EB041AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.xib in Resources */,
 				287F4D371ADEC88D0076FC53 /* categoryList.json in Resources */,
 				28B0E5BD1AD7E2C900C0932E /* FUWishlistCollectionViewCell.xib in Resources */,
@@ -867,6 +885,7 @@
 				287F4D2E1ADEC2340076FC53 /* FUCategoryList.m in Sources */,
 				28362DF91AD47FF4000B4E99 /* FUProduct.m in Sources */,
 				28117C1B1AD5B89A007C8DB9 /* FUNumberFormatter.m in Sources */,
+				5E943BF21AEBD9D3004012F5 /* FUProductDetailBrowserViewController.m in Sources */,
 				28117C211AD67EA1007C8DB9 /* FUImagePrefetcher.m in Sources */,
 				287F4D121ADBBC4F0076FC53 /* FUCategoriesViewController.m in Sources */,
 				287F4D061ADB9C4F0076FC53 /* FUNavigationBar.m in Sources */,
@@ -895,6 +914,7 @@
 				28B0E5D41AD80F8E00C0932E /* FUSharingManager.m in Sources */,
 				287F4D341ADEC41B0076FC53 /* FUCategoryTableViewCell.m in Sources */,
 				28140EEB1AE160FC00359EAA /* FUCatalogEmptyCollectionViewCell.m in Sources */,
+				5E943BEB1AEBD5E7004012F5 /* FUProductAction.m in Sources */,
 				287F4D271ADEBF720076FC53 /* FUCategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

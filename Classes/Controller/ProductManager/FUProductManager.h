@@ -39,6 +39,7 @@ extern NSString *const FUProductManagerDidFinishLoadingPageNotification;
 - (void)reset;
 
 - (void)removeProduct:(FUProduct *)product;
+- (void)addProduct:(FUProduct *)product;
 
 - (FUProduct *)nextProduct:(FUProduct *)product;
 

@@ -95,9 +95,17 @@ NSString *const FUProductManagerDidFinishLoadingPageNotification = @"FUProductMa
     //TODO: make sure this product is not shown again if it is loaded again from the server
 }
 
+- (void)addProduct:(FUProduct *)product {
+    [self.products addObject:product];
+}
+
 - (FUProduct *)nextProduct:(FUProduct *)product {
     NSUInteger index = [self.products indexOfObject:product];
-    return [self productAtIndex:index + 1];
+    FUProduct *nextProduct = [self productAtIndex:index + 1];
+    if (!nextProduct) {
+        nextProduct = [self productAtIndex:0];
+    }
+    return nextProduct;
 }
 
 
