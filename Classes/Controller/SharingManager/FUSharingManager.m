@@ -12,7 +12,7 @@
 #import "FUColorConstants.h"
 #import "FUTrackingManager.h"
 #import "FUWishlistViewController.h"
-#import "FUProductDetailPageViewController.h"
+#import "FUProductDetailBrowserViewController.h"
 
 #import <SDWebImageManager.h>
 #import <AQSFacebookActivity.h>
@@ -135,7 +135,7 @@ static NSUInteger finishedCount;
         }
     }
     
-    else if ([viewController isKindOfClass:[FUProductDetailPageViewController class]]) {
+    else if ([viewController isKindOfClass:[FUProductDetailBrowserViewController class]]) {
         for (FUProduct *product in products) {
             [[FUTrackingManager sharedManager] trackPDPShareProduct:product];
         }

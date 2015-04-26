@@ -41,7 +41,7 @@
 
 - (void)trackPDPBuyProduct:(FUProduct *)product
 {
-    [self trackEventWithToken:@"q5wegn" product:product];
+    [self trackEventWithToken:@"q5wegn" product:product revenue:product.price];
 }
 
 - (void)trackPDPLikeProduct:(FUProduct *)product

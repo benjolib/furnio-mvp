@@ -62,7 +62,7 @@
 #endif
     
     ADJConfig *adjustConfig = [ADJConfig configWithAppToken:FUSDKAdjustToken environment:environment];
-    adjustConfig.logLevel = ADJLogLevelInfo;
+    adjustConfig.logLevel = ADJLogLevelAssert;
     adjustConfig.eventBufferingEnabled = eventBufferingEnabled;
 
     [Adjust appDidLaunch:adjustConfig];

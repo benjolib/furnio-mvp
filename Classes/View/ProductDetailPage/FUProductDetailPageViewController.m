@@ -219,7 +219,8 @@
 - (IBAction)clickedBuy:(id)sender {
     FUProductDetailBrowserViewController *productBrowserViewController = [[FUProductDetailBrowserViewController alloc] init];
     productBrowserViewController.product = self.product;
-    
+
+    [[FUTrackingManager sharedManager] trackPDPBuyProduct:self.product];
     [self.navigationController pushViewController:productBrowserViewController animated:YES];
 }
 
