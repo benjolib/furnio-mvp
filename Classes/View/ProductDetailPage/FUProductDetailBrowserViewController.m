@@ -8,6 +8,7 @@
 
 #import "FUProductDetailBrowserViewController.h"
 #import "FUProduct.h"
+#import "FUSharingManager.h"
 
 @interface FUProductDetailBrowserViewController ()
 
@@ -29,8 +30,12 @@
 }
 
 - (IBAction)share:(id)sender {
-    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[self.product.houzzURL] applicationActivities:nil];
-    [self presentViewController:controller animated:YES completion:nil];
+    [FUSharingManager shareProduct:self.product withViewController:self completion:^{
+        NSLog(@"Sharing finished!");
+    }];
+    
+//    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[self.product.houzzURL] applicationActivities:nil];
+//    [self presentViewController:controller animated:YES completion:nil];
 }
 
 - (BOOL)prefersStatusBarHidden

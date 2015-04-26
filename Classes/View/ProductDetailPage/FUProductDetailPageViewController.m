@@ -19,6 +19,8 @@
 #import "FUProductAction.h"
 #import "FUProductDetailBrowserViewController.h"
 
+#define FUProductDetailPageFirstTime @"FUProductDetailPageFirstTime"
+
 @interface FUProductDetailPageViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *brandNameLabel;
@@ -72,14 +74,24 @@
     self.priceTopSpaceConstraint.constant = 72 + diff / 2;
     self.priceBottomSpaceConstraint.constant = 33 + diff / 2;
     
-    NSLog(@"diff: %f", diff);
-    NSLog(@"priceTopSpaceConstraint: %f", self.priceTopSpaceConstraint.constant);
-    NSLog(@"priceTopSpaceConstraint: %f", self.priceBottomSpaceConstraint.constant);
+//    NSLog(@"diff: %f", diff);
+//    NSLog(@"priceTopSpaceConstraint: %f", self.priceTopSpaceConstraint.constant);
+//    NSLog(@"priceTopSpaceConstraint: %f", self.priceBottomSpaceConstraint.constant);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self setupView];
+    
+    BOOL firstTime = [[NSUserDefaults standardUserDefaults] boolForKey:FUProductDetailPageFirstTime];
+    if(firstTime) {
+        [self showTutorial];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:FUProductDetailPageFirstTime];
+    }
+}
+
+- (void) showTutorial {
+    //TODO: implement
 }
 
 - (void)setupView {

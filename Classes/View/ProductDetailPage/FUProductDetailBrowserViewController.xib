@@ -29,12 +29,12 @@
                     </textAttributes>
                     <items>
                         <navigationItem title="Title" id="9sO-Yt-E15">
-                            <barButtonItem key="leftBarButtonItem" image="close" id="5HQ-tn-s0i">
+                            <barButtonItem key="leftBarButtonItem" image="close" style="done" id="5HQ-tn-s0i">
                                 <connections>
                                     <action selector="close:" destination="-1" id="aZS-Fj-cif"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem key="rightBarButtonItem" image="share-grey" style="plain" id="pxx-Fb-D3c">
+                            <barButtonItem key="rightBarButtonItem" image="share-grey" style="done" id="pxx-Fb-D3c">
                                 <connections>
                                     <action selector="share:" destination="-1" id="OKQ-x2-oTp"/>
                                 </connections>

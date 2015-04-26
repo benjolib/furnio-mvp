@@ -19,7 +19,8 @@
 #import "FUProductManager.h"
 #import "FUWishlistManager.h"
 #import "FUProductDetailPageViewController.h"
-
+#import "FUFilterViewController.h"
+#import "UIImage+ImageEffects.h"
 
 @interface FUCatalogViewController () <FUCollectionViewDelegate>
 
@@ -123,6 +124,16 @@
     }];
 }
 
+-(UIImage *)convertViewToImage
+{
+    UIGraphicsBeginImageContext(self.view.bounds.size);
+    [self.view drawViewHierarchyInRect:self.view.bounds afterScreenUpdates:YES];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
 #pragma mark - Actions
 
 - (IBAction)viewModeButtonTapped:(id)sender
@@ -134,8 +145,22 @@
 
 - (IBAction)filterButtonTapped:(id)sender
 {
-    // TODO: Attach Filter VC here
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Filter" bundle:nil];
+    FUNavigationController *filterNavigationViewController = [storyboard instantiateInitialViewController];
+    FUFilterViewController *filterViewController = [filterNavigationViewController.viewControllers lastObject];
+//    FUFilterViewController *filterViewController = [storyboard instantiateViewControllerWithIdentifier:@"FUFilterViewController"];
+//    FUNavigationController *filterNavigationViewController = [[FUNavigationController alloc] initWithRootViewController:filterViewController];
     
+    UIImage* imageOfUnderlyingView = [self convertViewToImage];
+    imageOfUnderlyingView = [imageOfUnderlyingView applyBlurWithRadius:20 tintColor:[UIColor colorWithWhite:1.0 alpha:0.6] saturationDeltaFactor:1.8 maskImage:nil];
+    
+    filterViewController.view.backgroundColor = [UIColor colorWithPatternImage:imageOfUnderlyingView];
+//    UIImageView* backView = [[UIImageView alloc] initWithFrame:self.view.frame];
+//    backView.image = imageOfUnderlyingView;
+//    backView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.6];
+//    [filterViewController.view insertSubview:backView atIndex:0];
+
+    [self.navigationController presentViewController:filterNavigationViewController animated:YES completion:nil];
 }
 
 - (IBAction)sortButtonTapped:(id)sender
