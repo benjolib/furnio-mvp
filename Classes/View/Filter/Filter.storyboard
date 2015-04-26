@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Filter View Controller-->
@@ -32,19 +33,42 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="67" id="pJq-Ix-9hi">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="48" id="9bm-pE-p6h">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="9Xg-09-c31" kind="show" identifier="FilterDetail" id="ifV-YJ-dnN"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FilterPriceCell" textLabel="Omj-Vt-yJ9" detailTextLabel="r7D-T1-q2r" style="IBUITableViewCellStyleSubtitle" id="xGG-EN-Bo8">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xGG-EN-Bo8" id="VGz-Ll-3Oo">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="67" id="Omj-Vt-yJ9">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="48" id="r7D-T1-q2r">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="mGE-SS-fk2" kind="show" identifier="FilterPrice" id="zN7-yO-f0p"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -118,7 +142,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qIy-Fz-V2M">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="8" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="3sr-CW-1Lo"/>
                                 </constraints>
@@ -134,7 +158,7 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RAy-Dr-Yfr">
-                                <rect key="frame" x="0.0" y="44" width="375" height="450"/>
+                                <rect key="frame" x="0.0" y="52" width="375" height="450"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="450" id="VeJ-fr-C94"/>
@@ -148,7 +172,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="67" id="cqr-tR-9cL">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -198,7 +222,7 @@
                             <constraint firstAttribute="trailing" secondItem="qIy-Fz-V2M" secondAttribute="trailing" id="Yna-rV-NT0"/>
                             <constraint firstAttribute="trailing" secondItem="RAy-Dr-Yfr" secondAttribute="trailing" id="dEk-cy-CIF"/>
                             <constraint firstItem="B6R-nF-3fH" firstAttribute="leading" secondItem="4dq-k2-eq7" secondAttribute="leading" constant="16" id="gMK-dG-DWg"/>
-                            <constraint firstItem="qIy-Fz-V2M" firstAttribute="top" secondItem="bLn-Kx-eTL" secondAttribute="bottom" id="iHC-Pj-2vD"/>
+                            <constraint firstItem="qIy-Fz-V2M" firstAttribute="top" secondItem="bLn-Kx-eTL" secondAttribute="bottom" constant="8" id="iHC-Pj-2vD"/>
                             <constraint firstItem="RAy-Dr-Yfr" firstAttribute="top" secondItem="qIy-Fz-V2M" secondAttribute="bottom" id="mce-cK-onG"/>
                             <constraint firstAttribute="centerX" secondItem="4Da-9J-njN" secondAttribute="centerX" id="zOh-Sx-UD9"/>
                             <constraint firstItem="RAy-Dr-Yfr" firstAttribute="leading" secondItem="4dq-k2-eq7" secondAttribute="leading" id="ziN-fd-JbR"/>
@@ -217,7 +241,92 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZWo-nz-gGL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1509.5" y="479.5"/>
+            <point key="canvasLocation" x="1475.5" y="129.5"/>
+        </scene>
+        <!--Filter Price View Controller-->
+        <scene sceneID="cpi-I0-HNT">
+            <objects>
+                <viewController id="mGE-SS-fk2" customClass="FUFilterPriceViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="amF-KU-3EU"/>
+                        <viewControllerLayoutGuide type="bottom" id="wzO-T7-cPh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UiZ-FF-TOw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WE3-AR-1go">
+                                <rect key="frame" x="16" y="528" width="343" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="2v9-1H-oLK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="25"/>
+                                <state key="normal" title="APPLY FILTER">
+                                    <color key="titleColor" red="0.95686274510000002" green="0.67450980390000004" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="applyFilter:" destination="t2J-Rc-k4c" eventType="touchUpInside" id="0pO-qh-DNl"/>
+                                    <action selector="applyFilter:" destination="mGE-SS-fk2" eventType="touchUpInside" id="g1Z-Sa-Pt4"/>
+                                    <action selector="applyFilter:" destination="9Xg-09-c31" eventType="touchUpInside" id="gEt-cg-aG7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gS2-kX-Pey">
+                                <rect key="frame" x="156" y="614" width="62" height="33"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
+                                <state key="normal" title="REMOVE">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="removeAllFilter:" destination="t2J-Rc-k4c" eventType="touchUpInside" id="UTM-Ry-rlF"/>
+                                    <action selector="removeFilter:" destination="9Xg-09-c31" eventType="touchUpInside" id="27b-rg-RYB"/>
+                                    <action selector="removeFilter:" destination="mGE-SS-fk2" eventType="touchUpInside" id="5oA-FS-haH"/>
+                                </connections>
+                            </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bSh-6b-2Pv">
+                                <rect key="frame" x="0.0" y="8" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="LTB-Me-7zp"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="lM0-ci-Msr"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="PRICE" id="GQN-FB-hza">
+                                        <barButtonItem key="leftBarButtonItem" image="back" id="vO8-C8-cnP">
+                                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="close:" destination="mGE-SS-fk2" id="oPs-hp-Inf"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bSh-6b-2Pv" firstAttribute="leading" secondItem="UiZ-FF-TOw" secondAttribute="leading" id="0Hg-dW-5ZC"/>
+                            <constraint firstItem="bSh-6b-2Pv" firstAttribute="top" secondItem="amF-KU-3EU" secondAttribute="bottom" constant="8" id="2PZ-vU-miF"/>
+                            <constraint firstItem="gS2-kX-Pey" firstAttribute="top" secondItem="WE3-AR-1go" secondAttribute="bottom" constant="20" id="Be6-qF-b6R"/>
+                            <constraint firstItem="WE3-AR-1go" firstAttribute="leading" secondItem="UiZ-FF-TOw" secondAttribute="leadingMargin" id="JcI-E8-IKc"/>
+                            <constraint firstAttribute="trailing" secondItem="bSh-6b-2Pv" secondAttribute="trailing" id="LGj-c3-en1"/>
+                            <constraint firstAttribute="centerX" secondItem="gS2-kX-Pey" secondAttribute="centerX" id="Qfs-Bh-B3h"/>
+                            <constraint firstItem="WE3-AR-1go" firstAttribute="trailing" secondItem="UiZ-FF-TOw" secondAttribute="trailingMargin" id="Yap-IQ-xVT"/>
+                            <constraint firstItem="wzO-T7-cPh" firstAttribute="top" secondItem="gS2-kX-Pey" secondAttribute="bottom" constant="20" id="dSm-qx-HXc"/>
+                            <constraint firstItem="gS2-kX-Pey" firstAttribute="top" secondItem="WE3-AR-1go" secondAttribute="bottom" constant="20" id="oLk-nd-f7d"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="navItem" destination="GQN-FB-hza" id="uLd-Je-A3M"/>
+                        <outlet property="navigationBar" destination="bSh-6b-2Pv" id="IWK-Oj-PEE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bi2-Ji-ilX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1475.5" y="851.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Hzp-Vi-av6">

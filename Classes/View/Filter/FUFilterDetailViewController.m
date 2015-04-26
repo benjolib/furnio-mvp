@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
 
+@property (strong, nonatomic) NSArray* filterItemKeys;
+
 @end
 
 @implementation FUFilterDetailViewController
@@ -26,15 +28,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
     
     [self.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationBar.shadowImage = [UIImage new];
     self.navigationBar.translucent = YES;
-    
-//    self.navigationBar.backgroundColor = [UIColor clearColor];
-//    self.navigationBar.barTintColor = [UIColor clearColor];
+
     self.navItem.title = self.name;
+    
+    self.filterItemKeys = [[self.filterItems allKeys] sortedArrayUsingSelector: @selector(localizedCompare:)];
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -54,7 +55,7 @@
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"FilterDetailCell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor clearColor];
     
-    NSString *filterName = [self.filterItems allKeys][indexPath.row];
+    NSString *filterName = self.filterItemKeys[indexPath.row];
     cell.textLabel.text = filterName;
     if ([self.filterItems[filterName] boolValue] == YES) {
         cell.textLabel.textColor = [UIColor blackColor];
@@ -67,10 +68,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *filterName = [self.filterItems allKeys][indexPath.row];
+    NSString *filterName = self.filterItemKeys[indexPath.row];
     self.filterItems[filterName] = @(![self.filterItems[filterName] boolValue]);
     [self.tableView reloadData];
-    
 }
 
 - (IBAction)close:(id)sender {
