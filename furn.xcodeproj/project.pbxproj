@@ -180,6 +180,11 @@
 		28B0E5D31AD80F8E00C0932E /* FUSharingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUSharingManager.m; sourceTree = "<group>"; };
 		28B0E5D61AD8228700C0932E /* UIControl+HitTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+HitTest.h"; sourceTree = "<group>"; };
 		28B0E5D71AD8228700C0932E /* UIControl+HitTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+HitTest.m"; sourceTree = "<group>"; };
+		28CB92E31AED8C78003C279B /* FUSDKConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUSDKConstants.h; sourceTree = "<group>"; };
+		28CB92E51AED8CFC003C279B /* FUTrackingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUTrackingManager.h; sourceTree = "<group>"; };
+		28CB92E61AED8CFC003C279B /* FUTrackingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUTrackingManager.m; sourceTree = "<group>"; };
+		28CB92E91AED8F6B003C279B /* NSMutableDictionary+Tracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Tracking.h"; sourceTree = "<group>"; };
+		28CB92EA1AED8F6B003C279B /* NSMutableDictionary+Tracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Tracking.m"; sourceTree = "<group>"; };
 		5E943BE91AEBD5E7004012F5 /* FUProductAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUProductAction.h; path = ProductDetailPage/FUProductAction.h; sourceTree = "<group>"; };
 		5E943BEA1AEBD5E7004012F5 /* FUProductAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUProductAction.m; path = ProductDetailPage/FUProductAction.m; sourceTree = "<group>"; };
 		5E943BEF1AEBD9D3004012F5 /* FUProductDetailBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUProductDetailBrowserViewController.h; path = ProductDetailPage/FUProductDetailBrowserViewController.h; sourceTree = "<group>"; };
@@ -197,11 +202,6 @@
 		5E943C0E1AECFBA5004012F5 /* FUFilterPriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUFilterPriceViewController.m; path = Filter/FUFilterPriceViewController.m; sourceTree = "<group>"; };
 		5E943C111AED3841004012F5 /* FUFilterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUFilterManager.h; path = FilterManager/FUFilterManager.h; sourceTree = "<group>"; };
 		5E943C121AED3841004012F5 /* FUFilterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUFilterManager.m; path = FilterManager/FUFilterManager.m; sourceTree = "<group>"; };
-		28CB92E31AED8C78003C279B /* FUSDKConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUSDKConstants.h; sourceTree = "<group>"; };
-		28CB92E51AED8CFC003C279B /* FUTrackingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUTrackingManager.h; sourceTree = "<group>"; };
-		28CB92E61AED8CFC003C279B /* FUTrackingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUTrackingManager.m; sourceTree = "<group>"; };
-		28CB92E91AED8F6B003C279B /* NSMutableDictionary+Tracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Tracking.h"; sourceTree = "<group>"; };
-		28CB92EA1AED8F6B003C279B /* NSMutableDictionary+Tracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Tracking.m"; sourceTree = "<group>"; };
 		5EEFC4E31AE2B0A0004CB533 /* FUProductDetailPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUProductDetailPageViewController.h; path = ProductDetailPage/FUProductDetailPageViewController.h; sourceTree = "<group>"; };
 		5EEFC4E41AE2B0A0004CB533 /* FUProductDetailPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUProductDetailPageViewController.m; path = ProductDetailPage/FUProductDetailPageViewController.m; sourceTree = "<group>"; };
 		5EEFC4E51AE2B0A0004CB533 /* FUProductDetailPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FUProductDetailPageViewController.xib; path = ProductDetailPage/FUProductDetailPageViewController.xib; sourceTree = "<group>"; };
@@ -756,6 +756,24 @@
 			path = UIControl;
 			sourceTree = "<group>";
 		};
+		28CB92E41AED8CF1003C279B /* TrackingManager */ = {
+			isa = PBXGroup;
+			children = (
+				28CB92E51AED8CFC003C279B /* FUTrackingManager.h */,
+				28CB92E61AED8CFC003C279B /* FUTrackingManager.m */,
+			);
+			path = TrackingManager;
+			sourceTree = "<group>";
+		};
+		28CB92E81AED8F59003C279B /* NSMutableDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				28CB92E91AED8F6B003C279B /* NSMutableDictionary+Tracking.h */,
+				28CB92EA1AED8F6B003C279B /* NSMutableDictionary+Tracking.m */,
+			);
+			path = NSMutableDictionary;
+			sourceTree = "<group>";
+		};
 		5E943BF91AEC0709004012F5 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
@@ -777,24 +795,6 @@
 				5E943C121AED3841004012F5 /* FUFilterManager.m */,
 			);
 			name = FilterManager;
-			sourceTree = "<group>";
-		};
-		28CB92E41AED8CF1003C279B /* TrackingManager */ = {
-			isa = PBXGroup;
-			children = (
-				28CB92E51AED8CFC003C279B /* FUTrackingManager.h */,
-				28CB92E61AED8CFC003C279B /* FUTrackingManager.m */,
-			);
-			path = TrackingManager;
-			sourceTree = "<group>";
-		};
-		28CB92E81AED8F59003C279B /* NSMutableDictionary */ = {
-			isa = PBXGroup;
-			children = (
-				28CB92E91AED8F6B003C279B /* NSMutableDictionary+Tracking.h */,
-				28CB92EA1AED8F6B003C279B /* NSMutableDictionary+Tracking.m */,
-			);
-			path = NSMutableDictionary;
 			sourceTree = "<group>";
 		};
 		5EEFC4E21AE2AF90004CB533 /* ProductDetailPage */ = {
