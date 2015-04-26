@@ -67,10 +67,12 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.horizontalCollectionView.furnCollectionDelegate = self;
-    
-    [self.horizontalCollectionView scrollToCenterAnimated:NO];
-    
+
     self.navigationController.navigationBarHidden = YES;
+    
+    // hide button bar initially
+    self.buttonContainerViewBottomConstraint.constant = -self.buttonContainerView.frame.size.height;
+    [self.view layoutIfNeeded];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
