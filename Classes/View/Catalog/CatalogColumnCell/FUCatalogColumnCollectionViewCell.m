@@ -100,13 +100,13 @@ NSString *const FUCatalogColumnCollectionViewCellScrollingDidFinishNotification 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger index = indexPath.item;
-    
+
     if (self.viewMode == FUCollectionViewModeMatrix) {
         indexPath = [self actualIndexPathFromPath:indexPath];
         index = [[FUProductManager sharedManager] absoluteIndexForIndexPath:indexPath];
     }
 
-    FUProduct *product = [self productAtIndexPath:indexPath];
+    FUProduct *product = [[FUProductManager sharedManager] productAtIndex:index];
 
     if (self.delegate && [self.delegate respondsToSelector:@selector(columnCell:didSelectProduct:atIndex:)]) {
         [self.delegate columnCell:self didSelectProduct:product atIndex:index];
