@@ -18,11 +18,14 @@
 #define FUMinPriceKey @"Min Price"
 #define FUMaxPriceKey @"Max Price"
 
+@class FUProduct;
+
 @interface FUFilterManager : NSObject
 
 + (instancetype)sharedManager;
 - (NSMutableDictionary *)loadAllFilterItems;
 - (void)saveAllFilterItems:(NSDictionary *)allFilterItems;
 - (void)resetAllFilters;
+- (BOOL)isProductInFilter:(FUProduct *)product;
 
 @end

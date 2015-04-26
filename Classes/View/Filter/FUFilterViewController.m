@@ -13,6 +13,7 @@
 #import "FUFilterDetailViewController.h"
 #import "FUFilterPriceViewController.h"
 #import "FUFilterManager.h"
+#import "FUProductManager.h"
 
 @interface FUFilterViewController ()
 
@@ -187,11 +188,13 @@
 
 - (IBAction)applyFilter:(id)sender {
     [[FUFilterManager sharedManager] saveAllFilterItems:self.allFilterItems];
+    [[FUProductManager sharedManager] filterProducts];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)removeAllFilter:(id)sender {
     [[FUFilterManager sharedManager] resetAllFilters];
+    [[FUProductManager sharedManager] filterProducts];    
     [self loadFilters];
     [self.tableView reloadData];
 }
@@ -269,7 +272,7 @@
     
     for(NSString *filterName in filterItems) {
         NSInteger value = [filterItems[filterName] integerValue];
-        [detailString appendFormat:@"%@:%li €, ", filterName, (long)value];
+        [detailString appendFormat:@"%@: %li €, ", filterName, (long)value];
     }
     
     return [detailString substringToIndex:detailString.length - 2];

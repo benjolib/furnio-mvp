@@ -148,17 +148,10 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Filter" bundle:nil];
     FUNavigationController *filterNavigationViewController = [storyboard instantiateInitialViewController];
     FUFilterViewController *filterViewController = [filterNavigationViewController.viewControllers lastObject];
-//    FUFilterViewController *filterViewController = [storyboard instantiateViewControllerWithIdentifier:@"FUFilterViewController"];
-//    FUNavigationController *filterNavigationViewController = [[FUNavigationController alloc] initWithRootViewController:filterViewController];
     
     UIImage* imageOfUnderlyingView = [self convertViewToImage];
     imageOfUnderlyingView = [imageOfUnderlyingView applyBlurWithRadius:20 tintColor:[UIColor colorWithWhite:1.0 alpha:0.6] saturationDeltaFactor:1.8 maskImage:nil];
-    
     filterViewController.view.backgroundColor = [UIColor colorWithPatternImage:imageOfUnderlyingView];
-//    UIImageView* backView = [[UIImageView alloc] initWithFrame:self.view.frame];
-//    backView.image = imageOfUnderlyingView;
-//    backView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.6];
-//    [filterViewController.view insertSubview:backView atIndex:0];
 
     [self.navigationController presentViewController:filterNavigationViewController animated:YES completion:nil];
 }

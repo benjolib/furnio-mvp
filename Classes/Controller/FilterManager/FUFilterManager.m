@@ -10,6 +10,9 @@
 #import "FUCategoryManager.h"
 #import "FUCategoryList.h"
 #import "FUCategory.h"
+#import "FUProduct.h"
+#import "FUProperties.h"
+#import "FUSeller.h"
 
 @implementation FUFilterManager
 
@@ -80,6 +83,105 @@
 
 - (void)resetAllFilters {
     [self setupFilterItems];
+}
+
+- (BOOL)isProductInFilter:(FUProduct *)product {
+    
+    NSMutableDictionary *allFilterItems = [self loadAllFilterItems];
+    NSArray *validCategoryItems = [self validItemsInItems:allFilterItems[FUFilterCategoryKey]];
+    NSArray *validStyleItems = [self validItemsInItems:allFilterItems[FUFilterStyleKey]];
+    NSArray *validRoomItems = [self validItemsInItems:allFilterItems[FUFilterRoomKey]];
+    NSArray *validMerchantItems = [self validItemsInItems:allFilterItems[FUFilterMerchantKey]];
+
+    if([validCategoryItems count] != 0) {
+        if(![self product:product matchesCategories:validCategoryItems]) {
+            return NO;
+        }
+    }
+    
+    if([validStyleItems count] != 0) {
+        if(![self product:product matchesStyle:validStyleItems]) {
+            return NO;
+        }
+    }
+    
+    if([validRoomItems count] != 0) {
+        if(![self product:product matchesRoom:validRoomItems]) {
+            return NO;
+        }
+    }
+    
+    if([validMerchantItems count] != 0) {
+        if(![self product:product matchesMerchant:validMerchantItems]) {
+            return NO;
+        }
+    }
+
+    return YES;
+}
+
+- (NSArray *)validItemsInItems: (NSDictionary *) filterItems {
+    NSMutableArray *validItems = [NSMutableArray array];
+    
+    for (NSString *key in [filterItems allKeys]) {
+        if ([filterItems[key] boolValue]) {
+            [validItems addObject:key];
+        }
+    }
+    
+    return validItems;
+}
+
+- (BOOL) product:(FUProduct *)product matchesCategories:(NSArray *)validCategories {
+    for (NSDictionary *productCategoryDictionary in product.categories) {
+        for(NSString *validCategory in validCategories) {
+            NSString *productCategory = productCategoryDictionary[@"name"];
+            NSLog(@"Product Category: %@", productCategory);
+            if ([productCategory isEqualToString:validCategory]) {
+                return YES;
+            }
+        }
+    }
+    return NO;
+}
+
+- (BOOL) product:(FUProduct *)product matchesStyle:(NSArray *)validStyles {
+    for(NSString *validStyle in validStyles) {
+        if ([product.properties.designer isEqualToString:validStyle]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (BOOL) product:(FUProduct *)product matchesPrice:(NSDictionary *)priceLimits {
+    
+    NSUInteger maxPrice = [priceLimits[FUMaxPriceKey] integerValue];
+    NSUInteger minPrice = [priceLimits[FUMinPriceKey] integerValue];
+    
+    if (minPrice <= [product.price integerValue] <= maxPrice) {
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL) product:(FUProduct *)product matchesRoom:(NSArray *)validRooms {
+    for(NSString *validRoom in validRooms) {
+//TODO: there is no "room" property in product
+        if ([product.properties.materials isEqualToString:validRoom]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (BOOL) product:(FUProduct *)product matchesMerchant:(NSArray *)validMerchants {
+    for(NSString *validMerchant in validMerchants) {
+        if ([product.seller.name isEqualToString:validMerchant]) {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 @end

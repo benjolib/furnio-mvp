@@ -73,11 +73,7 @@
     
     self.priceTopSpaceConstraint.constant = 72 + diff / 2;
     self.priceBottomSpaceConstraint.constant = 33 + diff / 2;
-    
-//    NSLog(@"diff: %f", diff);
-//    NSLog(@"priceTopSpaceConstraint: %f", self.priceTopSpaceConstraint.constant);
-//    NSLog(@"priceTopSpaceConstraint: %f", self.priceBottomSpaceConstraint.constant);
-}
+    }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -259,7 +255,6 @@
     }
     
     if (scrollView == self.verticalScrollView) {
-//        NSLog(@"offset.y: %f", scrollView.contentOffset.y);
         
         if (scrollView.contentOffset.y < -20.0f) {
             self.likeLabel.hidden = YES;

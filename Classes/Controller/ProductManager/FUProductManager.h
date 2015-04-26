@@ -43,4 +43,6 @@ extern NSString *const FUProductManagerDidFinishLoadingPageNotification;
 
 - (FUProduct *)nextProduct:(FUProduct *)product;
 
+- (void)filterProducts;
+
 @end

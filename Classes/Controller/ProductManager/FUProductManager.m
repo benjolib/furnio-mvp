@@ -12,6 +12,7 @@
 #import "FUAPIConstants.h"
 #import "FUCategory.h"
 #import "FULoadingViewManager.h"
+#import "FUFilterManager.h"
 
 
 static NSUInteger const FUProductManagerRowLimit = 20;
@@ -23,6 +24,8 @@ NSString *const FUProductManagerDidFinishLoadingPageNotification = @"FUProductMa
 @interface FUProductManager ()
 
 @property (strong, nonatomic) NSMutableArray *products;
+
+@property (strong, nonatomic) NSMutableArray *filteredProducts;
 
 @property (assign, nonatomic) BOOL isLoading;
 
@@ -64,6 +67,23 @@ NSString *const FUProductManagerDidFinishLoadingPageNotification = @"FUProductMa
 }
 
 #pragma mark - Public
+
+- (void)filterProducts {
+    //TODO: also invoke this method at the start of the application and each time new products are load from the server
+    
+    FUFilterManager *filterManager = [FUFilterManager sharedManager];
+    
+    for(FUProduct *product in self.products) {
+        
+        if ([filterManager isProductInFilter:product]) {
+            [self.filteredProducts addObject:product];
+        }
+    }
+    
+    NSLog(@"Count products: %lu, count filteredProducts: %lu", [self.products count], [self.filteredProducts count]);
+}
+
+//TODO: use filteredProducts for most other methods in this class
 
 - (NSArray *)productsForColumnAtIndex:(NSInteger)index
 {
