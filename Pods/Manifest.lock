@@ -1,24 +1,24 @@
 PODS:
-  - Adjust (4.2.0)
-  - AFNetworking (2.5.2):
-    - AFNetworking/NSURLConnection (= 2.5.2)
-    - AFNetworking/NSURLSession (= 2.5.2)
-    - AFNetworking/Reachability (= 2.5.2)
-    - AFNetworking/Security (= 2.5.2)
-    - AFNetworking/Serialization (= 2.5.2)
-    - AFNetworking/UIKit (= 2.5.2)
-  - AFNetworking/NSURLConnection (2.5.2):
+  - Adjust (4.2.3)
+  - AFNetworking (2.5.3):
+    - AFNetworking/NSURLConnection (= 2.5.3)
+    - AFNetworking/NSURLSession (= 2.5.3)
+    - AFNetworking/Reachability (= 2.5.3)
+    - AFNetworking/Security (= 2.5.3)
+    - AFNetworking/Serialization (= 2.5.3)
+    - AFNetworking/UIKit (= 2.5.3)
+  - AFNetworking/NSURLConnection (2.5.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.5.2):
+  - AFNetworking/NSURLSession (2.5.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.5.2)
-  - AFNetworking/Security (2.5.2)
-  - AFNetworking/Serialization (2.5.2)
-  - AFNetworking/UIKit (2.5.2):
+  - AFNetworking/Reachability (2.5.3)
+  - AFNetworking/Security (2.5.3)
+  - AFNetworking/Serialization (2.5.3)
+  - AFNetworking/UIKit (2.5.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Appirater (2.0.4)
@@ -26,6 +26,8 @@ PODS:
   - AQSTwitterActivity (0.1.0)
   - DeepLinkSDK (0.2.4)
   - JSONModel (1.0.2)
+  - MLPAutoCompleteTextField (1.5)
+  - MMMaterialDesignSpinner (0.2.0)
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
   - SDWebImage/Core (3.7.2)
@@ -42,17 +44,21 @@ DEPENDENCIES:
   - AQSTwitterActivity (~> 0.1)
   - DeepLinkSDK (~> 0.2)
   - JSONModel (~> 1.0)
+  - MLPAutoCompleteTextField (~> 1.5)
+  - MMMaterialDesignSpinner (~> 0.2)
   - SDWebImage (~> 3.7)
   - UIColor+Hex (~> 1.0)
 
 SPEC CHECKSUMS:
-  Adjust: ac716a8ce53b97459095ce9aea86bca538f4c177
-  AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
+  Adjust: 078bc41dce5fd01f43e1200898bc96aee391be8d
+  AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
   Appirater: 8783318c36414e8de3ea023443028df94c1b784b
   AQSFacebookActivity: 1c726691eb632894638b51f04a69426ca3905b94
   AQSTwitterActivity: e24f68a672aee615ed1d45996b7ef352f3a7ed09
   DeepLinkSDK: 82f36ed1bbf8fb549bb0dfb14b21852219c95384
   JSONModel: 6ffcb4ffa3659c9e9a2e5d45d6c7705bab187c03
+  MLPAutoCompleteTextField: ba4d507bbff2bd4f139d4197814fc8dd39caf77e
+  MMMaterialDesignSpinner: 8f1a50270b789c76ec500957e518fc3e05e55b9d
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
   UIColor+Hex: 9fee91bb8e19f17dd40a79ae1e98949a6a84489d
 

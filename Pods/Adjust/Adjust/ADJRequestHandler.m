@@ -67,13 +67,17 @@ static const double kRequestTimeout = 60; // 60 seconds
     NSMutableURLRequest *request = [self requestForPackage:package];
     NSHTTPURLResponse *response = nil;
     NSError *error = nil;
-    NSData *data = [NSURLConnection sendSynchronousRequest:request
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request
                                          returningResponse:&response
                                                      error:&error];
 
     // connection error
-    if (error != nil) {
-        [self.logger error:@"%@. (%@) Will retry later.", package.failureMessage, error.localizedDescription];
+    if (error != nil || responseData == nil) {
+        if (error != nil) {
+            [self.logger error:@"%@. (%@) Will retry later.", package.failureMessage, error.localizedDescription];
+        } else {
+            [self.logger error:@"%@. (empty error) Will retry later.", package.failureMessage];
+        }
         [self.packageHandler finishedTrackingActivity:nil];
         if (sendToPackageHandler) {
             [self.packageHandler closeFirstPackage];
@@ -81,15 +85,15 @@ static const double kRequestTimeout = 60; // 60 seconds
         return;
     }
 
-    NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSString *responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] adjTrim];
     NSInteger statusCode = response.statusCode;
 
     [self.logger verbose:@"status code %d for package response: %@", statusCode, responseString];
 
-    NSDictionary *jsonDict = [ADJUtil buildJsonDict:responseString];
+    NSDictionary *jsonDict = [ADJUtil buildJsonDict:responseData];
 
     if (jsonDict == nil || jsonDict == (id)[NSNull null]) {
-        [self.logger error:@"Failed to parse json response. (%@) Will retry later.", responseString.adjTrim];
+        [self.logger error:@"Failed to parse json response. (%@) Will retry later.", responseString];
         if (sendToPackageHandler) {
             [self.packageHandler closeFirstPackage];
         }

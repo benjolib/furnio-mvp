@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MaterialDesignSpinner.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-AFNetworking.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -44,6 +49,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-MLPAutoCompleteTextField.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-MMMaterialDesignSpinner.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,57 +77,72 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2293653A46677D83F105C12D</key>
+		<key>0134F779D835DB36FFEF6A2D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>330A863654EE8CF5EAFDB946</key>
+		<key>1D8922491B47C19FFFEF5C89</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3DB415F4B0BD1770C44ABD0E</key>
+		<key>3E623ACD30F8B367F1551E9F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>42D85052238E85067ECB7737</key>
+		<key>5D9DD6904CE2B1095B846D6C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6312983C9513441324BD76DC</key>
+		<key>60622D0195305C699B20F79F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6D7FD18079C250FADD041634</key>
+		<key>7192D266DDF0DF9C0C009A18</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AA42DDC20E72A582D383D143</key>
+		<key>7537B661D16206933B31A153</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C0234DC35795152405A3C3D2</key>
+		<key>7EFFF9E43E879B5C42781AEA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C675A792E70903AFC5A161B0</key>
+		<key>86E50D2672BFEC694CA777AB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D4649A01BB11B3A99459A82D</key>
+		<key>B4614CC73FB8B3B8F098408A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F589BECBAF49AA05C9C96065</key>
+		<key>BA3117DA5D71C2ED566D2B3A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C17A67D8700093A2F47AFB1D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E175734CFAD141BF0F900059</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F0BB147043B3A244A943818A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

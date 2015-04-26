@@ -68,6 +68,7 @@ install_resource()
                     install_resource "AQSTwitterActivity/AQSTwitterActivity/Classes/AQSTwitterActivity.xcassets/color_AQSTwitterActivity.imageset/color_AQSTwitterActivity@3x.png"
                     install_resource "AQSTwitterActivity/AQSTwitterActivity/Classes/AQSTwitterActivity.xcassets/color_AQSTwitterActivity.imageset/color_AQSTwitterActivity~ipad.png"
                     install_resource "${BUILT_PRODUCTS_DIR}/Appirater.bundle"
+                    install_resource "${BUILT_PRODUCTS_DIR}/MaterialDesignSpinner.bundle"
           
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 if [[ "${ACTION}" == "install" ]]; then

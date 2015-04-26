@@ -117,7 +117,7 @@ static const double kRequestTimeout = 60; // 60 seconds
     NSError *requestError;
     NSURLResponse *urlResponse = nil;
 
-    NSData *response = [NSURLConnection sendSynchronousRequest:request
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request
                                              returningResponse:&urlResponse
                                                          error:&requestError];
     // connection error
@@ -125,15 +125,19 @@ static const double kRequestTimeout = 60; // 60 seconds
         [self.logger error:@"Failed to get attribution. (%@)", requestError.localizedDescription];
         return;
     }
+    if (responseData == nil) {
+        [self.logger error:@"Failed to get attribution. (empty error)"];
+        return;
+    }
 
-    NSString *responseString = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+    NSString *responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] adjTrim];
     NSInteger statusCode = ((NSHTTPURLResponse*)urlResponse).statusCode;
     [self.logger verbose:@"status code %d for attribution response: %@", statusCode, responseString];
 
-    NSDictionary *jsonDict = [ADJUtil buildJsonDict:responseString];
+    NSDictionary *jsonDict = [ADJUtil buildJsonDict:responseData];
 
     if (jsonDict == nil || jsonDict == (id)[NSNull null]) {
-        [self.logger error:@"Failed to parse json attribution response: %@", responseString.adjTrim];
+        [self.logger error:@"Failed to parse json attribution response: %@", responseString];
         return;
     }
 

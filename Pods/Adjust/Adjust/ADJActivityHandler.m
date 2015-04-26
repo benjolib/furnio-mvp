@@ -163,7 +163,6 @@ static const uint64_t kTimerLeeway   =  1 * NSEC_PER_SEC; // 1 second
 
 - (void)setIadDate:(NSDate *)iAdImpressionDate withPurchaseDate:(NSDate *)appPurchaseDate {
     if (iAdImpressionDate == nil) {
-        [self.logger error:@"iAd click time is missing"];
         return;
     }
 
@@ -237,6 +236,10 @@ static const uint64_t kTimerLeeway   =  1 * NSEC_PER_SEC; // 1 second
 
     if (self.adjustConfig.eventBufferingEnabled)  {
         [self.logger info:@"Event buffering is enabled"];
+    }
+
+    if (self.adjustConfig.defaultTracker != nil) {
+        [self.logger info:@"Default tracker: %@", self.adjustConfig.defaultTracker];
     }
 
     [self readAttribution];
