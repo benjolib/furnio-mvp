@@ -36,14 +36,6 @@
     [self.view bringSubviewToFront:self.navigationBar];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-
-    [FULoadingViewManager sharedManger].text = nil;
-    [FULoadingViewManager sharedManger].allowLoadingView = NO;
-}
-
 - (BOOL)prefersStatusBarHidden
 {
     return YES;

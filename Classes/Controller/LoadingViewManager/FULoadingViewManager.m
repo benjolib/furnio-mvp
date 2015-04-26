@@ -93,6 +93,10 @@ static NSString *const FULoadingViewManagerIndicatorKeyPath = @"networkActivityI
 
 - (void)setIsLoading:(BOOL)isLoading
 {
+    if (_isLoading == isLoading) {
+        return;
+    }
+
     _isLoading = isLoading;
 
     if (isLoading && self.allowLoadingView) {

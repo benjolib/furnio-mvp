@@ -18,6 +18,7 @@
 #import "FUNumberFormatter.h"
 #import "FUProductAction.h"
 #import "FUProductDetailBrowserViewController.h"
+#import "FUTrackingManager.h"
 
 #define FUProductDetailPageFirstTime @"FUProductDetailPageFirstTime"
 
@@ -313,9 +314,11 @@
     
     if(self.detectLike == YES) {
         actionType = FUActionTypeLike;
+        [[FUTrackingManager sharedManager] trackPDPLikeProduct:self.product];
     }
     else if(self.detectDiscard == YES) {
         actionType = FUActionTypeDiscard;
+        [[FUTrackingManager sharedManager] trackPDPDislikeProduct:self.product];
     }
     else {
         return;

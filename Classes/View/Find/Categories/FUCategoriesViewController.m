@@ -60,8 +60,8 @@
 {
     [super viewDidLoad];
     
-    self.title = @"CATEGORIES";
-    
+    self.title = self.selectedCategory ? self.selectedCategory.name.uppercaseString : @"CATEGORIES";
+
     [self.categoryTableView registerNib:[FUCategoryTableViewCell nib] forCellReuseIdentifier:FUCategoryTableViewCellReuseIdentifier];
     
     [self setupNotifications];
@@ -104,7 +104,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return section == 0 ? 40 : 0;
+    return 0;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
@@ -137,7 +137,7 @@
 
     if (selectedCategory.hasChildren) {
         if (indexPath.section == 0) {
-            [FUProductManager sharedManager].category = selectedCategory;
+            [FUProductManager sharedManager].category = self.selectedCategory;
             
             [self.navigationController dismissViewControllerAnimated:YES completion:nil];
         } else {

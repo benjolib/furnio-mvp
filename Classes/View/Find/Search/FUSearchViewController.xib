@@ -7,7 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FUSearchViewController">
             <connections>
-                <outlet property="clearButton" destination="HLg-rv-fpV" id="6hm-2V-awP"/>
+                <outlet property="categoriesTableView" destination="jrg-4h-M1m" id="WPD-Fh-OTg"/>
+                <outlet property="categoriesTableViewTopConstraint" destination="dDM-a0-lcd" id="6MD-Oz-QH3"/>
+                <outlet property="searchButton" destination="HLg-rv-fpV" id="VRd-0o-Xbb"/>
                 <outlet property="searchTextField" destination="oya-ad-vmS" id="2yo-eh-R9q"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -17,37 +19,49 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="SEARCH" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oya-ad-vmS" userLabel="searchTextField" customClass="FUSearchTextField">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search your product" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oya-ad-vmS" userLabel="searchTextField" customClass="FUSearchTextField">
                     <rect key="frame" x="55" y="13" width="251" height="48"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="Cu4-og-0um"/>
                     </constraints>
                     <color key="textColor" red="0.99215686270000003" green="0.72549019609999998" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="search"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="search"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="dE6-OC-tuu"/>
                     </connections>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HLg-rv-fpV" userLabel="clearButton">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HLg-rv-fpV" userLabel="searchButton">
                     <rect key="frame" x="271" y="24" width="25" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="39V-4F-fFZ"/>
                         <constraint firstAttribute="width" constant="25" id="aL7-hR-Ktg"/>
                     </constraints>
-                    <state key="normal" image="close">
+                    <state key="normal" image="search-yellow">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <connections>
-                        <action selector="clearButtonTapped:" destination="-1" eventType="touchUpInside" id="rwz-bK-MoZ"/>
-                    </connections>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="userInteractionEnabled" value="NO"/>
+                    </userDefinedRuntimeAttributes>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jrg-4h-M1m" userLabel="categoriesTableView">
+                    <rect key="frame" x="0.0" y="88" width="320" height="480"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="B7b-XJ-AOc"/>
+                        <outlet property="delegate" destination="-1" id="xiz-g9-2Lb"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="HLg-rv-fpV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="24" id="0L3-dE-yFH"/>
                 <constraint firstItem="oya-ad-vmS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="55" id="37V-63-seK"/>
+                <constraint firstAttribute="bottom" secondItem="jrg-4h-M1m" secondAttribute="bottom" id="9AY-ia-TNa"/>
                 <constraint firstAttribute="trailing" secondItem="HLg-rv-fpV" secondAttribute="trailing" constant="24" id="J3Y-P3-E0K"/>
+                <constraint firstItem="jrg-4h-M1m" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="88" id="dDM-a0-lcd"/>
+                <constraint firstItem="jrg-4h-M1m" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="o6Q-3u-t89"/>
+                <constraint firstAttribute="trailing" secondItem="jrg-4h-M1m" secondAttribute="trailing" id="pNw-f6-5gc"/>
                 <constraint firstAttribute="trailing" secondItem="oya-ad-vmS" secondAttribute="trailing" constant="14" id="rJp-XM-hSa"/>
                 <constraint firstItem="oya-ad-vmS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="13" id="yhK-yT-NUR"/>
             </constraints>
@@ -57,6 +71,6 @@
         </view>
     </objects>
     <resources>
-        <image name="close" width="25" height="25"/>
+        <image name="search-yellow" width="24" height="26"/>
     </resources>
 </document>

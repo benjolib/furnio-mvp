@@ -8,6 +8,8 @@
 
 #import "FUCategory.h"
 
+#import "FUCategoryManager.h"
+
 @implementation FUCategory
 
 + (JSONKeyMapper *)keyMapper
@@ -30,6 +32,15 @@
 - (BOOL)isRootCategory
 {
     return self.level.integerValue == 1;
+}
+
+#pragma mark - Setter
+
+- (void)setName:(NSString *)name
+{
+    _name = name;
+    
+    [[FUCategoryManager sharedManager] registerCategory:self];
 }
 
 @end

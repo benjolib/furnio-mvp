@@ -54,7 +54,7 @@
 
 - (void)prefetchImagesForProductsAroundIndex:(NSInteger)index
 {
-    static NSInteger const prefetchCount = 8;
+    static NSInteger const prefetchCount = 3;
     
     if (index % prefetchCount > 0 && index + prefetchCount < [FUProductManager sharedManager].productCount) {
         return;

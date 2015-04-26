@@ -8,8 +8,12 @@
 
 #import "FUSDKManager.h"
 
+#import "FUSDKConstants.h"
+
 #import <AFNetworkActivityIndicatorManager.h>
 #import <AFNetworkReachabilityManager.h>
+#import <Adjust.h>
+
 
 @implementation FUSDKManager
 
@@ -19,6 +23,7 @@
 + (void)setup
 {
     [self setupAFNetworking];
+    [self setupAdjust];
 }
 
 + (instancetype)sharedManager
@@ -44,6 +49,23 @@
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         NSLog(@"ONLINE? %@", status > AFNetworkReachabilityStatusNotReachable ? @"YES" : @"NO");
     }];
+}
+
++ (void)setupAdjust
+{
+#if STORE
+    NSString *environment = ADJEnvironmentProduction;
+    BOOL eventBufferingEnabled = YES;
+#else
+    NSString *environment = ADJEnvironmentSandbox;
+    BOOL eventBufferingEnabled = NO;
+#endif
+    
+    ADJConfig *adjustConfig = [ADJConfig configWithAppToken:FUSDKAdjustToken environment:environment];
+    adjustConfig.logLevel = ADJLogLevelInfo;
+    adjustConfig.eventBufferingEnabled = eventBufferingEnabled;
+
+    [Adjust appDidLaunch:adjustConfig];
 }
 
 @end

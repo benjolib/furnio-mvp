@@ -40,5 +40,16 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>io.furn.app</string>
+			<key>URL schemes</key>
+			<array/>
+			<key>Item 0</key>
+			<string>furn</string>
+		</dict>
+	</array>
 </dict>
 </plist>

@@ -12,7 +12,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zAZ-Jk-LSN">
-                    <rect key="frame" x="89" y="239" width="142" height="91"/>
+                    <rect key="frame" x="89" y="237" width="142" height="94"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmS-ht-rLn" userLabel="loadingLabel">
                             <rect key="frame" x="40" y="10" width="62" height="24"/>
@@ -20,19 +20,23 @@
                             <color key="textColor" red="0.99215686270000003" green="0.72549019609999998" blue="0.2274509804" alpha="1" colorSpace="deviceRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="S6k-22-Lf5" userLabel="activityIndicator">
-                            <rect key="frame" x="53" y="44" width="37" height="37"/>
-                            <color key="color" red="0.99215686270000003" green="0.72549019609999998" blue="0.2274509804" alpha="1" colorSpace="deviceRGB"/>
-                        </activityIndicatorView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mDc-IG-cTR" customClass="MMMaterialDesignSpinner">
+                            <rect key="frame" x="51" y="44" width="40" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="eir-4P-SIs"/>
+                                <constraint firstAttribute="height" constant="40" id="s3r-EC-0Dz"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="dmS-ht-rLn" secondAttribute="trailing" constant="40" id="B5P-h0-jF0"/>
-                        <constraint firstItem="S6k-22-Lf5" firstAttribute="top" secondItem="dmS-ht-rLn" secondAttribute="bottom" constant="10" id="Fxx-Dm-9to"/>
+                        <constraint firstItem="mDc-IG-cTR" firstAttribute="top" secondItem="dmS-ht-rLn" secondAttribute="bottom" constant="10" id="F36-Ef-KiY"/>
                         <constraint firstItem="dmS-ht-rLn" firstAttribute="top" secondItem="zAZ-Jk-LSN" secondAttribute="top" constant="10" id="H3a-UQ-3dF"/>
-                        <constraint firstAttribute="bottom" secondItem="S6k-22-Lf5" secondAttribute="bottom" constant="10" id="hmd-UP-D8T"/>
+                        <constraint firstAttribute="bottom" secondItem="mDc-IG-cTR" secondAttribute="bottom" constant="10" id="UYO-Bw-8dD"/>
+                        <constraint firstAttribute="centerX" secondItem="mDc-IG-cTR" secondAttribute="centerX" id="rJz-vb-fhd"/>
                         <constraint firstItem="dmS-ht-rLn" firstAttribute="leading" secondItem="zAZ-Jk-LSN" secondAttribute="leading" constant="40" id="vbc-i9-54J"/>
-                        <constraint firstAttribute="centerX" secondItem="S6k-22-Lf5" secondAttribute="centerX" id="zuo-CJ-Hwe"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -49,7 +53,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <connections>
-                <outlet property="activityIndicator" destination="S6k-22-Lf5" id="P9t-nj-igE"/>
+                <outlet property="activityIndicatorView" destination="mDc-IG-cTR" id="05L-uU-fkd"/>
                 <outlet property="loadingLabel" destination="dmS-ht-rLn" id="Cl2-Wf-ySu"/>
             </connections>
         </view>

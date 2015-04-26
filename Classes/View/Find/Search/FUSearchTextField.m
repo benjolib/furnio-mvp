@@ -37,6 +37,13 @@
     return CGRectMake(15, bounds.origin.y, bounds.size.width - 45, bounds.size.height);
 }
 
+- (CGRect)clearButtonRectForBounds:(CGRect)bounds
+{
+    CGRect originalRect = [super clearButtonRectForBounds:bounds];
+
+    return CGRectOffset(originalRect, -2, 0);
+}
+
 #pragma mark - Private
 
 - (void)setupLayerBorder

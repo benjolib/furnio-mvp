@@ -21,7 +21,8 @@
         @"Sold By" : @"soldBy",
         @"Depth" : @"depth",
         @"Height" : @"height",
-        @"Width" : @"Width"
+        @"Width" : @"width",
+        @"Style" : @"style"
     }];
 }
 
@@ -58,7 +59,7 @@
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        keyPaths = @[ @"category", @"color", @"designer", @"manufacturer", @"materials", @"soldBy", @"depth", @"height", @"width" ];
+        keyPaths = @[ @"category", @"color", @"designer", @"manufacturer", @"materials", @"soldBy", @"depth", @"height", @"width", @"style" ];
     });
 
     return keyPaths;

@@ -9,6 +9,7 @@
 #import "FUCategoryTableViewCell.h"
 
 #import "FUCategory.h"
+#import "FUColorConstants.h"
 
 NSString *const FUCategoryTableViewCellReuseIdentifier = @"FUCategoryTableViewCellReuseIdentifier";
 
@@ -28,11 +29,22 @@ NSString *const FUCategoryTableViewCellReuseIdentifier = @"FUCategoryTableViewCe
 {
     [super awakeFromNib];
     
+    self.backgroundColor = [FUColorOrange colorWithAlphaComponent:0];
+
     self.categoryAccessoryView.transform = CGAffineTransformMakeRotation(M_PI);
 }
 
 
 #pragma mark - Setter
+
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
+{
+    [UIView animateWithDuration:0.35f animations:^{
+        CGFloat alpha = highlighted ? 0.65f : 0;
+
+        self.backgroundColor = [FUColorOrange colorWithAlphaComponent:alpha];
+    }];
+}
 
 - (void)setCategory:(FUCategory *)category
 {
@@ -40,11 +52,11 @@ NSString *const FUCategoryTableViewCellReuseIdentifier = @"FUCategoryTableViewCe
     
     if (category) {
         if (self.isAllProductsCell) {
-            self.categoryLabel.text = [[NSString stringWithFormat:@"SHOW ALL %@", category.name] uppercaseString];
+            self.categoryLabel.text = [NSString stringWithFormat:@"Show All %@", category.name];
             
             self.categoryAccessoryView.hidden = NO;
         } else {
-            self.categoryLabel.text = category.name.uppercaseString;
+            self.categoryLabel.text = category.name;
     
             self.categoryAccessoryView.hidden = !category.hasChildren;
         }
@@ -59,7 +71,16 @@ NSString *const FUCategoryTableViewCellReuseIdentifier = @"FUCategoryTableViewCe
     
     _isAllProductsCell = isAllProductsCell;
     
-    // TODO: Need asset to show double arrow
+    if (isAllProductsCell) {
+        self.categoryAccessoryView.image = [[UIImage imageNamed:@"double-arrow"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.categoryAccessoryView.tintColor = FUColorDarkGray;
+        self.categoryAccessoryView.transform = CGAffineTransformMakeRotation(-M_PI/2);
+        self.categoryAccessoryView.contentMode = UIViewContentModeCenter;
+    } else {
+        self.categoryAccessoryView.image = [UIImage imageNamed:@"back"];
+        self.categoryAccessoryView.transform = CGAffineTransformMakeRotation(M_PI);
+        self.categoryAccessoryView.contentMode = UIViewContentModeScaleAspectFit;
+    }
 }
 
 #pragma mark - Static

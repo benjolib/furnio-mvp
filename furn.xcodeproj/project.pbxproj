@@ -46,8 +46,6 @@
 		28362E0B1AD53613000B4E99 /* productList.json in Resources */ = {isa = PBXBuildFile; fileRef = 28362E0A1AD53613000B4E99 /* productList.json */; };
 		287F4D061ADB9C4F0076FC53 /* FUNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 287F4D051ADB9C4F0076FC53 /* FUNavigationBar.m */; };
 		287F4D081ADB9F780076FC53 /* FUNavigationBar in Resources */ = {isa = PBXBuildFile; fileRef = 287F4D071ADB9F780076FC53 /* FUNavigationBar */; };
-		287F4D0C1ADBA0030076FC53 /* FUFindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 287F4D0A1ADBA0030076FC53 /* FUFindViewController.m */; };
-		287F4D0D1ADBA0030076FC53 /* FUFindViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 287F4D0B1ADBA0030076FC53 /* FUFindViewController.xib */; };
 		287F4D121ADBBC4F0076FC53 /* FUCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 287F4D101ADBBC4F0076FC53 /* FUCategoriesViewController.m */; };
 		287F4D131ADBBC4F0076FC53 /* FUCategoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 287F4D111ADBBC4F0076FC53 /* FUCategoriesViewController.xib */; };
 		287F4D271ADEBF720076FC53 /* FUCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 287F4D261ADEBF720076FC53 /* FUCategory.m */; };
@@ -65,6 +63,8 @@
 		28B0E5D01AD8052A00C0932E /* FUActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0E5CF1AD8052A00C0932E /* FUActionButton.m */; };
 		28B0E5D41AD80F8E00C0932E /* FUSharingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0E5D31AD80F8E00C0932E /* FUSharingManager.m */; };
 		28B0E5D81AD8228700C0932E /* UIControl+HitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0E5D71AD8228700C0932E /* UIControl+HitTest.m */; };
+		28CB92E71AED8CFC003C279B /* FUTrackingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CB92E61AED8CFC003C279B /* FUTrackingManager.m */; };
+		28CB92EB1AED8F6B003C279B /* NSMutableDictionary+Tracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CB92EA1AED8F6B003C279B /* NSMutableDictionary+Tracking.m */; };
 		33F237418860FD871BBB6843 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70434F8189787034BBDD21B6 /* libPods.a */; };
 		5E943BEB1AEBD5E7004012F5 /* FUProductAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E943BEA1AEBD5E7004012F5 /* FUProductAction.m */; };
 		5E943BF21AEBD9D3004012F5 /* FUProductDetailBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E943BF01AEBD9D3004012F5 /* FUProductDetailBrowserViewController.m */; };
@@ -151,9 +151,6 @@
 		287F4D041ADB9C4F0076FC53 /* FUNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUNavigationBar.h; sourceTree = "<group>"; };
 		287F4D051ADB9C4F0076FC53 /* FUNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUNavigationBar.m; sourceTree = "<group>"; };
 		287F4D071ADB9F780076FC53 /* FUNavigationBar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FUNavigationBar; sourceTree = "<group>"; };
-		287F4D091ADBA0030076FC53 /* FUFindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUFindViewController.h; sourceTree = "<group>"; };
-		287F4D0A1ADBA0030076FC53 /* FUFindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUFindViewController.m; sourceTree = "<group>"; };
-		287F4D0B1ADBA0030076FC53 /* FUFindViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FUFindViewController.xib; sourceTree = "<group>"; };
 		287F4D0F1ADBBC4F0076FC53 /* FUCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUCategoriesViewController.h; sourceTree = "<group>"; };
 		287F4D101ADBBC4F0076FC53 /* FUCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUCategoriesViewController.m; sourceTree = "<group>"; };
 		287F4D111ADBBC4F0076FC53 /* FUCategoriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FUCategoriesViewController.xib; sourceTree = "<group>"; };
@@ -200,6 +197,11 @@
 		5E943C0E1AECFBA5004012F5 /* FUFilterPriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUFilterPriceViewController.m; path = Filter/FUFilterPriceViewController.m; sourceTree = "<group>"; };
 		5E943C111AED3841004012F5 /* FUFilterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUFilterManager.h; path = FilterManager/FUFilterManager.h; sourceTree = "<group>"; };
 		5E943C121AED3841004012F5 /* FUFilterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUFilterManager.m; path = FilterManager/FUFilterManager.m; sourceTree = "<group>"; };
+		28CB92E31AED8C78003C279B /* FUSDKConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUSDKConstants.h; sourceTree = "<group>"; };
+		28CB92E51AED8CFC003C279B /* FUTrackingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUTrackingManager.h; sourceTree = "<group>"; };
+		28CB92E61AED8CFC003C279B /* FUTrackingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUTrackingManager.m; sourceTree = "<group>"; };
+		28CB92E91AED8F6B003C279B /* NSMutableDictionary+Tracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Tracking.h"; sourceTree = "<group>"; };
+		28CB92EA1AED8F6B003C279B /* NSMutableDictionary+Tracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Tracking.m"; sourceTree = "<group>"; };
 		5EEFC4E31AE2B0A0004CB533 /* FUProductDetailPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUProductDetailPageViewController.h; path = ProductDetailPage/FUProductDetailPageViewController.h; sourceTree = "<group>"; };
 		5EEFC4E41AE2B0A0004CB533 /* FUProductDetailPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUProductDetailPageViewController.m; path = ProductDetailPage/FUProductDetailPageViewController.m; sourceTree = "<group>"; };
 		5EEFC4E51AE2B0A0004CB533 /* FUProductDetailPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FUProductDetailPageViewController.xib; path = ProductDetailPage/FUProductDetailPageViewController.xib; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				28117C2A1AD70C15007C8DB9 /* FUFontConstants.h */,
 				28140ED91AE126E800359EAA /* FUAPIConstants.h */,
 				5EEFC4E81AE3B4C8004CB533 /* FUMacros.h */,
+				28CB92E31AED8C78003C279B /* FUSDKConstants.h */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 		28117C321AD714D3007C8DB9 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				28CB92E81AED8F59003C279B /* NSMutableDictionary */,
 				28B0E5D51AD8227F00C0932E /* UIControl */,
 				28117C331AD714E9007C8DB9 /* UIView+FUAnimations.h */,
 				28117C341AD714E9007C8DB9 /* UIView+FUAnimations.m */,
@@ -398,6 +402,7 @@
 			isa = PBXGroup;
 			children = (
 				5E943C101AED3827004012F5 /* FilterManager */,
+				28CB92E41AED8CF1003C279B /* TrackingManager */,
 				28140EDE1AE12F1D00359EAA /* LoadingViewManager */,
 				287F4D281ADEC0870076FC53 /* CategoryManager */,
 				28B0E5D11AD80F8500C0932E /* SharingManager */,
@@ -616,9 +621,6 @@
 			children = (
 				28140EED1AE413ED00359EAA /* Search */,
 				287F4D0E1ADBBC400076FC53 /* Categories */,
-				287F4D091ADBA0030076FC53 /* FUFindViewController.h */,
-				287F4D0A1ADBA0030076FC53 /* FUFindViewController.m */,
-				287F4D0B1ADBA0030076FC53 /* FUFindViewController.xib */,
 			);
 			path = Find;
 			sourceTree = "<group>";
@@ -777,6 +779,24 @@
 			name = FilterManager;
 			sourceTree = "<group>";
 		};
+		28CB92E41AED8CF1003C279B /* TrackingManager */ = {
+			isa = PBXGroup;
+			children = (
+				28CB92E51AED8CFC003C279B /* FUTrackingManager.h */,
+				28CB92E61AED8CFC003C279B /* FUTrackingManager.m */,
+			);
+			path = TrackingManager;
+			sourceTree = "<group>";
+		};
+		28CB92E81AED8F59003C279B /* NSMutableDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				28CB92E91AED8F6B003C279B /* NSMutableDictionary+Tracking.h */,
+				28CB92EA1AED8F6B003C279B /* NSMutableDictionary+Tracking.m */,
+			);
+			path = NSMutableDictionary;
+			sourceTree = "<group>";
+		};
 		5EEFC4E21AE2AF90004CB533 /* ProductDetailPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -869,7 +889,6 @@
 				5E943C091AEC14EE004012F5 /* Filter.storyboard in Resources */,
 				28140EE61AE130B100359EAA /* FULoadingView.xib in Resources */,
 				2815EAC31AC843F300F97AEF /* LaunchScreen.xib in Resources */,
-				287F4D0D1ADBA0030076FC53 /* FUFindViewController.xib in Resources */,
 				28117C3A1AD71E89007C8DB9 /* FUWishlistViewController.xib in Resources */,
 				28B0E5CB1AD8047600C0932E /* FUWishlistEmptyCollectionViewCell.xib in Resources */,
 				28362E0B1AD53613000B4E99 /* productList.json in Resources */,
@@ -926,7 +945,6 @@
 				5E943C011AEC0AC4004012F5 /* UIImage+ImageEffects.m in Sources */,
 				5E943C0F1AECFBA5004012F5 /* FUFilterPriceViewController.m in Sources */,
 				28362DED1AD444D1000B4E99 /* FUDeepLinkHandler.m in Sources */,
-				287F4D0C1ADBA0030076FC53 /* FUFindViewController.m in Sources */,
 				28117C3F1AD7274C007C8DB9 /* FUNotifyManager.m in Sources */,
 				5EEFC4E61AE2B0A0004CB533 /* FUProductDetailPageViewController.m in Sources */,
 				287F4D2E1ADEC2340076FC53 /* FUCategoryList.m in Sources */,
@@ -936,6 +954,7 @@
 				28117C211AD67EA1007C8DB9 /* FUImagePrefetcher.m in Sources */,
 				287F4D121ADBBC4F0076FC53 /* FUCategoriesViewController.m in Sources */,
 				287F4D061ADB9C4F0076FC53 /* FUNavigationBar.m in Sources */,
+				28CB92EB1AED8F6B003C279B /* NSMutableDictionary+Tracking.m in Sources */,
 				28117C351AD714E9007C8DB9 /* UIView+FUAnimations.m in Sources */,
 				28140EE41AE1309C00359EAA /* FULoadingView.m in Sources */,
 				28B0E5C51AD7F40500C0932E /* FUWishlistActionButton.m in Sources */,
@@ -959,6 +978,7 @@
 				28140EF91AE450B900359EAA /* FUSearchTextField.m in Sources */,
 				28362E011AD5207B000B4E99 /* FUProductList.m in Sources */,
 				5E943C0C1AECFB8D004012F5 /* FUFilterDetailViewController.m in Sources */,
+				28CB92E71AED8CFC003C279B /* FUTrackingManager.m in Sources */,
 				28B0E5CA1AD8047600C0932E /* FUWishlistEmptyCollectionViewCell.m in Sources */,
 				2815EAF21AC854F900F97AEF /* FUCatalogViewController.m in Sources */,
 				28B0E5D41AD80F8E00C0932E /* FUSharingManager.m in Sources */,
@@ -1050,6 +1070,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "STORE=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

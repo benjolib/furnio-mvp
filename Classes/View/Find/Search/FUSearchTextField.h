@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FUSearchTextField : UITextField
+#import <MLPAutoCompleteTextField.h>
+
+@interface FUSearchTextField : MLPAutoCompleteTextField
 
 @end

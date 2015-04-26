@@ -31,4 +31,7 @@
 #define FUFontProductDescription FUFontAvenirLight(14)
 #define FUFontProductPrice FUFontAvenirBold(14)
 
+#define FUFontSearchListRegular FUFontAvenirLight(14)
+#define FUFontSearchListBold FUFontAvenirBold(14)
+
 #endif

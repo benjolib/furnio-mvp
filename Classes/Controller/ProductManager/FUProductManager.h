@@ -13,10 +13,13 @@
 @class FUCategory;
 
 extern NSString *const FUProductManagerDidFinishLoadingPageNotification;
+extern NSString *const FUProductManagerWillStartLoadingPageNotification;
 
 @interface FUProductManager : NSObject
 
 @property (strong, nonatomic) FUCategory *category;
+
+@property (strong, nonatomic) NSString *searchQuery;
 
 + (void)setup;
 
@@ -36,7 +39,7 @@ extern NSString *const FUProductManagerDidFinishLoadingPageNotification;
 
 - (NSInteger)columnCount;
 
-- (void)reset;
+- (void)resetAndLoad:(BOOL)load;
 
 - (void)removeProduct:(FUProduct *)product;
 - (void)addProduct:(FUProduct *)product;

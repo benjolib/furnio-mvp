@@ -11,6 +11,7 @@
 #import "FUCatalogColumnCollectionViewCell.h"
 #import "FUCatalogEmptyCollectionViewCell.h"
 #import "FUProductManager.h"
+#import "FUTrackingManager.h"
 
 
 @interface FUCollectionView () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, FUCatalogColumnCollectionViewCellDelegate, FUCatalogEmptyCollectionViewCellDelegate>
@@ -73,7 +74,7 @@
 {
     NSUInteger columnCount = [FUProductManager sharedManager].columnCount;
 
-    if (columnCount == 0) {
+    if (columnCount < 2) {
         return 1;
     }
 
@@ -131,7 +132,7 @@
 
 - (void)didTapResetButton
 {
-    [[FUProductManager sharedManager] reset];
+    [[FUProductManager sharedManager] resetAndLoad:YES];
 }
 
 - (void)toggleViewMode
@@ -170,7 +171,13 @@
 
 - (void)setupNotifications
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateCollectionViewVisibility) name:FUProductManagerWillStartLoadingPageNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:FUProductManagerDidFinishLoadingPageNotification object:nil];
+}
+
+- (void)updateCollectionViewVisibility
+{
+    self.hidden = [FUProductManager sharedManager].productCount == 0;
 }
 
 - (void)reload
@@ -178,6 +185,8 @@
     self.hidden = NO;
 
     [self reloadData];
+    
+    [self scrollToCenterAnimated:YES];
 }
 
 #pragma mark - Private
@@ -186,10 +195,10 @@
 {
     if (_viewMode != viewMode) {
         _viewMode = viewMode;
+        
+        [[FUTrackingManager sharedManager] trackCatalogViewMode:viewMode];
 
         [self reloadData];
-        
-        [self scrollToCenterAnimated:YES];
     }
 }
 

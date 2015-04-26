@@ -20,6 +20,7 @@ static NSUInteger const FUProductManagerRowLimit = 20;
 static NSUInteger const FUProductManagerPageSize = 1000;
 
 NSString *const FUProductManagerDidFinishLoadingPageNotification = @"FUProductManagerDidFinishLoadingPageNotification";
+NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductManagerWillStartLoadingPageNotification";
 
 @interface FUProductManager ()
 
@@ -168,13 +169,17 @@ NSString *const FUProductManagerDidFinishLoadingPageNotification = @"FUProductMa
     return indexPath;
 }
 
-- (void)reset
+- (void)resetAndLoad:(BOOL)load
 {
-    self.category = nil;
-    
-    self.foundRows = @0;
+    _category = nil;
+    _searchQuery = nil;
+    _foundRows = @0;
 
-    [self loadProducts];
+    [self.products removeAllObjects];
+
+    if (load) {
+        [self loadProducts];
+    }
 }
 
 #pragma mark - Getter
@@ -188,22 +193,36 @@ NSString *const FUProductManagerDidFinishLoadingPageNotification = @"FUProductMa
 
 - (void)setCategory:(FUCategory *)category
 {
-    if (_category.identifier && category.identifier && [_category.identifier isEqualToNumber:category.identifier]) {
+    if ((_category.identifier && category.identifier && [_category.identifier isEqualToNumber:category.identifier]) || (!_category && !category)) {
         return;
     }
-    
+
+    [self resetAndLoad:NO];
+
     _category = category;
-    
-    [self.products removeAllObjects];
 
     [self loadProducts];
 }
 
-- (void)setFoundRows:(NSNumber *)foundRows
+- (void)setSearchQuery:(NSString *)searchQuery
 {
-    _foundRows = foundRows;
+    if (searchQuery.length > 0) {
+        searchQuery = [searchQuery stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    }
+
+    if ((_searchQuery && searchQuery && [_searchQuery isEqualToString:searchQuery]) || (!_searchQuery && !searchQuery) ) {
+        return;
+    }
+
+    [self resetAndLoad:NO];
     
-    [FULoadingViewManager sharedManger].allowLoadingView = foundRows.integerValue == 0;
+    _searchQuery = searchQuery;
+    
+    if (searchQuery.length > 0) {
+        [FULoadingViewManager sharedManger].text = @"SEARCHING PRODUCTS";
+    }
+    
+    [self loadProducts];
 }
 
 #pragma mark - Private
@@ -222,12 +241,21 @@ NSString *const FUProductManagerDidFinishLoadingPageNotification = @"FUProductMa
 
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
-    [parameters setValue:@([self currentOffset]) forKey:@"start"];
-    [parameters setValue:@(FUProductManagerPageSize) forKey:@"limit"];
+    [parameters setObject:@([self currentOffset]) forKey:@"start"];
+    [parameters setObject:@(FUProductManagerPageSize) forKey:@"limit"];
 
     if (self.category) {
-        [parameters setValue:self.category.identifier.stringValue forKey:@"category[]"];
+        [parameters setObject:self.category.identifier.stringValue forKey:@"category[]"];
+        [FULoadingViewManager sharedManger].text = @"SEARCHING PRODUCTS";
     }
+    
+    else if (self.searchQuery) {
+        [parameters setObject:self.searchQuery forKey:@"name"];
+        [parameters setObject:self.searchQuery forKey:@"description"];
+        [FULoadingViewManager sharedManger].text = @"SEARCHING PRODUCTS";
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:FUProductManagerWillStartLoadingPageNotification object:nil];
 
     [JSONHTTPClient getJSONFromURLWithString:FUAPIProducts params:parameters completion:^(id json, JSONModelError *error) {
         FUProductList *productList = [[FUProductList alloc] initWithDictionary:json error:&error];

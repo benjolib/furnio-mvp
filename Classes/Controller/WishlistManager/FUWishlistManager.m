@@ -9,6 +9,7 @@
 #import "FUWishlistManager.h"
 
 #import "FUProductManager.h"
+#import "FUTrackingManager.h"
 
 #import <UIKit/UIKit.h>
 
@@ -68,6 +69,10 @@
 
 - (void)removeAllProducts
 {
+    for (FUProduct *product in self.products) {
+        [[FUTrackingManager sharedManager] trackWishlistRemoveProduct:product];
+    }
+
     [self.products removeAllObjects];
     self.isDirty = YES;
 }
@@ -77,6 +82,8 @@
     if (!product) {
         return;
     }
+    
+    [[FUTrackingManager sharedManager] trackWishlistRemoveProduct:product];
 
     [self.products removeObject:product];
     self.isDirty = YES;
@@ -85,13 +92,22 @@
 - (void)removeProductAtIndex:(NSUInteger)index
 {
     if (index < self.products.count) {
+        FUProduct *product = [self.products objectAtIndex:index];
+        
+        [[FUTrackingManager sharedManager] trackWishlistRemoveProduct:product];
+        
         [self.products removeObjectAtIndex:index];
+
         self.isDirty = YES;
     }
 }
 
 - (void)removeProductsAtIndexes:(NSIndexSet *)indexes
 {
+    [self.products enumerateObjectsAtIndexes:indexes options:kNilOptions usingBlock:^(FUProduct *product, NSUInteger index, BOOL *stop) {
+        [[FUTrackingManager sharedManager] trackWishlistRemoveProduct:product];
+    }];
+    
     [self.products removeObjectsAtIndexes:indexes];
     
     self.isDirty = YES;

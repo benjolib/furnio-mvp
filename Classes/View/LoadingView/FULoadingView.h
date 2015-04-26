@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import <MMMaterialDesignSpinner.h>
+
 @interface FULoadingView : UIView
 
 @property (weak, nonatomic) IBOutlet UILabel *loadingLabel;
 
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet MMMaterialDesignSpinner *activityIndicatorView;
 
 - (void)showAnimated:(BOOL)animated;
 

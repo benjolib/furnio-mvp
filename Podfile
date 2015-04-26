@@ -13,7 +13,8 @@ pod 'JSONModel', '~> 1.0'
 pod 'UIColor+Hex', '~> 1.0'
 pod 'AQSFacebookActivity', '~> 0.1'
 pod 'AQSTwitterActivity', '~> 0.1'
-
+pod 'MLPAutoCompleteTextField', '~> 1.5'
+pod 'MMMaterialDesignSpinner', '~> 0.2'
 
 # Disable logging of SDWebImagePrefetcher
 

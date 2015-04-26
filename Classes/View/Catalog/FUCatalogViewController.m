@@ -15,7 +15,7 @@
 #import "FUWishlistViewController.h"
 #import "FUNavigationController.h"
 #import "UIControl+HitTest.h"
-#import "FUFindViewController.h"
+#import "FUSearchViewController.h"
 #import "FUProductManager.h"
 #import "FUWishlistManager.h"
 #import "FUProductDetailPageViewController.h"
@@ -58,12 +58,6 @@
     return self;
 }
 
-- (void)setupNotifications
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideButtonBar) name:FUCatalogColumnCollectionViewCellScrollingDidStartNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showButtonBar) name:FUCatalogColumnCollectionViewCellScrollingDidFinishNotification object:nil];    
-}
-
 #pragma mark - UIViewController
 
 - (void)viewDidLoad
@@ -79,9 +73,9 @@
     self.navigationController.navigationBarHidden = YES;
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidDisappear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+    [super viewDidDisappear:animated];
 
     [self showButtonBar];
 }
@@ -105,6 +99,14 @@
 }
 
 #pragma mark - Notifications
+
+- (void)setupNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideButtonBar) name:FUProductManagerWillStartLoadingPageNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showButtonBar) name:FUProductManagerDidFinishLoadingPageNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideButtonBar) name:FUCatalogColumnCollectionViewCellScrollingDidStartNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showButtonBar) name:FUCatalogColumnCollectionViewCellScrollingDidFinishNotification object:nil];
+}
 
 - (void)hideButtonBar
 {
@@ -165,9 +167,9 @@
 {
     [sender animateScaling];
 
-    FUNavigationController *findNavigationController = [[FUNavigationController alloc] initWithRootViewController:[FUFindViewController new]];
-    
-    [self.navigationController presentViewController:findNavigationController animated:YES completion:nil];
+    FUNavigationController *searchNavigationController = [[FUNavigationController alloc] initWithRootViewController:[FUSearchViewController new]];
+
+    [self.navigationController presentViewController:searchNavigationController animated:YES completion:nil];
 }
 
 - (void)wishlistButtonTapped:(UIButton *)sender

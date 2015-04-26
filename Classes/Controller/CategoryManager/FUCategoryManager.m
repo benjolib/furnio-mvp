@@ -18,6 +18,12 @@ NSString *const FUCategoryManagerDidFinishLoadingCategories = @"FUCategoryManage
 
 @property (strong, nonatomic) FUCategoryList *categoryList;
 
+@property (strong, nonatomic) NSMutableOrderedSet *categoryNameSet;
+
+@property (strong, nonatomic) NSMutableDictionary *categoryDictionary;
+
+@property (strong, nonatomic) NSArray *categoryNames;
+
 @property (assign, nonatomic) BOOL isLoading;
 
 @end
@@ -47,12 +53,24 @@ NSString *const FUCategoryManagerDidFinishLoadingCategories = @"FUCategoryManage
     self = [super init];
     
     if (self) {
+        self.categoryNameSet = [NSMutableOrderedSet orderedSet];
+        self.categoryDictionary = [NSMutableDictionary dictionary];
+
         [self loadCategories];
     }
 
     return self;
 }
 
+#pragma mark - Public
+
+- (void)registerCategory:(FUCategory *)category
+{
+    if (category.name.length > 0) {
+        [self.categoryNameSet addObject:category.name];
+        [self.categoryDictionary setObject:category forKey:category.name];
+    }
+}
 
 #pragma mark - Private
 
@@ -73,6 +91,27 @@ NSString *const FUCategoryManagerDidFinishLoadingCategories = @"FUCategoryManage
 
         self.isLoading = NO;
     }];
+}
+
+- (NSArray *)categoryNames
+{
+    if (!_categoryNames) {
+        _categoryNames = self.categoryNameSet.array;
+    }
+    
+    return _categoryNames;
+}
+
+- (NSArray *)categoryNamesMatchingSearchQuery:(NSString *)searchQuery
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS %@", searchQuery];
+
+    return [self.categoryNames filteredArrayUsingPredicate:predicate];
+}
+
+- (FUCategory *)categoryForName:(NSString *)categoryName
+{
+    return [self.categoryDictionary objectForKey:categoryName];
 }
 
 @end

@@ -19,5 +19,6 @@
 @property (strong, nonatomic) NSString *depth;
 @property (strong, nonatomic) NSString *height;
 @property (strong, nonatomic) NSString *width;
+@property (strong, nonatomic) NSString *style;
 
 @end

@@ -10,6 +10,9 @@
 #import "FUProduct.h"
 #import "FUNotifyManager.h"
 #import "FUColorConstants.h"
+#import "FUTrackingManager.h"
+#import "FUWishlistViewController.h"
+#import "FUProductDetailPageViewController.h"
 
 #import <SDWebImageManager.h>
 #import <AQSFacebookActivity.h>
@@ -100,22 +103,43 @@ static NSUInteger finishedCount;
         NSString *message;
         UIColor *backgroundColor;
         
+        NSString *messageSuffix = products.count > 1 ? @"s" : @"";
+
         if (completed) {
-            message = @"Successfully shared product.";
+            message = @"Successfully shared product";
             backgroundColor = FUColorLightGreen;
             
+            [self trackSharingSuccessWithProducts:products viewController:viewController];
+
             [[NSNotificationCenter defaultCenter] postNotificationName:FUSharingManagerDidShareWithSuccessNotification object:nil];
         } else {
-            message = @"Couldn't share product.";
+            message = @"Couldn't share product";
             backgroundColor = FUColorLightRed;
         }
         
+        message = [message stringByAppendingString:messageSuffix];
+
         [[FUNotifyManager sharedManager] showMessageWithText:message backgroundColor:backgroundColor hideAfterTimeInterval:3.0f];
         
         NSLog(@"%@ completed: %@", activityType, completed ? @"YES" : @"NO");
     };
     
     [viewController presentViewController:activityController animated:YES completion:nil];
+}
+
++ (void)trackSharingSuccessWithProducts:(NSArray *)products viewController:(UIViewController *)viewController
+{
+    if ([viewController isKindOfClass:[FUWishlistViewController class]]) {
+        for (FUProduct *product in products) {
+            [[FUTrackingManager sharedManager] trackWishlistShareProduct:product];
+        }
+    }
+    
+    else if ([viewController isKindOfClass:[FUProductDetailPageViewController class]]) {
+        for (FUProduct *product in products) {
+            [[FUTrackingManager sharedManager] trackPDPShareProduct:product];
+        }
+    }
 }
 
 @end
