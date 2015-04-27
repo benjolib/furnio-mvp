@@ -81,7 +81,7 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
         }
     }
     
-    NSLog(@"Count products: %lu, count filteredProducts: %lu", [self.products count], [self.filteredProducts count]);
+    NSLog(@"Count products: %@, count filteredProducts: %@", @(self.products.count), @(self.filteredProducts.count));
 }
 
 //TODO: use filteredProducts for most other methods in this class
