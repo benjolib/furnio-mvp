@@ -204,6 +204,8 @@ static CGFloat const FUSearchViewControllerCategoriesDefaultTop = 88;
 
 - (void)setupAutoCompleteTextField
 {
+    self.searchTextField.layer.borderColor = FUColorOrange.CGColor;
+
     self.searchTextField.showTextFieldDropShadowWhenAutoCompleteTableIsOpen = NO;
     self.searchTextField.maximumNumberOfAutoCompleteRows = 7;
     self.searchTextField.reverseAutoCompleteSuggestionsBoldEffect = YES;
