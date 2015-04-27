@@ -157,7 +157,7 @@
     NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     
     if (documentsDirectory) {
-        path = [documentsDirectory stringByAppendingPathComponent: @"wishlist.plist"];
+        path = [documentsDirectory stringByAppendingPathComponent:@"wishlist.plist"];
     }
     
     return path;

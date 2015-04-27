@@ -33,4 +33,6 @@ extern NSString *const FUCatalogColumnCollectionViewCellScrollingDidFinishNotifi
 
 @property (assign, nonatomic) FUCollectionViewMode viewMode;
 
+@property (weak, nonatomic) IBOutlet UICollectionView *verticalCollectionView;
+
 @end

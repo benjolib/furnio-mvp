@@ -75,6 +75,19 @@
     [self.view layoutIfNeeded];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if ([FUProductManager sharedManager].isDirty) {
+        [self.horizontalCollectionView reloadData];
+        
+        for (FUCatalogColumnCollectionViewCell *cell in self.horizontalCollectionView.visibleCells) {
+            [cell.verticalCollectionView reloadData];
+        }
+    }
+}
+
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];

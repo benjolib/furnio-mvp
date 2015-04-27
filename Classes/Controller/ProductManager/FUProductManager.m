@@ -14,6 +14,8 @@
 #import "FULoadingViewManager.h"
 #import "FUFilterManager.h"
 
+#import <UIKit/UIKit.h>
+
 
 static NSUInteger const FUProductManagerRowLimit = 20;
 
@@ -32,12 +34,21 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
 
 @property (copy, nonatomic) NSNumber *foundRows;
 
+@property (strong, nonatomic) NSMutableSet *removedProducts;
+
+@property (assign, nonatomic) BOOL isDirty;
+
 @end
 
 
 @implementation FUProductManager
 
 #pragma mark - Initialization
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 + (void)setup
 {
@@ -61,6 +72,10 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
     self = [super init];
     
     if (self) {
+        [self setupNotifications];
+
+        [self setupRemovedProducts];
+
         [self loadProducts];
     }
     
@@ -111,9 +126,13 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
     return nil;
 }
 
-- (void)removeProduct:(FUProduct *)product {
+- (void)removeProduct:(FUProduct *)product
+{
+    [self.removedProducts addObject:product.identifier];
+
+    self.isDirty = YES;
+
     [self.products removeObject:product];
-    //TODO: make sure this product is not shown again if it is loaded again from the server
 }
 
 - (void)addProduct:(FUProduct *)product {
@@ -126,6 +145,11 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
     if (!nextProduct) {
         nextProduct = [self productAtIndex:0];
     }
+    
+    if ([self.removedProducts containsObject:nextProduct.identifier]) {
+        nextProduct = [self nextProduct:nextProduct];
+    }
+
     return nextProduct;
 }
 
@@ -182,6 +206,27 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
     }
 }
 
+#pragma mark - Notifications
+
+- (void)setupNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveRemovedProductIds) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveRemovedProductIds) name:UIApplicationWillTerminateNotification object:nil];
+}
+
+- (void)saveRemovedProductIds
+{
+    if (!self.isDirty) {
+        return;
+    }
+
+    BOOL success = [NSKeyedArchiver archiveRootObject:self.removedProducts toFile:[self pathForRemovedProducts]];
+    
+    if (success) {
+        self.isDirty = NO;
+    }
+}
+
 #pragma mark - Getter
 
 - (NSUInteger)currentOffset
@@ -218,14 +263,23 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
     
     _searchQuery = searchQuery;
     
-    if (searchQuery.length > 0) {
-        [FULoadingViewManager sharedManger].text = @"SEARCHING PRODUCTS";
-    }
-    
     [self loadProducts];
 }
 
 #pragma mark - Private
+
+- (void)setupRemovedProducts
+{
+    NSSet *removedProducts = [NSKeyedUnarchiver unarchiveObjectWithFile:[self pathForRemovedProducts]];
+    
+    if (!removedProducts) {
+        self.removedProducts = [NSMutableSet set];
+    } else {
+        self.removedProducts = [removedProducts mutableCopy];
+    }
+
+    self.isDirty = NO;
+}
 
 - (void)loadProducts
 {
@@ -260,7 +314,11 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
     [JSONHTTPClient getJSONFromURLWithString:FUAPIProducts params:parameters completion:^(id json, JSONModelError *error) {
         FUProductList *productList = [[FUProductList alloc] initWithDictionary:json error:&error];
 
-        [self.products addObjectsFromArray:productList.products];
+        for (FUProduct *product in productList.products) {
+            if (![self.removedProducts containsObject:product.identifier]) {
+                [self.products addObject:product];
+            }
+        }
 
         self.foundRows = productList.totalCount;
 
@@ -272,6 +330,21 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
         
         self.isLoading = NO;
     }];
+}
+
+#pragma mark - Helper
+
+- (NSString *)pathForRemovedProducts
+{
+    NSString *path;
+    
+    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    
+    if (documentsDirectory) {
+        path = [documentsDirectory stringByAppendingPathComponent:@"removed.plist"];
+    }
+
+    return path;
 }
 
 @end

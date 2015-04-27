@@ -22,8 +22,6 @@ NSString *const FUCatalogColumnCollectionViewCellScrollingDidFinishNotification 
 
 @interface FUCatalogColumnCollectionViewCell () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
-@property (weak, nonatomic) IBOutlet UICollectionView *verticalCollectionView;
-
 @end
 
 

@@ -21,6 +21,8 @@ extern NSString *const FUProductManagerWillStartLoadingPageNotification;
 
 @property (strong, nonatomic) NSString *searchQuery;
 
+@property (assign, nonatomic, readonly) BOOL isDirty;
+
 + (void)setup;
 
 + (instancetype)sharedManager;
