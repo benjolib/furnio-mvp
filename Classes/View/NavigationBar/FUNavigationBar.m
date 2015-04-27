@@ -193,12 +193,15 @@ static const CGFloat FUNavigationBarButtonHitMargin = 5;
         self.titleLabel = nil;
     }
 
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    CGFloat margin = FUNavigationBarBackButtonMarginX + FUNavigationBarButtonDimension + 10;
+
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(margin, 0, self.frame.size.width - (2 * margin), self.frame.size.height)];
 
     self.titleLabel.text = self.title;
     self.titleLabel.font = FUFontNavigationTitle;
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.textColor = FUColorDarkGray;
+    self.titleLabel.adjustsFontSizeToFitWidth = YES;
 
     [self addSubview:self.titleLabel];
 }
