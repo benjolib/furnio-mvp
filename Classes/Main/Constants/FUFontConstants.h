@@ -34,4 +34,8 @@
 #define FUFontSearchListRegular FUFontAvenirLight(14)
 #define FUFontSearchListBold FUFontAvenirBold(14)
 
+#define FUFontRateAppTitle FUFontAvenirBold(20)
+#define FUFontRateAppMessage FUFontAvenirLight(18)
+#define FUFontRateAppCancel FUFontAvenirLight(14)
+
 #endif

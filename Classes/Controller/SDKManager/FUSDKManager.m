@@ -9,6 +9,7 @@
 #import "FUSDKManager.h"
 
 #import "FUSDKConstants.h"
+#import "FUAppirater.h"
 
 #import <AFNetworkActivityIndicatorManager.h>
 #import <AFNetworkReachabilityManager.h>
@@ -24,6 +25,7 @@
 {
     [self setupAFNetworking];
     [self setupAdjust];
+    [self setupAppirater];
 }
 
 + (instancetype)sharedManager
@@ -34,7 +36,7 @@
     dispatch_once(&onceToken, ^{
         instance = [FUSDKManager new];
     });
-    
+
     return instance;
 }
 
@@ -66,6 +68,17 @@
     adjustConfig.eventBufferingEnabled = eventBufferingEnabled;
 
     [Adjust appDidLaunch:adjustConfig];
+}
+
++ (void)setupAppirater
+{
+    [FUAppirater setAppId:FUSDKAppId];
+    [FUAppirater setDaysUntilPrompt:0];
+    [FUAppirater setTimeBeforeReminding:0];
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [FUAppirater appLaunched:YES];
+    });
 }
 
 @end

@@ -20,6 +20,7 @@
 #import "FULoadingViewManager.h"
 #import "FUProductManager.h"
 #import "FUCategoryManager.h"
+#import "FUAppirater.h"
 
 
 @implementation FUAppDelegate
@@ -50,6 +51,13 @@
     self.window.rootViewController = [[FUNavigationController alloc] initWithRootViewController:[FUCatalogViewController new]];
     
     [self.window makeKeyAndVisible];
+}
+
+#pragma mark - UIApplicationDelegate
+
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+    [FUAppirater appEnteredForeground:YES];
 }
 
 #pragma mark - Deep Linking

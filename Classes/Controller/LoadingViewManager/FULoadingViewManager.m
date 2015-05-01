@@ -9,6 +9,7 @@
 #import "FULoadingViewManager.h"
 
 #import "FULoadingView.h"
+#import "FUAppirater.h"
 
 #import <UIKit/UIKit.h>
 
