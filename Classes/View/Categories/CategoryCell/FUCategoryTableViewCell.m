@@ -13,11 +13,16 @@
 
 NSString *const FUCategoryTableViewCellReuseIdentifier = @"FUCategoryTableViewCellReuseIdentifier";
 
+static CGFloat const FUCategoryTableViewCellAccessoryViewDefaultTrailingSpace = 8;
+
 @interface FUCategoryTableViewCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *categoryAccessoryView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *categoryAccessoryViewTrailingSpaceConstraint;
+
 
 @end
 
@@ -40,7 +45,7 @@ NSString *const FUCategoryTableViewCellReuseIdentifier = @"FUCategoryTableViewCe
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
 {
     [UIView animateWithDuration:0.35f animations:^{
-        CGFloat alpha = highlighted ? 0.65f : 0;
+        CGFloat alpha = highlighted ? 0.5f : 0;
 
         self.backgroundColor = [FUColorOrange colorWithAlphaComponent:alpha];
     }];
@@ -72,14 +77,13 @@ NSString *const FUCategoryTableViewCellReuseIdentifier = @"FUCategoryTableViewCe
     _isAllProductsCell = isAllProductsCell;
     
     if (isAllProductsCell) {
-        self.categoryAccessoryView.image = [[UIImage imageNamed:@"double-arrow"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        self.categoryAccessoryView.tintColor = FUColorDarkGray;
-        self.categoryAccessoryView.transform = CGAffineTransformMakeRotation(-M_PI/2);
-        self.categoryAccessoryView.contentMode = UIViewContentModeCenter;
+        self.categoryAccessoryView.image = [UIImage imageNamed:@"double-arrow"];
+        self.categoryAccessoryView.transform = CGAffineTransformIdentity;
+        self.categoryAccessoryViewTrailingSpaceConstraint.constant = FUCategoryTableViewCellAccessoryViewDefaultTrailingSpace + 3;
     } else {
         self.categoryAccessoryView.image = [UIImage imageNamed:@"back"];
         self.categoryAccessoryView.transform = CGAffineTransformMakeRotation(M_PI);
-        self.categoryAccessoryView.contentMode = UIViewContentModeScaleAspectFit;
+        self.categoryAccessoryViewTrailingSpaceConstraint.constant = FUCategoryTableViewCellAccessoryViewDefaultTrailingSpace;
     }
 }
 

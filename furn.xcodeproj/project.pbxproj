@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		280F94CF1AF41E0B00BA74E9 /* FUSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 280F94CE1AF41E0B00BA74E9 /* FUSearchTableViewCell.m */; };
 		28117C1B1AD5B89A007C8DB9 /* FUNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 28117C1A1AD5B89A007C8DB9 /* FUNumberFormatter.m */; };
 		28117C211AD67EA1007C8DB9 /* FUImagePrefetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 28117C201AD67EA1007C8DB9 /* FUImagePrefetcher.m */; };
 		28117C241AD68B8B007C8DB9 /* FUProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 28117C231AD68B8B007C8DB9 /* FUProperties.m */; };
@@ -82,6 +83,8 @@
 
 /* Begin PBXFileReference section */
 		18D533805E87A3931D40AA63 /* Pods.ad-hoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods.ad-hoc.xcconfig"; path = "Pods/Target Support Files/Pods/Pods.ad-hoc.xcconfig"; sourceTree = "<group>"; };
+		280F94CD1AF41E0B00BA74E9 /* FUSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUSearchTableViewCell.h; sourceTree = "<group>"; };
+		280F94CE1AF41E0B00BA74E9 /* FUSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUSearchTableViewCell.m; sourceTree = "<group>"; };
 		28117C191AD5B89A007C8DB9 /* FUNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUNumberFormatter.h; sourceTree = "<group>"; };
 		28117C1A1AD5B89A007C8DB9 /* FUNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUNumberFormatter.m; sourceTree = "<group>"; };
 		28117C1F1AD67EA1007C8DB9 /* FUImagePrefetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUImagePrefetcher.h; sourceTree = "<group>"; };
@@ -343,6 +346,8 @@
 				28140EF01AE4150300359EAA /* FUSearchViewController.xib */,
 				28140EF71AE450B900359EAA /* FUSearchTextField.h */,
 				28140EF81AE450B900359EAA /* FUSearchTextField.m */,
+				280F94CD1AF41E0B00BA74E9 /* FUSearchTableViewCell.h */,
+				280F94CE1AF41E0B00BA74E9 /* FUSearchTableViewCell.m */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -970,6 +975,7 @@
 				2815EAB51AC843F300F97AEF /* main.m in Sources */,
 				2815EB031AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.m in Sources */,
 				2815EAFC1AC85DE600F97AEF /* FUCatalogCollectionViewCell.m in Sources */,
+				280F94CF1AF41E0B00BA74E9 /* FUSearchTableViewCell.m in Sources */,
 				5E943BFD1AEC075F004012F5 /* FUFilterViewController.m in Sources */,
 				28140EF11AE4150300359EAA /* FUSearchViewController.m in Sources */,
 				28B0E5C11AD7E63100C0932E /* FUWishlistManager.m in Sources */,

@@ -16,6 +16,7 @@
 #import "FUCategoryList.h"
 #import "FUCategoryTableViewCell.h"
 #import "FUCategoriesViewController.h"
+#import "FUSearchTableViewCell.h"
 
 static CGFloat const FUSearchViewControllerCategoriesDefaultTop = 88;
 
@@ -126,6 +127,7 @@ static CGFloat const FUSearchViewControllerCategoriesDefaultTop = 88;
 - (BOOL)autoCompleteTextField:(MLPAutoCompleteTextField *)textField shouldConfigureCell:(UITableViewCell *)cell withAutoCompleteString:(NSString *)autocompleteString withAttributedString:(NSAttributedString *)boldedString forAutoCompleteObject:(id<MLPAutoCompletionObject>)autocompleteObject forRowAtIndexPath:(NSIndexPath *)indexPath
 {
      [self.view bringSubviewToFront:self.searchButton];
+    
 
     return YES;
 }
@@ -219,6 +221,8 @@ static CGFloat const FUSearchViewControllerCategoriesDefaultTop = 88;
     self.searchTextField.autoCompleteTableCellTextColor = FUColorLightGray;
     self.searchTextField.autoCompleteTableCellBackgroundColor = [UIColor whiteColor];
     self.searchTextField.autoCompleteTableBorderColor = FUColorOrange;
+    
+    [self.searchTextField registerAutoCompleteCellClass:[FUSearchTableViewCell class] forCellReuseIdentifier:FUSearchTableViewCellReuseIdentifier];    
 }
 
 - (void)autoCompleteTextField:(MLPAutoCompleteTextField *)textField willShowAutoCompleteTableView:(UITableView *)autoCompleteTableView
