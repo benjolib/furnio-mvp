@@ -96,6 +96,7 @@
 		280F94D91AF4269D00BA74E9 /* UIView+FUAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FUAnimations.m"; sourceTree = "<group>"; };
 		280F94DB1AF426B900BA74E9 /* UIView+Framing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Framing.h"; sourceTree = "<group>"; };
 		280F94DC1AF426B900BA74E9 /* UIView+Framing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Framing.m"; sourceTree = "<group>"; };
+		280F94DF1AF4369400BA74E9 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		28117C191AD5B89A007C8DB9 /* FUNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUNumberFormatter.h; sourceTree = "<group>"; };
 		28117C1A1AD5B89A007C8DB9 /* FUNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUNumberFormatter.m; sourceTree = "<group>"; };
 		28117C1F1AD67EA1007C8DB9 /* FUImagePrefetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUImagePrefetcher.h; sourceTree = "<group>"; };
@@ -273,6 +274,14 @@
 				280F94DC1AF426B900BA74E9 /* UIView+Framing.m */,
 			);
 			path = UIView;
+			sourceTree = "<group>";
+		};
+		280F94DE1AF4366D00BA74E9 /* PrefixHeader */ = {
+			isa = PBXGroup;
+			children = (
+				280F94DF1AF4369400BA74E9 /* PrefixHeader.pch */,
+			);
+			path = PrefixHeader;
 			sourceTree = "<group>";
 		};
 		28117C181AD5B889007C8DB9 /* Helper */ = {
@@ -482,6 +491,7 @@
 		2815EAE01AC8470D00F97AEF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				280F94DE1AF4366D00BA74E9 /* PrefixHeader */,
 				28362DFA1AD48694000B4E99 /* Data */,
 				2815EAE41AC8474F00F97AEF /* main */,
 				2815EAE31AC8473F00F97AEF /* plist */,
@@ -1133,6 +1143,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Resources/PrefixHeader/PrefixHeader.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/plist/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1149,6 +1161,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Resources/PrefixHeader/PrefixHeader.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/plist/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1202,6 +1216,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Resources/PrefixHeader/PrefixHeader.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/plist/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

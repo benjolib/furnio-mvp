@@ -1,0 +1,16 @@
+//
+//  PrefixHeader.pch
+//  furn
+//
+//  Created by Markus Bösch on 02/05/15.
+//
+//
+
+#ifndef furn_PrefixHeader_pch
+#define furn_PrefixHeader_pch
+
+#if !DEBUG
+#define NSLog(...)
+#endif
+
+#endif
