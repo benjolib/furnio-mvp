@@ -100,7 +100,6 @@
 - (void)configureLoadingView
 {
     [FULoadingViewManager sharedManger].text = @"LOADING PRODUCTS";
-    [FULoadingViewManager sharedManger].allowLoadingView = YES;
 }
 
 - (void)configureNavigationBar

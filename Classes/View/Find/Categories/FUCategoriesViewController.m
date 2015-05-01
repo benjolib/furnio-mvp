@@ -77,7 +77,6 @@
 - (void)configureLoadingView
 {
     [FULoadingViewManager sharedManger].text = @"LOADING CATEGORIES";
-    [FULoadingViewManager sharedManger].allowLoadingView = YES;
 }
 
 #pragma mark - UITableViewDataSource

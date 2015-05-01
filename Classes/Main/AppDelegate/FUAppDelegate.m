@@ -73,21 +73,4 @@
     return YES;
 }
 
-#pragma mark - Debug
-
-#if 0
-
-- (void)printAllFonts
-{
-    for (NSString *family in [UIFont familyNames]) {
-        NSLog(@"%@", family);
-        
-        for (NSString *name in [UIFont fontNamesForFamilyName:family]) {
-            NSLog(@"  %@", name);
-        }
-    }
-}
-
-#endif
-
 @end
