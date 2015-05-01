@@ -11,7 +11,8 @@
 
 #import <JSONHTTPClient.h>
 
-#define FUAPIBaseURL @"http://r1.runashop.com"
+#define FUAPIBaseURL @"http://api-furnio.makers.do"
+
 #define FUAPIEndpoint(endpoint) [FUAPIBaseURL stringByAppendingString:endpoint]
 
 #define FUAPIProducts FUAPIEndpoint(@"/products/list")
