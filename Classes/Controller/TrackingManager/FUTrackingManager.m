@@ -16,6 +16,8 @@
 
 #import <Adjust.h>
 
+#define DEPLOY_CALLBACK_PARAMETERS 0
+
 @implementation FUTrackingManager
 
 #pragma mark - Initialization
@@ -92,6 +94,7 @@
 
     ADJEvent *event = [ADJEvent eventWithEventToken:token];
     
+#if DEPLOY_CALLBACK_PARAMETERS
     if (product) {
         NSMutableDictionary *callbackParameters = [self callbackParametersWithProduct:product];
         
@@ -99,7 +102,8 @@
             [event addCallbackParameter:key value:value];
         }];
     }
-    
+#endif
+
     if (revenue && revenue.doubleValue > 0) {
         [event setRevenue:revenue.doubleValue currency:@"USD"];
     }
@@ -111,21 +115,23 @@
 {
     ADJEvent *event = [ADJEvent eventWithEventToken:token];
     
+#if DEPLOY_CALLBACK_PARAMETERS
     NSMutableDictionary *callbackParameters = [self callbackParametersWithViewMode:viewMode];
     
     [callbackParameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
         [event addCallbackParameter:key value:value];
     }];
-    
+#endif
+
     [Adjust trackEvent:event];
 }
 
-#pragma mark - Callback Parameters
+#pragma mark - Callback Parameters (not in use)
 
 - (NSMutableDictionary *)callbackParametersWithProduct:(FUProduct *)product
 {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    
+
     [dictionary setTrackingValue:product.name forKey:@"product_name"];
     [dictionary setTrackingValue:product.identifier forKey:@"product_sku"];
     [dictionary setTrackingValue:product.price.stringValue forKey:@"product_price"];
