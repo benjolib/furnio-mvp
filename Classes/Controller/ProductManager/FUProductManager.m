@@ -28,6 +28,11 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
 
 @property (strong, nonatomic) NSMutableArray *products;
 
+@property (strong, nonatomic) NSMutableArray *previousProducts;
+@property (strong, nonatomic) FUCategory *previousCategory;
+@property (strong, nonatomic) NSString *previousSearchQuery;
+@property (strong, nonatomic) NSNumber *previousFoundRows;
+
 @property (strong, nonatomic) NSMutableArray *filteredProducts;
 
 @property (assign, nonatomic) BOOL isLoading;
@@ -195,15 +200,42 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
 
 - (void)resetAndLoad:(BOOL)load
 {
-    _category = nil;
-    _searchQuery = nil;
-    _foundRows = @0;
+    if (self.products.count > 0) {
+        [self saveCurrentState];
+    }
 
     [self.products removeAllObjects];
 
     if (load) {
-        [self loadProducts];
+        if (self.previousProducts.count > 0) {
+            [self restorePreviousState];
+        } else {
+            [self loadProducts];
+        }
     }
+}
+
+- (void)saveCurrentState
+{
+    _previousProducts = [self.products mutableCopy];
+    _previousCategory = [self.category copy];
+    _previousSearchQuery = [self.searchQuery copy];
+    _previousFoundRows = [self.foundRows copy];
+}
+
+- (void)restorePreviousState
+{
+    _products = [self.previousProducts mutableCopy];
+    _category = [self.previousCategory copy];
+    _searchQuery = [self.previousSearchQuery copy];
+    _foundRows = [self.previousFoundRows copy];
+    
+    _previousProducts = nil;
+    _previousCategory = nil;
+    _previousSearchQuery = nil;
+    _previousFoundRows = nil;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:FUProductManagerDidFinishLoadingPageNotification object:nil];
 }
 
 #pragma mark - Notifications
