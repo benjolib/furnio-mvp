@@ -8,11 +8,15 @@
 
 #import "FUCatalogEmptyCollectionViewCell.h"
 
+#import "FUActionButton.h"
+
 NSString *const FUCatalogEmptyCollectionViewCellReuseIdentifier = @"FUCatalogEmptyCollectionViewCellReuseIdentifier";
 
 @interface FUCatalogEmptyCollectionViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *emptyImageView;
+
+@property (weak, nonatomic) IBOutlet FUActionButton *goBackButton;
 
 @end
 

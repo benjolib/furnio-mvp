@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1077" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14A379a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,19 +14,22 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="498"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8oi-7g-S3W" userLabel="emptyImageView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="204"/>
+                        <rect key="frame" x="0.0" y="88" width="320" height="204"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="204" id="wf2-dd-v7g"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO PRODUCTS FOUND." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfc-qA-Hv0">
-                        <rect key="frame" x="47" y="268" width="225" height="28"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Products found." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfc-qA-Hv0">
+                        <rect key="frame" x="73" y="356" width="174" height="28"/>
                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
                         <color key="textColor" red="0.35686274509999999" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="deviceRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXN-1t-OIx" customClass="FUActionButton">
-                        <rect key="frame" x="126" y="404" width="69" height="30"/>
+                        <rect key="frame" x="15" y="374" width="290" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="XjA-ZL-bKg"/>
+                        </constraints>
                         <state key="normal" title="GO BACK">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -39,15 +42,17 @@
             </view>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="xfc-qA-Hv0" secondAttribute="centerX" id="16U-ns-71J"/>
-                <constraint firstAttribute="centerX" secondItem="dXN-1t-OIx" secondAttribute="centerX" id="NNv-no-xzP"/>
                 <constraint firstAttribute="trailing" secondItem="8oi-7g-S3W" secondAttribute="trailing" id="OG9-Ig-FJA"/>
                 <constraint firstItem="8oi-7g-S3W" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Osd-uz-lfq"/>
+                <constraint firstItem="dXN-1t-OIx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="aj1-qZ-se0"/>
                 <constraint firstItem="xfc-qA-Hv0" firstAttribute="top" secondItem="8oi-7g-S3W" secondAttribute="bottom" constant="64" id="bLD-WU-GGs"/>
                 <constraint firstAttribute="bottom" secondItem="dXN-1t-OIx" secondAttribute="bottom" constant="64" id="dft-JQ-31g"/>
-                <constraint firstItem="8oi-7g-S3W" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="tFf-gs-vZx"/>
+                <constraint firstAttribute="trailing" secondItem="dXN-1t-OIx" secondAttribute="trailing" constant="15" id="laz-Z9-fBX"/>
+                <constraint firstItem="8oi-7g-S3W" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="88" id="tFf-gs-vZx"/>
             </constraints>
             <connections>
                 <outlet property="emptyImageView" destination="8oi-7g-S3W" id="mdX-zA-wFM"/>
+                <outlet property="goBackButton" destination="dXN-1t-OIx" id="x7o-un-1ay"/>
             </connections>
         </collectionViewCell>
     </objects>

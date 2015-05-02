@@ -80,6 +80,7 @@
 - (void)setupButton
 {
     self.titleLabel.font = FUFontButtonTitle;
+    self.titleLabel.adjustsFontSizeToFitWidth = YES;
     
     self.layer.borderColor = FUColorOrange.CGColor;
     self.layer.borderWidth = 1.5f;
