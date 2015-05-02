@@ -60,6 +60,7 @@ static CGFloat const FUAlertViewContainerPadding = 60;
         self.blurView = [[FXBlurView alloc] initWithFrame:self.frame];
         self.blurView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
         self.blurView.blurRadius = 40.0f;
+        self.blurView.updateInterval = 0.1;
         
         [self addSubview:self.blurView];
         
