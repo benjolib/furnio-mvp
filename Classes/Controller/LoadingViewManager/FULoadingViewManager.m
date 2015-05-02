@@ -55,6 +55,8 @@ static NSString *const FULoadingViewManagerIndicatorKeyPath = @"networkActivityI
     self = [super init];
     
     if (self) {
+        self.allowLoadingView = YES;
+
         [self setupObservers];
     }
 
