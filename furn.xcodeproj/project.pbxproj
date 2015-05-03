@@ -86,6 +86,8 @@
 		28CB92EB1AED8F6B003C279B /* NSMutableDictionary+Tracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CB92EA1AED8F6B003C279B /* NSMutableDictionary+Tracking.m */; };
 		33F237418860FD871BBB6843 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70434F8189787034BBDD21B6 /* libPods.a */; };
 		5E6626ED1AF6661E00C25907 /* slider-orange-track.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E6626EC1AF6661E00C25907 /* slider-orange-track.png */; };
+		5E6626F21AF6678500C25907 /* FUSortingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6626F01AF6678500C25907 /* FUSortingViewController.m */; };
+		5E6626F31AF6678500C25907 /* FUSortingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E6626F11AF6678500C25907 /* FUSortingViewController.xib */; };
 		5E943BEB1AEBD5E7004012F5 /* FUProductAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E943BEA1AEBD5E7004012F5 /* FUProductAction.m */; };
 		5E943BF21AEBD9D3004012F5 /* FUProductDetailBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E943BF01AEBD9D3004012F5 /* FUProductDetailBrowserViewController.m */; };
 		5E943BF31AEBD9D3004012F5 /* FUProductDetailBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E943BF11AEBD9D3004012F5 /* FUProductDetailBrowserViewController.xib */; };
@@ -241,6 +243,9 @@
 		28CB92E91AED8F6B003C279B /* NSMutableDictionary+Tracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Tracking.h"; sourceTree = "<group>"; };
 		28CB92EA1AED8F6B003C279B /* NSMutableDictionary+Tracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Tracking.m"; sourceTree = "<group>"; };
 		5E6626EC1AF6661E00C25907 /* slider-orange-track.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider-orange-track.png"; sourceTree = "<group>"; };
+		5E6626EF1AF6678500C25907 /* FUSortingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUSortingViewController.h; path = Classes/View/Sorting/FUSortingViewController.h; sourceTree = SOURCE_ROOT; };
+		5E6626F01AF6678500C25907 /* FUSortingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUSortingViewController.m; path = Classes/View/Sorting/FUSortingViewController.m; sourceTree = SOURCE_ROOT; };
+		5E6626F11AF6678500C25907 /* FUSortingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FUSortingViewController.xib; path = Classes/View/Sorting/FUSortingViewController.xib; sourceTree = SOURCE_ROOT; };
 		5E943BE91AEBD5E7004012F5 /* FUProductAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUProductAction.h; path = ProductDetailPage/FUProductAction.h; sourceTree = "<group>"; };
 		5E943BEA1AEBD5E7004012F5 /* FUProductAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUProductAction.m; path = ProductDetailPage/FUProductAction.m; sourceTree = "<group>"; };
 		5E943BEF1AEBD9D3004012F5 /* FUProductDetailBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUProductDetailBrowserViewController.h; path = ProductDetailPage/FUProductDetailBrowserViewController.h; sourceTree = "<group>"; };
@@ -654,6 +659,7 @@
 		2815EAEF1AC8548C00F97AEF /* Catalog */ = {
 			isa = PBXGroup;
 			children = (
+				5E6626EE1AF6676000C25907 /* Sorting */,
 				28140EE71AE160E000359EAA /* CatalogEmptyCell */,
 				2815EAFF1AC85E7900F97AEF /* CatalogColumnCell */,
 				2815EAFE1AC85DED00F97AEF /* CatalogCell */,
@@ -913,6 +919,16 @@
 			path = NSMutableDictionary;
 			sourceTree = "<group>";
 		};
+		5E6626EE1AF6676000C25907 /* Sorting */ = {
+			isa = PBXGroup;
+			children = (
+				5E6626EF1AF6678500C25907 /* FUSortingViewController.h */,
+				5E6626F01AF6678500C25907 /* FUSortingViewController.m */,
+				5E6626F11AF6678500C25907 /* FUSortingViewController.xib */,
+			);
+			name = Sorting;
+			sourceTree = "<group>";
+		};
 		5E943BF91AEC0709004012F5 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
@@ -1013,6 +1029,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E6626F31AF6678500C25907 /* FUSortingViewController.xib in Resources */,
 				5E6626ED1AF6661E00C25907 /* slider-orange-track.png in Resources */,
 				280F94E91AF55B7400BA74E9 /* FUOnboardingBaseViewController.xib in Resources */,
 				2815EAF41AC8564400F97AEF /* FUCatalogViewController.xib in Resources */,
@@ -1135,6 +1152,7 @@
 				28362E011AD5207B000B4E99 /* FUProductList.m in Sources */,
 				5E943C0C1AECFB8D004012F5 /* FUFilterDetailViewController.m in Sources */,
 				28CB92E71AED8CFC003C279B /* FUTrackingManager.m in Sources */,
+				5E6626F21AF6678500C25907 /* FUSortingViewController.m in Sources */,
 				28B0E5CA1AD8047600C0932E /* FUWishlistEmptyCollectionViewCell.m in Sources */,
 				280F94EC1AF56F2800BA74E9 /* FUOnboardingNavigationController.m in Sources */,
 				280F950B1AF5C39600BA74E9 /* FUOnboardingAreaStyleViewController.m in Sources */,

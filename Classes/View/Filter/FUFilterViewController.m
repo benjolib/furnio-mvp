@@ -201,6 +201,7 @@
 - (IBAction)applyFilter:(id)sender {
     [[FUFilterManager sharedManager] saveAllFilterItems:self.allFilterItems];
     [[FUProductManager sharedManager] filterProducts];
+    [[FUProductManager sharedManager] sortProducts];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 

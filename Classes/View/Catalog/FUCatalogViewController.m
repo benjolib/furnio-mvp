@@ -22,6 +22,7 @@
 #import "FUFilterViewController.h"
 #import "UIImage+ImageEffects.h"
 #import "FUOnboardingManager.h"
+#import "FUSortingViewController.h"
 
 @interface FUCatalogViewController () <FUCollectionViewDelegate>
 
@@ -182,7 +183,14 @@
 
 - (IBAction)sortButtonTapped:(id)sender
 {
-    // TODO: Attach Sort VC here
+    FUSortingViewController *sortingViewController = [FUSortingViewController new];
+    FUNavigationController *sortingNavigationViewController = [[FUNavigationController alloc] initWithRootViewController:sortingViewController];
+    
+    UIImage* imageOfUnderlyingView = [self convertViewToImage];
+    imageOfUnderlyingView = [imageOfUnderlyingView applyBlurWithRadius:20 tintColor:[UIColor colorWithWhite:1.0 alpha:0.6] saturationDeltaFactor:1.8 maskImage:nil];
+    sortingViewController.view.backgroundColor = [UIColor colorWithPatternImage:imageOfUnderlyingView];
+    
+    [self.navigationController presentViewController:sortingNavigationViewController animated:YES completion:nil];
 }
 
 - (void)searchButtonTapped:(UIButton *)sender

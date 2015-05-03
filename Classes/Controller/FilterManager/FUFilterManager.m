@@ -28,6 +28,16 @@
     return instance;
 }
 
+- (NSString *)loadSortingString {
+    NSString *sortingString = [[NSUserDefaults standardUserDefaults] stringForKey:FUSortingKey];
+    return sortingString;
+}
+
+- (void)saveSortingString:(NSString *)sortingString {
+    [[NSUserDefaults standardUserDefaults] setValue:sortingString forKey:FUSortingKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 - (NSMutableDictionary *)loadAllFilterItems {
     NSDictionary *allFilterItems = [[NSUserDefaults standardUserDefaults] dictionaryForKey:FUFilterItemsKey];
     
@@ -141,6 +151,10 @@
             return NO;
         }
     }
+    
+    if(![self product:product matchesPrice:allFilterItems[FUFilterPriceKey]]) {
+        return NO;
+    }
 
     return YES;
 }
@@ -184,7 +198,7 @@
     NSUInteger maxPrice = [priceLimits[FUMaxPriceKey] integerValue];
     NSUInteger minPrice = [priceLimits[FUMinPriceKey] integerValue];
     
-    if (minPrice <= [product.price integerValue] <= maxPrice) {
+    if (minPrice <= [product.price integerValue] && [product.price integerValue] <= maxPrice) {
         return YES;
     }
     return NO;

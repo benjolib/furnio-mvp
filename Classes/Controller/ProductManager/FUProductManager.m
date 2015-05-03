@@ -89,8 +89,27 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
 
 #pragma mark - Public
 
+- (void)sortProducts {
+    //sort the filtered products
+    NSString *chosenSorting = [[FUFilterManager sharedManager] loadSortingString];
+    if(!chosenSorting) {
+        return;
+    }
+    
+    if([chosenSorting isEqualToString:FUSortingPriceHighToLow]) {
+        NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey: @"price" ascending: NO];
+        [self.filteredProducts sortUsingDescriptors:@[sort]];
+    }
+    else if([chosenSorting isEqualToString:FUSortingPriceLowToHigh]) {
+        NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey: @"price" ascending: YES];
+        [self.filteredProducts sortUsingDescriptors:@[sort]];
+    }
+    
+    //TODO implement the other sortings
+}
+
 - (void)filterProducts {
-    //TODO: also invoke this method at the start of the application and each time new products are load from the server
+    self.filteredProducts = [NSMutableArray array];
     
     FUFilterManager *filterManager = [FUFilterManager sharedManager];
     
@@ -104,15 +123,14 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
     NSLog(@"Count products: %@, count filteredProducts: %@", @(self.products.count), @(self.filteredProducts.count));
 }
 
-//TODO: use filteredProducts for most other methods in this class
 
 - (NSArray *)productsForColumnAtIndex:(NSInteger)index
 {
     NSInteger productStart = (index * FUProductManagerRowLimit);
     NSInteger productLimit = productStart + FUProductManagerRowLimit - 1;
     
-    if (productLimit < self.products.count) {
-        return [self.products subarrayWithRange:NSMakeRange(productStart, FUProductManagerRowLimit)];
+    if (productLimit < [self.filteredProducts count]) {
+        return [self.filteredProducts subarrayWithRange:NSMakeRange(productStart, FUProductManagerRowLimit)];
     }
     
     return nil;
@@ -120,12 +138,12 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
 
 - (FUProduct *)productAtIndex:(NSInteger)index
 {
-    if (index < self.products.count) {
-        if ((self.products.count - index) < FUProductManagerRowLimit && self.products.count < self.foundRows.integerValue) {
+    if (index < self.filteredProducts.count) {
+        if ((self.filteredProducts.count - index) < FUProductManagerRowLimit && self.filteredProducts.count < self.foundRows.integerValue) {
             [self loadProducts];
         }
 
-        return [self.products objectAtIndex:index];
+        return [self.filteredProducts objectAtIndex:index];
     }
 
     return nil;
@@ -138,6 +156,7 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
     self.isDirty = YES;
 
     [self.products removeObject:product];
+    [self.filteredProducts removeObject: product];
 }
 
 - (void)addProduct:(FUProduct *)product {
@@ -168,7 +187,7 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
 
 - (NSInteger)productCount
 {
-    return self.products.count;
+    return self.filteredProducts.count;
 }
 
 - (NSInteger)columnCount
@@ -351,6 +370,8 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
                 [self.products addObject:product];
             }
         }
+        
+        [self filterProducts];
 
         self.foundRows = productList.totalCount;
 

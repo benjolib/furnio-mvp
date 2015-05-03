@@ -21,11 +21,17 @@
 #define FUMinPriceDefaultValue @0
 #define FUMaxPriceDefaultValue @10000
 
+#define FUSortingKey @"FUSorting"
+
 @class FUProduct;
 
 @interface FUFilterManager : NSObject
 
 + (instancetype)sharedManager;
+
+- (NSString *)loadSortingString;
+- (void)saveSortingString:(NSString *)sortingString;
+
 - (NSMutableDictionary *)loadAllFilterItems;
 - (void)saveAllFilterItems:(NSDictionary *)allFilterItems;
 - (BOOL)isProductInFilter:(FUProduct *)product;
