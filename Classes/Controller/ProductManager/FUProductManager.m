@@ -360,7 +360,9 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
             [[NSNotificationCenter defaultCenter] postNotificationName:FUProductManagerDidFinishLoadingPageNotification object:nil];
         }
         
-        self.isLoading = NO;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.isLoading = NO;
+        });
     }];
 }
 
