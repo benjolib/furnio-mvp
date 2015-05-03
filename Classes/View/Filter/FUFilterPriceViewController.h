@@ -10,7 +10,6 @@
 
 @interface FUFilterPriceViewController : UIViewController
 
-//NSString (name) --> BOOL (activated)
 @property (nonatomic, strong) NSMutableDictionary *previousFilterItems;
 @property (nonatomic, strong) NSString *name;
 

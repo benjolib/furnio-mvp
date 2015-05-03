@@ -7,6 +7,8 @@
 //
 
 #import "FUFilterDetailViewController.h"
+#import "FUFontConstants.h"
+#import "FUColorConstants.h"
 
 @interface FUFilterDetailViewController ()
 
@@ -35,16 +37,38 @@
     [self.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationBar.shadowImage = [UIImage new];
     self.navigationBar.translucent = YES;
-
+    
+    [self.navigationBar setTitleTextAttributes:@{NSFontAttributeName : FUFontNavigationTitle, NSForegroundColorAttributeName : FUColorDarkGray}];
     self.navItem.title = self.name;
     
     self.currentFilterItems = [self.previousFilterItems mutableCopy];
     self.filterItemKeys = [[self.currentFilterItems allKeys] sortedArrayUsingSelector: @selector(localizedCompare:)];
+    
+    if((self.view.frame.size.height - 211) / [self.filterItemKeys count] < 44) {
+        //make tableView scrollable
+        self.tableView.scrollEnabled = YES;
+        self.tableView.bounces = YES;
+    }
+    else {
+        self.tableView.scrollEnabled = NO;
+        self.tableView.bounces = NO;
+    }
 }
 
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat dynamicHeight = (self.view.frame.size.height - 211) / [self.filterItemKeys count];
+    
+    if(dynamicHeight >= 44) {
+        return dynamicHeight;
+    }
+    else {
+        return 44; //minHeight
+    }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

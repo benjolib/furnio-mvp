@@ -85,6 +85,9 @@
 		28CB92E71AED8CFC003C279B /* FUTrackingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CB92E61AED8CFC003C279B /* FUTrackingManager.m */; };
 		28CB92EB1AED8F6B003C279B /* NSMutableDictionary+Tracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CB92EA1AED8F6B003C279B /* NSMutableDictionary+Tracking.m */; };
 		33F237418860FD871BBB6843 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70434F8189787034BBDD21B6 /* libPods.a */; };
+		5E2E505B1AF6C061005E775E /* pdp-tutorial1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E2E50581AF6C061005E775E /* pdp-tutorial1.png */; };
+		5E2E505C1AF6C061005E775E /* pdp-tutorial2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E2E50591AF6C061005E775E /* pdp-tutorial2.png */; };
+		5E2E505D1AF6C061005E775E /* pdp-tutorial3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E2E505A1AF6C061005E775E /* pdp-tutorial3.png */; };
 		5E6626ED1AF6661E00C25907 /* slider-orange-track.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E6626EC1AF6661E00C25907 /* slider-orange-track.png */; };
 		5E6626F21AF6678500C25907 /* FUSortingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6626F01AF6678500C25907 /* FUSortingViewController.m */; };
 		5E6626F31AF6678500C25907 /* FUSortingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E6626F11AF6678500C25907 /* FUSortingViewController.xib */; };
@@ -242,6 +245,9 @@
 		28CB92E61AED8CFC003C279B /* FUTrackingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUTrackingManager.m; sourceTree = "<group>"; };
 		28CB92E91AED8F6B003C279B /* NSMutableDictionary+Tracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Tracking.h"; sourceTree = "<group>"; };
 		28CB92EA1AED8F6B003C279B /* NSMutableDictionary+Tracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Tracking.m"; sourceTree = "<group>"; };
+		5E2E50581AF6C061005E775E /* pdp-tutorial1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pdp-tutorial1.png"; sourceTree = "<group>"; };
+		5E2E50591AF6C061005E775E /* pdp-tutorial2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pdp-tutorial2.png"; sourceTree = "<group>"; };
+		5E2E505A1AF6C061005E775E /* pdp-tutorial3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pdp-tutorial3.png"; sourceTree = "<group>"; };
 		5E6626EC1AF6661E00C25907 /* slider-orange-track.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider-orange-track.png"; sourceTree = "<group>"; };
 		5E6626EF1AF6678500C25907 /* FUSortingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUSortingViewController.h; path = Classes/View/Sorting/FUSortingViewController.h; sourceTree = SOURCE_ROOT; };
 		5E6626F01AF6678500C25907 /* FUSortingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUSortingViewController.m; path = Classes/View/Sorting/FUSortingViewController.m; sourceTree = SOURCE_ROOT; };
@@ -956,6 +962,9 @@
 		5EEFC4E21AE2AF90004CB533 /* ProductDetailPage */ = {
 			isa = PBXGroup;
 			children = (
+				5E2E50581AF6C061005E775E /* pdp-tutorial1.png */,
+				5E2E50591AF6C061005E775E /* pdp-tutorial2.png */,
+				5E2E505A1AF6C061005E775E /* pdp-tutorial3.png */,
 				5EEFC4E31AE2B0A0004CB533 /* FUProductDetailPageViewController.h */,
 				5EEFC4E41AE2B0A0004CB533 /* FUProductDetailPageViewController.m */,
 				5EEFC4E51AE2B0A0004CB533 /* FUProductDetailPageViewController.xib */,
@@ -1046,8 +1055,10 @@
 				287F4D351ADEC41B0076FC53 /* FUCategoryTableViewCell.xib in Resources */,
 				287F4D081ADB9F780076FC53 /* FUNavigationBar in Resources */,
 				28362DFE1AD52013000B4E99 /* products.json in Resources */,
+				5E2E505C1AF6C061005E775E /* pdp-tutorial2.png in Resources */,
 				5E943C091AEC14EE004012F5 /* Filter.storyboard in Resources */,
 				28140EE61AE130B100359EAA /* FULoadingView.xib in Resources */,
+				5E2E505B1AF6C061005E775E /* pdp-tutorial1.png in Resources */,
 				280F94F51AF5A28600BA74E9 /* FUOnboardingOverviewTextCollectionViewCell.xib in Resources */,
 				2815EAC31AC843F300F97AEF /* LaunchScreen.xib in Resources */,
 				280F95051AF5B3E800BA74E9 /* FUOnboardingAreaCollectionViewCell.xib in Resources */,
@@ -1056,6 +1067,7 @@
 				28362E0B1AD53613000B4E99 /* productList.json in Resources */,
 				28117C261AD68F40007C8DB9 /* FUCatalogCollectionViewCell.xib in Resources */,
 				2815EAC01AC843F300F97AEF /* Images.xcassets in Resources */,
+				5E2E505D1AF6C061005E775E /* pdp-tutorial3.png in Resources */,
 				28362DFC1AD486A0000B4E99 /* product.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

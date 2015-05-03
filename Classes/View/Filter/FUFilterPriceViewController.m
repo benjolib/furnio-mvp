@@ -57,6 +57,8 @@
     self.navigationBar.shadowImage = [UIImage new];
     self.navigationBar.translucent = YES;
     
+    [self.navigationBar setTitleTextAttributes:@{NSFontAttributeName : FUFontNavigationTitle, NSForegroundColorAttributeName : FUColorDarkGray}];
+    
     self.navItem.title = self.name;
     
     self.currentFilterItems = [self.previousFilterItems mutableCopy];

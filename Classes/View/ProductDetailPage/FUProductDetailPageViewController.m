@@ -21,7 +21,7 @@
 #import "FUProductDetailBrowserViewController.h"
 #import "FUTrackingManager.h"
 
-#define FUProductDetailPageFirstTime @"FUProductDetailPageFirstTime"
+#define FUProductDetailTutorialShown @"FUProductDetailTutorialShown"
 
 
 @interface FUProductDetailPageViewController ()
@@ -38,6 +38,8 @@
 @property (weak, nonatomic) IBOutlet UIView *discardContainer;
 
 @property (weak, nonatomic) IBOutlet UIButton *undoButton;
+@property (weak, nonatomic) IBOutlet UIButton *closeButton;
+@property (weak, nonatomic) IBOutlet UIButton *buyButton;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *imageScrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
@@ -48,6 +50,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageScrollViewHeightConstriant;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *priceTopSpaceConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *priceBottomSpaceConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewLeadingSpace;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewTrailingSpace;
 
 @property (strong, nonatomic) NSMutableArray *imageViews;
 @property (strong, nonatomic) NSMutableArray *actions;
@@ -58,6 +62,13 @@
 
 @property (strong, nonatomic) UIView *noProductView;
 
+@property (strong, nonatomic) UIImageView *tutorialView1;
+@property (strong, nonatomic) UIImageView *tutorialView2;
+@property (strong, nonatomic) UIImageView *tutorialView3;
+
+@property (assign, nonatomic) NSUInteger tutorialTapCount;
+
+@property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer;
 
 @end
 
@@ -81,19 +92,32 @@
     [super viewDidLoad];
     
     self.actions = [NSMutableArray array];
-    
+
     CGRect frame = self.imageScrollView.frame;
-    frame.size.width = DEVICE_WIDTH;
-    frame.size.height = DEVICE_WIDTH;
+    CGFloat diff;
+    
+    if(DEVICE_HEIGHT > 480) {
+        //iPhone 5(s) or larger
+        frame.size.width = DEVICE_WIDTH;
+        frame.size.height = DEVICE_WIDTH;
+        diff = (DEVICE_HEIGHT - 667) - (DEVICE_WIDTH - 375);
+    }
+    else {
+        //iPhone 4(s)
+        frame.size.width = DEVICE_WIDTH - 60;
+        frame.size.height = DEVICE_WIDTH - 60;
+        frame.origin.x = 30;
+        
+        diff = (DEVICE_HEIGHT - 667) - (DEVICE_WIDTH - 375) + 60;
+    }
+    self.imageScrollViewHeightConstriant.constant = frame.size.height;
+    self.imageScrollViewWidthConstraint.constant = frame.size.width;
+    self.scrollViewLeadingSpace.constant = frame.origin.x;
+    self.scrollViewTrailingSpace.constant = frame.origin.x;
     self.imageScrollView.frame = frame;
     
-    self.imageScrollViewHeightConstriant.constant = DEVICE_WIDTH;
-    self.imageScrollViewWidthConstraint.constant = DEVICE_WIDTH;
-    
-    CGFloat diff = (DEVICE_HEIGHT - 667) - (DEVICE_WIDTH - 375);
-    
-    self.priceTopSpaceConstraint.constant = 72 + diff / 2;
-    self.priceBottomSpaceConstraint.constant = 33 + diff / 2;
+    self.priceTopSpaceConstraint.constant = 72 + diff * (2.0 / 3.0);
+    self.priceBottomSpaceConstraint.constant = 33 + diff * (1.0 / 3.0);
     
     [self updateSingleProductState];
 }
@@ -102,15 +126,71 @@
     [super viewWillAppear:animated];
     [self setupView];
     
-    BOOL firstTime = [[NSUserDefaults standardUserDefaults] boolForKey:FUProductDetailPageFirstTime];
-    if(firstTime) {
+    BOOL tutorialShown = [[NSUserDefaults standardUserDefaults] boolForKey:FUProductDetailTutorialShown];
+    if(!tutorialShown) {
         [self showTutorial];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:FUProductDetailPageFirstTime];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:FUProductDetailTutorialShown];
     }
 }
 
 - (void) showTutorial {
-    //TODO: implement
+    self.verticalScrollView.scrollEnabled = NO;
+    self.buyButton.enabled = NO;
+    self.closeButton.enabled = NO;
+    self.undoButton.enabled = NO;
+    
+    self.imageScrollView.scrollEnabled = NO;
+    self.tutorialView1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT)];
+    self.tutorialView1.image = [UIImage imageNamed:@"pdp-tutorial1"];
+    self.tutorialView2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT)];
+    self.tutorialView2.image = [UIImage imageNamed:@"pdp-tutorial2"];
+    self.tutorialView3 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT)];
+    self.tutorialView3.image = [UIImage imageNamed:@"pdp-tutorial3"];
+    [self.view addSubview:self.tutorialView3];
+    [self.view addSubview:self.tutorialView2];
+    [self.view addSubview:self.tutorialView1];
+    self.tutorialTapCount = 3;
+    
+    self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tutorialTap:)];
+    self.tapRecognizer.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:self.tapRecognizer];
+}
+
+- (void)tutorialTap:(UIGestureRecognizer *)gestureRecognizer {
+    
+    CGPoint location = [gestureRecognizer locationInView:self.view];
+ 
+    if(!CGRectContainsPoint(CGRectMake(0, (480.0 / 667.0) * DEVICE_HEIGHT, DEVICE_WIDTH, (80.0 / 667.0) * DEVICE_HEIGHT), location)) {
+        return;
+    }
+    
+    UIImageView *viewToRemove;
+    if(self.tutorialTapCount == 3) {
+        viewToRemove = self.tutorialView1;
+    }
+    if(self.tutorialTapCount == 2) {
+        viewToRemove = self.tutorialView2;
+    }
+    if(self.tutorialTapCount == 1) {
+        viewToRemove = self.tutorialView3;
+        [self.view removeGestureRecognizer:self.tapRecognizer];
+    }
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        CGRect frame = viewToRemove.frame;
+        frame.origin.x = -DEVICE_WIDTH;
+        viewToRemove.frame = frame;
+    } completion:^(BOOL finished) {
+        [viewToRemove removeFromSuperview];
+        
+        self.buyButton.enabled = YES;
+        self.closeButton.enabled = YES;
+        
+        [self setupView];
+        
+    }];
+
+    self.tutorialTapCount--;
 }
 
 - (void)setupView {
@@ -192,41 +272,19 @@
         pageIndex++;
     }
     
-    for(NSURL* imageUrl in self.product.imageURLs) {
-        UIImageView *imageView = [[UIImageView alloc] init];
-        [imageView sd_setImageWithURL:imageUrl];
-        imageView.contentMode = UIViewContentModeScaleAspectFit;
-        
-        CGRect frame = self.imageScrollView.bounds;
-        frame.origin.x = frame.size.width * pageIndex;
-        frame.origin.y = 0.0f;
-        
-        imageView.frame = frame;
-        
-        [self.imageViews addObject:imageView];
-        [self.imageScrollView addSubview:imageView];
-        pageIndex++;
-    }
-    
-    for(NSURL* imageUrl in self.product.imageURLs) {
-        UIImageView *imageView = [[UIImageView alloc] init];
-        [imageView sd_setImageWithURL:imageUrl];
-        imageView.contentMode = UIViewContentModeScaleAspectFit;
-        
-        CGRect frame = self.imageScrollView.bounds;
-        frame.origin.x = frame.size.width * pageIndex;
-        frame.origin.y = 0.0f;
-        
-        imageView.frame = frame;
-        
-        [self.imageViews addObject:imageView];
-        [self.imageScrollView addSubview:imageView];
-        pageIndex++;
-    }
-    
     self.pageControl.currentPage = 0;
-    self.pageControl.numberOfPages = self.imageViews.count;
+    self.pageControl.numberOfPages = [self.imageViews count];
 
+    if([self.imageViews count] == 1) {
+        self.pageControl.hidden = YES;
+        self.imageScrollView.bounces = NO;
+        self.imageScrollView.scrollEnabled = NO;
+    }
+    else {
+        self.pageControl.hidden = NO;
+        self.imageScrollView.bounces = YES;
+        self.imageScrollView.scrollEnabled = NO;
+    }
     
     CGSize pagesScrollViewSize = self.imageScrollView.frame.size;
     self.imageScrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * self.imageViews.count, pagesScrollViewSize.height);
@@ -275,7 +333,7 @@
             [imageView removeFromSuperview];
         }];
         
-        [self performSelector:@selector(loadProduct) withObject:nil afterDelay:0.8];
+        [self performSelector:@selector(loadProduct) withObject:nil afterDelay:0.99];
     }
 }
 

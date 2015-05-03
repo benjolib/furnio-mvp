@@ -14,6 +14,7 @@
 #import "FUFilterPriceViewController.h"
 #import "FUFilterManager.h"
 #import "FUProductManager.h"
+//#import "FUMacros.h"
 
 @interface FUFilterViewController ()
 
@@ -34,7 +35,6 @@
     [self loadFilters];
     self.applyFilterButton.layer.borderWidth = 1.5f;
     self.applyFilterButton.layer.borderColor = [[UIColor colorWithRed:244.0/255.0 green:170.0/255.0 blue:56.0/255.0 alpha:1.0] CGColor];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -146,6 +146,10 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return (self.view.frame.size.height - 211) / 5;
+}
+
 - (void)removeSingleFilterButtonTapped:(UIButton *)button {
     switch (button.tag) {
         case 0:
@@ -169,34 +173,6 @@
     }
     [self.tableView reloadData];
 }
-
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    switch (indexPath.row) {
-//        case 0:     //Category
-//        {
-//            break;
-//        }
-//        case 1:     //Style
-//        {
-//            break;
-//        }
-//        case 2:     //Room
-//        {
-//            break;
-//        }
-//        case 3:     //Price
-//        {
-//            break;
-//        }
-//        case 4:     //Merchant
-//        {
-//            break;
-//        }
-//        default:
-//            break;
-//    }
-//}
-
 
 - (IBAction)applyFilter:(id)sender {
     [[FUFilterManager sharedManager] saveAllFilterItems:self.allFilterItems];
