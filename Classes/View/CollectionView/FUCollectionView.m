@@ -95,7 +95,7 @@
         FUCatalogColumnCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:FUCatalogColumnCollectionViewCellReuseIdentifier forIndexPath:indexPath];
         
         cell.viewMode = self.viewMode;
-        cell.columnIndex = ABS(indexPath.row - [collectionView numberOfItemsInSection:0] / 2);
+        cell.columnIndex = indexPath.item;
         
         cell.delegate = self;
 

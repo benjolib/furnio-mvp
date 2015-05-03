@@ -76,6 +76,12 @@ NSString *const FUCatalogColumnCollectionViewCellScrollingDidFinishNotification 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
+    NSUInteger columnCount = [FUProductManager sharedManager].columnCount;
+
+    if (columnCount < 2) {
+        return [FUProductManager sharedManager].productCount;
+    }
+    
     return self.viewMode == FUCollectionViewModeMatrix ? 10000 : [FUProductManager sharedManager].productCount;
 }
 
@@ -172,7 +178,7 @@ NSString *const FUCatalogColumnCollectionViewCellScrollingDidFinishNotification 
 - (NSIndexPath *)actualIndexPathFromPath:(NSIndexPath *)indexPath
 {
     if (self.viewMode == FUCollectionViewModeMatrix) {
-        NSInteger item = ABS(indexPath.item - ([self.verticalCollectionView numberOfItemsInSection:0] / 2));
+        NSInteger item = indexPath.item;
         NSInteger section = self.columnIndex;
         
         indexPath = [NSIndexPath indexPathForItem:item inSection:section];
