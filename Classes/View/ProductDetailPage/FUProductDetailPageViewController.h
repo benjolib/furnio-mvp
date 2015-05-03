@@ -14,4 +14,6 @@
 
 @property (nonatomic, strong) FUProduct *product;
 
+- (instancetype)initWithSingleProduct:(FUProduct *)product;
+
 @end

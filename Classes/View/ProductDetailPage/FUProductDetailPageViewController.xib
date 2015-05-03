@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14A379a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
@@ -9,10 +9,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FUProductDetailPageViewController">
             <connections>
                 <outlet property="brandNameLabel" destination="ufT-cc-SUc" id="X00-us-YZf"/>
+                <outlet property="discardContainer" destination="tzd-oD-LYW" id="L3b-3e-nkc"/>
                 <outlet property="discardLabel" destination="GAn-yn-fWA" id="3pw-OX-kQW"/>
                 <outlet property="imageScrollView" destination="Uq4-LM-x45" id="vhx-1Y-rBO"/>
                 <outlet property="imageScrollViewHeightConstriant" destination="eTD-hC-XMz" id="xUG-Jw-6rQ"/>
                 <outlet property="imageScrollViewWidthConstraint" destination="dr6-UV-EVI" id="Wru-Nk-i7l"/>
+                <outlet property="likeContainer" destination="HKt-PP-zyE" id="9h8-NQ-bQ0"/>
                 <outlet property="likeLabel" destination="6JD-zR-ypb" id="bJP-52-riH"/>
                 <outlet property="pageControl" destination="EK7-Op-yxe" id="uny-Kc-17x"/>
                 <outlet property="priceBottomSpaceConstraint" destination="fZ5-5l-bBU" id="fX7-Lg-9XF"/>

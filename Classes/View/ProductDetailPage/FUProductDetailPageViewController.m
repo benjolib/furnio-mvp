@@ -50,12 +50,31 @@
 
 @property (assign, nonatomic) BOOL detectLike;
 @property (assign, nonatomic) BOOL detectDiscard;
+@property (assign, nonatomic, getter=isSingleProduct) BOOL singleProduct;
 
 @property (strong, nonatomic) UIView *noProductView;
+
+@property (weak, nonatomic) IBOutlet UIView *likeContainer;
+
+@property (weak, nonatomic) IBOutlet UIView *discardContainer;
 
 @end
 
 @implementation FUProductDetailPageViewController
+
+#pragma mark - Initialization
+
+- (instancetype)initWithSingleProduct:(FUProduct *)product
+{
+    self = [super init];
+    
+    if (self) {
+        self.product = product;
+        self.singleProduct = YES;
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -74,7 +93,9 @@
     
     self.priceTopSpaceConstraint.constant = 72 + diff / 2;
     self.priceBottomSpaceConstraint.constant = 33 + diff / 2;
-    }
+    
+    [self updateSingleProductState];
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -130,7 +151,7 @@
         return;
     }
     else {
-        self.verticalScrollView.scrollEnabled = YES;
+        self.verticalScrollView.scrollEnabled = !self.isSingleProduct;
         [self.noProductView removeFromSuperview];
     }
     
@@ -335,6 +356,14 @@
     [self loadProduct];
 }
 
+#pragma mark - Private
 
+- (void)updateSingleProductState
+{
+    self.verticalScrollView.scrollEnabled = !self.singleProduct;
+    self.likeContainer.hidden = self.singleProduct;
+    self.discardContainer.hidden = self.singleProduct;
+    self.undoButton.hidden = self.singleProduct;
+}
 
 @end

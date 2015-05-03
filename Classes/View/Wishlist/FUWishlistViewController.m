@@ -14,6 +14,7 @@
 #import "FUSharingManager.h"
 #import "UIControl+HitTest.h"
 #import "FUWishlistActionButton.h"
+#import "FUProductDetailPageViewController.h"
 
 @interface FUWishlistViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, FUWishlistCollectionViewCellDelegate, FUWishlistEmptyCollectionViewCellDelegate>
 
@@ -167,9 +168,11 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    // TODO: Attach PDP VC here to present product
-
-    // FUProduct *product = [self.products objectAtIndex:indexPath.item];
+     FUProduct *product = [self.products objectAtIndex:indexPath.item];
+    
+    FUProductDetailPageViewController *detailPageViewController = [[FUProductDetailPageViewController alloc] initWithSingleProduct:product];
+    
+    [self.navigationController pushViewController:detailPageViewController animated:YES];
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
