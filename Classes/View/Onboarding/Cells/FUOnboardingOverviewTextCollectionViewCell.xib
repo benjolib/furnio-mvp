@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14A379a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FUOnboardingOverviewTextCollectionViewCellReuseIdentifier" id="gTV-IL-0wX" customClass="FUOnboardingOverviewTextCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We would love to learn what products you are looking for" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="20" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="gyj-S2-GqT">
+                        <rect key="frame" x="30" y="64" width="260" height="123"/>
+                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="30"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" red="0.99215686270000003" green="0.72549019609999998" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="centerY" secondItem="gyj-S2-GqT" secondAttribute="centerY" id="Nz6-gP-5KD"/>
+                <constraint firstAttribute="trailing" secondItem="gyj-S2-GqT" secondAttribute="trailing" constant="30" id="le3-bh-8hd"/>
+                <constraint firstItem="gyj-S2-GqT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="30" id="xuC-AT-aGX"/>
+            </constraints>
+        </collectionViewCell>
+    </objects>
+</document>

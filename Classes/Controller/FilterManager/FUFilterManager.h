@@ -18,6 +18,9 @@
 #define FUMinPriceKey @"Min Price"
 #define FUMaxPriceKey @"Max Price"
 
+#define FUMinPriceDefaultValue @0
+#define FUMaxPriceDefaultValue @10000
+
 @class FUProduct;
 
 @interface FUFilterManager : NSObject
@@ -25,7 +28,12 @@
 + (instancetype)sharedManager;
 - (NSMutableDictionary *)loadAllFilterItems;
 - (void)saveAllFilterItems:(NSDictionary *)allFilterItems;
-- (void)resetAllFilters;
 - (BOOL)isProductInFilter:(FUProduct *)product;
 
+- (NSMutableDictionary *)defaultFilters;
+- (NSMutableDictionary *)defaultCategoriesFilter;
+- (NSMutableDictionary *)defaultStylesFilter;
+- (NSMutableDictionary *)defaultRoomsFilter;
+- (NSMutableDictionary *)defaultPriceFilter;
+- (NSMutableDictionary *)defaultMerchantFilter;
 @end

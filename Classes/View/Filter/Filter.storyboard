@@ -122,6 +122,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="applyFilterButton" destination="NmS-Zr-F9p" id="Ucx-UT-cYs"/>
                         <outlet property="tableView" destination="the-va-Fva" id="tch-2h-da1"/>
                     </connections>
                 </viewController>
@@ -234,6 +235,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="applyFilterButton" destination="B6R-nF-3fH" id="VH0-ac-X9m"/>
                         <outlet property="navItem" destination="2aC-uk-waI" id="zW8-w3-bp9"/>
                         <outlet property="navigationBar" destination="qIy-Fz-V2M" id="8P2-4r-2Ai"/>
                         <outlet property="tableView" destination="RAy-Dr-Yfr" id="RTF-Qz-rCt"/>
@@ -301,18 +303,55 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MaxPrice" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="gLH-5y-Vdr">
+                                <rect key="frame" x="219" y="108" width="140" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Ihw-q6-KSF"/>
+                                    <constraint firstAttribute="width" constant="140" id="MOA-oh-Nv5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MinPrice" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="lfl-wh-wCw">
+                                <rect key="frame" x="16" y="108" width="140" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="E4P-0M-d6k"/>
+                                    <constraint firstAttribute="width" constant="140" id="o7l-cj-yaa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MXr-uZ-bXr" customClass="NMRangeSlider">
+                                <rect key="frame" x="16" y="218" width="343" height="70"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="YWT-yh-31Q"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="sliderValueChanged:" destination="mGE-SS-fk2" eventType="valueChanged" id="PVL-Zn-s18"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="bSh-6b-2Pv" firstAttribute="leading" secondItem="UiZ-FF-TOw" secondAttribute="leading" id="0Hg-dW-5ZC"/>
                             <constraint firstItem="bSh-6b-2Pv" firstAttribute="top" secondItem="amF-KU-3EU" secondAttribute="bottom" constant="8" id="2PZ-vU-miF"/>
+                            <constraint firstAttribute="trailing" secondItem="gLH-5y-Vdr" secondAttribute="trailing" constant="16" id="9Eo-ed-6SG"/>
                             <constraint firstItem="gS2-kX-Pey" firstAttribute="top" secondItem="WE3-AR-1go" secondAttribute="bottom" constant="20" id="Be6-qF-b6R"/>
+                            <constraint firstItem="lfl-wh-wCw" firstAttribute="leading" secondItem="UiZ-FF-TOw" secondAttribute="leading" constant="16" id="HS4-EP-fyt"/>
                             <constraint firstItem="WE3-AR-1go" firstAttribute="leading" secondItem="UiZ-FF-TOw" secondAttribute="leadingMargin" id="JcI-E8-IKc"/>
+                            <constraint firstAttribute="trailing" secondItem="MXr-uZ-bXr" secondAttribute="trailing" constant="16" id="KYM-B3-bKt"/>
                             <constraint firstAttribute="trailing" secondItem="bSh-6b-2Pv" secondAttribute="trailing" id="LGj-c3-en1"/>
+                            <constraint firstItem="lfl-wh-wCw" firstAttribute="top" secondItem="bSh-6b-2Pv" secondAttribute="bottom" constant="56" id="OPZ-nx-T0C"/>
                             <constraint firstAttribute="centerX" secondItem="gS2-kX-Pey" secondAttribute="centerX" id="Qfs-Bh-B3h"/>
+                            <constraint firstItem="gLH-5y-Vdr" firstAttribute="top" secondItem="bSh-6b-2Pv" secondAttribute="bottom" constant="56" id="Qva-oR-R1V"/>
                             <constraint firstItem="WE3-AR-1go" firstAttribute="trailing" secondItem="UiZ-FF-TOw" secondAttribute="trailingMargin" id="Yap-IQ-xVT"/>
+                            <constraint firstItem="MXr-uZ-bXr" firstAttribute="leading" secondItem="UiZ-FF-TOw" secondAttribute="leading" constant="16" id="c5S-sc-F45"/>
                             <constraint firstItem="wzO-T7-cPh" firstAttribute="top" secondItem="gS2-kX-Pey" secondAttribute="bottom" constant="20" id="dSm-qx-HXc"/>
                             <constraint firstItem="gS2-kX-Pey" firstAttribute="top" secondItem="WE3-AR-1go" secondAttribute="bottom" constant="20" id="oLk-nd-f7d"/>
+                            <constraint firstItem="MXr-uZ-bXr" firstAttribute="top" secondItem="lfl-wh-wCw" secondAttribute="bottom" constant="50" id="udX-6w-Jjt"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -320,8 +359,12 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="applyFilterButton" destination="WE3-AR-1go" id="o78-NJ-wsz"/>
+                        <outlet property="maxPriceLabel" destination="gLH-5y-Vdr" id="V6e-gM-aLP"/>
+                        <outlet property="minPriceLabel" destination="lfl-wh-wCw" id="WjS-k7-7Uc"/>
                         <outlet property="navItem" destination="GQN-FB-hza" id="uLd-Je-A3M"/>
                         <outlet property="navigationBar" destination="bSh-6b-2Pv" id="IWK-Oj-PEE"/>
+                        <outlet property="priceRangeSlider" destination="MXr-uZ-bXr" id="UbH-ia-5TK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bi2-Ji-ilX" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -12,6 +12,22 @@
 		280F94D61AF420A300BA74E9 /* FUAppirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 280F94D41AF420A300BA74E9 /* FUAppirater.m */; };
 		280F94DA1AF4269D00BA74E9 /* UIView+FUAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = 280F94D91AF4269D00BA74E9 /* UIView+FUAnimations.m */; };
 		280F94DD1AF426B900BA74E9 /* UIView+Framing.m in Sources */ = {isa = PBXBuildFile; fileRef = 280F94DC1AF426B900BA74E9 /* UIView+Framing.m */; };
+		280F94E31AF55B1C00BA74E9 /* FUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280F94E21AF55B1C00BA74E9 /* FUViewController.m */; };
+		280F94E81AF55B7400BA74E9 /* FUOnboardingBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280F94E61AF55B7400BA74E9 /* FUOnboardingBaseViewController.m */; };
+		280F94E91AF55B7400BA74E9 /* FUOnboardingBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280F94E71AF55B7400BA74E9 /* FUOnboardingBaseViewController.xib */; };
+		280F94EC1AF56F2800BA74E9 /* FUOnboardingNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280F94EB1AF56F2800BA74E9 /* FUOnboardingNavigationController.m */; };
+		280F94EF1AF5A16C00BA74E9 /* FUOnboardingOverviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280F94EE1AF5A16C00BA74E9 /* FUOnboardingOverviewController.m */; };
+		280F94F41AF5A28600BA74E9 /* FUOnboardingOverviewTextCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 280F94F21AF5A28600BA74E9 /* FUOnboardingOverviewTextCollectionViewCell.m */; };
+		280F94F51AF5A28600BA74E9 /* FUOnboardingOverviewTextCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280F94F31AF5A28600BA74E9 /* FUOnboardingOverviewTextCollectionViewCell.xib */; };
+		280F94F91AF5A80800BA74E9 /* FUOnboardingOverviewAreaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 280F94F71AF5A80800BA74E9 /* FUOnboardingOverviewAreaCollectionViewCell.m */; };
+		280F94FA1AF5A80800BA74E9 /* FUOnboardingOverviewAreaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280F94F81AF5A80800BA74E9 /* FUOnboardingOverviewAreaCollectionViewCell.xib */; };
+		280F94FD1AF5B28500BA74E9 /* FUOnboardingAreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280F94FC1AF5B28500BA74E9 /* FUOnboardingAreaViewController.m */; };
+		280F95041AF5B3E800BA74E9 /* FUOnboardingAreaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 280F95021AF5B3E800BA74E9 /* FUOnboardingAreaCollectionViewCell.m */; };
+		280F95051AF5B3E800BA74E9 /* FUOnboardingAreaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280F95031AF5B3E800BA74E9 /* FUOnboardingAreaCollectionViewCell.xib */; };
+		280F95081AF5B71E00BA74E9 /* FUOnboardingAreaCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280F95071AF5B71E00BA74E9 /* FUOnboardingAreaCategoryViewController.m */; };
+		280F950B1AF5C39600BA74E9 /* FUOnboardingAreaStyleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280F950A1AF5C39600BA74E9 /* FUOnboardingAreaStyleViewController.m */; };
+		280F950E1AF5C58300BA74E9 /* FUOnboardingAreaRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280F950D1AF5C58300BA74E9 /* FUOnboardingAreaRoomViewController.m */; };
+		280F95121AF5CC2C00BA74E9 /* FUOnboardingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 280F95111AF5CC2C00BA74E9 /* FUOnboardingManager.m */; };
 		28117C1B1AD5B89A007C8DB9 /* FUNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 28117C1A1AD5B89A007C8DB9 /* FUNumberFormatter.m */; };
 		28117C211AD67EA1007C8DB9 /* FUImagePrefetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 28117C201AD67EA1007C8DB9 /* FUImagePrefetcher.m */; };
 		28117C241AD68B8B007C8DB9 /* FUProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 28117C231AD68B8B007C8DB9 /* FUProperties.m */; };
@@ -29,7 +45,6 @@
 		28140EF91AE450B900359EAA /* FUSearchTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 28140EF81AE450B900359EAA /* FUSearchTextField.m */; };
 		2815EAB51AC843F300F97AEF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2815EAB41AC843F300F97AEF /* main.m */; };
 		2815EAB81AC843F300F97AEF /* FUAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2815EAB71AC843F300F97AEF /* FUAppDelegate.m */; };
-		2815EABB1AC843F300F97AEF /* FUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2815EABA1AC843F300F97AEF /* FUViewController.m */; };
 		2815EAC01AC843F300F97AEF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2815EABF1AC843F300F97AEF /* Images.xcassets */; };
 		2815EAC31AC843F300F97AEF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2815EAC11AC843F300F97AEF /* LaunchScreen.xib */; };
 		2815EAEA1AC847E900F97AEF /* FUNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2815EAE91AC847E900F97AEF /* FUNavigationController.m */; };
@@ -70,6 +85,7 @@
 		28CB92E71AED8CFC003C279B /* FUTrackingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CB92E61AED8CFC003C279B /* FUTrackingManager.m */; };
 		28CB92EB1AED8F6B003C279B /* NSMutableDictionary+Tracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CB92EA1AED8F6B003C279B /* NSMutableDictionary+Tracking.m */; };
 		33F237418860FD871BBB6843 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70434F8189787034BBDD21B6 /* libPods.a */; };
+		5E6626ED1AF6661E00C25907 /* slider-orange-track.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E6626EC1AF6661E00C25907 /* slider-orange-track.png */; };
 		5E943BEB1AEBD5E7004012F5 /* FUProductAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E943BEA1AEBD5E7004012F5 /* FUProductAction.m */; };
 		5E943BF21AEBD9D3004012F5 /* FUProductDetailBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E943BF01AEBD9D3004012F5 /* FUProductDetailBrowserViewController.m */; };
 		5E943BF31AEBD9D3004012F5 /* FUProductDetailBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E943BF11AEBD9D3004012F5 /* FUProductDetailBrowserViewController.xib */; };
@@ -97,6 +113,34 @@
 		280F94DB1AF426B900BA74E9 /* UIView+Framing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Framing.h"; sourceTree = "<group>"; };
 		280F94DC1AF426B900BA74E9 /* UIView+Framing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Framing.m"; sourceTree = "<group>"; };
 		280F94DF1AF4369400BA74E9 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		280F94E11AF55B1C00BA74E9 /* FUViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUViewController.h; sourceTree = "<group>"; };
+		280F94E21AF55B1C00BA74E9 /* FUViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUViewController.m; sourceTree = "<group>"; };
+		280F94E51AF55B7400BA74E9 /* FUOnboardingBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUOnboardingBaseViewController.h; sourceTree = "<group>"; };
+		280F94E61AF55B7400BA74E9 /* FUOnboardingBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUOnboardingBaseViewController.m; sourceTree = "<group>"; };
+		280F94E71AF55B7400BA74E9 /* FUOnboardingBaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FUOnboardingBaseViewController.xib; sourceTree = "<group>"; };
+		280F94EA1AF56F2800BA74E9 /* FUOnboardingNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUOnboardingNavigationController.h; sourceTree = "<group>"; };
+		280F94EB1AF56F2800BA74E9 /* FUOnboardingNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUOnboardingNavigationController.m; sourceTree = "<group>"; };
+		280F94ED1AF5A16C00BA74E9 /* FUOnboardingOverviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUOnboardingOverviewController.h; sourceTree = "<group>"; };
+		280F94EE1AF5A16C00BA74E9 /* FUOnboardingOverviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUOnboardingOverviewController.m; sourceTree = "<group>"; };
+		280F94F11AF5A28600BA74E9 /* FUOnboardingOverviewTextCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUOnboardingOverviewTextCollectionViewCell.h; sourceTree = "<group>"; };
+		280F94F21AF5A28600BA74E9 /* FUOnboardingOverviewTextCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUOnboardingOverviewTextCollectionViewCell.m; sourceTree = "<group>"; };
+		280F94F31AF5A28600BA74E9 /* FUOnboardingOverviewTextCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FUOnboardingOverviewTextCollectionViewCell.xib; sourceTree = "<group>"; };
+		280F94F61AF5A80800BA74E9 /* FUOnboardingOverviewAreaCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUOnboardingOverviewAreaCollectionViewCell.h; sourceTree = "<group>"; };
+		280F94F71AF5A80800BA74E9 /* FUOnboardingOverviewAreaCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUOnboardingOverviewAreaCollectionViewCell.m; sourceTree = "<group>"; };
+		280F94F81AF5A80800BA74E9 /* FUOnboardingOverviewAreaCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FUOnboardingOverviewAreaCollectionViewCell.xib; sourceTree = "<group>"; };
+		280F94FB1AF5B28500BA74E9 /* FUOnboardingAreaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUOnboardingAreaViewController.h; sourceTree = "<group>"; };
+		280F94FC1AF5B28500BA74E9 /* FUOnboardingAreaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUOnboardingAreaViewController.m; sourceTree = "<group>"; };
+		280F95011AF5B3E800BA74E9 /* FUOnboardingAreaCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUOnboardingAreaCollectionViewCell.h; sourceTree = "<group>"; };
+		280F95021AF5B3E800BA74E9 /* FUOnboardingAreaCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUOnboardingAreaCollectionViewCell.m; sourceTree = "<group>"; };
+		280F95031AF5B3E800BA74E9 /* FUOnboardingAreaCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FUOnboardingAreaCollectionViewCell.xib; sourceTree = "<group>"; };
+		280F95061AF5B71E00BA74E9 /* FUOnboardingAreaCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUOnboardingAreaCategoryViewController.h; sourceTree = "<group>"; };
+		280F95071AF5B71E00BA74E9 /* FUOnboardingAreaCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUOnboardingAreaCategoryViewController.m; sourceTree = "<group>"; };
+		280F95091AF5C39600BA74E9 /* FUOnboardingAreaStyleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUOnboardingAreaStyleViewController.h; sourceTree = "<group>"; };
+		280F950A1AF5C39600BA74E9 /* FUOnboardingAreaStyleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUOnboardingAreaStyleViewController.m; sourceTree = "<group>"; };
+		280F950C1AF5C58300BA74E9 /* FUOnboardingAreaRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUOnboardingAreaRoomViewController.h; sourceTree = "<group>"; };
+		280F950D1AF5C58300BA74E9 /* FUOnboardingAreaRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUOnboardingAreaRoomViewController.m; sourceTree = "<group>"; };
+		280F95101AF5CC2C00BA74E9 /* FUOnboardingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUOnboardingManager.h; sourceTree = "<group>"; };
+		280F95111AF5CC2C00BA74E9 /* FUOnboardingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUOnboardingManager.m; sourceTree = "<group>"; };
 		28117C191AD5B89A007C8DB9 /* FUNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUNumberFormatter.h; sourceTree = "<group>"; };
 		28117C1A1AD5B89A007C8DB9 /* FUNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUNumberFormatter.m; sourceTree = "<group>"; };
 		28117C1F1AD67EA1007C8DB9 /* FUImagePrefetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUImagePrefetcher.h; sourceTree = "<group>"; };
@@ -130,8 +174,6 @@
 		2815EAB41AC843F300F97AEF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2815EAB61AC843F300F97AEF /* FUAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUAppDelegate.h; sourceTree = "<group>"; };
 		2815EAB71AC843F300F97AEF /* FUAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FUAppDelegate.m; sourceTree = "<group>"; };
-		2815EAB91AC843F300F97AEF /* FUViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUViewController.h; sourceTree = "<group>"; };
-		2815EABA1AC843F300F97AEF /* FUViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FUViewController.m; sourceTree = "<group>"; };
 		2815EABF1AC843F300F97AEF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2815EAC21AC843F300F97AEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		2815EAE81AC847E900F97AEF /* FUNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUNavigationController.h; sourceTree = "<group>"; };
@@ -198,6 +240,7 @@
 		28CB92E61AED8CFC003C279B /* FUTrackingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUTrackingManager.m; sourceTree = "<group>"; };
 		28CB92E91AED8F6B003C279B /* NSMutableDictionary+Tracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Tracking.h"; sourceTree = "<group>"; };
 		28CB92EA1AED8F6B003C279B /* NSMutableDictionary+Tracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Tracking.m"; sourceTree = "<group>"; };
+		5E6626EC1AF6661E00C25907 /* slider-orange-track.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider-orange-track.png"; sourceTree = "<group>"; };
 		5E943BE91AEBD5E7004012F5 /* FUProductAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUProductAction.h; path = ProductDetailPage/FUProductAction.h; sourceTree = "<group>"; };
 		5E943BEA1AEBD5E7004012F5 /* FUProductAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUProductAction.m; path = ProductDetailPage/FUProductAction.m; sourceTree = "<group>"; };
 		5E943BEF1AEBD9D3004012F5 /* FUProductDetailBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUProductDetailBrowserViewController.h; path = ProductDetailPage/FUProductDetailBrowserViewController.h; sourceTree = "<group>"; };
@@ -282,6 +325,61 @@
 				280F94DF1AF4369400BA74E9 /* PrefixHeader.pch */,
 			);
 			path = PrefixHeader;
+			sourceTree = "<group>";
+		};
+		280F94E01AF55B1C00BA74E9 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				280F94E11AF55B1C00BA74E9 /* FUViewController.h */,
+				280F94E21AF55B1C00BA74E9 /* FUViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		280F94E41AF55B3800BA74E9 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				280F94F01AF5A26100BA74E9 /* Cells */,
+				280F94E51AF55B7400BA74E9 /* FUOnboardingBaseViewController.h */,
+				280F94E61AF55B7400BA74E9 /* FUOnboardingBaseViewController.m */,
+				280F94E71AF55B7400BA74E9 /* FUOnboardingBaseViewController.xib */,
+				280F94ED1AF5A16C00BA74E9 /* FUOnboardingOverviewController.h */,
+				280F94EE1AF5A16C00BA74E9 /* FUOnboardingOverviewController.m */,
+				280F94FB1AF5B28500BA74E9 /* FUOnboardingAreaViewController.h */,
+				280F94FC1AF5B28500BA74E9 /* FUOnboardingAreaViewController.m */,
+				280F95061AF5B71E00BA74E9 /* FUOnboardingAreaCategoryViewController.h */,
+				280F95071AF5B71E00BA74E9 /* FUOnboardingAreaCategoryViewController.m */,
+				280F95091AF5C39600BA74E9 /* FUOnboardingAreaStyleViewController.h */,
+				280F950A1AF5C39600BA74E9 /* FUOnboardingAreaStyleViewController.m */,
+				280F950C1AF5C58300BA74E9 /* FUOnboardingAreaRoomViewController.h */,
+				280F950D1AF5C58300BA74E9 /* FUOnboardingAreaRoomViewController.m */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		280F94F01AF5A26100BA74E9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				280F94F11AF5A28600BA74E9 /* FUOnboardingOverviewTextCollectionViewCell.h */,
+				280F94F21AF5A28600BA74E9 /* FUOnboardingOverviewTextCollectionViewCell.m */,
+				280F94F31AF5A28600BA74E9 /* FUOnboardingOverviewTextCollectionViewCell.xib */,
+				280F94F61AF5A80800BA74E9 /* FUOnboardingOverviewAreaCollectionViewCell.h */,
+				280F94F71AF5A80800BA74E9 /* FUOnboardingOverviewAreaCollectionViewCell.m */,
+				280F94F81AF5A80800BA74E9 /* FUOnboardingOverviewAreaCollectionViewCell.xib */,
+				280F95011AF5B3E800BA74E9 /* FUOnboardingAreaCollectionViewCell.h */,
+				280F95021AF5B3E800BA74E9 /* FUOnboardingAreaCollectionViewCell.m */,
+				280F95031AF5B3E800BA74E9 /* FUOnboardingAreaCollectionViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		280F950F1AF5CC1900BA74E9 /* OnboardingManager */ = {
+			isa = PBXGroup;
+			children = (
+				280F95101AF5CC2C00BA74E9 /* FUOnboardingManager.h */,
+				280F95111AF5CC2C00BA74E9 /* FUOnboardingManager.m */,
+			);
+			path = OnboardingManager;
 			sourceTree = "<group>";
 		};
 		28117C181AD5B889007C8DB9 /* Helper */ = {
@@ -425,19 +523,19 @@
 		2815EADB1AC8466800F97AEF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5E943BF91AEC0709004012F5 /* Filter */,
-				5EEFC4E21AE2AF90004CB533 /* ProductDetailPage */,
-				28140EDA1AE12E9800359EAA /* LoadingView */,
-				287F4D2F1ADEC3960076FC53 /* Categories */,
-				287F4D031ADB9C250076FC53 /* NavigationBar */,
-				287F4D021ADB9BA60076FC53 /* Find */,
 				28B0E5CC1AD8050700C0932E /* General */,
-				28117C271AD70890007C8DB9 /* Wishlist */,
-				2815EAF51AC8570300F97AEF /* CollectionView */,
 				2815EAEF1AC8548C00F97AEF /* Catalog */,
-				2815EAE61AC847C400F97AEF /* NavigationController */,
-				2815EAE51AC847C000F97AEF /* ViewController */,
+				287F4D2F1ADEC3960076FC53 /* Categories */,
+				2815EAF51AC8570300F97AEF /* CollectionView */,
+				5E943BF91AEC0709004012F5 /* Filter */,
+				287F4D021ADB9BA60076FC53 /* Find */,
 				2815EAE21AC8472B00F97AEF /* LaunchScreen */,
+				28140EDA1AE12E9800359EAA /* LoadingView */,
+				287F4D031ADB9C250076FC53 /* NavigationBar */,
+				2815EAE61AC847C400F97AEF /* NavigationController */,
+				280F94E41AF55B3800BA74E9 /* Onboarding */,
+				5EEFC4E21AE2AF90004CB533 /* ProductDetailPage */,
+				28117C271AD70890007C8DB9 /* Wishlist */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -445,6 +543,7 @@
 		2815EADC1AC8466B00F97AEF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				280F950F1AF5CC1900BA74E9 /* OnboardingManager */,
 				280F94D01AF420A300BA74E9 /* Appirater */,
 				5E943C101AED3827004012F5 /* FilterManager */,
 				28CB92E41AED8CF1003C279B /* TrackingManager */,
@@ -532,20 +631,13 @@
 			path = main;
 			sourceTree = "<group>";
 		};
-		2815EAE51AC847C000F97AEF /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				2815EAB91AC843F300F97AEF /* FUViewController.h */,
-				2815EABA1AC843F300F97AEF /* FUViewController.m */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
 		2815EAE61AC847C400F97AEF /* NavigationController */ = {
 			isa = PBXGroup;
 			children = (
 				2815EAE81AC847E900F97AEF /* FUNavigationController.h */,
 				2815EAE91AC847E900F97AEF /* FUNavigationController.m */,
+				280F94EA1AF56F2800BA74E9 /* FUOnboardingNavigationController.h */,
+				280F94EB1AF56F2800BA74E9 /* FUOnboardingNavigationController.m */,
 			);
 			path = NavigationController;
 			sourceTree = "<group>";
@@ -770,6 +862,7 @@
 		28B0E5CC1AD8050700C0932E /* General */ = {
 			isa = PBXGroup;
 			children = (
+				280F94E01AF55B1C00BA74E9 /* ViewController */,
 				28B0E5CD1AD8051A00C0932E /* FUActionButton */,
 			);
 			path = General;
@@ -830,6 +923,7 @@
 				5E943C0B1AECFB8D004012F5 /* FUFilterDetailViewController.m */,
 				5E943C0D1AECFBA5004012F5 /* FUFilterPriceViewController.h */,
 				5E943C0E1AECFBA5004012F5 /* FUFilterPriceViewController.m */,
+				5E6626EC1AF6661E00C25907 /* slider-orange-track.png */,
 			);
 			name = Filter;
 			sourceTree = "<group>";
@@ -919,11 +1013,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E6626ED1AF6661E00C25907 /* slider-orange-track.png in Resources */,
+				280F94E91AF55B7400BA74E9 /* FUOnboardingBaseViewController.xib in Resources */,
 				2815EAF41AC8564400F97AEF /* FUCatalogViewController.xib in Resources */,
 				5E943BF51AEBE58A004012F5 /* FUNoProductView.xib in Resources */,
 				28140EEC1AE160FC00359EAA /* FUCatalogEmptyCollectionViewCell.xib in Resources */,
 				5EEFC4E71AE2B0A0004CB533 /* FUProductDetailPageViewController.xib in Resources */,
 				287F4D131ADBBC4F0076FC53 /* FUCategoriesViewController.xib in Resources */,
+				280F94FA1AF5A80800BA74E9 /* FUOnboardingOverviewAreaCollectionViewCell.xib in Resources */,
 				28140EF21AE4150300359EAA /* FUSearchViewController.xib in Resources */,
 				5E943BF31AEBD9D3004012F5 /* FUProductDetailBrowserViewController.xib in Resources */,
 				2815EB041AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.xib in Resources */,
@@ -934,7 +1031,9 @@
 				28362DFE1AD52013000B4E99 /* products.json in Resources */,
 				5E943C091AEC14EE004012F5 /* Filter.storyboard in Resources */,
 				28140EE61AE130B100359EAA /* FULoadingView.xib in Resources */,
+				280F94F51AF5A28600BA74E9 /* FUOnboardingOverviewTextCollectionViewCell.xib in Resources */,
 				2815EAC31AC843F300F97AEF /* LaunchScreen.xib in Resources */,
+				280F95051AF5B3E800BA74E9 /* FUOnboardingAreaCollectionViewCell.xib in Resources */,
 				28117C3A1AD71E89007C8DB9 /* FUWishlistViewController.xib in Resources */,
 				28B0E5CB1AD8047600C0932E /* FUWishlistEmptyCollectionViewCell.xib in Resources */,
 				28362E0B1AD53613000B4E99 /* productList.json in Resources */,
@@ -984,27 +1083,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				280F94F41AF5A28600BA74E9 /* FUOnboardingOverviewTextCollectionViewCell.m in Sources */,
+				280F95121AF5CC2C00BA74E9 /* FUOnboardingManager.m in Sources */,
 				28B0E5D01AD8052A00C0932E /* FUActionButton.m in Sources */,
 				2815EAF81AC8573300F97AEF /* FUCollectionView.m in Sources */,
 				287F4D2B1ADEC0920076FC53 /* FUCategoryManager.m in Sources */,
 				28117C241AD68B8B007C8DB9 /* FUProperties.m in Sources */,
 				5E943C011AEC0AC4004012F5 /* UIImage+ImageEffects.m in Sources */,
+				280F94FD1AF5B28500BA74E9 /* FUOnboardingAreaViewController.m in Sources */,
+				280F94EF1AF5A16C00BA74E9 /* FUOnboardingOverviewController.m in Sources */,
 				5E943C0F1AECFBA5004012F5 /* FUFilterPriceViewController.m in Sources */,
 				28362DED1AD444D1000B4E99 /* FUDeepLinkHandler.m in Sources */,
+				280F94E31AF55B1C00BA74E9 /* FUViewController.m in Sources */,
 				28117C3F1AD7274C007C8DB9 /* FUNotifyManager.m in Sources */,
 				5EEFC4E61AE2B0A0004CB533 /* FUProductDetailPageViewController.m in Sources */,
+				280F95041AF5B3E800BA74E9 /* FUOnboardingAreaCollectionViewCell.m in Sources */,
 				287F4D2E1ADEC2340076FC53 /* FUCategoryList.m in Sources */,
 				28362DF91AD47FF4000B4E99 /* FUProduct.m in Sources */,
 				28117C1B1AD5B89A007C8DB9 /* FUNumberFormatter.m in Sources */,
 				280F94D51AF420A300BA74E9 /* FUAlertView.m in Sources */,
 				5E943BF21AEBD9D3004012F5 /* FUProductDetailBrowserViewController.m in Sources */,
 				28117C211AD67EA1007C8DB9 /* FUImagePrefetcher.m in Sources */,
+				280F950E1AF5C58300BA74E9 /* FUOnboardingAreaRoomViewController.m in Sources */,
 				287F4D121ADBBC4F0076FC53 /* FUCategoriesViewController.m in Sources */,
 				287F4D061ADB9C4F0076FC53 /* FUNavigationBar.m in Sources */,
 				28CB92EB1AED8F6B003C279B /* NSMutableDictionary+Tracking.m in Sources */,
 				28140EE41AE1309C00359EAA /* FULoadingView.m in Sources */,
 				28B0E5C51AD7F40500C0932E /* FUWishlistActionButton.m in Sources */,
-				2815EABB1AC843F300F97AEF /* FUViewController.m in Sources */,
 				28B0E5D81AD8228700C0932E /* UIControl+HitTest.m in Sources */,
 				28B0E5BC1AD7E2C900C0932E /* FUWishlistCollectionViewCell.m in Sources */,
 				28117C391AD71E89007C8DB9 /* FUWishlistViewController.m in Sources */,
@@ -1012,6 +1117,7 @@
 				28140EE11AE12F3600359EAA /* FULoadingViewManager.m in Sources */,
 				2815EAB81AC843F300F97AEF /* FUAppDelegate.m in Sources */,
 				2815EAEA1AC847E900F97AEF /* FUNavigationController.m in Sources */,
+				280F94E81AF55B7400BA74E9 /* FUOnboardingBaseViewController.m in Sources */,
 				28362E051AD5243B000B4E99 /* FUSeller.m in Sources */,
 				2815EAB51AC843F300F97AEF /* main.m in Sources */,
 				280F94DA1AF4269D00BA74E9 /* UIView+FUAnimations.m in Sources */,
@@ -1022,12 +1128,16 @@
 				28140EF11AE4150300359EAA /* FUSearchViewController.m in Sources */,
 				28B0E5C11AD7E63100C0932E /* FUWishlistManager.m in Sources */,
 				28362E091AD53383000B4E99 /* FUProductManager.m in Sources */,
+				280F95081AF5B71E00BA74E9 /* FUOnboardingAreaCategoryViewController.m in Sources */,
 				2815EAEE1AC852BC00F97AEF /* FUSDKManager.m in Sources */,
 				28140EF91AE450B900359EAA /* FUSearchTextField.m in Sources */,
+				280F94F91AF5A80800BA74E9 /* FUOnboardingOverviewAreaCollectionViewCell.m in Sources */,
 				28362E011AD5207B000B4E99 /* FUProductList.m in Sources */,
 				5E943C0C1AECFB8D004012F5 /* FUFilterDetailViewController.m in Sources */,
 				28CB92E71AED8CFC003C279B /* FUTrackingManager.m in Sources */,
 				28B0E5CA1AD8047600C0932E /* FUWishlistEmptyCollectionViewCell.m in Sources */,
+				280F94EC1AF56F2800BA74E9 /* FUOnboardingNavigationController.m in Sources */,
+				280F950B1AF5C39600BA74E9 /* FUOnboardingAreaStyleViewController.m in Sources */,
 				2815EAF21AC854F900F97AEF /* FUCatalogViewController.m in Sources */,
 				28B0E5D41AD80F8E00C0932E /* FUSharingManager.m in Sources */,
 				287F4D341ADEC41B0076FC53 /* FUCategoryTableViewCell.m in Sources */,

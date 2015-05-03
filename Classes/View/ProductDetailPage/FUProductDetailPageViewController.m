@@ -10,6 +10,7 @@
 
 #import "FUProductDetailPageViewController.h"
 #import "FUProduct.h"
+#import "FUColorConstants.h"
 
 #import <UIImageView+WebCache.h>
 #import "FUMacros.h"
@@ -22,6 +23,7 @@
 
 #define FUProductDetailPageFirstTime @"FUProductDetailPageFirstTime"
 
+
 @interface FUProductDetailPageViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *brandNameLabel;
@@ -32,6 +34,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *likeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *discardLabel;
 
+@property (weak, nonatomic) IBOutlet UIView *likeContainer;
+@property (weak, nonatomic) IBOutlet UIView *discardContainer;
 
 @property (weak, nonatomic) IBOutlet UIButton *undoButton;
 
@@ -50,12 +54,28 @@
 
 @property (assign, nonatomic) BOOL detectLike;
 @property (assign, nonatomic) BOOL detectDiscard;
+@property (assign, nonatomic, getter=isSingleProduct) BOOL singleProduct;
 
 @property (strong, nonatomic) UIView *noProductView;
+
 
 @end
 
 @implementation FUProductDetailPageViewController
+
+#pragma mark - Initialization
+
+- (instancetype)initWithSingleProduct:(FUProduct *)product
+{
+    self = [super init];
+    
+    if (self) {
+        self.product = product;
+        self.singleProduct = YES;
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -74,7 +94,9 @@
     
     self.priceTopSpaceConstraint.constant = 72 + diff / 2;
     self.priceBottomSpaceConstraint.constant = 33 + diff / 2;
-    }
+    
+    [self updateSingleProductState];
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -109,7 +131,6 @@
         self.noProductView = [nibContents lastObject];
         self.noProductView.frame = CGRectMake(0, 60, DEVICE_WIDTH, DEVICE_HEIGHT - 50 - 20);
         
-        
         UIButton *goBackButton;
         
         for(UIView *subView in self.noProductView.subviews) {
@@ -130,11 +151,12 @@
         return;
     }
     else {
-        self.verticalScrollView.scrollEnabled = YES;
+        self.verticalScrollView.scrollEnabled = !self.isSingleProduct;
         [self.noProductView removeFromSuperview];
     }
     
-    
+    self.likeContainer.backgroundColor = FUColorOrange;
+    self.discardContainer.backgroundColor = FUColorLightGray;
     self.detectDiscard = NO;
     self.detectLike = NO;
     
@@ -231,12 +253,29 @@
 - (IBAction)clickedUndo:(id)sender {
     
     FUProductAction *lastAction = [self.actions lastObject];
+    
     if (lastAction) {
         [self.actions removeObject:lastAction];
-        [lastAction undo];
+        UIImageView *imageView = lastAction.imageView;
+        CGRect frame = imageView.frame;
+        frame.origin.y = lastAction.actionType == FUActionTypeLike ? -DEVICE_HEIGHT : DEVICE_HEIGHT;
+        imageView.frame = frame;
+        [self.view addSubview:imageView];
         self.product = lastAction.product;
-        [self loadProduct];
-        //TODO: animation is missing
+        
+        [UIView animateWithDuration:1.0 animations:^{
+            
+            //animate image back to origin
+            CGRect frame = imageView.frame;
+            frame.origin.y = lastAction.yOffset;
+            imageView.frame = frame;
+        } completion:^(BOOL finished) {
+
+            [lastAction undo];
+            [imageView removeFromSuperview];
+        }];
+        
+        [self performSelector:@selector(loadProduct) withObject:nil afterDelay:0.8];
     }
 }
 
@@ -258,22 +297,26 @@
     
     if (scrollView == self.verticalScrollView) {
         
-        if (scrollView.contentOffset.y < -20.0f) {
+        if(scrollView.contentOffset.y < -20.0f) {
             self.likeLabel.hidden = YES;
-            self.detectLike = YES;
+            self.detectDiscard = YES;
+            self.likeContainer.backgroundColor = FUColorLightGray;
         }
         else {
             self.likeLabel.hidden = NO;
-            self.detectLike = NO;
+            self.detectDiscard = NO;
+            self.likeContainer.backgroundColor = FUColorOrange;
         }
         
-        if(scrollView.contentOffset.y > 20.0f) {
+        if (scrollView.contentOffset.y > 20.0f) {
             self.discardLabel.hidden = YES;
-            self.detectDiscard = YES;
+            self.detectLike = YES;
+            self.discardContainer.backgroundColor = FUColorOrange;
         }
         else {
             self.discardLabel.hidden = NO;
-            self.detectDiscard = NO;
+            self.detectLike = NO;
+            self.discardContainer.backgroundColor = FUColorLightGray;
         }
     }
 }
@@ -290,24 +333,23 @@
     return viewImage;
 }
 
-- (void) animateAction:(FUActionType)actionType {
+- (void) animateAction:(FUProductAction *)action {
     
-    CGFloat targetHeight = actionType == FUActionTypeLike ? DEVICE_HEIGHT : -DEVICE_HEIGHT;
+    CGFloat targetOrigin = action.actionType == FUActionTypeLike ? -DEVICE_HEIGHT : DEVICE_HEIGHT;
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT)];
     imageView.image = [self makeImage];
     [self.view addSubview:imageView];
     
     [UIView animateWithDuration:1.0 animations:^{
-        
         CGRect frame = imageView.frame;
-        frame.origin.y = targetHeight;
+        frame.origin.y = targetOrigin;
         imageView.frame = frame;
     } completion:^(BOOL finished) {
+        action.imageView = imageView;
         [imageView removeFromSuperview];
     }];
 }
-
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
     
@@ -326,15 +368,24 @@
     }
     
     FUProductAction *action = [[FUProductAction alloc] initWithProduct:self.product action:actionType];
+    action.yOffset = scrollView.contentOffset.y;
     [self.actions addObject:action];
     [action execute];
     
-    [self animateAction:action.actionType];
+    [self animateAction:action];
     
     self.product = [[FUProductManager sharedManager] nextProduct:self.product];
     [self loadProduct];
 }
 
+#pragma mark - Private
 
+- (void)updateSingleProductState
+{
+    self.verticalScrollView.scrollEnabled = !self.singleProduct;
+    self.likeContainer.hidden = self.singleProduct;
+    self.discardContainer.hidden = self.singleProduct;
+    self.undoButton.hidden = self.singleProduct;
+}
 
 @end

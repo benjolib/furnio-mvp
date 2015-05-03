@@ -17,6 +17,7 @@ pod 'MLPAutoCompleteTextField', '~> 1.5'
 pod 'MMMaterialDesignSpinner', '~> 0.2'
 pod 'FXBlurView', '~> 1.6'
 pod 'NMRangeSlider', '~> 1.2'
+pod 'ADTransitionController', '~> 1.1.1'
 
 # Disable logging of SDWebImagePrefetcher
 

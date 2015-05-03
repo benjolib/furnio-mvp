@@ -32,7 +32,7 @@
     NSDictionary *allFilterItems = [[NSUserDefaults standardUserDefaults] dictionaryForKey:FUFilterItemsKey];
     
     if(!allFilterItems) {
-        [self setupFilterItems];
+        [self setupAllFilterItems];
         allFilterItems = [[NSUserDefaults standardUserDefaults] dictionaryForKey:FUFilterItemsKey];
     }
     
@@ -41,48 +41,73 @@
 
 - (void)saveAllFilterItems:(NSDictionary *)allFilterItems {
     [[NSUserDefaults standardUserDefaults] setValue:allFilterItems forKey:FUFilterItemsKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (void)setupFilterItems {
-    
+- (NSMutableDictionary *)defaultCategoriesFilter {
     NSMutableDictionary *filterItemsCategory = [NSMutableDictionary dictionary];
     
     for(FUCategory *category in [FUCategoryManager sharedManager].categoryList.categories) {
         filterItemsCategory[category.name] = @NO;
     }
-    
-    NSDictionary *filterItemsStyle = [@{@"Style1" : @NO,
-                                       @"Style2" : @NO,
-                                       @"Style3" : @NO,
-                                       @"Style4" : @NO,
-                                       @"Style5" : @NO} mutableCopy];
+    return filterItemsCategory;
+}
 
-    NSDictionary *filterItemsRoom = [@{@"Room1" : @NO,
-                                      @"Room2" : @NO,
-                                      @"Room3" : @NO,
-                                      @"Room4" : @NO} mutableCopy];
-    
-    NSDictionary *filterItemsPrice = [@{FUMinPriceKey : @0,
-                                       FUMaxPriceKey : @15000} mutableCopy];
-    
-    NSDictionary *filterItemsMerchant = [@{@"Merchant1" : @NO,
-                                          @"Merchant2" : @NO,
-                                          @"Merchant3" : @NO,
-                                          @"Merchant4" : @NO} mutableCopy];
+- (NSMutableDictionary *)defaultStylesFilter {
+    return [@{@"All"           : @NO,
+              @"Contemporary"  : @NO,
+              @"Ecletic"       : @NO,
+              @"Modern"        : @NO,
+              @"Traditional"   : @NO,
+              @"Asian"         : @NO,
+              @"Beach Style"   : @NO,
+              @"Craftsman"     : @NO,
+              @"Farmhouse"     : @NO,
+              @"Industrial"    : @NO,
+              @"Rustic"        : @NO,
+              @"Southwestern"  : @NO,
+              @"Transitional"  : @NO,
+              @"Tropical"      : @NO} mutableCopy];
+}
 
-    
-    
-    NSDictionary *allFilterItems = [@{FUFilterCategoryKey : filterItemsCategory,
-                                     FUFilterStyleKey : filterItemsStyle,
-                                     FUFilterRoomKey : filterItemsRoom,
-                                     FUFilterPriceKey : filterItemsPrice,
-                                     FUFilterMerchantKey : filterItemsMerchant} mutableCopy];
-    
-    [self saveAllFilterItems:allFilterItems];
+- (NSMutableDictionary *)defaultRoomsFilter {
+    return [@{@"Kitchen" : @NO,
+              @"Bath"    : @NO,
+              @"Bedroom" : @NO,
+              @"Living"  : @NO,
+              @"Dinning" : @NO,
+              @"Kids"    : @NO,
+              @"Outdoor" : @NO,
+              @"Office"  : @NO} mutableCopy];
+}
+
+- (NSMutableDictionary *)defaultPriceFilter {
+    return [@{FUMinPriceKey : FUMinPriceDefaultValue,
+              FUMaxPriceKey : FUMaxPriceDefaultValue} mutableCopy];
+}
+
+- (NSMutableDictionary *)defaultMerchantFilter {
+    return [@{@"Merchant1" : @NO,
+              @"Merchant2" : @NO,
+              @"Merchant3" : @NO,
+              @"Merchant4" : @NO} mutableCopy];
+}
+
+- (NSMutableDictionary *)defaultFilters {
+    return [@{FUFilterCategoryKey : [self defaultCategoriesFilter],
+              FUFilterStyleKey    : [self defaultStylesFilter],
+              FUFilterRoomKey     : [self defaultRoomsFilter],
+              FUFilterPriceKey    : [self defaultPriceFilter],
+              FUFilterMerchantKey : [self defaultMerchantFilter]} mutableCopy];
+}
+
+
+- (void)setupAllFilterItems {
+    [self saveAllFilterItems: [self defaultFilters]];
 }
 
 - (void)resetAllFilters {
-    [self setupFilterItems];
+    [self setupAllFilterItems];
 }
 
 - (BOOL)isProductInFilter:(FUProduct *)product {
@@ -136,7 +161,7 @@
     for (NSDictionary *productCategoryDictionary in product.categories) {
         for(NSString *validCategory in validCategories) {
             NSString *productCategory = productCategoryDictionary[@"name"];
-            NSLog(@"Product Category: %@", productCategory);
+//            NSLog(@"Product Category: %@", productCategory);
             if ([productCategory isEqualToString:validCategory]) {
                 return YES;
             }

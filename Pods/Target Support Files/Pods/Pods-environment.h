@@ -6,6 +6,12 @@
 // project.
 
 
+// ADTransitionController
+#define COCOAPODS_POD_AVAILABLE_ADTransitionController
+#define COCOAPODS_VERSION_MAJOR_ADTransitionController 1
+#define COCOAPODS_VERSION_MINOR_ADTransitionController 1
+#define COCOAPODS_VERSION_PATCH_ADTransitionController 1
+
 // AFNetworking
 #define COCOAPODS_POD_AVAILABLE_AFNetworking
 #define COCOAPODS_VERSION_MAJOR_AFNetworking 2

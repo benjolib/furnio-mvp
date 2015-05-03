@@ -18,6 +18,7 @@
 @interface FUFilterViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *applyFilterButton;
 
 @property (strong, nonatomic) UIView *backView;
 @property (strong, nonatomic) NSMutableDictionary *allFilterItems;
@@ -31,7 +32,9 @@
     self.title = @"FILTER";
     self.tableView.backgroundColor = [UIColor clearColor];
     [self loadFilters];
-    //TODO: border around filter button
+    self.applyFilterButton.layer.borderWidth = 1.5f;
+    self.applyFilterButton.layer.borderColor = [[UIColor colorWithRed:244.0/255.0 green:170.0/255.0 blue:56.0/255.0 alpha:1.0] CGColor];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -46,6 +49,14 @@
 
 - (void) loadFilters {
     self.allFilterItems = [[FUFilterManager sharedManager] loadAllFilterItems];
+    //make the inner dictionaries mutable
+    for (NSString *key in [self.allFilterItems allKeys]) {
+        self.allFilterItems[key] = [self.allFilterItems[key] mutableCopy];
+    }
+}
+
+- (void)loadDefaultFilters {
+    self.allFilterItems = [[FUFilterManager sharedManager] defaultFilters];
     //make the inner dictionaries mutable
     for (NSString *key in [self.allFilterItems allKeys]) {
         self.allFilterItems[key] = [self.allFilterItems[key] mutableCopy];
@@ -115,20 +126,20 @@
     if(![detailString isEqualToString:@" "]) {
         cell.textLabel.textColor = [UIColor blackColor];
         
-        UIImage *checkedImage = [UIImage imageNamed:@"close"];
+        UIImage *removeImage = [UIImage imageNamed:@"close"];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.frame = CGRectMake(0, 0, 25, 25);
         button.tag = indexPath.row;
         [button addTarget:self action:@selector(removeSingleFilterButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-        [button setImage:checkedImage forState:UIControlStateNormal];
+        [button setImage:removeImage forState:UIControlStateNormal];
         cell.accessoryView = button;
     }
     else {
         cell.textLabel.textColor = [UIColor lightGrayColor];
-        UIImage *checkedImage = [UIImage imageNamed:@"forward"];
+        UIImage *forwardImage = [UIImage imageNamed:@"forward"];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.frame = CGRectMake(0, 0, 13, 25);
-        [button setImage:checkedImage forState:UIControlStateNormal];
+        [button setImage:forwardImage forState:UIControlStateNormal];
         cell.accessoryView = button;
     }
     
@@ -138,52 +149,53 @@
 - (void)removeSingleFilterButtonTapped:(UIButton *)button {
     switch (button.tag) {
         case 0:
-            //TODO : reset filter preferences of Category
+            self.allFilterItems[FUFilterCategoryKey] = [[FUFilterManager sharedManager] defaultCategoriesFilter];
             break;
         case 1:
-            //TODO : reset filter preferences of Style
+            self.allFilterItems[FUFilterStyleKey] = [[FUFilterManager sharedManager] defaultStylesFilter];
             break;
         case 2:
-            //TODO : reset filter preferences of Room
+            self.allFilterItems[FUFilterRoomKey] = [[FUFilterManager sharedManager] defaultRoomsFilter];
             break;
         case 3:
-            //TODO : reset filter preferences of Price
+            self.allFilterItems[FUFilterPriceKey] = [[FUFilterManager sharedManager] defaultPriceFilter];
             break;
         case 4:
-            //TODO : reset filter preferences of Merchant
+            self.allFilterItems[FUFilterMerchantKey] = [[FUFilterManager sharedManager] defaultMerchantFilter];
             break;
             
         default:
             break;
     }
+    [self.tableView reloadData];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    switch (indexPath.row) {
-        case 0:     //Category
-        {
-            break;
-        }
-        case 1:     //Style
-        {
-            break;
-        }
-        case 2:     //Room
-        {
-            break;
-        }
-        case 3:     //Price
-        {
-            break;
-        }
-        case 4:     //Merchant
-        {
-            break;
-        }
-        default:
-            break;
-    }
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    switch (indexPath.row) {
+//        case 0:     //Category
+//        {
+//            break;
+//        }
+//        case 1:     //Style
+//        {
+//            break;
+//        }
+//        case 2:     //Room
+//        {
+//            break;
+//        }
+//        case 3:     //Price
+//        {
+//            break;
+//        }
+//        case 4:     //Merchant
+//        {
+//            break;
+//        }
+//        default:
+//            break;
+//    }
+//}
 
 
 - (IBAction)applyFilter:(id)sender {
@@ -193,9 +205,7 @@
 }
 
 - (IBAction)removeAllFilter:(id)sender {
-    [[FUFilterManager sharedManager] resetAllFilters];
-    [[FUProductManager sharedManager] filterProducts];    
-    [self loadFilters];
+    [self loadDefaultFilters];
     [self.tableView reloadData];
 }
 
@@ -211,19 +221,19 @@
         switch (selectedIndexPath.row) {
             case 0:
                 filterDetailViewController.name = @"CATEGORY";
-                filterDetailViewController.filterItems = self.allFilterItems[FUFilterCategoryKey];
+                filterDetailViewController.previousFilterItems = self.allFilterItems[FUFilterCategoryKey];
                 break;
             case 1:
                 filterDetailViewController.name = @"STYLE";
-                filterDetailViewController.filterItems = self.allFilterItems[FUFilterStyleKey];
+                filterDetailViewController.previousFilterItems = self.allFilterItems[FUFilterStyleKey];
                 break;
             case 2:
                 filterDetailViewController.name = @"ROOM";
-                filterDetailViewController.filterItems = self.allFilterItems[FUFilterRoomKey];
+                filterDetailViewController.previousFilterItems = self.allFilterItems[FUFilterRoomKey];
                 break;
             case 4:
                 filterDetailViewController.name = @"MERCHANT";
-                filterDetailViewController.filterItems = self.allFilterItems[FUFilterMerchantKey];
+                filterDetailViewController.previousFilterItems = self.allFilterItems[FUFilterMerchantKey];
                 break;
                 
             default:
@@ -239,7 +249,7 @@
         switch (selectedIndexPath.row) {
             case 3:
                 filterPriceViewController.name = @"PRICE";
-                filterPriceViewController.filterItems = self.allFilterItems[FUFilterPriceKey];
+                filterPriceViewController.previousFilterItems = self.allFilterItems[FUFilterPriceKey];
                 break;
             default:
                 break;
@@ -272,7 +282,7 @@
     
     for(NSString *filterName in filterItems) {
         NSInteger value = [filterItems[filterName] integerValue];
-        [detailString appendFormat:@"%@: %li €, ", filterName, (long)value];
+        [detailString appendFormat:@"%@: $%li, ", filterName, (long)value];
     }
     
     return [detailString substringToIndex:detailString.length - 2];

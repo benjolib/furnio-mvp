@@ -13,8 +13,10 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
+@property (weak, nonatomic) IBOutlet UIButton *applyFilterButton;
 
 @property (strong, nonatomic) NSArray* filterItemKeys;
+@property (nonatomic, strong) NSMutableDictionary *currentFilterItems;
 
 @end
 
@@ -23,7 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.backgroundColor = [UIColor clearColor];
-    //TODO: border around filter button
+    self.applyFilterButton.layer.borderWidth = 1.5f;
+    self.applyFilterButton.layer.borderColor = [[UIColor colorWithRed:244.0/255.0 green:170.0/255.0 blue:56.0/255.0 alpha:1.0] CGColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -35,7 +38,8 @@
 
     self.navItem.title = self.name;
     
-    self.filterItemKeys = [[self.filterItems allKeys] sortedArrayUsingSelector: @selector(localizedCompare:)];
+    self.currentFilterItems = [self.previousFilterItems mutableCopy];
+    self.filterItemKeys = [[self.currentFilterItems allKeys] sortedArrayUsingSelector: @selector(localizedCompare:)];
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -48,7 +52,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.filterItems count];
+    return [self.currentFilterItems count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -57,11 +61,20 @@
     
     NSString *filterName = self.filterItemKeys[indexPath.row];
     cell.textLabel.text = filterName;
-    if ([self.filterItems[filterName] boolValue] == YES) {
+    if ([self.currentFilterItems[filterName] boolValue] == YES) {
         cell.textLabel.textColor = [UIColor blackColor];
     }
     else {
         cell.textLabel.textColor = [UIColor lightGrayColor];
+    }
+    
+    if([self.currentFilterItems[filterName] boolValue]) {
+        UIImage *checkedImage = [UIImage imageNamed:@"check-arrow"];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:checkedImage];
+        cell.accessoryView = imageView;
+    }
+    else {
+        cell.accessoryView = nil;
     }
     
     return cell;
@@ -69,8 +82,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *filterName = self.filterItemKeys[indexPath.row];
-    self.filterItems[filterName] = @(![self.filterItems[filterName] boolValue]);
-    [self.tableView reloadData];
+    self.currentFilterItems[filterName] = @(![self.currentFilterItems[filterName] boolValue]);
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (IBAction)close:(id)sender {
@@ -78,11 +91,18 @@
 }
 
 - (IBAction)applyFilter:(id)sender {
-    //TODO
+    for(NSString *filterItemKey in self.filterItemKeys) {
+        // save all current filters to the previous list owned by FUFilterViewController
+        self.previousFilterItems[filterItemKey] = self.currentFilterItems[filterItemKey];
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)removeFilter:(id)sender {
-    //TODO
+    for(NSString *filterItemKey in self.filterItemKeys) {
+        self.currentFilterItems[filterItemKey] = @NO;
+    }
+    [self.tableView reloadData];
 }
 
 @end

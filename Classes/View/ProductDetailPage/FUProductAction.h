@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@import UIKit;
 
 @class FUProduct;
 
@@ -19,6 +20,8 @@ typedef enum : NSUInteger {
 
 @property(strong, nonatomic) FUProduct *product;
 @property(assign, nonatomic) FUActionType actionType;
+@property(strong, nonatomic) UIImageView *imageView;
+@property(assign, nonatomic) CGFloat yOffset;
 
 - (instancetype)initWithProduct:(FUProduct *)product action:(FUActionType) actionType;
 
