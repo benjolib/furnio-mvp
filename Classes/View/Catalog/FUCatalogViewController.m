@@ -21,6 +21,7 @@
 #import "FUProductDetailPageViewController.h"
 #import "FUFilterViewController.h"
 #import "UIImage+ImageEffects.h"
+#import "FUOnboardingManager.h"
 
 @interface FUCatalogViewController () <FUCollectionViewDelegate>
 
@@ -86,6 +87,13 @@
             [cell.verticalCollectionView reloadData];
         }
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [[FUOnboardingManager sharedManager] evaluateOnboarding];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
