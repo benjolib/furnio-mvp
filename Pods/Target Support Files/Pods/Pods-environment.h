@@ -102,6 +102,12 @@
 #define COCOAPODS_VERSION_MINOR_MMMaterialDesignSpinner 2
 #define COCOAPODS_VERSION_PATCH_MMMaterialDesignSpinner 0
 
+// NMRangeSlider
+#define COCOAPODS_POD_AVAILABLE_NMRangeSlider
+#define COCOAPODS_VERSION_MAJOR_NMRangeSlider 1
+#define COCOAPODS_VERSION_MINOR_NMRangeSlider 2
+#define COCOAPODS_VERSION_PATCH_NMRangeSlider 1
+
 // SDWebImage
 #define COCOAPODS_POD_AVAILABLE_SDWebImage
 #define COCOAPODS_VERSION_MAJOR_SDWebImage 3

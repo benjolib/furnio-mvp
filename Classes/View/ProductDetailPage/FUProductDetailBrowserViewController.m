@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationTitle.title = self.product.seller.name;
-    [self.webView loadRequest:[NSURLRequest requestWithURL:self.product.houzzURL]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:self.product.seller.houzzURL]];
 }
 
 - (IBAction)close:(id)sender {
@@ -33,9 +33,6 @@
     [FUSharingManager shareProduct:self.product withViewController:self completion:^{
         NSLog(@"Sharing finished!");
     }];
-    
-//    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[self.product.houzzURL] applicationActivities:nil];
-//    [self presentViewController:controller animated:YES completion:nil];
 }
 
 - (BOOL)prefersStatusBarHidden

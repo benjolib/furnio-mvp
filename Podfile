@@ -16,7 +16,7 @@ pod 'AQSTwitterActivity', '~> 0.1'
 pod 'MLPAutoCompleteTextField', '~> 1.5'
 pod 'MMMaterialDesignSpinner', '~> 0.2'
 pod 'FXBlurView', '~> 1.6'
-
+pod 'NMRangeSlider', '~> 1.2'
 
 # Disable logging of SDWebImagePrefetcher
 

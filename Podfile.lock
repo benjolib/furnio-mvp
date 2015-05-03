@@ -29,6 +29,7 @@ PODS:
   - JSONModel (1.0.2)
   - MLPAutoCompleteTextField (1.5)
   - MMMaterialDesignSpinner (0.2.0)
+  - NMRangeSlider (1.2.1)
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
   - SDWebImage/Core (3.7.2)
@@ -48,6 +49,7 @@ DEPENDENCIES:
   - JSONModel (~> 1.0)
   - MLPAutoCompleteTextField (~> 1.5)
   - MMMaterialDesignSpinner (~> 0.2)
+  - NMRangeSlider (~> 1.2)
   - SDWebImage (~> 3.7)
   - UIColor+Hex (~> 1.0)
 
@@ -62,7 +64,8 @@ SPEC CHECKSUMS:
   JSONModel: 6ffcb4ffa3659c9e9a2e5d45d6c7705bab187c03
   MLPAutoCompleteTextField: ba4d507bbff2bd4f139d4197814fc8dd39caf77e
   MMMaterialDesignSpinner: 8f1a50270b789c76ec500957e518fc3e05e55b9d
+  NMRangeSlider: 317ded652431eb90501c8421d9cddc3930d891e6
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
   UIColor+Hex: 9fee91bb8e19f17dd40a79ae1e98949a6a84489d
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.4
