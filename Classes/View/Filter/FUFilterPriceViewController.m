@@ -41,8 +41,8 @@
     
     self.priceRangeSlider.minimumValue = [FUMinPriceDefaultValue floatValue];
     self.priceRangeSlider.maximumValue = [FUMaxPriceDefaultValue floatValue];
-    self.priceRangeSlider.stepValue = 100;
-    self.priceRangeSlider.stepValueContinuously = YES;
+    self.priceRangeSlider.stepValue = 10;
+    self.priceRangeSlider.stepValueContinuously = NO;
     self.priceRangeSlider.trackImage = [UIImage imageNamed:@"slider-orange-track"];
 
     //TODO: set lower handle image and upper handle image if the assets are available
