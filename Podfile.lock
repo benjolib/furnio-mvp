@@ -1,5 +1,6 @@
 PODS:
   - Adjust (4.2.3)
+  - ADTransitionController (1.1.1)
   - AFNetworking (2.5.3):
     - AFNetworking/NSURLConnection (= 2.5.3)
     - AFNetworking/NSURLSession (= 2.5.3)
@@ -39,6 +40,7 @@ PODS:
 
 DEPENDENCIES:
   - Adjust (~> 4.1)
+  - ADTransitionController (~> 1.1.1)
   - AFNetworking (~> 2.5)
   - Appirater (~> 2.0)
   - AQSFacebookActivity (~> 0.1)
@@ -53,6 +55,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Adjust: 078bc41dce5fd01f43e1200898bc96aee391be8d
+  ADTransitionController: 72299d31488bcbe59fb87c483a89a637ebc819f8
   AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
   Appirater: 8783318c36414e8de3ea023443028df94c1b784b
   AQSFacebookActivity: 1c726691eb632894638b51f04a69426ca3905b94
