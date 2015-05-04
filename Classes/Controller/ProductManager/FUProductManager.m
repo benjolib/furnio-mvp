@@ -254,6 +254,8 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
     _previousSearchQuery = nil;
     _previousFoundRows = nil;
     
+    _filteredProducts = _products;
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:FUProductManagerDidFinishLoadingPageNotification object:nil];
 }
 
