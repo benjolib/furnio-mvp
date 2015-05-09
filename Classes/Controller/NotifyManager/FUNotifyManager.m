@@ -102,6 +102,8 @@ static CGFloat const FUNotifyManagerMessageAnimationDuration = 0.35f;
     } else {
         self.messageLabel = [self newMessageLabelWithBackgroundColor:backgroundColor];
         self.messageLabel.text = text;
+        
+        [self setupGestureRecognizers];
 
         [[[UIApplication sharedApplication] keyWindow] addSubview:self.messageLabel];
         
@@ -141,6 +143,20 @@ static CGFloat const FUNotifyManagerMessageAnimationDuration = 0.35f;
     messageLabel.alpha = 0.8f;
     
     return messageLabel;
+}
+
+#pragma mark - Gesture Recognizers
+
+- (void)setupGestureRecognizers
+{
+    self.messageLabel.userInteractionEnabled = YES;
+
+    UISwipeGestureRecognizer *swipeUpGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(hideMessage)];
+    swipeUpGestureRecognizer.direction = UISwipeGestureRecognizerDirectionUp;
+    [self.messageLabel addGestureRecognizer:swipeUpGestureRecognizer];
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideMessage)];
+    [self.messageLabel addGestureRecognizer:tapGestureRecognizer];    
 }
 
 @end
