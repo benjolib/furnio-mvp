@@ -55,6 +55,10 @@
 		2815EAFC1AC85DE600F97AEF /* FUCatalogCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2815EAFA1AC85DE600F97AEF /* FUCatalogCollectionViewCell.m */; };
 		2815EB031AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2815EB011AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.m */; };
 		2815EB041AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2815EB021AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.xib */; };
+		282FB4BA1AFE393000F04D6A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 282FB4B91AFE393000F04D6A /* CoreData.framework */; };
+		282FB4BC1AFE393900F04D6A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 282FB4BB1AFE393900F04D6A /* SystemConfiguration.framework */; };
+		282FB4BE1AFE394600F04D6A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 282FB4BD1AFE394600F04D6A /* libz.dylib */; };
+		282FB4C01AFE395300F04D6A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 282FB4BF1AFE395300F04D6A /* libsqlite3.dylib */; };
 		28362DED1AD444D1000B4E99 /* FUDeepLinkHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 28362DEC1AD444D1000B4E99 /* FUDeepLinkHandler.m */; };
 		28362DF91AD47FF4000B4E99 /* FUProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 28362DF81AD47FF4000B4E99 /* FUProduct.m */; };
 		28362E011AD5207B000B4E99 /* FUProductList.m in Sources */ = {isa = PBXBuildFile; fileRef = 28362E001AD5207B000B4E99 /* FUProductList.m */; };
@@ -193,6 +197,10 @@
 		2815EB001AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUCatalogColumnCollectionViewCell.h; path = CatalogColumnCell/FUCatalogColumnCollectionViewCell.h; sourceTree = "<group>"; };
 		2815EB011AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUCatalogColumnCollectionViewCell.m; path = CatalogColumnCell/FUCatalogColumnCollectionViewCell.m; sourceTree = "<group>"; };
 		2815EB021AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FUCatalogColumnCollectionViewCell.xib; path = CatalogColumnCell/FUCatalogColumnCollectionViewCell.xib; sourceTree = "<group>"; };
+		282FB4B91AFE393000F04D6A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		282FB4BB1AFE393900F04D6A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		282FB4BD1AFE394600F04D6A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		282FB4BF1AFE395300F04D6A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		28362DEB1AD444D1000B4E99 /* FUDeepLinkHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUDeepLinkHandler.h; sourceTree = "<group>"; };
 		28362DEC1AD444D1000B4E99 /* FUDeepLinkHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUDeepLinkHandler.m; sourceTree = "<group>"; };
 		28362DF71AD47FF4000B4E99 /* FUProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUProduct.h; sourceTree = "<group>"; };
@@ -279,6 +287,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				282FB4C01AFE395300F04D6A /* libsqlite3.dylib in Frameworks */,
+				282FB4BE1AFE394600F04D6A /* libz.dylib in Frameworks */,
+				282FB4BC1AFE393900F04D6A /* SystemConfiguration.framework in Frameworks */,
+				282FB4BA1AFE393000F04D6A /* CoreData.framework in Frameworks */,
 				2872D7AC1AFDE1EF003277A2 /* Crashlytics.framework in Frameworks */,
 				2872D7AD1AFDE1EF003277A2 /* Fabric.framework in Frameworks */,
 				B7D89CA715C1DCDDA2B1FFA4 /* libPods.a in Frameworks */,
@@ -969,6 +981,10 @@
 		B47D946E2DF02A1A5AB6D689 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				282FB4BF1AFE395300F04D6A /* libsqlite3.dylib */,
+				282FB4BD1AFE394600F04D6A /* libz.dylib */,
+				282FB4BB1AFE393900F04D6A /* SystemConfiguration.framework */,
+				282FB4B91AFE393000F04D6A /* CoreData.framework */,
 				B670C054E923FEC9417790E8 /* libPods.a */,
 			);
 			name = Frameworks;
