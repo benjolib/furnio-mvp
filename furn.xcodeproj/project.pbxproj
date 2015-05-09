@@ -57,12 +57,9 @@
 		2815EB041AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2815EB021AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.xib */; };
 		28362DED1AD444D1000B4E99 /* FUDeepLinkHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 28362DEC1AD444D1000B4E99 /* FUDeepLinkHandler.m */; };
 		28362DF91AD47FF4000B4E99 /* FUProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 28362DF81AD47FF4000B4E99 /* FUProduct.m */; };
-		28362DFC1AD486A0000B4E99 /* product.json in Resources */ = {isa = PBXBuildFile; fileRef = 28362DFB1AD486A0000B4E99 /* product.json */; };
-		28362DFE1AD52013000B4E99 /* products.json in Resources */ = {isa = PBXBuildFile; fileRef = 28362DFD1AD52013000B4E99 /* products.json */; };
 		28362E011AD5207B000B4E99 /* FUProductList.m in Sources */ = {isa = PBXBuildFile; fileRef = 28362E001AD5207B000B4E99 /* FUProductList.m */; };
 		28362E051AD5243B000B4E99 /* FUSeller.m in Sources */ = {isa = PBXBuildFile; fileRef = 28362E041AD5243B000B4E99 /* FUSeller.m */; };
 		28362E091AD53383000B4E99 /* FUProductManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28362E081AD53383000B4E99 /* FUProductManager.m */; };
-		28362E0B1AD53613000B4E99 /* productList.json in Resources */ = {isa = PBXBuildFile; fileRef = 28362E0A1AD53613000B4E99 /* productList.json */; };
 		2872D7AC1AFDE1EF003277A2 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2872D7AA1AFDE1EF003277A2 /* Crashlytics.framework */; };
 		2872D7AD1AFDE1EF003277A2 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2872D7AB1AFDE1EF003277A2 /* Fabric.framework */; };
 		287F4D061ADB9C4F0076FC53 /* FUNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 287F4D051ADB9C4F0076FC53 /* FUNavigationBar.m */; };
@@ -74,7 +71,6 @@
 		287F4D2E1ADEC2340076FC53 /* FUCategoryList.m in Sources */ = {isa = PBXBuildFile; fileRef = 287F4D2D1ADEC2340076FC53 /* FUCategoryList.m */; };
 		287F4D341ADEC41B0076FC53 /* FUCategoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 287F4D321ADEC41B0076FC53 /* FUCategoryTableViewCell.m */; };
 		287F4D351ADEC41B0076FC53 /* FUCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 287F4D331ADEC41B0076FC53 /* FUCategoryTableViewCell.xib */; };
-		287F4D371ADEC88D0076FC53 /* categoryList.json in Resources */ = {isa = PBXBuildFile; fileRef = 287F4D361ADEC88D0076FC53 /* categoryList.json */; };
 		28B0E5BC1AD7E2C900C0932E /* FUWishlistCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0E5BA1AD7E2C900C0932E /* FUWishlistCollectionViewCell.m */; };
 		28B0E5BD1AD7E2C900C0932E /* FUWishlistCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B0E5BB1AD7E2C900C0932E /* FUWishlistCollectionViewCell.xib */; };
 		28B0E5C11AD7E63100C0932E /* FUWishlistManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0E5C01AD7E63100C0932E /* FUWishlistManager.m */; };
@@ -86,7 +82,6 @@
 		28B0E5D81AD8228700C0932E /* UIControl+HitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0E5D71AD8228700C0932E /* UIControl+HitTest.m */; };
 		28CB92E71AED8CFC003C279B /* FUTrackingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CB92E61AED8CFC003C279B /* FUTrackingManager.m */; };
 		28CB92EB1AED8F6B003C279B /* NSMutableDictionary+Tracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CB92EA1AED8F6B003C279B /* NSMutableDictionary+Tracking.m */; };
-		33F237418860FD871BBB6843 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70434F8189787034BBDD21B6 /* libPods.a */; };
 		5E2E505B1AF6C061005E775E /* pdp-tutorial1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E2E50581AF6C061005E775E /* pdp-tutorial1.png */; };
 		5E2E505C1AF6C061005E775E /* pdp-tutorial2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E2E50591AF6C061005E775E /* pdp-tutorial2.png */; };
 		5E2E505D1AF6C061005E775E /* pdp-tutorial3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E2E505A1AF6C061005E775E /* pdp-tutorial3.png */; };
@@ -201,15 +196,12 @@
 		28362DEC1AD444D1000B4E99 /* FUDeepLinkHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUDeepLinkHandler.m; sourceTree = "<group>"; };
 		28362DF71AD47FF4000B4E99 /* FUProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUProduct.h; sourceTree = "<group>"; };
 		28362DF81AD47FF4000B4E99 /* FUProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUProduct.m; sourceTree = "<group>"; };
-		28362DFB1AD486A0000B4E99 /* product.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = product.json; sourceTree = "<group>"; };
-		28362DFD1AD52013000B4E99 /* products.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = products.json; sourceTree = "<group>"; };
 		28362DFF1AD5207B000B4E99 /* FUProductList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUProductList.h; sourceTree = "<group>"; };
 		28362E001AD5207B000B4E99 /* FUProductList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUProductList.m; sourceTree = "<group>"; };
 		28362E031AD5243B000B4E99 /* FUSeller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUSeller.h; sourceTree = "<group>"; };
 		28362E041AD5243B000B4E99 /* FUSeller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUSeller.m; sourceTree = "<group>"; };
 		28362E071AD53383000B4E99 /* FUProductManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUProductManager.h; sourceTree = "<group>"; };
 		28362E081AD53383000B4E99 /* FUProductManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUProductManager.m; sourceTree = "<group>"; };
-		28362E0A1AD53613000B4E99 /* productList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = productList.json; sourceTree = "<group>"; };
 		2872D7AA1AFDE1EF003277A2 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		2872D7AB1AFDE1EF003277A2 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		287F4D041ADB9C4F0076FC53 /* FUNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUNavigationBar.h; sourceTree = "<group>"; };
@@ -227,7 +219,6 @@
 		287F4D311ADEC41B0076FC53 /* FUCategoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUCategoryTableViewCell.h; sourceTree = "<group>"; };
 		287F4D321ADEC41B0076FC53 /* FUCategoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUCategoryTableViewCell.m; sourceTree = "<group>"; };
 		287F4D331ADEC41B0076FC53 /* FUCategoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FUCategoryTableViewCell.xib; sourceTree = "<group>"; };
-		287F4D361ADEC88D0076FC53 /* categoryList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = categoryList.json; sourceTree = "<group>"; };
 		28B0E5B91AD7E2C900C0932E /* FUWishlistCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUWishlistCollectionViewCell.h; sourceTree = "<group>"; };
 		28B0E5BA1AD7E2C900C0932E /* FUWishlistCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUWishlistCollectionViewCell.m; sourceTree = "<group>"; };
 		28B0E5BB1AD7E2C900C0932E /* FUWishlistCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FUWishlistCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -277,7 +268,6 @@
 		5EEFC4E41AE2B0A0004CB533 /* FUProductDetailPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUProductDetailPageViewController.m; path = ProductDetailPage/FUProductDetailPageViewController.m; sourceTree = "<group>"; };
 		5EEFC4E51AE2B0A0004CB533 /* FUProductDetailPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FUProductDetailPageViewController.xib; path = ProductDetailPage/FUProductDetailPageViewController.xib; sourceTree = "<group>"; };
 		5EEFC4E81AE3B4C8004CB533 /* FUMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUMacros.h; sourceTree = "<group>"; };
-		70434F8189787034BBDD21B6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DD1A01C30046235F217826A /* Pods.store.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.store.xcconfig; path = "Pods/Target Support Files/Pods/Pods.store.xcconfig"; sourceTree = "<group>"; };
 		9CE78E8A0458EED4BE60A736 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -287,7 +277,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33F237418860FD871BBB6843 /* libPods.a in Frameworks */,
 				2872D7AC1AFDE1EF003277A2 /* Crashlytics.framework in Frameworks */,
 				2872D7AD1AFDE1EF003277A2 /* Fabric.framework in Frameworks */,
 			);
@@ -304,14 +293,6 @@
 				18D533805E87A3931D40AA63 /* Pods.ad-hoc.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		19EC5FDA96650DD22CCC2F6F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				70434F8189787034BBDD21B6 /* libPods.a */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		280F94D01AF420A300BA74E9 /* Appirater */ = {
@@ -513,7 +494,6 @@
 				2815EAE01AC8470D00F97AEF /* Resources */,
 				2815EAB01AC843F300F97AEF /* Products */,
 				15607719AFB473FCD1BE47D2 /* Pods */,
-				19EC5FDA96650DD22CCC2F6F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -607,11 +587,11 @@
 		2815EAE01AC8470D00F97AEF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				280F94DE1AF4366D00BA74E9 /* PrefixHeader */,
-				28362DFA1AD48694000B4E99 /* Data */,
+				2872D7A91AFDE1EF003277A2 /* Frameworks */,
+				2815EAE11AC8471300F97AEF /* Images */,
 				2815EAE41AC8474F00F97AEF /* main */,
 				2815EAE31AC8473F00F97AEF /* plist */,
-				2815EAE11AC8471300F97AEF /* Images */,
+				280F94DE1AF4366D00BA74E9 /* PrefixHeader */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -741,17 +721,6 @@
 				28117C231AD68B8B007C8DB9 /* FUProperties.m */,
 			);
 			path = Product;
-			sourceTree = "<group>";
-		};
-		28362DFA1AD48694000B4E99 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				287F4D361ADEC88D0076FC53 /* categoryList.json */,
-				28362E0A1AD53613000B4E99 /* productList.json */,
-				28362DFD1AD52013000B4E99 /* products.json */,
-				28362DFB1AD486A0000B4E99 /* product.json */,
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 		28362E021AD52432000B4E99 /* Seller */ = {
@@ -1066,11 +1035,9 @@
 				28140EF21AE4150300359EAA /* FUSearchViewController.xib in Resources */,
 				5E943BF31AEBD9D3004012F5 /* FUProductDetailBrowserViewController.xib in Resources */,
 				2815EB041AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.xib in Resources */,
-				287F4D371ADEC88D0076FC53 /* categoryList.json in Resources */,
 				28B0E5BD1AD7E2C900C0932E /* FUWishlistCollectionViewCell.xib in Resources */,
 				287F4D351ADEC41B0076FC53 /* FUCategoryTableViewCell.xib in Resources */,
 				287F4D081ADB9F780076FC53 /* FUNavigationBar in Resources */,
-				28362DFE1AD52013000B4E99 /* products.json in Resources */,
 				5E2E505C1AF6C061005E775E /* pdp-tutorial2.png in Resources */,
 				5E943C091AEC14EE004012F5 /* Filter.storyboard in Resources */,
 				28140EE61AE130B100359EAA /* FULoadingView.xib in Resources */,
@@ -1080,11 +1047,9 @@
 				280F95051AF5B3E800BA74E9 /* FUOnboardingAreaCollectionViewCell.xib in Resources */,
 				28117C3A1AD71E89007C8DB9 /* FUWishlistViewController.xib in Resources */,
 				28B0E5CB1AD8047600C0932E /* FUWishlistEmptyCollectionViewCell.xib in Resources */,
-				28362E0B1AD53613000B4E99 /* productList.json in Resources */,
 				28117C261AD68F40007C8DB9 /* FUCatalogCollectionViewCell.xib in Resources */,
 				2815EAC01AC843F300F97AEF /* Images.xcassets in Resources */,
 				5E2E505D1AF6C061005E775E /* pdp-tutorial3.png in Resources */,
-				28362DFC1AD486A0000B4E99 /* product.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
