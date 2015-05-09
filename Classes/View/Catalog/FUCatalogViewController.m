@@ -28,8 +28,6 @@
 
 @property (weak, nonatomic) IBOutlet FUCollectionView *horizontalCollectionView;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonContainerViewBottomConstraint;
-
 @property (weak, nonatomic) IBOutlet UIView *buttonContainerView;
 
 @property (weak, nonatomic) IBOutlet UIButton *filterButton;
@@ -40,25 +38,6 @@
 
 
 @implementation FUCatalogViewController
-
-
-#pragma mark - Init
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (instancetype)init
-{
-    self = [super init];
-    
-    if (self) {
-        [self setupNotifications];
-    }
-    
-    return self;
-}
 
 #pragma mark - UIViewController
 
@@ -71,10 +50,6 @@
     self.horizontalCollectionView.furnCollectionDelegate = self;
 
     self.navigationController.navigationBarHidden = YES;
-    
-    // hide button bar initially
-    self.buttonContainerViewBottomConstraint.constant = -self.buttonContainerView.frame.size.height;
-    [self.view layoutIfNeeded];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -97,13 +72,6 @@
     [[FUOnboardingManager sharedManager] evaluateOnboarding];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-
-    [self showButtonBar];
-}
-
 #pragma mark - FUViewController
 
 - (void)configureLoadingView
@@ -119,44 +87,6 @@
     self.navigationBar.leftButton = [self.navigationBar newRoundedYellowButtonWithImage:[UIImage imageNamed:@"search"] target:self selector:@selector(searchButtonTapped:) position:FUNavigationBarButtonPositionLeft];
     
     self.navigationBar.rightButton = [self.navigationBar newRoundedYellowButtonWithImage:[UIImage imageNamed:@"wishlist"] target:self selector:@selector(wishlistButtonTapped:) position:FUNavigationBarButtonPositionRight];
-}
-
-#pragma mark - Notifications
-
-- (void)setupNotifications
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideButtonBar) name:FUProductManagerWillStartLoadingPageNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showButtonBar) name:FUProductManagerDidFinishLoadingPageNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideButtonBar) name:FUCatalogColumnCollectionViewCellScrollingDidStartNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showButtonBar) name:FUCatalogColumnCollectionViewCellScrollingDidFinishNotification object:nil];
-}
-
-- (void)hideButtonBar
-{
-    self.buttonContainerViewBottomConstraint.constant = -self.buttonContainerView.frame.size.height;
-    
-    [UIView animateWithDuration:0.25f animations:^{
-        [self.view layoutIfNeeded];
-    }];
-}
-
-- (void)showButtonBar
-{
-    self.buttonContainerViewBottomConstraint.constant = 0;
-    
-    [UIView animateWithDuration:0.25f animations:^{
-        [self.view layoutIfNeeded];
-    }];
-}
-
--(UIImage *)convertViewToImage
-{
-    UIGraphicsBeginImageContext(self.view.bounds.size);
-    [self.view drawViewHierarchyInRect:self.view.bounds afterScreenUpdates:YES];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
 }
 
 #pragma mark - Actions
@@ -233,6 +163,16 @@
     NSString *imageName = self.horizontalCollectionView.viewMode == FUCollectionViewModeMatrix ? @"grid-view" : @"matrix-view";
     
     [self.viewModeButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+}
+
+-(UIImage *)convertViewToImage
+{
+    UIGraphicsBeginImageContext(self.view.bounds.size);
+    [self.view drawViewHierarchyInRect:self.view.bounds afterScreenUpdates:YES];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 @end
