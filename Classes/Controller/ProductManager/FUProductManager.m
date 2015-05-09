@@ -19,7 +19,7 @@
 
 static NSUInteger const FUProductManagerRowLimit = 20;
 
-static NSUInteger const FUProductManagerPageSize = 1000;
+static NSUInteger const FUProductManagerPageSize = 200;
 
 NSString *const FUProductManagerDidFinishLoadingPageNotification = @"FUProductManagerDidFinishLoadingPageNotification";
 NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductManagerWillStartLoadingPageNotification";
