@@ -13,4 +13,6 @@
 
 #define FUSDKAppId @"984065379"
 
+#define FUSDKiTunesURL @"http://itunes.apple.com/app/id984065379"
+
 #endif

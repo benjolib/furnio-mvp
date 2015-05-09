@@ -13,6 +13,7 @@
 #import "FUTrackingManager.h"
 #import "FUWishlistViewController.h"
 #import "FUProductDetailBrowserViewController.h"
+#import "FUSDKConstants.h"
 
 #import <SDWebImageManager.h>
 #import <AQSFacebookActivity.h>
@@ -52,8 +53,6 @@ static NSUInteger finishedCount;
 
 + (void)shareProducts:(NSArray *)products withViewController:(UIViewController *)viewController completion:(void (^)())completion
 {
-    static NSString *const suffix = @"(I found this on www.furn.io)";
-
     if (products.count == 0 || !viewController) {
         if (completion) {
             completion();
@@ -68,18 +67,11 @@ static NSUInteger finishedCount;
     
     for (FUProduct *product in products) {
         if (product.name) {
-            
-            NSString *productURLString = @"";
-            
-            if (product.seller.houzzURL) {
-                productURLString = product.seller.houzzURL.absoluteString;
-            }
-
-            NSString *text = [NSString stringWithFormat:@"%@ ($%.2f):\n%@\n\n", product.name, product.price.floatValue, productURLString];
+            NSString *text = [NSString stringWithFormat:@"%@ ($%.2f)\n", product.name, product.price.floatValue];
             
             [sharingItems addObject:text];
         }
-        
+
         UIImage *image = [[SDWebImageManager sharedManager].imageCache imageFromDiskCacheForKey:product.catalogImageURL.absoluteString];
         
         if (!image) {
@@ -93,7 +85,7 @@ static NSUInteger finishedCount;
         [sharingItems addObject:image];
     }
     
-    [sharingItems addObject:suffix];
+    [sharingItems addObject:FUSDKiTunesURL];
     
     NSArray *applicationActivities = @[ [AQSFacebookActivity new], [AQSTwitterActivity new]];
 
