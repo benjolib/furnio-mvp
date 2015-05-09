@@ -63,6 +63,8 @@
 		28362E051AD5243B000B4E99 /* FUSeller.m in Sources */ = {isa = PBXBuildFile; fileRef = 28362E041AD5243B000B4E99 /* FUSeller.m */; };
 		28362E091AD53383000B4E99 /* FUProductManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28362E081AD53383000B4E99 /* FUProductManager.m */; };
 		28362E0B1AD53613000B4E99 /* productList.json in Resources */ = {isa = PBXBuildFile; fileRef = 28362E0A1AD53613000B4E99 /* productList.json */; };
+		2872D7AC1AFDE1EF003277A2 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2872D7AA1AFDE1EF003277A2 /* Crashlytics.framework */; };
+		2872D7AD1AFDE1EF003277A2 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2872D7AB1AFDE1EF003277A2 /* Fabric.framework */; };
 		287F4D061ADB9C4F0076FC53 /* FUNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 287F4D051ADB9C4F0076FC53 /* FUNavigationBar.m */; };
 		287F4D081ADB9F780076FC53 /* FUNavigationBar in Resources */ = {isa = PBXBuildFile; fileRef = 287F4D071ADB9F780076FC53 /* FUNavigationBar */; };
 		287F4D121ADBBC4F0076FC53 /* FUCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 287F4D101ADBBC4F0076FC53 /* FUCategoriesViewController.m */; };
@@ -208,6 +210,8 @@
 		28362E071AD53383000B4E99 /* FUProductManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUProductManager.h; sourceTree = "<group>"; };
 		28362E081AD53383000B4E99 /* FUProductManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUProductManager.m; sourceTree = "<group>"; };
 		28362E0A1AD53613000B4E99 /* productList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = productList.json; sourceTree = "<group>"; };
+		2872D7AA1AFDE1EF003277A2 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		2872D7AB1AFDE1EF003277A2 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		287F4D041ADB9C4F0076FC53 /* FUNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUNavigationBar.h; sourceTree = "<group>"; };
 		287F4D051ADB9C4F0076FC53 /* FUNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUNavigationBar.m; sourceTree = "<group>"; };
 		287F4D071ADB9F780076FC53 /* FUNavigationBar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FUNavigationBar; sourceTree = "<group>"; };
@@ -284,6 +288,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				33F237418860FD871BBB6843 /* libPods.a in Frameworks */,
+				2872D7AC1AFDE1EF003277A2 /* Crashlytics.framework in Frameworks */,
+				2872D7AD1AFDE1EF003277A2 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,6 +772,15 @@
 			path = ProductManager;
 			sourceTree = "<group>";
 		};
+		2872D7A91AFDE1EF003277A2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2872D7AA1AFDE1EF003277A2 /* Crashlytics.framework */,
+				2872D7AB1AFDE1EF003277A2 /* Fabric.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 		287F4D021ADB9BA60076FC53 /* Find */ = {
 			isa = PBXGroup;
 			children = (
@@ -990,6 +1005,7 @@
 				2815EAAC1AC843F300F97AEF /* Frameworks */,
 				2815EAAD1AC843F300F97AEF /* Resources */,
 				019D5C0885CD0A2992D6C21E /* Copy Pods Resources */,
+				2872D7A01AFDD97E003277A2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1089,6 +1105,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		2872D7A01AFDD97E003277A2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Resources/Frameworks/Fabric.framework/run c656237437f00cf38e4c69875f76933f248d13f8 6fd17b3083581cdebecaa4f261b5083957fe386ca05e002667aab93677b15717";
 		};
 		2EB570D1736ACBBA13DE3E98 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1283,6 +1312,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Resources/Frameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Resources/PrefixHeader/PrefixHeader.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/plist/Info.plist";
@@ -1301,6 +1335,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Resources/Frameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Resources/PrefixHeader/PrefixHeader.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/plist/Info.plist";
@@ -1356,6 +1395,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Resources/Frameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Resources/PrefixHeader/PrefixHeader.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/plist/Info.plist";

@@ -11,6 +11,8 @@
 #import "FUSDKConstants.h"
 #import "FUAppirater.h"
 
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 #import <AFNetworkActivityIndicatorManager.h>
 #import <AFNetworkReachabilityManager.h>
 #import <Adjust.h>
@@ -23,6 +25,7 @@
 
 + (void)setup
 {
+    [self setupFabric];
     [self setupAFNetworking];
     [self setupAdjust];
     [self setupAppirater];
@@ -40,6 +43,13 @@
     return instance;
 }
 
+#pragma mark - Fabric
+
++ (void)setupFabric
+{
+    [Fabric with:@[CrashlyticsKit]];
+}
+
 #pragma mark - AFNetworking
 
 + (void)setupAFNetworking
@@ -52,6 +62,8 @@
         NSLog(@"ONLINE? %@", status > AFNetworkReachabilityStatusNotReachable ? @"YES" : @"NO");
     }];
 }
+
+#pragma mark - Adjust
 
 + (void)setupAdjust
 {
@@ -69,6 +81,8 @@
 
     [Adjust appDidLaunch:adjustConfig];
 }
+
+#pragma mark - Appirater
 
 + (void)setupAppirater
 {
