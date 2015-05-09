@@ -15,6 +15,7 @@
 #import "UIControl+HitTest.h"
 #import "FUWishlistActionButton.h"
 #import "FUProductDetailPageViewController.h"
+#import "FUColorConstants.h"
 
 @interface FUWishlistViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, FUWishlistCollectionViewCellDelegate, FUWishlistEmptyCollectionViewCellDelegate>
 
@@ -34,6 +35,9 @@
 
 @property (strong, nonatomic) NSMutableIndexSet *selectedIndicesToDelete;
 @property (strong, nonatomic) NSMutableIndexSet *selectedIndicesToShare;
+
+@property (assign, nonatomic) BOOL deleteAllProducts;
+@property (assign, nonatomic) BOOL shareAllProducts;
 
 @end
 
@@ -67,18 +71,34 @@
     [self toggleViewState];
 }
 
-- (IBAction)deleteAllButtonTapped:(id)sender
+- (IBAction)deleteAllButtonTapped:(UIButton *)sender
 {
-    [[FUWishlistManager sharedManager] removeAllProducts];
+    self.deleteAllProducts = !self.deleteAllProducts;
     
-    self.viewState = FUWishlistViewStateNormal;
-
+    if (self.deleteAllProducts) {
+        [self.selectedIndicesToDelete addIndexesInRange:NSMakeRange(0, [FUWishlistManager sharedManager].products.count)];
+    } else {
+        [self.selectedIndicesToDelete removeAllIndexes];
+    }
+    
     [self.wishlistCollectionView reloadData];
+
+    [self toggleStateOfButton:sender selected:self.deleteAllProducts tintColor:FUColorDarkGray];
 }
 
-- (IBAction)shareAllButtonTapped:(id)sender
+- (IBAction)shareAllButtonTapped:(UIButton *)sender
 {
-    [FUSharingManager shareProducts:self.products withViewController:self completion:nil];
+    self.shareAllProducts = !self.shareAllProducts;
+    
+    if (self.shareAllProducts) {
+        [self.selectedIndicesToShare addIndexesInRange:NSMakeRange(0, [FUWishlistManager sharedManager].products.count)];
+    } else {
+        [self.selectedIndicesToShare removeAllIndexes];
+    }
+
+    [self.wishlistCollectionView reloadData];
+
+    [self toggleStateOfButton:sender selected:self.shareAllProducts tintColor:FUColorOrange];
 }
 
 - (void)shareSelectedProducts
@@ -133,6 +153,25 @@
     self.allItemsContainer.hidden = viewState == FUWishlistViewStateNormal;
 
     if (viewState == FUWishlistViewStateNormal && self.products.count > 0) {
+        if (self.shareAllProducts) {
+            [FUSharingManager shareProducts:self.products withViewController:self completion:nil];
+        }
+        
+        if (self.deleteAllProducts) {
+            [[FUWishlistManager sharedManager] removeAllProducts];
+
+            self.viewState = FUWishlistViewStateNormal;
+            
+            [self.wishlistCollectionView reloadData];
+        }
+        
+        if (self.shareAllProducts || self.deleteAllProducts) {
+            self.shareAllProducts = NO;
+            self.deleteAllProducts = NO;
+            
+            return;
+        }
+
         if (self.selectedIndicesToShare.count > 0) {
             [self shareSelectedProducts];
         }
@@ -227,6 +266,10 @@
     } else {
         [self.selectedIndicesToDelete removeIndex:indexPath.item];
     }
+    
+    self.deleteAllProducts = (self.selectedIndicesToDelete.count == [FUWishlistManager sharedManager].products.count);
+
+    [self toggleStateOfButton:self.deleteAllButton selected:self.deleteAllProducts tintColor:FUColorDarkGray];
 }
 
 - (void)wishlistCollectionViewCell:(FUWishlistCollectionViewCell *)wishlistCollectionViewCell didTapShareButtonWithProduct:(FUProduct *)product isSelected:(BOOL)selected
@@ -238,6 +281,10 @@
     } else {
         [self.selectedIndicesToShare removeIndex:indexPath.item];
     }
+    
+    self.shareAllProducts = (self.selectedIndicesToShare.count == [FUWishlistManager sharedManager].products.count);
+    
+    [self toggleStateOfButton:self.shareAllButton selected:self.shareAllProducts tintColor:FUColorOrange];
 }
 
 #pragma mark - FUWishlistEmptyCollectionViewCellDelegate
@@ -262,6 +309,17 @@
 - (UIButton *)editButton
 {
     return self.navigationBar.rightButton;
+}
+
+- (void)toggleStateOfButton:(UIButton *)button selected:(BOOL)selected tintColor:(UIColor *)tintColor
+{
+    if (selected) {
+        button.backgroundColor = tintColor;
+        button.tintColor = [UIColor whiteColor];
+    } else {
+        button.backgroundColor = [UIColor clearColor];
+        button.tintColor = tintColor;
+    }
 }
 
 @end

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1077" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14A386a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FUWishlistViewController">
@@ -35,32 +35,42 @@
                     </connections>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qcy-T7-770" userLabel="allItemsContainer">
-                    <rect key="frame" x="52" y="75" width="270" height="40"/>
+                    <rect key="frame" x="48" y="75" width="280" height="40"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mi6-vU-Gu6" userLabel="deleteAllButton">
-                            <rect key="frame" x="0.0" y="0.0" width="124" height="25"/>
+                            <rect key="frame" x="0.0" y="0.0" width="134" height="35"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="124" id="U76-cH-FcA"/>
-                                <constraint firstAttribute="height" constant="25" id="c1v-Bt-T0X"/>
+                                <constraint firstAttribute="width" constant="134" id="U76-cH-FcA"/>
+                                <constraint firstAttribute="height" constant="35" id="c1v-Bt-T0X"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                             <color key="tintColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="deviceRGB"/>
                             <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="DELETE ALL" image="delete"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="deleteAllButtonTapped:" destination="-1" eventType="touchUpInside" id="IUs-Do-YQ9"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4a-rH-pNv" userLabel="shareAllButton">
-                            <rect key="frame" x="146" y="0.0" width="124" height="25"/>
+                            <rect key="frame" x="146" y="0.0" width="134" height="35"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="25" id="RvI-Ib-o01"/>
-                                <constraint firstAttribute="width" constant="124" id="seE-k2-5pH"/>
+                                <constraint firstAttribute="height" constant="35" id="RvI-Ib-o01"/>
+                                <constraint firstAttribute="width" constant="134" id="seE-k2-5pH"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                             <color key="tintColor" red="0.99215686270000003" green="0.72549019609999998" blue="0.2274509804" alpha="1" colorSpace="deviceRGB"/>
                             <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="SHARE ALL" image="share-yellow"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="shareAllButtonTapped:" destination="-1" eventType="touchUpInside" id="Oga-Dm-Q2L"/>
                             </connections>
@@ -71,7 +81,7 @@
                         <constraint firstAttribute="height" constant="40" id="3Pl-VX-aAQ"/>
                         <constraint firstItem="Mi6-vU-Gu6" firstAttribute="leading" secondItem="Qcy-T7-770" secondAttribute="leading" id="7Bo-KC-qP2"/>
                         <constraint firstAttribute="trailing" secondItem="j4a-rH-pNv" secondAttribute="trailing" id="cdp-PA-uwu"/>
-                        <constraint firstAttribute="width" constant="270" id="hVu-iB-6KY"/>
+                        <constraint firstAttribute="width" constant="280" id="hVu-iB-6KY"/>
                         <constraint firstItem="Mi6-vU-Gu6" firstAttribute="top" secondItem="Qcy-T7-770" secondAttribute="top" id="mKW-10-cCo"/>
                         <constraint firstItem="j4a-rH-pNv" firstAttribute="top" secondItem="Qcy-T7-770" secondAttribute="top" id="z6W-kl-ycJ"/>
                     </constraints>
