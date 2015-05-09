@@ -6,6 +6,7 @@
 
 <p align="center">
 <a href="https://travis-ci.org/usebutton/ios-deeplink-sdk"><img src="http://img.shields.io/travis/usebutton/ios-deeplink-sdk.svg?style=flat" alt="CI Status" /></a>
+<a href='https://coveralls.io/r/usebutton/ios-deeplink-sdk'><img src='https://coveralls.io/repos/usebutton/ios-deeplink-sdk/badge.svg' alt='Coverage Status' /></a>
 <a href="http://cocoadocs.org/docsets/DeepLinkSDK"><img src="https://img.shields.io/cocoapods/v/DeepLinkSDK.svg?style=flat" alt="Version" /></a>
 <a href="http://cocoadocs.org/docsets/DeepLinkSDK"><img src="https://img.shields.io/cocoapods/l/DeepLinkSDK.svg?style=flat" alt="License" /></a>
 <a href="http://cocoadocs.org/docsets/DeepLinkSDK"><img src="https://img.shields.io/cocoapods/p/DeepLinkSDK.svg?style=flat" alt="Platform" /></a>
@@ -13,7 +14,7 @@
 
 ## Overview
 
-The Button DeepLink SDK is a splendid route-matching, block-based way to handle your deep links. Rather than decide how to format your URLs, parse them, pass data, and navigate to specific content or perform actions, this SDK and a few lines of code will get you on your way.
+The Button DeepLink SDK is a splendid route-matching, block-based way to handle your deep links. Rather than decide how to format your URLs, parse them, pass data, and navigate to specific content or perform actions, this library and a few lines of code will get you on your way.
 
 [Full Documentation](http://www.usebutton.com/sdk/deep-links/integration-guide)
 
@@ -27,7 +28,7 @@ pod try "DeepLinkSDK"
 ## Installation
 
 DeepLinkSDK is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+the library, simply add the following line to your Podfile:
 ```ruby
 pod "DeepLinkSDK"
 ```

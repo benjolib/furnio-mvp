@@ -100,6 +100,7 @@
 		5E943C131AED3841004012F5 /* FUFilterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E943C121AED3841004012F5 /* FUFilterManager.m */; };
 		5EEFC4E61AE2B0A0004CB533 /* FUProductDetailPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EEFC4E41AE2B0A0004CB533 /* FUProductDetailPageViewController.m */; };
 		5EEFC4E71AE2B0A0004CB533 /* FUProductDetailPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EEFC4E51AE2B0A0004CB533 /* FUProductDetailPageViewController.xib */; };
+		B7D89CA715C1DCDDA2B1FFA4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B670C054E923FEC9417790E8 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -270,6 +271,7 @@
 		5EEFC4E81AE3B4C8004CB533 /* FUMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUMacros.h; sourceTree = "<group>"; };
 		8DD1A01C30046235F217826A /* Pods.store.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.store.xcconfig; path = "Pods/Target Support Files/Pods/Pods.store.xcconfig"; sourceTree = "<group>"; };
 		9CE78E8A0458EED4BE60A736 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B670C054E923FEC9417790E8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +281,7 @@
 			files = (
 				2872D7AC1AFDE1EF003277A2 /* Crashlytics.framework in Frameworks */,
 				2872D7AD1AFDE1EF003277A2 /* Fabric.framework in Frameworks */,
+				B7D89CA715C1DCDDA2B1FFA4 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +497,7 @@
 				2815EAE01AC8470D00F97AEF /* Resources */,
 				2815EAB01AC843F300F97AEF /* Products */,
 				15607719AFB473FCD1BE47D2 /* Pods */,
+				B47D946E2DF02A1A5AB6D689 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -960,6 +964,14 @@
 				5E943BF41AEBE58A004012F5 /* FUNoProductView.xib */,
 			);
 			name = ProductDetailPage;
+			sourceTree = "<group>";
+		};
+		B47D946E2DF02A1A5AB6D689 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B670C054E923FEC9417790E8 /* libPods.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

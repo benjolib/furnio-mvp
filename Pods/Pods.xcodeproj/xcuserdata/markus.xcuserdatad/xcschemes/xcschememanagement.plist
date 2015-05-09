@@ -4,16 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Appirater.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>MaterialDesignSpinner.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-ADTransitionController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -35,6 +25,11 @@
 			<false/>
 		</dict>
 		<key>Pods-Adjust.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Appirater-Appirater.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -64,7 +59,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-MMMaterialDesignSpinner-MaterialDesignSpinner.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-MMMaterialDesignSpinner.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-NMRangeSlider.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -87,82 +92,87 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1F610F4F6372E14E7C0823C8</key>
+		<key>25D0123928D778F567F0B1CC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>25E1E19DDA7A4F8D8C387A59</key>
+		<key>3F3E996C1D6F0FB042601C74</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>27AD5F0EE447C961674B274A</key>
+		<key>4B5A806251B97D9598E26E42</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4B87D0B96F9A333B6FE5F4B1</key>
+		<key>4C88AC73B9902AB4C3CA95C1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>73D44F175ED860C3B5E5B2B0</key>
+		<key>4EBCF45B3A37964C57FC9138</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>91F104E7EF4B891196875B02</key>
+		<key>60F755B2C94A947A757B6DFE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9D5AC819F2165EA8EAEA86B5</key>
+		<key>67449D2174E8403C0D23B901</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A099D9BAB4ECD429FF64B8FA</key>
+		<key>699A79967BE2938362D4E81A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A16138C4FC5614DB3309AC74</key>
+		<key>93CE7707EFD6B7F3657DB684</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A6934F295E9FA0676FC0FCE0</key>
+		<key>A84E0F00E81B7A29643D50EF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B0B7524060378355FEA42FF8</key>
+		<key>BA1911F90FEA76B9FB8F4D94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C29E895030E0587C798884B0</key>
+		<key>C8D785D426266056E0356D7E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C702F7E003D9D1C530040063</key>
+		<key>C900A10773584652BB1CFB9B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E0F48AA49A604623946ECDB3</key>
+		<key>CE43EEEDEBEDE56967B6D618</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E2F0969A9789810EB08E892A</key>
+		<key>E011F60AE1FAD42277FDC4D4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F35997043D7D623FDEE7392C</key>
+		<key>F417B695C704B48C4F8A2C97</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F9342C5847A6E62DDF7B0111</key>
 		<dict>
 			<key>primary</key>
 			<true/>

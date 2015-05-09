@@ -18,6 +18,8 @@ pod 'MMMaterialDesignSpinner', '~> 0.2'
 pod 'FXBlurView', '~> 1.6'
 pod 'NMRangeSlider', '~> 1.2'
 pod 'ADTransitionController', '~> 1.1.1'
+pod 'GoogleTagManager', '~> 3.09'
+
 
 # Disable logging of SDWebImagePrefetcher
 

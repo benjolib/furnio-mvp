@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0510"
+   LastUpgradeVersion = "0640"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F35997043D7D623FDEE7392C"
+               BlueprintIdentifier = "CE43EEEDEBEDE56967B6D618"
                BuildableName = "libPods-Adjust.a"
                BlueprintName = "Pods-Adjust"
                ReferencedContainer = "container:Pods.xcodeproj">
