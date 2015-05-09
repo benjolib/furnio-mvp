@@ -41,7 +41,6 @@
     return CGSizeMake(self.collectionView.width / 2, (self.collectionView.height / 4) - self.nextLabel.height) ;
 }
 
-// TODO: Missing some assets
 - (NSString *)imageNameAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSArray *imageNameArray;
@@ -49,10 +48,10 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         imageNameArray = @[
-           @"sofa", @"sofa",
+           @"oven", @"bath",
            @"bed", @"couch",
-           @"dish", @"sofa",
-           @"sofa", @"laptop"
+           @"dish", @"pram",
+           @"watering-can", @"laptop"
         ];
     });
 

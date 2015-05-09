@@ -58,10 +58,17 @@
 {
     FUOnboardingAreaCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[FUOnboardingAreaCollectionViewCell reuseIdentifier] forIndexPath:indexPath];
     
-    cell.areaImageName = [self imageNameAtIndexPath:indexPath];
+    BOOL selected = [self.selectedIndices containsIndex:indexPath.row];
+    NSString *imageName = [self imageNameAtIndexPath:indexPath];
+    
+    if (selected && imageName) {
+        imageName = [imageName stringByAppendingString:@"-selected"];
+    }
+
+    cell.areaImageName = imageName;
     cell.areaName = [self titleAtIndexPath:indexPath];
     
-    cell.selected = [self.selectedIndices containsIndex:indexPath.row];
+    cell.selected = selected;
 
     return cell;
 }
