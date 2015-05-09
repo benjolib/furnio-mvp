@@ -32,7 +32,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *shareAllButton;
 
-@property (strong, nonatomic) NSMutableIndexSet *selectedIndices;
+@property (strong, nonatomic) NSMutableIndexSet *selectedIndicesToDelete;
+@property (strong, nonatomic) NSMutableIndexSet *selectedIndicesToShare;
 
 @end
 
@@ -51,7 +52,8 @@
     
     [self.wishlistCollectionView registerNib:[FUWishlistEmptyCollectionViewCell nib] forCellWithReuseIdentifier:FUWishlistEmptyCollectionViewCellReuseIdentifier];
     
-    self.selectedIndices = [NSMutableIndexSet indexSet];
+    self.selectedIndicesToDelete = [NSMutableIndexSet indexSet];
+    self.selectedIndicesToShare = [NSMutableIndexSet indexSet];
     
     self.viewState = FUWishlistViewStateNormal;
 }
@@ -79,6 +81,43 @@
     [FUSharingManager shareProducts:self.products withViewController:self completion:nil];
 }
 
+- (void)shareSelectedProducts
+{
+    NSArray *products = [[[FUWishlistManager sharedManager].products objectsAtIndexes:self.selectedIndicesToShare] copy];
+
+    if (products.count > 0) {
+        [FUSharingManager shareProducts:products withViewController:self completion:^(BOOL success) {
+            [self.selectedIndicesToShare removeAllIndexes];
+                
+            [self.wishlistCollectionView reloadData];
+        }];
+    }
+}
+
+- (void)deleteSelectedProducts
+{
+    [[FUWishlistManager sharedManager] removeProductsAtIndexes:self.selectedIndicesToDelete];
+    
+    NSMutableArray *indexPaths = [NSMutableArray array];
+    
+    [self.selectedIndicesToDelete enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop) {
+        [indexPaths addObject:[NSIndexPath indexPathForItem:index inSection:0]];
+    }];
+    
+    if ([FUWishlistManager sharedManager].products.count > 0) {
+        [self.wishlistCollectionView performBatchUpdates:^{
+            [self.wishlistCollectionView deleteItemsAtIndexPaths:indexPaths];
+            
+        } completion:^(BOOL finished) {
+            [self.selectedIndicesToDelete removeAllIndexes];
+            
+            [self.wishlistCollectionView reloadData];
+        }];
+    } else {
+        [self.wishlistCollectionView reloadData];
+    }
+}
+
 #pragma mark - Setter
 
 - (void)setViewState:(FUWishlistViewState)viewState
@@ -93,26 +132,13 @@
     self.allItemsContainerHeightConstraint.constant = viewState == FUWishlistViewStateNormal ? 0 : 40;
     self.allItemsContainer.hidden = viewState == FUWishlistViewStateNormal;
 
-    if (viewState == FUWishlistViewStateNormal && self.selectedIndices.count > 0 && self.products.count > 0) {
-        [[FUWishlistManager sharedManager] removeProductsAtIndexes:self.selectedIndices];
+    if (viewState == FUWishlistViewStateNormal && self.products.count > 0) {
+        if (self.selectedIndicesToShare.count > 0) {
+            [self shareSelectedProducts];
+        }
         
-        NSMutableArray *indexPaths = [NSMutableArray array];
-        
-        [self.selectedIndices enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop) {
-            [indexPaths addObject:[NSIndexPath indexPathForItem:index inSection:0]];
-        }];
-
-        if ([FUWishlistManager sharedManager].products.count > 0) {
-            [self.wishlistCollectionView performBatchUpdates:^{
-                [self.wishlistCollectionView deleteItemsAtIndexPaths:indexPaths];
-                
-            } completion:^(BOOL finished) {
-                [self.selectedIndices removeAllIndexes];
-
-                [self.wishlistCollectionView reloadData];
-            }];
-        } else {
-            [self.wishlistCollectionView reloadData];
+        if (self.selectedIndicesToDelete.count > 0) {
+            [self deleteSelectedProducts];
         }
     } else {
         [self.wishlistCollectionView reloadData];
@@ -152,7 +178,8 @@
 
         cell.delegate = self;
         
-        cell.deleteButton.selected = [self.selectedIndices containsIndex:indexPath.item];
+        cell.deleteButton.selected = [self.selectedIndicesToDelete containsIndex:indexPath.item];
+        cell.shareButton.selected = [self.selectedIndicesToShare containsIndex:indexPath.item];
         
         return cell;
     } else {
@@ -196,15 +223,21 @@
     NSIndexPath *indexPath = [self.wishlistCollectionView indexPathForCell:wishlistCollectionViewCell];
 
     if (selected) {
-        [self.selectedIndices addIndex:indexPath.item];
+        [self.selectedIndicesToDelete addIndex:indexPath.item];
     } else {
-        [self.selectedIndices removeIndex:indexPath.item];
+        [self.selectedIndicesToDelete removeIndex:indexPath.item];
     }
 }
 
-- (void)wishlistCollectionViewCell:(FUWishlistCollectionViewCell *)wishlistCollectionViewCell didTapShareButtonWithProduct:(FUProduct *)product
+- (void)wishlistCollectionViewCell:(FUWishlistCollectionViewCell *)wishlistCollectionViewCell didTapShareButtonWithProduct:(FUProduct *)product isSelected:(BOOL)selected
 {
-    [FUSharingManager shareProduct:product withViewController:self completion:nil];
+    NSIndexPath *indexPath = [self.wishlistCollectionView indexPathForCell:wishlistCollectionViewCell];
+    
+    if (selected) {
+        [self.selectedIndicesToShare addIndex:indexPath.item];
+    } else {
+        [self.selectedIndicesToShare removeIndex:indexPath.item];
+    }
 }
 
 #pragma mark - FUWishlistEmptyCollectionViewCellDelegate

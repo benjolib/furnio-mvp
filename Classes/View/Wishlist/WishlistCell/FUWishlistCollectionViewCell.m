@@ -154,10 +154,12 @@ static CGFloat const FUWishlistCellShadowAnimationDuration = 0.25f;
     }
 }
 
-- (IBAction)shareButtonTapped:(id)sender
+- (IBAction)shareButtonTapped:(UIButton *)sender
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(wishlistCollectionViewCell:didTapShareButtonWithProduct:)]) {
-        [self.delegate wishlistCollectionViewCell:self didTapShareButtonWithProduct:self.product];
+    sender.selected = !sender.selected;
+
+    if (self.delegate && [self.delegate respondsToSelector:@selector(wishlistCollectionViewCell:didTapShareButtonWithProduct:isSelected:)]) {
+        [self.delegate wishlistCollectionViewCell:self didTapShareButtonWithProduct:self.product isSelected:sender.selected];
     }
 }
 

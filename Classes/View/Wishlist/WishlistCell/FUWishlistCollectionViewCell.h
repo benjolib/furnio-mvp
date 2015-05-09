@@ -23,7 +23,7 @@ extern NSString *const FUWishlistCollectionViewCellReuseIdentifier;
 
 - (void)wishlistCollectionViewCell:(FUWishlistCollectionViewCell *)wishlistCollectionViewCell didTapDeleteButtonWithProduct:(FUProduct *)product isSelected:(BOOL)selected;
 
-- (void)wishlistCollectionViewCell:(FUWishlistCollectionViewCell *)wishlistCollectionViewCell didTapShareButtonWithProduct:(FUProduct *)product;
+- (void)wishlistCollectionViewCell:(FUWishlistCollectionViewCell *)wishlistCollectionViewCell didTapShareButtonWithProduct:(FUProduct *)product isSelected:(BOOL)selected;
 
 @end
 

@@ -30,7 +30,7 @@
 }
 
 - (IBAction)share:(id)sender {
-    [FUSharingManager shareProduct:self.product withViewController:self completion:^{
+    [FUSharingManager shareProduct:self.product withViewController:self completion:^(BOOL success) {
         NSLog(@"Sharing finished!");
     }];
 }

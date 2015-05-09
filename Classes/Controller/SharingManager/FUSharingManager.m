@@ -46,18 +46,18 @@ static NSUInteger finishedCount;
 
 #pragma mark - Public
 
-+ (void)shareProduct:(FUProduct *)product withViewController:(UIViewController *)viewController completion:(void (^)())completion
++ (void)shareProduct:(FUProduct *)product withViewController:(UIViewController *)viewController completion:(void (^)(BOOL success))completion
 {
     [self shareProducts:@[product] withViewController:viewController completion:completion];
 }
 
-+ (void)shareProducts:(NSArray *)products withViewController:(UIViewController *)viewController completion:(void (^)())completion
++ (void)shareProducts:(NSArray *)products withViewController:(UIViewController *)viewController completion:(void (^)(BOOL success))completion
 {
     if (products.count == 0 || !viewController) {
         if (completion) {
-            completion();
+            completion(NO);
         }
-        
+
         return;
     }
 
@@ -114,8 +114,12 @@ static NSUInteger finishedCount;
         [[FUNotifyManager sharedManager] showMessageWithText:message backgroundColor:backgroundColor hideAfterTimeInterval:3.0f];
         
         NSLog(@"%@ completed: %@", activityType, completed ? @"YES" : @"NO");
+        
+        if (completion) {
+            completion(completed);
+        }
     };
-    
+
     [viewController presentViewController:activityController animated:YES completion:nil];
 }
 

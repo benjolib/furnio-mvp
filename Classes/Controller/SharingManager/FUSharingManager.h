@@ -16,8 +16,8 @@ extern NSString *const FUSharingManagerDidShareWithSuccessNotification;
 
 @interface FUSharingManager : NSObject
 
-+ (void)shareProduct:(FUProduct *)product withViewController:(UIViewController *)viewController completion:(void (^)())completion;
++ (void)shareProduct:(FUProduct *)product withViewController:(UIViewController *)viewController completion:(void (^)(BOOL success))completion;
 
-+ (void)shareProducts:(NSArray *)products withViewController:(UIViewController *)viewController completion:(void (^)())completion;
++ (void)shareProducts:(NSArray *)products withViewController:(UIViewController *)viewController completion:(void (^)(BOOL success))completion;
 
 @end
