@@ -14,6 +14,13 @@
 #import "FUProperties.h"
 #import "FUSeller.h"
 
+@interface FUFilterManager ()
+
+@property (nonatomic, strong) NSMutableDictionary *allFilterItems;
+@property (nonatomic, strong) NSMutableDictionary *categoryIdMappings;
+
+@end
+
 @implementation FUFilterManager
 
 + (instancetype)sharedManager
@@ -38,34 +45,75 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (NSMutableDictionary *)loadAllFilterItems {
-    NSDictionary *allFilterItems = [[NSUserDefaults standardUserDefaults] dictionaryForKey:FUFilterItemsKey];
-    
-    if(!allFilterItems) {
-        [self setupAllFilterItems];
-        allFilterItems = [[NSUserDefaults standardUserDefaults] dictionaryForKey:FUFilterItemsKey];
+- (NSDictionary *)filterItems {
+    if (!_allFilterItems) {
+        [self loadAllFilterItems];
     }
-    
-    return [allFilterItems mutableCopy];
+    return [_allFilterItems copy];
 }
 
-- (void)saveAllFilterItems:(NSDictionary *)allFilterItems {
+- (NSMutableDictionary *)makeInnerMutable:(NSMutableDictionary *)dictionary {
+    for (NSString *key in [dictionary allKeys]) {
+        dictionary[key] = [dictionary[key] mutableCopy];
+    }
+    return dictionary;
+}
+
+- (NSMutableDictionary *)loadAllFilterItems {
+    _allFilterItems = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:FUFilterItemsKey] mutableCopy];
+    
+    if(!_allFilterItems) {
+        [self setupAllFilterItems];
+        _allFilterItems = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:FUFilterItemsKey] mutableCopy];
+        _allFilterItems = [self makeInnerMutable:_allFilterItems];
+    }
+    else {
+        _allFilterItems = [self makeInnerMutable:_allFilterItems];
+        //reload categories in case there is a new one:
+        BOOL changed = NO;
+        if(!_categoryIdMappings) {
+            _categoryIdMappings = [[NSUserDefaults standardUserDefaults] objectForKey:FUFilterCategoryMappingKey];
+        }
+        for(FUCategory *category in [FUCategoryManager sharedManager].categoryList.categories) {
+            if(![[_allFilterItems[FUFilterCategoryKey] allValues] containsObject:category.identifier]) {
+                _allFilterItems[FUFilterCategoryKey][category.name] = @NO;
+                changed = YES;
+            }
+            _categoryIdMappings[category.name] = category.identifier;
+        }
+        if ([_categoryIdMappings count] > 0) {
+            [[NSUserDefaults standardUserDefaults] setValue:_categoryIdMappings forKey:@"FUFilterCategoryMapping"];
+        }
+
+        if(changed) {
+            [self saveAllFilterItems:_allFilterItems];
+        }
+    }
+    
+    return [_allFilterItems mutableCopy];
+}
+
+- (void)saveAllFilterItems:(NSMutableDictionary *)allFilterItems {
+    _allFilterItems = allFilterItems;
     [[NSUserDefaults standardUserDefaults] setValue:allFilterItems forKey:FUFilterItemsKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (NSMutableDictionary *)defaultCategoriesFilter {
     NSMutableDictionary *filterItemsCategory = [NSMutableDictionary dictionary];
+    _categoryIdMappings = [NSMutableDictionary dictionary];
     
     for(FUCategory *category in [FUCategoryManager sharedManager].categoryList.categories) {
         filterItemsCategory[category.name] = @NO;
+        _categoryIdMappings[category.name] = category.identifier;
     }
+    [[NSUserDefaults standardUserDefaults] setValue:_categoryIdMappings forKey:@"FUFilterCategoryMapping"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     return filterItemsCategory;
 }
 
 - (NSMutableDictionary *)defaultStylesFilter {
-    return [@{@"All"           : @NO,
-              @"Contemporary"  : @NO,
+    return [@{@"Contemporary"  : @NO,
               @"Ecletic"       : @NO,
               @"Modern"        : @NO,
               @"Traditional"   : @NO,
@@ -96,21 +144,12 @@
               FUMaxPriceKey : FUMaxPriceDefaultValue} mutableCopy];
 }
 
-- (NSMutableDictionary *)defaultMerchantFilter {
-    return [@{@"Merchant1" : @NO,
-              @"Merchant2" : @NO,
-              @"Merchant3" : @NO,
-              @"Merchant4" : @NO} mutableCopy];
-}
-
 - (NSMutableDictionary *)defaultFilters {
     return [@{FUFilterCategoryKey : [self defaultCategoriesFilter],
               FUFilterStyleKey    : [self defaultStylesFilter],
               FUFilterRoomKey     : [self defaultRoomsFilter],
-              FUFilterPriceKey    : [self defaultPriceFilter],
-              FUFilterMerchantKey : [self defaultMerchantFilter]} mutableCopy];
+              FUFilterPriceKey    : [self defaultPriceFilter]} mutableCopy];
 }
-
 
 - (void)setupAllFilterItems {
     [self saveAllFilterItems: [self defaultFilters]];
@@ -120,107 +159,19 @@
     [self setupAllFilterItems];
 }
 
-- (BOOL)isProductInFilter:(FUProduct *)product {
-    
-    NSMutableDictionary *allFilterItems = [self loadAllFilterItems];
-    NSArray *validCategoryItems = [self validItemsInItems:allFilterItems[FUFilterCategoryKey]];
-    NSArray *validStyleItems = [self validItemsInItems:allFilterItems[FUFilterStyleKey]];
-    NSArray *validRoomItems = [self validItemsInItems:allFilterItems[FUFilterRoomKey]];
-    NSArray *validMerchantItems = [self validItemsInItems:allFilterItems[FUFilterMerchantKey]];
-
-    if([validCategoryItems count] != 0) {
-        if(![self product:product matchesCategories:validCategoryItems]) {
-            return NO;
-        }
-    }
-    
-    if([validStyleItems count] != 0) {
-        if(![self product:product matchesStyle:validStyleItems]) {
-            return NO;
-        }
-    }
-    
-    if([validRoomItems count] != 0) {
-        if(![self product:product matchesRoom:validRoomItems]) {
-            return NO;
-        }
-    }
-    
-    if([validMerchantItems count] != 0) {
-        if(![self product:product matchesMerchant:validMerchantItems]) {
-            return NO;
-        }
-    }
-    
-    if(![self product:product matchesPrice:allFilterItems[FUFilterPriceKey]]) {
-        return NO;
+- (NSString *)categoryNameForIdentifier:(NSNumber *)categoryIdentifier {
+    if (!_categoryIdMappings) {
+        _categoryIdMappings = [[NSUserDefaults standardUserDefaults] objectForKey:FUFilterCategoryMappingKey];
     }
 
-    return YES;
+    return [[_categoryIdMappings allKeysForObject:categoryIdentifier] firstObject];
 }
 
-- (NSArray *)validItemsInItems: (NSDictionary *) filterItems {
-    NSMutableArray *validItems = [NSMutableArray array];
-    
-    for (NSString *key in [filterItems allKeys]) {
-        if ([filterItems[key] boolValue]) {
-            [validItems addObject:key];
-        }
+- (NSNumber *)categoryIdentifierForName:(NSString *)categoryName {
+    if (!_categoryIdMappings) {
+        _categoryIdMappings = [[NSUserDefaults standardUserDefaults] objectForKey:FUFilterCategoryMappingKey];
     }
-    
-    return validItems;
-}
-
-- (BOOL) product:(FUProduct *)product matchesCategories:(NSArray *)validCategories {
-    for (NSDictionary *productCategoryDictionary in product.categories) {
-        for(NSString *validCategory in validCategories) {
-            NSString *productCategory = productCategoryDictionary[@"name"];
-//            NSLog(@"Product Category: %@", productCategory);
-            if ([productCategory isEqualToString:validCategory]) {
-                return YES;
-            }
-        }
-    }
-    return NO;
-}
-
-- (BOOL) product:(FUProduct *)product matchesStyle:(NSArray *)validStyles {
-    for(NSString *validStyle in validStyles) {
-        if ([product.properties.designer isEqualToString:validStyle]) {
-            return YES;
-        }
-    }
-    return NO;
-}
-
-- (BOOL) product:(FUProduct *)product matchesPrice:(NSDictionary *)priceLimits {
-    
-    NSUInteger maxPrice = [priceLimits[FUMaxPriceKey] integerValue];
-    NSUInteger minPrice = [priceLimits[FUMinPriceKey] integerValue];
-    
-    if (minPrice <= [product.price integerValue] && [product.price integerValue] <= maxPrice) {
-        return YES;
-    }
-    return NO;
-}
-
-- (BOOL) product:(FUProduct *)product matchesRoom:(NSArray *)validRooms {
-    for(NSString *validRoom in validRooms) {
-//TODO: there is no "room" property in product
-        if ([product.properties.materials isEqualToString:validRoom]) {
-            return YES;
-        }
-    }
-    return NO;
-}
-
-- (BOOL) product:(FUProduct *)product matchesMerchant:(NSArray *)validMerchants {
-    for(NSString *validMerchant in validMerchants) {
-        if ([product.seller.name isEqualToString:validMerchant]) {
-            return YES;
-        }
-    }
-    return NO;
+    return _categoryIdMappings[categoryName];
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "FUProductDetailBrowserViewController.h"
 #import "FUProduct.h"
 #import "FUSharingManager.h"
+#import "FUSeller.h"
 
 @interface FUProductDetailBrowserViewController ()
 

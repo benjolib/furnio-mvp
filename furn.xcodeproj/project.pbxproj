@@ -92,6 +92,9 @@
 		5E6626ED1AF6661E00C25907 /* slider-orange-track.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E6626EC1AF6661E00C25907 /* slider-orange-track.png */; };
 		5E6626F21AF6678500C25907 /* FUSortingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6626F01AF6678500C25907 /* FUSortingViewController.m */; };
 		5E6626F31AF6678500C25907 /* FUSortingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E6626F11AF6678500C25907 /* FUSortingViewController.xib */; };
+		5E9078861AFD4ECA0055DBB3 /* intro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5E9078851AFD4ECA0055DBB3 /* intro.mp4 */; };
+		5E90788B1AFD4F3B0055DBB3 /* FUSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9078891AFD4F3B0055DBB3 /* FUSplashViewController.m */; };
+		5E90788C1AFD4F3B0055DBB3 /* FUSplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E90788A1AFD4F3B0055DBB3 /* FUSplashViewController.xib */; };
 		5E943BEB1AEBD5E7004012F5 /* FUProductAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E943BEA1AEBD5E7004012F5 /* FUProductAction.m */; };
 		5E943BF21AEBD9D3004012F5 /* FUProductDetailBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E943BF01AEBD9D3004012F5 /* FUProductDetailBrowserViewController.m */; };
 		5E943BF31AEBD9D3004012F5 /* FUProductDetailBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E943BF11AEBD9D3004012F5 /* FUProductDetailBrowserViewController.xib */; };
@@ -256,6 +259,10 @@
 		5E6626EF1AF6678500C25907 /* FUSortingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUSortingViewController.h; path = Classes/View/Sorting/FUSortingViewController.h; sourceTree = SOURCE_ROOT; };
 		5E6626F01AF6678500C25907 /* FUSortingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUSortingViewController.m; path = Classes/View/Sorting/FUSortingViewController.m; sourceTree = SOURCE_ROOT; };
 		5E6626F11AF6678500C25907 /* FUSortingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FUSortingViewController.xib; path = Classes/View/Sorting/FUSortingViewController.xib; sourceTree = SOURCE_ROOT; };
+		5E9078851AFD4ECA0055DBB3 /* intro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro.mp4; sourceTree = "<group>"; };
+		5E9078881AFD4F3B0055DBB3 /* FUSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUSplashViewController.h; path = Splash/FUSplashViewController.h; sourceTree = "<group>"; };
+		5E9078891AFD4F3B0055DBB3 /* FUSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUSplashViewController.m; path = Splash/FUSplashViewController.m; sourceTree = "<group>"; };
+		5E90788A1AFD4F3B0055DBB3 /* FUSplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FUSplashViewController.xib; path = Splash/FUSplashViewController.xib; sourceTree = "<group>"; };
 		5E943BE91AEBD5E7004012F5 /* FUProductAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUProductAction.h; path = ProductDetailPage/FUProductAction.h; sourceTree = "<group>"; };
 		5E943BEA1AEBD5E7004012F5 /* FUProductAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUProductAction.m; path = ProductDetailPage/FUProductAction.m; sourceTree = "<group>"; };
 		5E943BEF1AEBD9D3004012F5 /* FUProductDetailBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUProductDetailBrowserViewController.h; path = ProductDetailPage/FUProductDetailBrowserViewController.h; sourceTree = "<group>"; };
@@ -536,6 +543,7 @@
 		2815EADB1AC8466800F97AEF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5E9078871AFD4F0A0055DBB3 /* Splash */,
 				28B0E5CC1AD8050700C0932E /* General */,
 				2815EAEF1AC8548C00F97AEF /* Catalog */,
 				287F4D2F1ADEC3960076FC53 /* Categories */,
@@ -608,6 +616,8 @@
 				2815EAE41AC8474F00F97AEF /* main */,
 				2815EAE31AC8473F00F97AEF /* plist */,
 				280F94DE1AF4366D00BA74E9 /* PrefixHeader */,
+				2815EAE11AC8471300F97AEF /* Images */,
+				5E9078841AFD4ECA0055DBB3 /* Video */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -935,6 +945,24 @@
 			name = Sorting;
 			sourceTree = "<group>";
 		};
+		5E9078841AFD4ECA0055DBB3 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				5E9078851AFD4ECA0055DBB3 /* intro.mp4 */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
+		5E9078871AFD4F0A0055DBB3 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				5E9078881AFD4F3B0055DBB3 /* FUSplashViewController.h */,
+				5E9078891AFD4F3B0055DBB3 /* FUSplashViewController.m */,
+				5E90788A1AFD4F3B0055DBB3 /* FUSplashViewController.xib */,
+			);
+			name = Splash;
+			sourceTree = "<group>";
+		};
 		5E943BF91AEC0709004012F5 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
@@ -1062,7 +1090,10 @@
 				280F94FA1AF5A80800BA74E9 /* FUOnboardingOverviewAreaCollectionViewCell.xib in Resources */,
 				28140EF21AE4150300359EAA /* FUSearchViewController.xib in Resources */,
 				5E943BF31AEBD9D3004012F5 /* FUProductDetailBrowserViewController.xib in Resources */,
+				5E9078861AFD4ECA0055DBB3 /* intro.mp4 in Resources */,
 				2815EB041AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.xib in Resources */,
+				5E90788C1AFD4F3B0055DBB3 /* FUSplashViewController.xib in Resources */,
+				287F4D371ADEC88D0076FC53 /* categoryList.json in Resources */,
 				28B0E5BD1AD7E2C900C0932E /* FUWishlistCollectionViewCell.xib in Resources */,
 				287F4D351ADEC41B0076FC53 /* FUCategoryTableViewCell.xib in Resources */,
 				287F4D081ADB9F780076FC53 /* FUNavigationBar in Resources */,
@@ -1179,6 +1210,7 @@
 				28140EF11AE4150300359EAA /* FUSearchViewController.m in Sources */,
 				28B0E5C11AD7E63100C0932E /* FUWishlistManager.m in Sources */,
 				28362E091AD53383000B4E99 /* FUProductManager.m in Sources */,
+				5E90788B1AFD4F3B0055DBB3 /* FUSplashViewController.m in Sources */,
 				280F95081AF5B71E00BA74E9 /* FUOnboardingAreaCategoryViewController.m in Sources */,
 				2815EAEE1AC852BC00F97AEF /* FUSDKManager.m in Sources */,
 				28140EF91AE450B900359EAA /* FUSearchTextField.m in Sources */,

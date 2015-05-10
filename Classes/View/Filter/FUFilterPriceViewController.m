@@ -12,13 +12,13 @@
 #import "FUFontConstants.h"
 #import "FUColorConstants.h"
 
-@interface FUFilterPriceViewController ()
+@interface FUFilterPriceViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
 @property (weak, nonatomic) IBOutlet UIButton *applyFilterButton;
-@property (weak, nonatomic) IBOutlet UILabel *minPriceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *maxPriceLabel;
+@property (weak, nonatomic) IBOutlet UITextField *minPriceField;
+@property (weak, nonatomic) IBOutlet UITextField *maxPriceField;
 @property (weak, nonatomic) IBOutlet NMRangeSlider *priceRangeSlider;
 
 @property (strong, nonatomic) NSArray* filterItemKeys;
@@ -33,19 +33,30 @@
     self.applyFilterButton.layer.borderWidth = 1.5f;
     self.applyFilterButton.layer.borderColor = [[UIColor colorWithRed:244.0/255.0 green:170.0/255.0 blue:56.0/255.0 alpha:1.0] CGColor];
     
-    self.minPriceLabel.layer.borderWidth = 1.5f;
-    self.minPriceLabel.layer.borderColor = [[UIColor colorWithRed:170/255.0 green:170.0/255.0 blue:170/255.0 alpha:1.0] CGColor];
-
-    self.maxPriceLabel.layer.borderWidth = 1.5f;
-    self.maxPriceLabel.layer.borderColor = [[UIColor colorWithRed:170/255.0 green:170.0/255.0 blue:170/255.0 alpha:1.0] CGColor];
+    self.minPriceField.layer.borderWidth = 1.5f;
+    self.minPriceField.layer.borderColor = [[UIColor colorWithRed:170/255.0 green:170.0/255.0 blue:170/255.0 alpha:1.0] CGColor];
+    self.minPriceField.delegate = self;
+    [self.minPriceField addTarget:self action:@selector(textFieldEditingChanged:) forControlEvents:UIControlEventEditingChanged];
+    
+    self.maxPriceField.layer.borderWidth = 1.5f;
+    self.maxPriceField.layer.borderColor = [[UIColor colorWithRed:170/255.0 green:170.0/255.0 blue:170/255.0 alpha:1.0] CGColor];
+    self.maxPriceField.delegate = self;
+    [self.maxPriceField addTarget:self action:@selector(textFieldEditingChanged:) forControlEvents:UIControlEventEditingChanged];
+    
+    UIToolbar* keyboardDoneButtonView = [[UIToolbar alloc] init];
+    [keyboardDoneButtonView sizeToFit];
+    UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneClicked:)];
+    [keyboardDoneButtonView setItems:@[doneButton]];
+    self.minPriceField.inputAccessoryView = keyboardDoneButtonView;
+    self.maxPriceField.inputAccessoryView = keyboardDoneButtonView;
     
     self.priceRangeSlider.minimumValue = [FUMinPriceDefaultValue floatValue];
     self.priceRangeSlider.maximumValue = [FUMaxPriceDefaultValue floatValue];
     self.priceRangeSlider.stepValue = 10;
     self.priceRangeSlider.stepValueContinuously = NO;
     self.priceRangeSlider.trackImage = [UIImage imageNamed:@"slider-orange-track"];
-
-    //TODO: set lower handle image and upper handle image if the assets are available
+    self.priceRangeSlider.lowerHandleImageNormal = [UIImage imageNamed:@"min"];
+    self.priceRangeSlider.upperHandleImageNormal = [UIImage imageNamed:@"max"];
     
     self.priceRangeSlider.backgroundColor = [UIColor clearColor];
 }
@@ -64,7 +75,7 @@
     self.currentFilterItems = [self.previousFilterItems mutableCopy];
     self.filterItemKeys = [[self.currentFilterItems allKeys] sortedArrayUsingSelector: @selector(localizedCompare:)];
     
-    [self updateLabels];
+    [self updateFields];
     [self updateRangeSlider];
 }
 
@@ -76,31 +87,31 @@
     self.priceRangeSlider.upperValue = [self.currentFilterItems[FUMaxPriceKey] integerValue];
 }
 
-- (void)updateLabels {
+- (void)updateFields {
     
-    self.minPriceLabel.text = [NSString stringWithFormat:@"$%@", [self.currentFilterItems[FUMinPriceKey] stringValue]];
-    self.maxPriceLabel.text = [NSString stringWithFormat:@"$%@", [self.currentFilterItems[FUMaxPriceKey] stringValue]];
+    self.minPriceField.text = [NSString stringWithFormat:@"$%@", [self.currentFilterItems[FUMinPriceKey] stringValue]];
+    self.maxPriceField.text = [NSString stringWithFormat:@"$%@", [self.currentFilterItems[FUMaxPriceKey] stringValue]];
     
     if([self.currentFilterItems[FUMinPriceKey] integerValue] > [FUMinPriceDefaultValue integerValue]) {
         //BOLD and ORANGE
-        self.minPriceLabel.font = FUFontAvenirBold(17);
-        self.minPriceLabel.textColor = FUColorOrange;
+        self.minPriceField.font = FUFontAvenirBold(17);
+        self.minPriceField.textColor = FUColorOrange;
     }
     else {
         //MEDIUM and LIGHT GREY
-        self.minPriceLabel.font = FUFontAvenirLight(17);
-        self.minPriceLabel.textColor = FUColorLightGray;
+        self.minPriceField.font = FUFontAvenirLight(17);
+        self.minPriceField.textColor = FUColorLightGray;
     }
     
     if([self.currentFilterItems[FUMaxPriceKey] integerValue] < [FUMaxPriceDefaultValue integerValue]) {
         //BOLD and ORANGE
-        self.maxPriceLabel.font = FUFontAvenirBold(17);
-        self.maxPriceLabel.textColor = FUColorOrange;
+        self.maxPriceField.font = FUFontAvenirBold(17);
+        self.maxPriceField.textColor = FUColorOrange;
     }
     else {
         //MEDIUM and LIGHT GREY
-        self.maxPriceLabel.font = FUFontAvenirLight(17);
-        self.maxPriceLabel.textColor = FUColorLightGray;
+        self.maxPriceField.font = FUFontAvenirLight(17);
+        self.maxPriceField.textColor = FUColorLightGray;
     }
 }
 
@@ -118,10 +129,9 @@
 }
 
 - (IBAction)removeFilter:(id)sender {
-    //TODO use default values of FUFilterManager
     self.currentFilterItems[FUMinPriceKey] = FUMinPriceDefaultValue;
     self.currentFilterItems[FUMaxPriceKey] = FUMaxPriceDefaultValue;
-    [self updateLabels];
+    [self updateFields];
     [self updateRangeSlider];
 }
 
@@ -134,9 +144,42 @@
     self.currentFilterItems[FUMinPriceKey] = @((int)slider.lowerValue);
     self.currentFilterItems[FUMaxPriceKey] = @((int)slider.upperValue);
     
-    [self updateLabels];
+    [self updateFields];
 }
 
+#pragma mark - UITextFieldDelegate
 
+- (void)doneClicked:(id)sender
+{
+    [self.view endEditing:YES];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)textFieldEditingChanged:(UITextField *)textField
+{
+    NSString *value = [textField.text stringByReplacingOccurrencesOfString:@"$" withString:@""];
+    if (textField == self.minPriceField) {
+        long lowerValue = MIN(value.integerValue, self.priceRangeSlider.upperValue);
+        [self.priceRangeSlider setLowerValue:lowerValue animated:YES];
+        self.currentFilterItems[FUMinPriceKey] = @(lowerValue);
+        
+    }
+    else if (textField == self.maxPriceField) {
+        long upperValue = MAX(value.integerValue, self.priceRangeSlider.lowerValue);
+        [self.priceRangeSlider setUpperValue:upperValue animated:YES];
+        self.currentFilterItems[FUMaxPriceKey] = @(upperValue);
+    }
+    
+    [self updateFields];
+}
 
 @end

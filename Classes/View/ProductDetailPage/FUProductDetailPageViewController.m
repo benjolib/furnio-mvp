@@ -227,7 +227,7 @@
         
         self.verticalScrollView.scrollEnabled = NO;
         
-        NSLog(@"No product left!!");
+        NSLog(@"No product left!");
         return;
     }
     else {

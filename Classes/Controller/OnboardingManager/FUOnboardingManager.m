@@ -15,6 +15,7 @@
 #import "FUOnboardingAreaStyleViewController.h"
 #import "FUOnboardingAreaRoomViewController.h"
 #import "FULoadingViewManager.h"
+#import "FUSplashViewController.h"
 
 static NSString *const FUUserDefaultsCompletedOnboarding = @"FUOnboardingManagerCompletedOnboarding";
 
@@ -90,14 +91,16 @@ static NSString *const FUUserDefaultsCompletedOnboarding = @"FUOnboardingManager
         [FUOnboardingAreaStyleViewController new],
         [[FUOnboardingOverviewController alloc] initWithStepIndex:1],
         [FUOnboardingAreaCategoryViewController new],
-        [[FUOnboardingOverviewController alloc] initWithStepIndex:0]
+        [[FUOnboardingOverviewController alloc] initWithStepIndex:0],
+        [FUSplashViewController new]
     ];
 
     onboardingNavigationController.viewControllers = self.viewControllers;
     
     UINavigationController *rootNavigationController = (UINavigationController *)[UIApplication sharedApplication].keyWindow.rootViewController;
 
-    [rootNavigationController presentViewController:onboardingNavigationController animated:YES completion:nil];
+    
+    [rootNavigationController presentViewController:onboardingNavigationController animated:NO completion:nil];
 }
 
 @end

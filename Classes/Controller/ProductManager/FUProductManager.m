@@ -13,6 +13,7 @@
 #import "FUCategory.h"
 #import "FULoadingViewManager.h"
 #import "FUFilterManager.h"
+#import "FUCategoryManager.h"
 
 #import <UIKit/UIKit.h>
 
@@ -32,8 +33,6 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
 @property (strong, nonatomic) FUCategory *previousCategory;
 @property (strong, nonatomic) NSString *previousSearchQuery;
 @property (strong, nonatomic) NSNumber *previousFoundRows;
-
-@property (strong, nonatomic) NSMutableArray *filteredProducts;
 
 @property (assign, nonatomic) BOOL isLoading;
 
@@ -89,48 +88,13 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
 
 #pragma mark - Public
 
-- (void)sortProducts {
-    //sort the filtered products
-    NSString *chosenSorting = [[FUFilterManager sharedManager] loadSortingString];
-    if(!chosenSorting) {
-        return;
-    }
-    
-    if([chosenSorting isEqualToString:FUSortingPriceHighToLow]) {
-        NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey: @"price" ascending: NO];
-        [self.filteredProducts sortUsingDescriptors:@[sort]];
-    }
-    else if([chosenSorting isEqualToString:FUSortingPriceLowToHigh]) {
-        NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey: @"price" ascending: YES];
-        [self.filteredProducts sortUsingDescriptors:@[sort]];
-    }
-    
-    //TODO implement the other sortings
-}
-
-- (void)filterProducts {
-    self.filteredProducts = [NSMutableArray array];
-    
-    FUFilterManager *filterManager = [FUFilterManager sharedManager];
-    
-    for(FUProduct *product in self.products) {
-        
-        if ([filterManager isProductInFilter:product]) {
-            [self.filteredProducts addObject:product];
-        }
-    }
-    
-    NSLog(@"Count products: %@, count filteredProducts: %@", @(self.products.count), @(self.filteredProducts.count));
-}
-
-
 - (NSArray *)productsForColumnAtIndex:(NSInteger)index
 {
     NSInteger productStart = (index * FUProductManagerRowLimit);
     NSInteger productLimit = productStart + FUProductManagerRowLimit - 1;
     
-    if (productLimit < [self.filteredProducts count]) {
-        return [self.filteredProducts subarrayWithRange:NSMakeRange(productStart, FUProductManagerRowLimit)];
+    if (productLimit < [self.products count]) {
+        return [self.products subarrayWithRange:NSMakeRange(productStart, FUProductManagerRowLimit)];
     }
     
     return nil;
@@ -138,12 +102,12 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
 
 - (FUProduct *)productAtIndex:(NSInteger)index
 {
-    if (index < self.filteredProducts.count) {
-        if ((self.filteredProducts.count - index) < FUProductManagerRowLimit && self.filteredProducts.count < self.foundRows.integerValue) {
+    if (index < self.products.count) {
+        if ((self.products.count - index) < FUProductManagerRowLimit && self.products.count < self.foundRows.integerValue) {
             [self loadProducts];
         }
 
-        return [self.filteredProducts objectAtIndex:index];
+        return [self.products objectAtIndex:index];
     }
 
     return nil;
@@ -156,7 +120,7 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
     self.isDirty = YES;
 
     [self.products removeObject:product];
-    [self.filteredProducts removeObject: product];
+    [self.products removeObject: product];
 }
 
 - (void)addProduct:(FUProduct *)product {
@@ -187,7 +151,7 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
 
 - (NSInteger)productCount
 {
-    return self.filteredProducts.count;
+    return self.products.count;
 }
 
 - (NSInteger)columnCount
@@ -234,6 +198,20 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
     }
 }
 
+- (void)filterSortProducts {
+    
+    if (self.products.count > 0) {
+        [self saveCurrentState];
+    }
+    
+    [self.products removeAllObjects];
+    
+    _category = nil;
+    _searchQuery = nil;
+    
+    [self loadProducts];
+}
+
 - (void)saveCurrentState
 {
     _previousProducts = [self.products mutableCopy];
@@ -253,8 +231,6 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
     _previousCategory = nil;
     _previousSearchQuery = nil;
     _previousFoundRows = nil;
-    
-    _filteredProducts = _products;
     
     [[NSNotificationCenter defaultCenter] postNotificationName:FUProductManagerDidFinishLoadingPageNotification object:nil];
 }
@@ -362,9 +338,17 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
         [FULoadingViewManager sharedManger].text = @"SEARCHING PRODUCTS";
     }
     
+    NSDictionary *filters = [[FUFilterManager sharedManager] filterItems];
+    [self addFilterParameters:parameters forFilters:filters];
+    
+    NSString *sorting = [[FUFilterManager sharedManager] loadSortingString];
+    if(sorting && ![sorting isEqualToString:FUSortingNo]) {
+        [self addSortingParameters:parameters forSorting:sorting];
+    }
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:FUProductManagerWillStartLoadingPageNotification object:nil];
-
-    [JSONHTTPClient getJSONFromURLWithString:FUAPIProducts params:parameters completion:^(id json, JSONModelError *error) {
+    
+    [JSONHTTPClient getJSONFromURLWithString:[self buildUrlString:FUAPIProducts withParams:parameters] params:nil completion:^(id json, JSONModelError *error) {
         FUProductList *productList = [[FUProductList alloc] initWithDictionary:json error:&error];
 
         for (FUProduct *product in productList.products) {
@@ -373,8 +357,6 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
             }
         }
         
-        [self filterProducts];
-
         self.foundRows = productList.totalCount;
 
         if (error) {
@@ -391,6 +373,75 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
 
 #pragma mark - Helper
 
+- (void) addSortingParameters:(NSMutableDictionary *)parameters forSorting:(NSString *)sorting {
+    NSString *orderProperty;
+    NSString *orderDir = @"ASC";
+    
+    if([sorting isEqualToString:FUSortingPriceHighToLow]) {
+        orderDir = @"DESC";
+        orderProperty = @"price";
+    }
+    else if([sorting isEqualToString:FUSortingPriceLowToHigh]) {
+        orderProperty = @"price";
+    }
+    else if([sorting isEqualToString:FUSortingCategory]) {
+        orderProperty = @"categories";
+    }
+    else if([sorting isEqualToString:FUSortingMerchant]) {
+        orderProperty = @"seller";
+    }
+    else if([sorting isEqualToString:FUSortingAllTimePopular]) {
+        orderProperty = @"id";
+    }
+    else if([sorting isEqualToString:FUSortingNewlyFeatured]) {
+        orderDir = @"DESC";
+        orderProperty = @"id";
+    }
+    
+    [parameters setObject:orderProperty forKey:@"orderProperty"];
+    [parameters setObject:orderDir forKey:@"orderDir"];
+}
+
+- (void) addFilterParameters:(NSMutableDictionary *)parameters forFilters:(NSDictionary *)filters {
+    NSDictionary *filterCategories = filters[FUFilterCategoryKey];
+    NSDictionary *filterStyles = filters[FUFilterStyleKey];
+    NSDictionary *filterRooms = filters[FUFilterRoomKey];
+    NSDictionary *filterPrice = filters[FUFilterPriceKey];
+    
+    NSMutableArray *categories = [NSMutableArray array];
+    for (NSString *categoryName in filterCategories) {
+        if([filterCategories[categoryName] boolValue] == YES) {
+            NSNumber *categoryId = [[FUFilterManager sharedManager] categoryIdentifierForName:categoryName];
+            if(categoryId) {
+                [categories addObject:categoryId];
+            }
+        }
+    }
+    if ([categories count] > 0) {
+        [parameters setObject: categories forKey:@"category[]"];
+    }
+    
+    NSMutableArray *styles = [NSMutableArray array];
+    for (NSString *styleName in filterStyles) {
+        if([filterStyles[styleName] boolValue] == YES) {
+            [styles addObject:styleName];
+        }
+    }
+    if ([categories count] > 0) {
+        [parameters setObject: styles forKey:@"property[Style]"];
+    }
+    
+    for (NSString *roomName in filterRooms) {
+        if([filterRooms[roomName] boolValue] == YES) {
+            //TODO: rooms cannot be filtered in the Server API yet
+//            [parameters setObject: roomName forKey:@"property[Room]"];
+        }
+    }
+    
+    [parameters setObject:[filterPrice[FUMaxPriceKey] stringValue] forKey:@"priceTo"];
+    [parameters setObject:[filterPrice[FUMinPriceKey] stringValue] forKey:@"priceFrom"];
+}
+
 - (NSString *)pathForRemovedProducts
 {
     NSString *path;
@@ -402,6 +453,42 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
     }
 
     return path;
+}
+
+- (NSString *)buildUrlString:(NSString*)urlBaseString withParams:(NSDictionary *)params {
+    NSMutableString *paramsString = [NSMutableString stringWithString:@""];
+    for (NSString* key in [[params allKeys] sortedArrayUsingSelector:@selector(compare:)]) {
+        if ([params[key] isKindOfClass:[NSArray class]]) {
+            for(NSString *value in params[key]) {
+                [paramsString appendFormat:@"%@=%@&", key, [FUProductManager urlEncode:value]];
+            }
+        }
+        else {
+            [paramsString appendFormat:@"%@=%@&", key, [FUProductManager urlEncode:params[key]]];
+        }
+    }
+    if ([paramsString hasSuffix:@"&"]) {
+        paramsString = [[NSMutableString alloc] initWithString: [paramsString substringToIndex: paramsString.length-1]];
+    }
+
+    return [NSString stringWithFormat: @"%@%@%@", urlBaseString, @"?", paramsString];
+}
+
++(NSString*)urlEncode:(id<NSObject>)value
+{
+    //make sure param is a string
+    if ([value isKindOfClass:[NSNumber class]]) {
+        value = [(NSNumber*)value stringValue];
+    }
+    
+    NSAssert([value isKindOfClass:[NSString class]], @"request parameters can be only of NSString or NSNumber classes. '%@' is of class %@.", value, [value class]);
+    
+    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
+                                                                                 NULL,
+                                                                                 (__bridge CFStringRef) value,
+                                                                                 NULL,
+                                                                                 (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+                                                                                 kCFStringEncodingUTF8));
 }
 
 @end

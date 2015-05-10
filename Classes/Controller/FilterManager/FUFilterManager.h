@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 #define FUFilterItemsKey @"FUAllFilterItemsKey"
+#define FUFilterCategoryMappingKey @"FUFilterCategoryMapping"
+
 #define FUFilterCategoryKey @"Category"
 #define FUFilterStyleKey @"Style"
 #define FUFilterRoomKey @"Room"
@@ -19,7 +21,7 @@
 #define FUMaxPriceKey @"Max Price"
 
 #define FUMinPriceDefaultValue @0
-#define FUMaxPriceDefaultValue @10000
+#define FUMaxPriceDefaultValue @50000
 
 #define FUSortingKey @"FUSorting"
 
@@ -33,13 +35,17 @@
 - (void)saveSortingString:(NSString *)sortingString;
 
 - (NSMutableDictionary *)loadAllFilterItems;
-- (void)saveAllFilterItems:(NSDictionary *)allFilterItems;
-- (BOOL)isProductInFilter:(FUProduct *)product;
+- (void)saveAllFilterItems:(NSMutableDictionary *)allFilterItems;
 
 - (NSMutableDictionary *)defaultFilters;
 - (NSMutableDictionary *)defaultCategoriesFilter;
 - (NSMutableDictionary *)defaultStylesFilter;
 - (NSMutableDictionary *)defaultRoomsFilter;
 - (NSMutableDictionary *)defaultPriceFilter;
-- (NSMutableDictionary *)defaultMerchantFilter;
+
+- (NSDictionary *)filterItems;
+
+- (NSString *)categoryNameForIdentifier:(NSNumber *)categoryIdentifier;
+- (NSNumber *)categoryIdentifierForName:(NSString *)categoryName;
+
 @end

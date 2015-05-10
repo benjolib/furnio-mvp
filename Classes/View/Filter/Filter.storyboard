@@ -299,26 +299,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MaxPrice" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="gLH-5y-Vdr">
-                                <rect key="frame" x="219" y="120" width="140" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="Ihw-q6-KSF"/>
-                                    <constraint firstAttribute="width" constant="140" id="MOA-oh-Nv5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MinPrice" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="lfl-wh-wCw">
-                                <rect key="frame" x="16" y="120" width="140" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="E4P-0M-d6k"/>
-                                    <constraint firstAttribute="width" constant="140" id="o7l-cj-yaa"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MXr-uZ-bXr" customClass="NMRangeSlider">
                                 <rect key="frame" x="16" y="230" width="343" height="70"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -329,25 +309,43 @@
                                     <action selector="sliderValueChanged:" destination="mGE-SS-fk2" eventType="valueChanged" id="PVL-Zn-s18"/>
                                 </connections>
                             </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="MinValue" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fJb-GI-WVw">
+                                <rect key="frame" x="32" y="120" width="140" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Y0c-eh-8Uy"/>
+                                    <constraint firstAttribute="width" constant="140" id="ysu-AB-YcS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="MaxValue" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cwM-fR-A3o">
+                                <rect key="frame" x="203" y="120" width="140" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="Cy9-yS-IKc"/>
+                                    <constraint firstAttribute="height" constant="60" id="ssv-YL-OMV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="bSh-6b-2Pv" firstAttribute="leading" secondItem="UiZ-FF-TOw" secondAttribute="leading" id="0Hg-dW-5ZC"/>
                             <constraint firstItem="bSh-6b-2Pv" firstAttribute="top" secondItem="amF-KU-3EU" secondAttribute="bottom" constant="20" id="2PZ-vU-miF"/>
-                            <constraint firstAttribute="trailing" secondItem="gLH-5y-Vdr" secondAttribute="trailing" constant="16" id="9Eo-ed-6SG"/>
                             <constraint firstItem="gS2-kX-Pey" firstAttribute="top" secondItem="WE3-AR-1go" secondAttribute="bottom" constant="20" id="Be6-qF-b6R"/>
-                            <constraint firstItem="lfl-wh-wCw" firstAttribute="leading" secondItem="UiZ-FF-TOw" secondAttribute="leading" constant="16" id="HS4-EP-fyt"/>
                             <constraint firstItem="WE3-AR-1go" firstAttribute="leading" secondItem="UiZ-FF-TOw" secondAttribute="leadingMargin" id="JcI-E8-IKc"/>
                             <constraint firstAttribute="trailing" secondItem="MXr-uZ-bXr" secondAttribute="trailing" constant="16" id="KYM-B3-bKt"/>
                             <constraint firstAttribute="trailing" secondItem="bSh-6b-2Pv" secondAttribute="trailing" id="LGj-c3-en1"/>
-                            <constraint firstItem="lfl-wh-wCw" firstAttribute="top" secondItem="bSh-6b-2Pv" secondAttribute="bottom" constant="56" id="OPZ-nx-T0C"/>
                             <constraint firstAttribute="centerX" secondItem="gS2-kX-Pey" secondAttribute="centerX" id="Qfs-Bh-B3h"/>
-                            <constraint firstItem="gLH-5y-Vdr" firstAttribute="top" secondItem="bSh-6b-2Pv" secondAttribute="bottom" constant="56" id="Qva-oR-R1V"/>
+                            <constraint firstItem="MXr-uZ-bXr" firstAttribute="top" secondItem="fJb-GI-WVw" secondAttribute="bottom" constant="50" id="Qsr-wt-c7Z"/>
                             <constraint firstItem="WE3-AR-1go" firstAttribute="trailing" secondItem="UiZ-FF-TOw" secondAttribute="trailingMargin" id="Yap-IQ-xVT"/>
                             <constraint firstItem="MXr-uZ-bXr" firstAttribute="leading" secondItem="UiZ-FF-TOw" secondAttribute="leading" constant="16" id="c5S-sc-F45"/>
                             <constraint firstItem="wzO-T7-cPh" firstAttribute="top" secondItem="gS2-kX-Pey" secondAttribute="bottom" constant="20" id="dSm-qx-HXc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cwM-fR-A3o" secondAttribute="trailing" constant="16" id="eCZ-gS-Cpx"/>
+                            <constraint firstItem="cwM-fR-A3o" firstAttribute="top" secondItem="bSh-6b-2Pv" secondAttribute="bottom" constant="56" id="o1o-ud-Dzy"/>
                             <constraint firstItem="gS2-kX-Pey" firstAttribute="top" secondItem="WE3-AR-1go" secondAttribute="bottom" constant="20" id="oLk-nd-f7d"/>
-                            <constraint firstItem="MXr-uZ-bXr" firstAttribute="top" secondItem="lfl-wh-wCw" secondAttribute="bottom" constant="50" id="udX-6w-Jjt"/>
+                            <constraint firstItem="fJb-GI-WVw" firstAttribute="leading" secondItem="UiZ-FF-TOw" secondAttribute="leadingMargin" constant="16" id="uUt-0a-RdY"/>
+                            <constraint firstItem="fJb-GI-WVw" firstAttribute="top" secondItem="bSh-6b-2Pv" secondAttribute="bottom" constant="56" id="y9O-4G-yfa"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -356,8 +354,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="applyFilterButton" destination="WE3-AR-1go" id="o78-NJ-wsz"/>
-                        <outlet property="maxPriceLabel" destination="gLH-5y-Vdr" id="V6e-gM-aLP"/>
-                        <outlet property="minPriceLabel" destination="lfl-wh-wCw" id="WjS-k7-7Uc"/>
+                        <outlet property="maxPriceField" destination="cwM-fR-A3o" id="3Ou-rn-vcD"/>
+                        <outlet property="minPriceField" destination="fJb-GI-WVw" id="XPJ-KG-HDq"/>
                         <outlet property="navItem" destination="GQN-FB-hza" id="uLd-Je-A3M"/>
                         <outlet property="navigationBar" destination="bSh-6b-2Pv" id="IWK-Oj-PEE"/>
                         <outlet property="priceRangeSlider" destination="MXr-uZ-bXr" id="UbH-ia-5TK"/>

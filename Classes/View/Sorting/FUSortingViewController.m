@@ -27,10 +27,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"FILTER";
+    self.title = @"SORTING";
     self.tableView.backgroundColor = [UIColor clearColor];
     
-    self.sortingStrings = @[FUSortingEnableSorting, FUSortingPriceHighToLow, FUSortingPriceLowToHigh, FUSortingPopularToday, FUSortingLatestActivity, FUSortingAllTimePopular, FUSortingNewlyFeatures];
+    self.sortingStrings = @[FUSortingNo, FUSortingPriceHighToLow, FUSortingPriceLowToHigh, FUSortingCategory, FUSortingMerchant, FUSortingAllTimePopular, FUSortingNewlyFeatured];
     self.chosenSorting = [[FUFilterManager sharedManager] loadSortingString];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:SORTING_CELL];
@@ -90,7 +90,7 @@
     self.chosenSorting = chosenString;
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
     [[FUFilterManager sharedManager] saveSortingString:chosenString];
-    [[FUProductManager sharedManager] sortProducts];
+    [[FUProductManager sharedManager] filterSortProducts];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 

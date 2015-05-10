@@ -15,13 +15,13 @@
 extern NSString *const FUProductManagerDidFinishLoadingPageNotification;
 extern NSString *const FUProductManagerWillStartLoadingPageNotification;
 
-#define FUSortingEnableSorting      @"Enable Sorting"
+#define FUSortingNo                 @"No Sorting"
 #define FUSortingPriceHighToLow     @"Price (High to Low)"
 #define FUSortingPriceLowToHigh     @"Price (Low to High)"
-#define FUSortingPopularToday       @"Popular Today"
-#define FUSortingLatestActivity     @"Latest Activity"
+#define FUSortingCategory           @"Category"
+#define FUSortingMerchant           @"Merchant"
 #define FUSortingAllTimePopular     @"All Time Popular"
-#define FUSortingNewlyFeatures      @"Newly Featured"
+#define FUSortingNewlyFeatured      @"Newly Featured"
 
 @interface FUProductManager : NSObject
 
@@ -51,13 +51,11 @@ extern NSString *const FUProductManagerWillStartLoadingPageNotification;
 
 - (void)resetAndLoad:(BOOL)load;
 
+- (void)filterSortProducts;
+
 - (void)removeProduct:(FUProduct *)product;
 - (void)addProduct:(FUProduct *)product;
 
 - (FUProduct *)nextProduct:(FUProduct *)product;
-
-- (void)filterProducts;
-
-- (void)sortProducts;
 
 @end

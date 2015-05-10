@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FUSplashViewController">
+            <connections>
+                <outlet property="blurViewButton" destination="a1m-P6-P6c" id="1Sh-Ex-IuY"/>
+                <outlet property="blurViewImage" destination="93m-tU-f00" id="zqT-Io-Vmg"/>
+                <outlet property="logoImageView" destination="xsJ-Ki-ECE" id="jWv-CR-m9T"/>
+                <outlet property="personalizeButton" destination="woj-DF-g88" id="iLG-pH-wzp"/>
+                <outlet property="playerView" destination="DIf-cu-kP1" id="krC-i1-Sqd"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DIf-cu-kP1">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="93m-tU-f00">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="308"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="308" id="WHM-pW-SWI"/>
+                                <constraint firstAttribute="width" constant="242" id="apy-cV-1g9"/>
+                                <constraint firstAttribute="height" constant="242" id="hyp-2z-30U"/>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="apy-cV-1g9"/>
+                                    <exclude reference="hyp-2z-30U"/>
+                                </mask>
+                            </variation>
+                        </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="xsJ-Ki-ECE">
+                            <rect key="frame" x="66" y="33" width="242" height="242"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="242" id="JKx-UC-3HF"/>
+                                <constraint firstAttribute="width" constant="242" id="tYi-YO-Wn7"/>
+                            </constraints>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1m-P6-P6c">
+                            <rect key="frame" x="0.0" y="572" width="375" height="95"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="95" id="zVL-Aq-hYb"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="woj-DF-g88">
+                            <rect key="frame" x="20" y="592" width="335" height="55"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="55" id="A68-pS-sA2"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                            <state key="normal" title="PERSONALIZE YOUR HOME NOW.">
+                                <color key="titleColor" red="0.99215686274509807" green="0.72549019607843135" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="clickPersonalizeButton:" destination="-1" eventType="touchUpInside" id="V3Q-R0-zk6"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="a1m-P6-P6c" firstAttribute="leading" secondItem="DIf-cu-kP1" secondAttribute="leading" id="15Q-Ws-kYh"/>
+                        <constraint firstAttribute="bottom" secondItem="a1m-P6-P6c" secondAttribute="bottom" id="2qb-Yg-6vn"/>
+                        <constraint firstItem="woj-DF-g88" firstAttribute="leading" secondItem="DIf-cu-kP1" secondAttribute="leading" constant="20" id="3XO-yv-zRb"/>
+                        <constraint firstAttribute="bottom" secondItem="woj-DF-g88" secondAttribute="bottom" constant="20" id="77J-Yo-la4"/>
+                        <constraint firstAttribute="trailing" secondItem="woj-DF-g88" secondAttribute="trailing" constant="20" id="8ND-SX-2i7"/>
+                        <constraint firstAttribute="trailing" secondItem="93m-tU-f00" secondAttribute="trailing" id="DYQ-ss-Om5"/>
+                        <constraint firstItem="93m-tU-f00" firstAttribute="top" secondItem="DIf-cu-kP1" secondAttribute="top" id="Ehf-EJ-9gV"/>
+                        <constraint firstAttribute="trailing" secondItem="a1m-P6-P6c" secondAttribute="trailing" id="ZfO-Ix-E1k"/>
+                        <constraint firstItem="93m-tU-f00" firstAttribute="leading" secondItem="DIf-cu-kP1" secondAttribute="leading" id="bHv-Q2-byH"/>
+                        <constraint firstAttribute="centerX" secondItem="xsJ-Ki-ECE" secondAttribute="centerX" id="cMy-gy-683"/>
+                        <constraint firstItem="xsJ-Ki-ECE" firstAttribute="top" secondItem="DIf-cu-kP1" secondAttribute="top" constant="33" id="sBt-Zw-gHQ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="DIf-cu-kP1" secondAttribute="trailing" id="3Bi-tv-NvJ"/>
+                <constraint firstItem="DIf-cu-kP1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="CiK-1H-eWl"/>
+                <constraint firstAttribute="bottom" secondItem="DIf-cu-kP1" secondAttribute="bottom" id="Q9A-hb-L5Z"/>
+                <constraint firstItem="DIf-cu-kP1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vjq-Ei-jH2"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="logo-white" width="242" height="242"/>
+    </resources>
+</document>
