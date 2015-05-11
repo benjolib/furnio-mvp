@@ -74,8 +74,9 @@
         if(!_categoryIdMappings) {
             _categoryIdMappings = [[NSUserDefaults standardUserDefaults] objectForKey:FUFilterCategoryMappingKey];
         }
+        
         for(FUCategory *category in [FUCategoryManager sharedManager].categoryList.categories) {
-            if(![[_allFilterItems[FUFilterCategoryKey] allValues] containsObject:category.identifier]) {
+            if(![[_allFilterItems[FUFilterCategoryKey] allKeys] containsObject:category.name]) {
                 _allFilterItems[FUFilterCategoryKey][category.name] = @NO;
                 changed = YES;
             }

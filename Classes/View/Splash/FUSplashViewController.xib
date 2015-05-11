@@ -57,7 +57,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="55" id="A68-pS-sA2"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
                             <state key="normal" title="PERSONALIZE YOUR HOME NOW.">
                                 <color key="titleColor" red="0.99215686274509807" green="0.72549019607843135" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
