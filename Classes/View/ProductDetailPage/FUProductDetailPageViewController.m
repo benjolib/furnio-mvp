@@ -293,23 +293,40 @@
     
     if (lastAction) {
         [self.actions removeObject:lastAction];
-        UIImageView *imageView = lastAction.imageView;
-        CGRect frame = imageView.frame;
-        frame.origin.y = lastAction.actionType == FUActionTypeLike ? -DEVICE_HEIGHT : DEVICE_HEIGHT;
-        imageView.frame = frame;
-        [self.view addSubview:imageView];
+        UIView *snapshotView = lastAction.snapshotView;
+        UIView *snapshotViewLike = lastAction.snapshotViewLike;
+        UIView *snapshotViewDiscard = lastAction.snapshotViewDiscard;
+        
+        [self.view addSubview:snapshotView];
+        if(lastAction.actionType == FUActionTypeLike) {
+            [self.view addSubview:snapshotViewDiscard];
+        }
+        else if(lastAction.actionType == FUActionTypeDiscard) {
+            [self.view addSubview:snapshotViewLike];
+        }
         self.product = lastAction.product;
         
         [UIView animateWithDuration:1.0 animations:^{
             
             //animate image back to origin
-            CGRect frame = imageView.frame;
+            CGRect frame = snapshotView.frame;
             frame.origin.y = lastAction.yOffset;
-            imageView.frame = frame;
+            snapshotView.frame = frame;
+            
+            CGRect frameSnapshotLike = snapshotViewLike.frame;
+            frameSnapshotLike.origin.y = 0 - 100 + 20;
+            snapshotViewLike.frame = frameSnapshotLike;
+            
+            CGRect frameSnapshotDiscard = snapshotViewDiscard.frame;
+            frameSnapshotDiscard.origin.y = DEVICE_HEIGHT - 20;
+            snapshotViewDiscard.frame = frameSnapshotDiscard;
+            
         } completion:^(BOOL finished) {
 
             [lastAction undo];
-            [imageView removeFromSuperview];
+            [snapshotView removeFromSuperview];
+            [snapshotViewLike removeFromSuperview];
+            [snapshotViewDiscard removeFromSuperview];
         }];
         
         [self performSelector:@selector(loadProduct) withObject:nil afterDelay:0.99];
@@ -358,33 +375,44 @@
     }
 }
 
--(UIImage*) makeImage {
-    
-    UIGraphicsBeginImageContext(self.view.bounds.size);
-    
-    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    
-    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return viewImage;
-}
-
 - (void) animateAction:(FUProductAction *)action {
     
-    CGFloat targetOrigin = action.actionType == FUActionTypeLike ? -DEVICE_HEIGHT : DEVICE_HEIGHT;
+    CGFloat targetOrigin = action.actionType == FUActionTypeLike ? - DEVICE_HEIGHT - 100 : DEVICE_HEIGHT + 100;
+    UIView *snapshotView = [self.view snapshotViewAfterScreenUpdates:NO];
+    UIView *snapshotViewLike = [self.likeContainer resizableSnapshotViewFromRect:CGRectMake(0, self.likeContainer.frame.size.height - 100, DEVICE_WIDTH, 100) afterScreenUpdates:NO withCapInsets:UIEdgeInsetsZero];
+    snapshotViewLike.frame = CGRectMake(0, 0 - 100 + 20 - action.yOffset, DEVICE_WIDTH, 100);
+
+    UIView *snapshotViewDiscard = [self.discardContainer resizableSnapshotViewFromRect:CGRectMake(0, 0, DEVICE_WIDTH, 100) afterScreenUpdates:NO withCapInsets:UIEdgeInsetsZero];
+    snapshotViewDiscard.frame = CGRectMake(0, DEVICE_HEIGHT - 20 - action.yOffset, DEVICE_WIDTH, 100);
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT)];
-    imageView.image = [self makeImage];
-    [self.view addSubview:imageView];
-    
+    if(action.actionType == FUActionTypeLike) {
+        [self.view addSubview:snapshotViewDiscard];
+    }
+    else if(action.actionType == FUActionTypeDiscard) {
+        [self.view addSubview:snapshotViewLike];        
+    }
+    [self.view addSubview:snapshotView];
+
     [UIView animateWithDuration:1.0 animations:^{
-        CGRect frame = imageView.frame;
-        frame.origin.y = targetOrigin;
-        imageView.frame = frame;
+        CGRect frameSnapshot = snapshotView.frame;
+        frameSnapshot.origin.y = targetOrigin;
+        snapshotView.frame = frameSnapshot;
+        
+        CGRect frameSnapshotLike = snapshotViewLike.frame;
+        frameSnapshotLike.origin.y = targetOrigin - 100 + 20 - action.yOffset;
+        snapshotViewLike.frame = frameSnapshotLike;
+        
+        CGRect frameSnapshotDiscard = snapshotViewDiscard.frame;
+        frameSnapshotDiscard.origin.y = - 100 - 20 - action.yOffset;
+        snapshotViewDiscard.frame = frameSnapshotDiscard;
+        
     } completion:^(BOOL finished) {
-        action.imageView = imageView;
-        [imageView removeFromSuperview];
+        action.snapshotView = snapshotView;
+        action.snapshotViewDiscard = snapshotViewDiscard;
+        action.snapshotViewLike = snapshotViewLike;
+        [snapshotView removeFromSuperview];
+        [snapshotViewLike removeFromSuperview];
+        [snapshotViewDiscard removeFromSuperview];
     }];
 }
 

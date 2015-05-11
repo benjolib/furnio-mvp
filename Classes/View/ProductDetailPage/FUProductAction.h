@@ -20,7 +20,9 @@ typedef enum : NSUInteger {
 
 @property(strong, nonatomic) FUProduct *product;
 @property(assign, nonatomic) FUActionType actionType;
-@property(strong, nonatomic) UIImageView *imageView;
+@property(strong, nonatomic) UIView *snapshotView;
+@property(strong, nonatomic) UIView *snapshotViewLike;
+@property(strong, nonatomic) UIView *snapshotViewDiscard;
 @property(assign, nonatomic) CGFloat yOffset;
 
 - (instancetype)initWithProduct:(FUProduct *)product action:(FUActionType) actionType;
