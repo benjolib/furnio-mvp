@@ -72,7 +72,7 @@
         //reload categories in case there is a new one:
         BOOL changed = NO;
         if(!_categoryIdMappings) {
-            _categoryIdMappings = [[NSUserDefaults standardUserDefaults] objectForKey:FUFilterCategoryMappingKey];
+            _categoryIdMappings = [[[NSUserDefaults standardUserDefaults] objectForKey:FUFilterCategoryMappingKey] mutableCopy];
         }
         
         for(FUCategory *category in [FUCategoryManager sharedManager].categoryList.categories) {
