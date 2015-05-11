@@ -20,6 +20,9 @@
 #import "FUProductAction.h"
 #import "FUProductDetailBrowserViewController.h"
 #import "FUTrackingManager.h"
+#import "FUTutorialViewController.h"
+#import "UIView+Framing.h"
+#import "FUNavigationController.h"
 
 #define FUProductDetailTutorialShown @"FUProductDetailTutorialShown"
 
@@ -61,14 +64,6 @@
 @property (assign, nonatomic, getter=isSingleProduct) BOOL singleProduct;
 
 @property (strong, nonatomic) UIView *noProductView;
-
-@property (strong, nonatomic) UIImageView *tutorialView1;
-@property (strong, nonatomic) UIImageView *tutorialView2;
-@property (strong, nonatomic) UIImageView *tutorialView3;
-
-@property (assign, nonatomic) NSUInteger tutorialTapCount;
-
-@property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer;
 
 @end
 
@@ -122,75 +117,55 @@
     [self updateSingleProductState];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
+    
     [self setupView];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
+    [self showTutorial];
+}
+
+- (void)showTutorial
+{
     BOOL tutorialShown = [[NSUserDefaults standardUserDefaults] boolForKey:FUProductDetailTutorialShown];
-    if(!tutorialShown) {
-        [self showTutorial];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:FUProductDetailTutorialShown];
-    }
-}
 
-- (void) showTutorial {
-    self.verticalScrollView.scrollEnabled = NO;
-    self.buyButton.enabled = NO;
-    self.closeButton.enabled = NO;
-    self.undoButton.enabled = NO;
-    
-    self.imageScrollView.scrollEnabled = NO;
-    self.tutorialView1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT)];
-    self.tutorialView1.image = [UIImage imageNamed:@"pdp-tutorial1"];
-    self.tutorialView2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT)];
-    self.tutorialView2.image = [UIImage imageNamed:@"pdp-tutorial2"];
-    self.tutorialView3 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT)];
-    self.tutorialView3.image = [UIImage imageNamed:@"pdp-tutorial3"];
-    [self.view addSubview:self.tutorialView3];
-    [self.view addSubview:self.tutorialView2];
-    [self.view addSubview:self.tutorialView1];
-    self.tutorialTapCount = 3;
-    
-    self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tutorialTap:)];
-    self.tapRecognizer.numberOfTapsRequired = 1;
-    [self.view addGestureRecognizer:self.tapRecognizer];
-}
-
-- (void)tutorialTap:(UIGestureRecognizer *)gestureRecognizer {
-    
-    CGPoint location = [gestureRecognizer locationInView:self.view];
- 
-    if(!CGRectContainsPoint(CGRectMake(0, (480.0 / 667.0) * DEVICE_HEIGHT, DEVICE_WIDTH, (80.0 / 667.0) * DEVICE_HEIGHT), location)) {
+    if (tutorialShown || self.isSingleProduct) {
         return;
     }
     
-    UIImageView *viewToRemove;
-    if(self.tutorialTapCount == 3) {
-        viewToRemove = self.tutorialView1;
-    }
-    if(self.tutorialTapCount == 2) {
-        viewToRemove = self.tutorialView2;
-    }
-    if(self.tutorialTapCount == 1) {
-        viewToRemove = self.tutorialView3;
-        [self.view removeGestureRecognizer:self.tapRecognizer];
-    }
-    
-    [UIView animateWithDuration:0.5 animations:^{
-        CGRect frame = viewToRemove.frame;
-        frame.origin.x = -DEVICE_WIDTH;
-        viewToRemove.frame = frame;
-    } completion:^(BOOL finished) {
-        [viewToRemove removeFromSuperview];
-        
-        self.buyButton.enabled = YES;
-        self.closeButton.enabled = YES;
-        
-        [self setupView];
-        
-    }];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:FUProductDetailTutorialShown];
 
-    self.tutorialTapCount--;
+    NSArray *circleOrigins = @[
+       [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(self.view.frame), 0)],
+       [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(self.view.frame), self.view.height)],
+       [NSValue valueWithCGPoint:self.undoButton.center]
+    ];
+
+    NSArray *arrows = @[
+        @(FUTutorialViewArrowTopCenter),
+        @(FUTutorialViewArrowBottomCenter),
+        @(FUTutorialViewArrowTopRight)
+    ];
+    
+    NSArray *texts = @[
+       @"Swipe up to like / put to\nyour Wishlist",
+       @"Swipe down to remove\nfrom feed",
+       @"Undo last action"
+    ];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        FUTutorialViewController *tutorial = [[FUTutorialViewController alloc] initWithBackgroundView:self.view circleOrigins:circleOrigins arrows:arrows texts:texts finishedSuffix:@"START"];
+        
+        FUNavigationController *tutorialNavigationController = [[FUNavigationController alloc] initWithRootViewController:tutorial];
+        
+        [self.navigationController presentViewController:tutorialNavigationController animated:YES completion:nil];
+    });
 }
 
 - (void)setupView {

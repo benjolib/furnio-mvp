@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14A386a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FUTutorialViewController">
+            <connections>
+                <outlet property="backgroundImageView" destination="U83-my-aH3" id="knO-yy-Eyt"/>
+                <outlet property="forwardArrow" destination="YaA-WR-3tC" id="SFE-E9-JKk"/>
+                <outlet property="nextButton" destination="BNr-m5-6eg" id="mgS-MZ-Npf"/>
+                <outlet property="textLabel" destination="loG-9z-YSB" id="JNw-PU-1RF"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U83-my-aH3" userLabel="backgroundView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Wishlist" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="loG-9z-YSB" userLabel="textLabel">
+                    <rect key="frame" x="131" y="205" width="113" height="28"/>
+                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNr-m5-6eg" userLabel="nextButton">
+                    <rect key="frame" x="15" y="492" width="345" height="60"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="XVa-GM-tFp"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
+                    <state key="normal" title="GOT IT. NEXT.">
+                        <color key="titleColor" red="0.99215686270000003" green="0.72549019609999998" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="nextButtonTapped:" destination="-1" eventType="touchUpInside" id="EOn-pY-daV"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="YaA-WR-3tC">
+                    <rect key="frame" x="330" y="512" width="10" height="19"/>
+                    <color key="tintColor" red="0.99215686270000003" green="0.72549019609999998" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="10" id="bcx-q8-vPN"/>
+                        <constraint firstAttribute="height" constant="19" id="dZ9-oK-gZ7"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="BNr-m5-6eg" secondAttribute="centerX" id="07T-ky-xqn"/>
+                <constraint firstItem="U83-my-aH3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="9Ei-ef-RbY"/>
+                <constraint firstAttribute="trailing" secondItem="YaA-WR-3tC" secondAttribute="trailing" constant="35" id="CqA-PF-kXX"/>
+                <constraint firstAttribute="centerX" secondItem="loG-9z-YSB" secondAttribute="centerX" id="E53-Hr-iWV"/>
+                <constraint firstAttribute="trailing" secondItem="BNr-m5-6eg" secondAttribute="trailing" constant="15" id="Edz-lL-ytm"/>
+                <constraint firstItem="BNr-m5-6eg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="MjR-P1-8ml"/>
+                <constraint firstItem="U83-my-aH3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="SNd-Td-WSW"/>
+                <constraint firstAttribute="bottom" secondItem="U83-my-aH3" secondAttribute="bottom" id="Wmu-b3-GuT"/>
+                <constraint firstItem="YaA-WR-3tC" firstAttribute="centerY" secondItem="BNr-m5-6eg" secondAttribute="centerY" id="dmJ-Xl-W7p"/>
+                <constraint firstItem="loG-9z-YSB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="205" id="nWa-CF-avk"/>
+                <constraint firstAttribute="trailing" secondItem="U83-my-aH3" secondAttribute="trailing" id="oZl-Ek-kFy"/>
+                <constraint firstAttribute="bottom" secondItem="BNr-m5-6eg" secondAttribute="bottom" constant="115" id="rBd-Bp-4qd"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="forward" width="13" height="25"/>
+    </resources>
+</document>

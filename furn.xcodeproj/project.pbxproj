@@ -55,6 +55,9 @@
 		2815EAFC1AC85DE600F97AEF /* FUCatalogCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2815EAFA1AC85DE600F97AEF /* FUCatalogCollectionViewCell.m */; };
 		2815EB031AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2815EB011AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.m */; };
 		2815EB041AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2815EB021AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.xib */; };
+		28163E791AFF7FE100640CC7 /* FUTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28163E771AFF7FE100640CC7 /* FUTutorialViewController.m */; };
+		28163E7A1AFF7FE100640CC7 /* FUTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28163E781AFF7FE100640CC7 /* FUTutorialViewController.xib */; };
+		28163E811B00899300640CC7 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28163E801B00899300640CC7 /* UIImage+Additions.m */; };
 		282FB4BA1AFE393000F04D6A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 282FB4B91AFE393000F04D6A /* CoreData.framework */; };
 		282FB4BC1AFE393900F04D6A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 282FB4BB1AFE393900F04D6A /* SystemConfiguration.framework */; };
 		282FB4BE1AFE394600F04D6A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 282FB4BD1AFE394600F04D6A /* libz.dylib */; };
@@ -200,6 +203,11 @@
 		2815EB001AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUCatalogColumnCollectionViewCell.h; path = CatalogColumnCell/FUCatalogColumnCollectionViewCell.h; sourceTree = "<group>"; };
 		2815EB011AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUCatalogColumnCollectionViewCell.m; path = CatalogColumnCell/FUCatalogColumnCollectionViewCell.m; sourceTree = "<group>"; };
 		2815EB021AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FUCatalogColumnCollectionViewCell.xib; path = CatalogColumnCell/FUCatalogColumnCollectionViewCell.xib; sourceTree = "<group>"; };
+		28163E761AFF7FE100640CC7 /* FUTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUTutorialViewController.h; sourceTree = "<group>"; };
+		28163E771AFF7FE100640CC7 /* FUTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUTutorialViewController.m; sourceTree = "<group>"; };
+		28163E781AFF7FE100640CC7 /* FUTutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FUTutorialViewController.xib; sourceTree = "<group>"; };
+		28163E7F1B00899300640CC7 /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Additions.h"; sourceTree = "<group>"; };
+		28163E801B00899300640CC7 /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Additions.m"; sourceTree = "<group>"; };
 		282FB4B91AFE393000F04D6A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		282FB4BB1AFE393900F04D6A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		282FB4BD1AFE394600F04D6A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -448,6 +456,7 @@
 		28117C321AD714D3007C8DB9 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				28163E7B1B00898300640CC7 /* UIImage */,
 				280F94D71AF4269D00BA74E9 /* UIView */,
 				28CB92E81AED8F59003C279B /* NSMutableDictionary */,
 				28B0E5D51AD8227F00C0932E /* UIControl */,
@@ -544,6 +553,7 @@
 			isa = PBXGroup;
 			children = (
 				5E9078871AFD4F0A0055DBB3 /* Splash */,
+				28163E751AFF7FC800640CC7 /* Tutorial */,
 				28B0E5CC1AD8050700C0932E /* General */,
 				2815EAEF1AC8548C00F97AEF /* Catalog */,
 				287F4D2F1ADEC3960076FC53 /* Categories */,
@@ -715,6 +725,25 @@
 				2815EB021AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.xib */,
 			);
 			name = CatalogColumnCell;
+			sourceTree = "<group>";
+		};
+		28163E751AFF7FC800640CC7 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				28163E761AFF7FE100640CC7 /* FUTutorialViewController.h */,
+				28163E771AFF7FE100640CC7 /* FUTutorialViewController.m */,
+				28163E781AFF7FE100640CC7 /* FUTutorialViewController.xib */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		28163E7B1B00898300640CC7 /* UIImage */ = {
+			isa = PBXGroup;
+			children = (
+				28163E7F1B00899300640CC7 /* UIImage+Additions.h */,
+				28163E801B00899300640CC7 /* UIImage+Additions.m */,
+			);
+			path = UIImage;
 			sourceTree = "<group>";
 		};
 		28362DEA1AD444C6000B4E99 /* DeepLinkHandler */ = {
@@ -1082,6 +1111,7 @@
 				5E6626F31AF6678500C25907 /* FUSortingViewController.xib in Resources */,
 				5E6626ED1AF6661E00C25907 /* slider-orange-track.png in Resources */,
 				280F94E91AF55B7400BA74E9 /* FUOnboardingBaseViewController.xib in Resources */,
+				28163E7A1AFF7FE100640CC7 /* FUTutorialViewController.xib in Resources */,
 				2815EAF41AC8564400F97AEF /* FUCatalogViewController.xib in Resources */,
 				5E943BF51AEBE58A004012F5 /* FUNoProductView.xib in Resources */,
 				28140EEC1AE160FC00359EAA /* FUCatalogEmptyCollectionViewCell.xib in Resources */,
@@ -1172,8 +1202,10 @@
 				287F4D2B1ADEC0920076FC53 /* FUCategoryManager.m in Sources */,
 				28117C241AD68B8B007C8DB9 /* FUProperties.m in Sources */,
 				5E943C011AEC0AC4004012F5 /* UIImage+ImageEffects.m in Sources */,
+				28163E811B00899300640CC7 /* UIImage+Additions.m in Sources */,
 				280F94FD1AF5B28500BA74E9 /* FUOnboardingAreaViewController.m in Sources */,
 				280F94EF1AF5A16C00BA74E9 /* FUOnboardingOverviewController.m in Sources */,
+				28163E791AFF7FE100640CC7 /* FUTutorialViewController.m in Sources */,
 				5E943C0F1AECFBA5004012F5 /* FUFilterPriceViewController.m in Sources */,
 				28362DED1AD444D1000B4E99 /* FUDeepLinkHandler.m in Sources */,
 				280F94E31AF55B1C00BA74E9 /* FUViewController.m in Sources */,

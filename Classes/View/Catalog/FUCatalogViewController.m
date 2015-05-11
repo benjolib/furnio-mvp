@@ -23,6 +23,9 @@
 #import "UIImage+ImageEffects.h"
 #import "FUOnboardingManager.h"
 #import "FUSortingViewController.h"
+#import "FUTutorialViewController.h"
+
+static NSString *const FUCatalogTutorialShown = @"FUCatalogTutorialShown";
 
 @interface FUCatalogViewController () <FUCollectionViewDelegate>
 
@@ -70,6 +73,46 @@
     [super viewDidAppear:animated];
     
     [[FUOnboardingManager sharedManager] evaluateOnboarding];
+    
+    [self showTutorial];
+}
+
+- (void)showTutorial
+{
+    BOOL tutorialShown = [[NSUserDefaults standardUserDefaults] boolForKey:FUCatalogTutorialShown];
+    
+    if (tutorialShown || ![FUOnboardingManager sharedManager].completedOnboarding) {
+        return;
+    }
+
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:FUCatalogTutorialShown];
+    
+    NSArray *circleOrigins = @[
+                               [NSValue valueWithCGPoint:self.navigationBar.leftButton.center],
+                               [NSValue valueWithCGPoint:self.navigationBar.rightButton.center],
+                               [NSValue valueWithCGPoint:CGPointZero]
+                               ];
+    
+    NSArray *arrows = @[
+                        @(FUTutorialViewArrowTopLeft),
+                        @(FUTutorialViewArrowTopRight),
+                        @(FUTutorialViewArrowCenter)
+                        ];
+    
+    NSArray *texts = @[
+                       @"Search specific products",
+                       @"Edit Wishlist",
+                       @""
+                       ];
+    
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        FUTutorialViewController *tutorial = [[FUTutorialViewController alloc] initWithBackgroundView:self.view circleOrigins:circleOrigins arrows:arrows texts:texts finishedSuffix:@"ENJOY"];
+        
+        FUNavigationController *tutorialNavigationController = [[FUNavigationController alloc] initWithRootViewController:tutorial];
+        
+        [self.navigationController presentViewController:tutorialNavigationController animated:YES completion:nil];
+    });
 }
 
 #pragma mark - FUViewController
