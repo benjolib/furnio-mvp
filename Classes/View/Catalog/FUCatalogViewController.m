@@ -72,8 +72,11 @@ static NSString *const FUCatalogTutorialShown = @"FUCatalogTutorialShown";
 {
     [super viewDidAppear:animated];
     
-    [[FUOnboardingManager sharedManager] evaluateOnboarding];
-    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [[FUOnboardingManager sharedManager] evaluateOnboarding];
+    });
+
     [self showTutorial];
 }
 
