@@ -23,6 +23,8 @@
     [super viewDidLoad];
     
     self.nextLabel.text = @"NEXT STEP: CHOOSING YOUR STYLE";
+    
+    self.filterKey = FUFilterCategoryKey;
 }
 
 #pragma mark - UICollectionViewDataSource

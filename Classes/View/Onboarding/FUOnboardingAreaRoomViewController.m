@@ -27,6 +27,8 @@
     self.arrowImageView.hidden = YES;
 
     self.startButton.hidden = NO;
+    
+    self.filterKey = FUFilterRoomKey;
 }
 
 #pragma mark - UICollectionViewDataSource

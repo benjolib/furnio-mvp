@@ -21,6 +21,8 @@
     [super viewDidLoad];
     
     self.nextLabel.text = @"NEXT STEP: CHOOSING YOUR ROOMS";
+    
+    self.filterKey = FUFilterStyleKey;
 }
 
 #pragma mark - UICollectionViewDataSource

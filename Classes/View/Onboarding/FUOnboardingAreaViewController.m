@@ -47,6 +47,13 @@
     self.arrowImageView.image = [UIImage imageNamed:@"double-arrow-down-white"];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self updateFilterManager];
+}
+
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -96,6 +103,25 @@
 {
     // Subclasses may override this method
     return nil;
+}
+
+- (void)updateFilterManager
+{
+    NSMutableDictionary *allFilterItems = [[FUFilterManager sharedManager].filterItems mutableCopy];
+
+    NSMutableDictionary *filters = [[allFilterItems objectForKey:self.filterKey] mutableCopy];
+
+    [self.selectedIndices enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop) {
+        NSString *title = [self titleAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+        
+        if (title) {
+            [filters setObject:@(YES) forKey:title];
+        }
+    }];
+
+    [allFilterItems setObject:filters forKey:self.filterKey];
+    
+    [[FUFilterManager sharedManager] saveAllFilterItems:allFilterItems];
 }
 
 @end
