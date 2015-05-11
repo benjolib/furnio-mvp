@@ -23,6 +23,7 @@
 #import "FUTutorialViewController.h"
 #import "UIView+Framing.h"
 #import "FUNavigationController.h"
+#import "UIControl+HitTest.h"
 
 #define FUProductDetailTutorialShown @"FUProductDetailTutorialShown"
 
@@ -115,6 +116,9 @@
     self.priceBottomSpaceConstraint.constant = 33 + diff * (1.0 / 3.0);
     
     [self updateSingleProductState];
+    
+    self.closeButton.hitTestEdgeInsets = UIEdgeInsetsMake(-self.closeButton.top, -self.closeButton.left, -10, -10);
+    self.undoButton.hitTestEdgeInsets = UIEdgeInsetsMake(-self.undoButton.top, -10, -10, -(self.view.width - self.undoButton.right));
 }
 
 - (void)viewWillAppear:(BOOL)animated
