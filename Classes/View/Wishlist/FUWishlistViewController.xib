@@ -38,14 +38,15 @@
                     <rect key="frame" x="48" y="75" width="280" height="40"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mi6-vU-Gu6" userLabel="deleteAllButton">
-                            <rect key="frame" x="0.0" y="0.0" width="134" height="35"/>
+                            <rect key="frame" x="0.0" y="0.0" width="134" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="134" id="U76-cH-FcA"/>
-                                <constraint firstAttribute="height" constant="35" id="c1v-Bt-T0X"/>
+                                <constraint firstAttribute="height" constant="40" id="c1v-Bt-T0X"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                             <color key="tintColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="deviceRGB"/>
-                            <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="titleEdgeInsets" minX="7" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="7" maxY="0.0"/>
                             <state key="normal" title="DELETE ALL" image="delete"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -57,14 +58,15 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4a-rH-pNv" userLabel="shareAllButton">
-                            <rect key="frame" x="146" y="0.0" width="134" height="35"/>
+                            <rect key="frame" x="146" y="0.0" width="134" height="40"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="35" id="RvI-Ib-o01"/>
+                                <constraint firstAttribute="height" constant="40" id="RvI-Ib-o01"/>
                                 <constraint firstAttribute="width" constant="134" id="seE-k2-5pH"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                             <color key="tintColor" red="0.99215686270000003" green="0.72549019609999998" blue="0.2274509804" alpha="1" colorSpace="deviceRGB"/>
-                            <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="titleEdgeInsets" minX="7" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="7" maxY="0.0"/>
                             <state key="normal" title="SHARE ALL" image="share-yellow"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
