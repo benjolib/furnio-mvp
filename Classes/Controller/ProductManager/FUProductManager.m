@@ -442,11 +442,11 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
     NSString *priceTo = [filterPrice[FUMaxPriceKey] stringValue];
     
     if (!priceFrom) {
-        priceFrom = @"0";
+        priceFrom = [FUMinPriceDefaultValue stringValue];
     }
     
     if (!priceTo) {
-        priceTo = @"50000";
+        priceTo = [FUMaxPriceDefaultValue stringValue];
     }
 
     [parameters setObject:priceFrom forKey:@"priceFrom"];

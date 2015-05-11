@@ -63,9 +63,8 @@
     _allFilterItems = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:FUFilterItemsKey] mutableCopy];
     
     if(!_allFilterItems) {
-        [self setupAllFilterItems];
-        _allFilterItems = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:FUFilterItemsKey] mutableCopy];
-        _allFilterItems = [self makeInnerMutable:_allFilterItems];
+        // is invoked only the very first time the app starts.
+        _allFilterItems = [self setupAllFilterItems];
     }
     else {
         _allFilterItems = [self makeInnerMutable:_allFilterItems];
@@ -152,8 +151,10 @@
               FUFilterPriceKey    : [self defaultPriceFilter]} mutableCopy];
 }
 
-- (void)setupAllFilterItems {
-    [self saveAllFilterItems: [self defaultFilters]];
+- (NSMutableDictionary *)setupAllFilterItems {
+    NSMutableDictionary *defaultFilters = [self defaultFilters];
+    [self saveAllFilterItems: defaultFilters];
+    return defaultFilters;
 }
 
 - (void)resetAllFilters {
