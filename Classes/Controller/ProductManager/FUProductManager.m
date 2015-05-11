@@ -437,9 +437,20 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
 //            [parameters setObject: roomName forKey:@"property[Room]"];
         }
     }
+
+    NSString *priceFrom = [filterPrice[FUMinPriceKey] stringValue];
+    NSString *priceTo = [filterPrice[FUMaxPriceKey] stringValue];
     
-    [parameters setObject:[filterPrice[FUMaxPriceKey] stringValue] forKey:@"priceTo"];
-    [parameters setObject:[filterPrice[FUMinPriceKey] stringValue] forKey:@"priceFrom"];
+    if (!priceFrom) {
+        priceFrom = @"0";
+    }
+    
+    if (!priceTo) {
+        priceTo = @"50000";
+    }
+
+    [parameters setObject:priceFrom forKey:@"priceFrom"];
+    [parameters setObject:priceTo forKey:@"priceTo"];
 }
 
 - (NSString *)pathForRemovedProducts
