@@ -77,6 +77,9 @@
 {
     [super viewDidLoad];
     
+    self.backgroundImageView.frame = [UIScreen mainScreen].bounds;
+    [self.backgroundImageView setNeedsLayout];
+
     self.forwardArrow.image = [self.forwardArrow.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     
     self.backgroundImageView.image = self.backgroundImage;
