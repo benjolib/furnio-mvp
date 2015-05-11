@@ -48,6 +48,8 @@
 - (void)configureNavigationBar
 {
     self.navigationBar.leftButton = nil;
+
+    self.navigationBar.hidden = YES;
 }
 
 #pragma mark - Actions
