@@ -234,7 +234,11 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-     FUProduct *product = [self.products objectAtIndex:indexPath.item];
+    if (indexPath.item >= self.products.count) {
+        return;
+    }
+
+    FUProduct *product = [self.products objectAtIndex:indexPath.item];
     
     FUProductDetailPageViewController *detailPageViewController = [[FUProductDetailPageViewController alloc] initWithSingleProduct:product];
     
