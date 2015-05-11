@@ -620,7 +620,6 @@
 			isa = PBXGroup;
 			children = (
 				2872D7A91AFDE1EF003277A2 /* Frameworks */,
-				2815EAE11AC8471300F97AEF /* Images */,
 				2815EAE41AC8474F00F97AEF /* main */,
 				2815EAE31AC8473F00F97AEF /* plist */,
 				280F94DE1AF4366D00BA74E9 /* PrefixHeader */,
@@ -1123,7 +1122,6 @@
 				5E9078861AFD4ECA0055DBB3 /* intro.mp4 in Resources */,
 				2815EB041AC85EA000F97AEF /* FUCatalogColumnCollectionViewCell.xib in Resources */,
 				5E90788C1AFD4F3B0055DBB3 /* FUSplashViewController.xib in Resources */,
-				287F4D371ADEC88D0076FC53 /* categoryList.json in Resources */,
 				28B0E5BD1AD7E2C900C0932E /* FUWishlistCollectionViewCell.xib in Resources */,
 				287F4D351ADEC41B0076FC53 /* FUCategoryTableViewCell.xib in Resources */,
 				287F4D081ADB9F780076FC53 /* FUNavigationBar in Resources */,
