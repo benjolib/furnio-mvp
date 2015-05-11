@@ -114,7 +114,7 @@
 
 - (NSMutableDictionary *)defaultStylesFilter {
     return [@{@"Contemporary"  : @NO,
-              @"Ecletic"       : @NO,
+              @"Eclectic"      : @NO,
               @"Modern"        : @NO,
               @"Traditional"   : @NO,
               @"Asian"         : @NO,
@@ -133,7 +133,7 @@
               @"Bath"    : @NO,
               @"Bedroom" : @NO,
               @"Living"  : @NO,
-              @"Dinning" : @NO,
+              @"Dining"  : @NO,
               @"Kids"    : @NO,
               @"Outdoor" : @NO,
               @"Office"  : @NO} mutableCopy];
