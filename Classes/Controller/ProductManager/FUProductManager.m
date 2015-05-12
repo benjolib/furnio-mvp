@@ -14,6 +14,7 @@
 #import "FULoadingViewManager.h"
 #import "FUFilterManager.h"
 #import "FUCategoryManager.h"
+#import "FURoomList.h"
 
 #import <UIKit/UIKit.h>
 
@@ -431,11 +432,17 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
         [parameters setObject: styles forKey:@"property[Style]"];
     }
     
+    NSMutableArray *rooms = [NSMutableArray array];
     for (NSString *roomName in filterRooms) {
         if([filterRooms[roomName] boolValue] == YES) {
-            //TODO: rooms cannot be filtered in the Server API yet
-//            [parameters setObject: roomName forKey:@"property[Room]"];
+            NSString *roomId = [[FUFilterManager sharedManager] roomIdForName:roomName];
+            if(roomId) {
+                [rooms addObject:roomId];
+            }
         }
+    }
+    if ([rooms count] > 0) {
+        [parameters setObject:rooms forKey:@"room"];
     }
 
     NSString *priceFrom = [filterPrice[FUMinPriceKey] stringValue];

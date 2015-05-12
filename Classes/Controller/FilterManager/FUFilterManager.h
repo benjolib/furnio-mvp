@@ -10,6 +10,7 @@
 
 #define FUFilterItemsKey @"FUAllFilterItemsKey"
 #define FUFilterCategoryMappingKey @"FUFilterCategoryMapping"
+#define FUFilterRoomMappingKey @"FUFilterRoomMappingKey"
 
 #define FUFilterCategoryKey @"Category"
 #define FUFilterStyleKey @"Style"
@@ -48,4 +49,5 @@
 - (NSString *)categoryNameForIdentifier:(NSNumber *)categoryIdentifier;
 - (NSNumber *)categoryIdentifierForName:(NSString *)categoryName;
 
+- (NSString *)roomIdForName:(NSString *)roomName;
 @end

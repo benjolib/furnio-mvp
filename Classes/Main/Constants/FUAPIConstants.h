@@ -16,6 +16,7 @@
 #define FUAPIEndpoint(endpoint) [FUAPIBaseURL stringByAppendingString:endpoint]
 
 #define FUAPIProducts FUAPIEndpoint(@"/products/list")
+#define FUAPIRooms FUAPIEndpoint(@"/rooms/list")
 #define FUAPICategories FUAPIEndpoint(@"/categories/list")
 
 #endif

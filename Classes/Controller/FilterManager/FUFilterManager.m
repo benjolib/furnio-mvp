@@ -11,13 +11,17 @@
 #import "FUCategoryList.h"
 #import "FUCategory.h"
 #import "FUProduct.h"
+#import "FURoom.h"
 #import "FUProperties.h"
 #import "FUSeller.h"
+#import "FURoomManager.h"
+#import "FURoomList.h"
 
 @interface FUFilterManager ()
 
 @property (nonatomic, strong) NSMutableDictionary *allFilterItems;
 @property (nonatomic, strong) NSMutableDictionary *categoryIdMappings;
+@property (nonatomic, strong) NSMutableDictionary *roomIdMappings;
 
 @end
 
@@ -73,6 +77,9 @@
         if(!_categoryIdMappings) {
             _categoryIdMappings = [[[NSUserDefaults standardUserDefaults] objectForKey:FUFilterCategoryMappingKey] mutableCopy];
         }
+        if(!_roomIdMappings) {
+            _roomIdMappings = [[[NSUserDefaults standardUserDefaults] objectForKey:FUFilterRoomMappingKey] mutableCopy];
+        }
         
         for(FUCategory *category in [FUCategoryManager sharedManager].categoryList.categories) {
             if(![[_allFilterItems[FUFilterCategoryKey] allKeys] containsObject:category.name]) {
@@ -81,9 +88,22 @@
             }
             _categoryIdMappings[category.name] = category.identifier;
         }
-        if ([_categoryIdMappings count] > 0) {
-            [[NSUserDefaults standardUserDefaults] setValue:_categoryIdMappings forKey:@"FUFilterCategoryMapping"];
+        
+        for(FURoom *room in [FURoomManager sharedManager].roomList.rooms) {
+            if(![[_allFilterItems[FUFilterRoomKey] allKeys] containsObject:room.name.capitalizedString]) {
+                _allFilterItems[FUFilterRoomKey][room.name.capitalizedString] = @NO;
+                changed = YES;
+            }
+            _roomIdMappings[room.name.capitalizedString] = room.identifier;
         }
+        
+        if ([_categoryIdMappings count] > 0) {
+            [[NSUserDefaults standardUserDefaults] setValue:_categoryIdMappings forKey:FUFilterCategoryMappingKey];
+        }
+        if ([_roomIdMappings count] > 0) {
+            [[NSUserDefaults standardUserDefaults] setValue:_roomIdMappings forKey:FUFilterRoomMappingKey];
+        }
+    
 
         if(changed) {
             [self saveAllFilterItems:_allFilterItems];
@@ -107,7 +127,7 @@
         filterItemsCategory[category.name] = @NO;
         _categoryIdMappings[category.name] = category.identifier;
     }
-    [[NSUserDefaults standardUserDefaults] setValue:_categoryIdMappings forKey:@"FUFilterCategoryMapping"];
+    [[NSUserDefaults standardUserDefaults] setValue:_categoryIdMappings forKey:FUFilterCategoryMappingKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
     return filterItemsCategory;
 }
@@ -129,7 +149,7 @@
 }
 
 - (NSMutableDictionary *)defaultRoomsFilter {
-    return [@{@"Kitchen" : @NO,
+    NSMutableDictionary *filterItemsRoom = [@{@"Kitchen" : @NO,
               @"Bath"    : @NO,
               @"Bedroom" : @NO,
               @"Living"  : @NO,
@@ -137,6 +157,18 @@
               @"Kids"    : @NO,
               @"Outdoor" : @NO,
               @"Office"  : @NO} mutableCopy];
+    
+    //initial mapping
+    _roomIdMappings = [@{@"Kitchen": @"1", @"Bath": @"2", @"Bedroom": @"3", @"Living": @"4", @"Outdoor":@"5", @"Lighting":@"6", @"Decor" : @"7"} mutableCopy];
+    
+    for(FURoom *room in [FURoomManager sharedManager].roomList.rooms) {
+        filterItemsRoom[room.name.capitalizedString] = @NO;
+        _roomIdMappings[room.name.capitalizedString] = room.identifier;
+    }
+    [[NSUserDefaults standardUserDefaults] setValue:_roomIdMappings forKey:FUFilterRoomMappingKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    return filterItemsRoom;
 }
 
 - (NSMutableDictionary *)defaultPriceFilter {
@@ -174,6 +206,13 @@
         _categoryIdMappings = [[NSUserDefaults standardUserDefaults] objectForKey:FUFilterCategoryMappingKey];
     }
     return _categoryIdMappings[categoryName];
+}
+
+- (NSString *)roomIdForName:(NSString *)roomName {
+    if (!_roomIdMappings) {
+        _roomIdMappings = [[NSUserDefaults standardUserDefaults] objectForKey:FUFilterRoomMappingKey];
+    }
+    return _roomIdMappings[roomName];
 }
 
 @end
