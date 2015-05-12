@@ -38,11 +38,11 @@
                                 </mask>
                             </variation>
                         </view>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="xsJ-Ki-ECE">
-                            <rect key="frame" x="66" y="33" width="242" height="242"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-yellow" translatesAutoresizingMaskIntoConstraints="NO" id="xsJ-Ki-ECE">
+                            <rect key="frame" x="86" y="50" width="204" height="179"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="242" id="JKx-UC-3HF"/>
-                                <constraint firstAttribute="width" constant="242" id="tYi-YO-Wn7"/>
+                                <constraint firstAttribute="height" constant="179" id="JKx-UC-3HF"/>
+                                <constraint firstAttribute="width" constant="204" id="tYi-YO-Wn7"/>
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1m-P6-P6c">
@@ -79,7 +79,7 @@
                         <constraint firstAttribute="trailing" secondItem="a1m-P6-P6c" secondAttribute="trailing" id="ZfO-Ix-E1k"/>
                         <constraint firstItem="93m-tU-f00" firstAttribute="leading" secondItem="DIf-cu-kP1" secondAttribute="leading" id="bHv-Q2-byH"/>
                         <constraint firstAttribute="centerX" secondItem="xsJ-Ki-ECE" secondAttribute="centerX" id="cMy-gy-683"/>
-                        <constraint firstItem="xsJ-Ki-ECE" firstAttribute="top" secondItem="DIf-cu-kP1" secondAttribute="top" constant="33" id="sBt-Zw-gHQ"/>
+                        <constraint firstItem="xsJ-Ki-ECE" firstAttribute="top" secondItem="DIf-cu-kP1" secondAttribute="top" constant="50" id="sBt-Zw-gHQ"/>
                     </constraints>
                 </view>
             </subviews>
@@ -97,6 +97,6 @@
         </view>
     </objects>
     <resources>
-        <image name="logo-white" width="242" height="242"/>
+        <image name="logo-yellow" width="204" height="179"/>
     </resources>
 </document>

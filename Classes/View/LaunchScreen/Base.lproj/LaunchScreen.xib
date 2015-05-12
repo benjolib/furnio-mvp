@@ -12,34 +12,30 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="Vmz-qP-1fu">
-                    <rect key="frame" x="66" y="33" width="242" height="242"/>
+                    <rect key="frame" x="66" y="244" width="242" height="180"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="242" id="XZS-PG-mui"/>
-                        <constraint firstAttribute="height" constant="242" id="YoP-qx-Qyk"/>
-                    </constraints>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wordmark-white" translatesAutoresizingMaskIntoConstraints="NO" id="oq9-DC-giv">
-                    <rect key="frame" x="74" y="464" width="227" height="90"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="227" id="CcQ-uh-0eR"/>
-                        <constraint firstAttribute="height" constant="90" id="iwp-kM-ImA"/>
+                        <constraint firstAttribute="height" constant="180" id="YoP-qx-Qyk"/>
                     </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="0.99215686270000003" green="0.72549019609999998" blue="0.2274509804" alpha="1" colorSpace="deviceRGB"/>
             <constraints>
                 <constraint firstItem="Vmz-qP-1fu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="33" id="BM8-Ot-Lfr"/>
-                <constraint firstAttribute="bottom" secondItem="oq9-DC-giv" secondAttribute="bottom" constant="113" id="PnX-2a-5XV"/>
+                <constraint firstAttribute="centerY" secondItem="Vmz-qP-1fu" secondAttribute="centerY" id="PqS-3V-CLq"/>
                 <constraint firstAttribute="centerX" secondItem="Vmz-qP-1fu" secondAttribute="centerX" id="eeo-CR-6lt"/>
-                <constraint firstAttribute="centerX" secondItem="oq9-DC-giv" secondAttribute="centerX" id="u5n-7r-OUa"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="BM8-Ot-Lfr"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="547.5" y="454.5"/>
         </view>
     </objects>
     <resources>
-        <image name="logo-white" width="242" height="242"/>
-        <image name="wordmark-white" width="227" height="90"/>
+        <image name="logo-white" width="242" height="180"/>
     </resources>
 </document>
