@@ -90,6 +90,9 @@
 		28B0E5D81AD8228700C0932E /* UIControl+HitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0E5D71AD8228700C0932E /* UIControl+HitTest.m */; };
 		28CB92E71AED8CFC003C279B /* FUTrackingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CB92E61AED8CFC003C279B /* FUTrackingManager.m */; };
 		28CB92EB1AED8F6B003C279B /* NSMutableDictionary+Tracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CB92EA1AED8F6B003C279B /* NSMutableDictionary+Tracking.m */; };
+		5E1A5D181B02B96000DD7BA4 /* FURoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1A5D171B02B96000DD7BA4 /* FURoom.m */; };
+		5E1A5D1B1B02BA5E00DD7BA4 /* FURoomList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1A5D1A1B02BA5E00DD7BA4 /* FURoomList.m */; };
+		5E1A5D1F1B02BB0E00DD7BA4 /* FURoomManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1A5D1E1B02BB0E00DD7BA4 /* FURoomManager.m */; };
 		5E6626ED1AF6661E00C25907 /* slider-orange-track.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E6626EC1AF6661E00C25907 /* slider-orange-track.png */; };
 		5E6626F21AF6678500C25907 /* FUSortingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6626F01AF6678500C25907 /* FUSortingViewController.m */; };
 		5E6626F31AF6678500C25907 /* FUSortingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E6626F11AF6678500C25907 /* FUSortingViewController.xib */; };
@@ -259,6 +262,12 @@
 		28CB92E61AED8CFC003C279B /* FUTrackingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUTrackingManager.m; sourceTree = "<group>"; };
 		28CB92E91AED8F6B003C279B /* NSMutableDictionary+Tracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Tracking.h"; sourceTree = "<group>"; };
 		28CB92EA1AED8F6B003C279B /* NSMutableDictionary+Tracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Tracking.m"; sourceTree = "<group>"; };
+		5E1A5D161B02B96000DD7BA4 /* FURoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FURoom.h; sourceTree = "<group>"; };
+		5E1A5D171B02B96000DD7BA4 /* FURoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FURoom.m; sourceTree = "<group>"; };
+		5E1A5D191B02BA5E00DD7BA4 /* FURoomList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FURoomList.h; sourceTree = "<group>"; };
+		5E1A5D1A1B02BA5E00DD7BA4 /* FURoomList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FURoomList.m; sourceTree = "<group>"; };
+		5E1A5D1D1B02BB0E00DD7BA4 /* FURoomManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FURoomManager.h; path = FURoomManager/FURoomManager.h; sourceTree = "<group>"; };
+		5E1A5D1E1B02BB0E00DD7BA4 /* FURoomManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FURoomManager.m; path = FURoomManager/FURoomManager.m; sourceTree = "<group>"; };
 		5E6626EC1AF6661E00C25907 /* slider-orange-track.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider-orange-track.png"; sourceTree = "<group>"; };
 		5E6626EF1AF6678500C25907 /* FUSortingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUSortingViewController.h; path = Classes/View/Sorting/FUSortingViewController.h; sourceTree = SOURCE_ROOT; };
 		5E6626F01AF6678500C25907 /* FUSortingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUSortingViewController.m; path = Classes/View/Sorting/FUSortingViewController.m; sourceTree = SOURCE_ROOT; };
@@ -566,6 +575,7 @@
 		2815EADC1AC8466B00F97AEF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5E1A5D1C1B02BAF000DD7BA4 /* RoomManager */,
 				280F950F1AF5CC1900BA74E9 /* OnboardingManager */,
 				280F94D01AF420A300BA74E9 /* Appirater */,
 				5E943C101AED3827004012F5 /* FilterManager */,
@@ -767,6 +777,10 @@
 				28362E001AD5207B000B4E99 /* FUProductList.m */,
 				28117C221AD68B8B007C8DB9 /* FUProperties.h */,
 				28117C231AD68B8B007C8DB9 /* FUProperties.m */,
+				5E1A5D161B02B96000DD7BA4 /* FURoom.h */,
+				5E1A5D171B02B96000DD7BA4 /* FURoom.m */,
+				5E1A5D191B02BA5E00DD7BA4 /* FURoomList.h */,
+				5E1A5D1A1B02BA5E00DD7BA4 /* FURoomList.m */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -955,6 +969,15 @@
 				28CB92EA1AED8F6B003C279B /* NSMutableDictionary+Tracking.m */,
 			);
 			path = NSMutableDictionary;
+			sourceTree = "<group>";
+		};
+		5E1A5D1C1B02BAF000DD7BA4 /* RoomManager */ = {
+			isa = PBXGroup;
+			children = (
+				5E1A5D1D1B02BB0E00DD7BA4 /* FURoomManager.h */,
+				5E1A5D1E1B02BB0E00DD7BA4 /* FURoomManager.m */,
+			);
+			name = RoomManager;
 			sourceTree = "<group>";
 		};
 		5E6626EE1AF6676000C25907 /* Sorting */ = {
@@ -1192,10 +1215,12 @@
 				280F94FD1AF5B28500BA74E9 /* FUOnboardingAreaViewController.m in Sources */,
 				280F94EF1AF5A16C00BA74E9 /* FUOnboardingOverviewController.m in Sources */,
 				28163E791AFF7FE100640CC7 /* FUTutorialViewController.m in Sources */,
+				5E1A5D181B02B96000DD7BA4 /* FURoom.m in Sources */,
 				5E943C0F1AECFBA5004012F5 /* FUFilterPriceViewController.m in Sources */,
 				28362DED1AD444D1000B4E99 /* FUDeepLinkHandler.m in Sources */,
 				280F94E31AF55B1C00BA74E9 /* FUViewController.m in Sources */,
 				28117C3F1AD7274C007C8DB9 /* FUNotifyManager.m in Sources */,
+				5E1A5D1F1B02BB0E00DD7BA4 /* FURoomManager.m in Sources */,
 				5EEFC4E61AE2B0A0004CB533 /* FUProductDetailPageViewController.m in Sources */,
 				280F95041AF5B3E800BA74E9 /* FUOnboardingAreaCollectionViewCell.m in Sources */,
 				287F4D2E1ADEC2340076FC53 /* FUCategoryList.m in Sources */,
@@ -1244,6 +1269,7 @@
 				28B0E5D41AD80F8E00C0932E /* FUSharingManager.m in Sources */,
 				287F4D341ADEC41B0076FC53 /* FUCategoryTableViewCell.m in Sources */,
 				280F94DD1AF426B900BA74E9 /* UIView+Framing.m in Sources */,
+				5E1A5D1B1B02BA5E00DD7BA4 /* FURoomList.m in Sources */,
 				280F94D61AF420A300BA74E9 /* FUAppirater.m in Sources */,
 				28140EEB1AE160FC00359EAA /* FUCatalogEmptyCollectionViewCell.m in Sources */,
 				5E943BEB1AEBD5E7004012F5 /* FUProductAction.m in Sources */,
