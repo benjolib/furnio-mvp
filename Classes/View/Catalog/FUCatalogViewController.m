@@ -66,6 +66,13 @@ static NSString *const FUCatalogTutorialShown = @"FUCatalogTutorialShown";
             [cell.verticalCollectionView reloadData];
         }
     }
+    
+    if ([FUOnboardingManager sharedManager].completedOnboarding) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            [[FUProductManager sharedManager] filterSortProducts];
+        });
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
