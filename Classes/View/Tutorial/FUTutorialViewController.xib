@@ -10,6 +10,7 @@
                 <outlet property="backgroundImageView" destination="U83-my-aH3" id="knO-yy-Eyt"/>
                 <outlet property="forwardArrow" destination="YaA-WR-3tC" id="SFE-E9-JKk"/>
                 <outlet property="nextButton" destination="BNr-m5-6eg" id="mgS-MZ-Npf"/>
+                <outlet property="nextButtonBottomSpaceConstraint" destination="rBd-Bp-4qd" id="cid-EQ-zyc"/>
                 <outlet property="textLabel" destination="loG-9z-YSB" id="JNw-PU-1RF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
