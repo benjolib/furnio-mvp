@@ -30,7 +30,7 @@ This application makes use of the following third party libraries:
 
 ## AFNetworking
 
-Copyright (c) 2013-2015 AFNetworking (http://afnetworking.com/)
+Copyright (c) 2011–2015 Alamofire Software Foundation (http://alamofire.org/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -130,7 +130,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## Appirater
 
-Copyright 2014. Arash Payan. This library is distributed under the terms of the MIT/X11.
+Copyright 2015. Arash Payan. This library is distributed under the terms of the MIT/X11.
 
 ## DeepLinkSDK
 
@@ -178,10 +178,9 @@ freely, subject to the following restrictions:
    misrepresented as being the original software.
 3. This notice may not be removed or altered from any source distribution.
 
-## GoogleTagManager
+## GoogleAnalytics-iOS-SDK
 
-Copyright 2013 Google, Inc. All rights reserved.
-
+Copyright 2009 - 2015 Google, Inc. All rights reserved.
 
 ## JSONModel
 

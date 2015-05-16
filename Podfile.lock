@@ -1,34 +1,36 @@
 PODS:
-  - Adjust (4.2.3)
+  - Adjust (4.2.4)
   - ADTransitionController (1.1.1)
-  - AFNetworking (2.5.3):
-    - AFNetworking/NSURLConnection (= 2.5.3)
-    - AFNetworking/NSURLSession (= 2.5.3)
-    - AFNetworking/Reachability (= 2.5.3)
-    - AFNetworking/Security (= 2.5.3)
-    - AFNetworking/Serialization (= 2.5.3)
-    - AFNetworking/UIKit (= 2.5.3)
-  - AFNetworking/NSURLConnection (2.5.3):
+  - AFNetworking (2.5.4):
+    - AFNetworking/NSURLConnection (= 2.5.4)
+    - AFNetworking/NSURLSession (= 2.5.4)
+    - AFNetworking/Reachability (= 2.5.4)
+    - AFNetworking/Security (= 2.5.4)
+    - AFNetworking/Serialization (= 2.5.4)
+    - AFNetworking/UIKit (= 2.5.4)
+  - AFNetworking/NSURLConnection (2.5.4):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.5.3):
+  - AFNetworking/NSURLSession (2.5.4):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.5.3)
-  - AFNetworking/Security (2.5.3)
-  - AFNetworking/Serialization (2.5.3)
-  - AFNetworking/UIKit (2.5.3):
+  - AFNetworking/Reachability (2.5.4)
+  - AFNetworking/Security (2.5.4)
+  - AFNetworking/Serialization (2.5.4)
+  - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - Appirater (2.0.4)
+  - Appirater (2.0.5)
   - AQSFacebookActivity (0.1.0)
   - AQSTwitterActivity (0.1.0)
-  - DeepLinkSDK (0.2.5)
+  - DeepLinkSDK (0.2.7)
   - FXBlurView (1.6.3)
-  - GoogleTagManager (3.09)
-  - JSONModel (1.0.2)
+  - GoogleAnalytics-iOS-SDK (3.11):
+    - GoogleAnalytics-iOS-SDK/Core (= 3.11)
+  - GoogleAnalytics-iOS-SDK/Core (3.11)
+  - JSONModel (1.1.0)
   - MLPAutoCompleteTextField (1.5)
   - MMMaterialDesignSpinner (0.2.0)
   - NMRangeSlider (1.2.1)
@@ -49,7 +51,7 @@ DEPENDENCIES:
   - AQSTwitterActivity (~> 0.1)
   - DeepLinkSDK (~> 0.2)
   - FXBlurView (~> 1.6)
-  - GoogleTagManager (~> 3.09)
+  - GoogleAnalytics-iOS-SDK (~> 3.11)
   - JSONModel (~> 1.0)
   - MLPAutoCompleteTextField (~> 1.5)
   - MMMaterialDesignSpinner (~> 0.2)
@@ -58,16 +60,16 @@ DEPENDENCIES:
   - UIColor+Hex (~> 1.0)
 
 SPEC CHECKSUMS:
-  Adjust: 078bc41dce5fd01f43e1200898bc96aee391be8d
+  Adjust: 541543b08c265761f6a840761584f86e4b7d2f50
   ADTransitionController: 72299d31488bcbe59fb87c483a89a637ebc819f8
-  AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
-  Appirater: 8783318c36414e8de3ea023443028df94c1b784b
+  AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  Appirater: e7c0a47fb67ee5041ce8479e6ba960927fb40264
   AQSFacebookActivity: 1c726691eb632894638b51f04a69426ca3905b94
   AQSTwitterActivity: e24f68a672aee615ed1d45996b7ef352f3a7ed09
-  DeepLinkSDK: d93fc424591db607b27b67e04c64f904282ea18c
+  DeepLinkSDK: 190c5413efa8ed365b9a6fc44984383f91e878fa
   FXBlurView: c6d23f3d35af2c6282296a2930f61c6e2c788d01
-  GoogleTagManager: 2b761f8f7caabdff8e6d66065d795ed4c7983af7
-  JSONModel: 6ffcb4ffa3659c9e9a2e5d45d6c7705bab187c03
+  GoogleAnalytics-iOS-SDK: fb15cc7e3d01d06d531653f37443fda90274d53d
+  JSONModel: ec77e9865236a7a09d9cf7668df6b4b328d9ec1d
   MLPAutoCompleteTextField: ba4d507bbff2bd4f139d4197814fc8dd39caf77e
   MMMaterialDesignSpinner: 8f1a50270b789c76ec500957e518fc3e05e55b9d
   NMRangeSlider: 317ded652431eb90501c8421d9cddc3930d891e6
