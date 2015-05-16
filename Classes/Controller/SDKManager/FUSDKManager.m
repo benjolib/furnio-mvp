@@ -89,7 +89,14 @@
 
 + (void)setupGoogleAnalytics
 {
-    [[GAI sharedInstance].logger setLogLevel:kGAILogLevelVerbose];
+    GAILogLevel logLevel = kGAILogLevelInfo;
+    
+#if STORE
+    logLevel = GAILogLevelNone;
+#endif
+    
+    [[GAI sharedInstance].logger setLogLevel:logLevel];
+
     [GAI sharedInstance].dispatchInterval = 20;
     [[GAI sharedInstance] trackerWithTrackingId:FUGoogleAnalyticsProperty];
 }
