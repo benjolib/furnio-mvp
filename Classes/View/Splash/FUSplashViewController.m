@@ -52,6 +52,8 @@
 //    self.blurViewButton.updateInterval = 0.1;
     
     [self setupTransition];
+    
+    self.screenName = @"Splash";
 }
 
 - (void)setupTransition

@@ -88,6 +88,8 @@
     [self setupNextButton];
     
     [self setupStep];
+    
+    self.screenName = @"Tutorial";
 }
 
 #pragma mark - Setup

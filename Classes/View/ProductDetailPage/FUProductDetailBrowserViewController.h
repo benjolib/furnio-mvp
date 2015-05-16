@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import <GAI.h>
+
 @class FUProduct;
 
-@interface FUProductDetailBrowserViewController : UIViewController
+@interface FUProductDetailBrowserViewController : GAITrackedViewController
 
 @property (nonatomic, strong) FUProduct *product;
 

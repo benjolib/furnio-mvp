@@ -65,6 +65,8 @@
     [self.categoryTableView registerNib:[FUCategoryTableViewCell nib] forCellReuseIdentifier:FUCategoryTableViewCellReuseIdentifier];
     
     [self setupNotifications];
+    
+    self.screenName = @"Categories";
 }
 
 #pragma mark - FUViewController

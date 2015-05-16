@@ -53,6 +53,8 @@ static NSString *const FUCatalogTutorialShown = @"FUCatalogTutorialShown";
     self.horizontalCollectionView.furnCollectionDelegate = self;
 
     self.navigationController.navigationBarHidden = YES;
+    
+    self.screenName = @"Catalog";
 }
 
 - (void)viewWillAppear:(BOOL)animated

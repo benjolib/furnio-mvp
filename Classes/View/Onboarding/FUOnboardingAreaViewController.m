@@ -10,6 +10,9 @@
 
 #import "FUOnboardingAreaCollectionViewCell.h"
 #import "FUColorConstants.h"
+#import "FUTrackingManager.h"
+
+static NSUInteger pageIndex = 0;
 
 @interface FUOnboardingAreaViewController ()
 
@@ -45,6 +48,8 @@
     self.nextLabel.textColor = FUColorLightGray;
     self.arrowImageView.backgroundColor = FUColorOrange;
     self.arrowImageView.image = [UIImage imageNamed:@"double-arrow-down-white"];
+    
+    pageIndex++;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -111,17 +116,22 @@
 
     NSMutableDictionary *filters = [[allFilterItems objectForKey:self.filterKey] mutableCopy];
 
+    NSMutableArray *titles = [NSMutableArray array];
+    
     [self.selectedIndices enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop) {
         NSString *title = [self titleAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
         
         if (title) {
             [filters setObject:@(YES) forKey:title];
+            [titles addObject:title];
         }
     }];
 
     [allFilterItems setObject:filters forKey:self.filterKey];
     
     [[FUFilterManager sharedManager] saveAllFilterItems:allFilterItems];
+    
+    [[FUTrackingManager sharedManager] trackOnboardingResults:titles forScreenIndex:pageIndex];
 }
 
 @end

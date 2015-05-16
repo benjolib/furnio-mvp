@@ -35,6 +35,8 @@
     [self loadFilters];
     self.applyFilterButton.layer.borderWidth = 1.5f;
     self.applyFilterButton.layer.borderColor = [[UIColor colorWithRed:244.0/255.0 green:170.0/255.0 blue:56.0/255.0 alpha:1.0] CGColor];
+    
+    self.screenName = @"Filter Overview";
 }
 
 - (void)viewWillAppear:(BOOL)animated {
