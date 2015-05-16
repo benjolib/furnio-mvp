@@ -86,10 +86,8 @@ static NSUInteger finishedCount;
     }
     
     [sharingItems addObject:FUSDKiTunesURL];
-    
-    NSArray *applicationActivities = @[ [AQSFacebookActivity new], [AQSTwitterActivity new]];
 
-    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:applicationActivities];
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:[self applicationActivities]];
 
     activityController.completionHandler = ^(NSString *activityType, BOOL completed) {
         NSString *message;
@@ -121,6 +119,21 @@ static NSUInteger finishedCount;
     };
 
     [viewController presentViewController:activityController animated:YES completion:nil];
+}
+
++ (NSArray *)applicationActivities
+{
+    NSMutableArray *activities = [NSMutableArray array];
+    
+    if (![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"fb://"]]) {
+        [activities addObject:[AQSFacebookActivity new]];
+    }
+    
+    if (![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitter://"]]) {
+        [activities addObject:[AQSTwitterActivity new]];
+    }
+    
+    return activities;
 }
 
 + (void)trackSharingSuccessWithProducts:(NSArray *)products viewController:(UIViewController *)viewController
