@@ -119,6 +119,8 @@
     
     self.closeButton.hitTestEdgeInsets = UIEdgeInsetsMake(-self.closeButton.top, -self.closeButton.left, -10, -10);
     self.undoButton.hitTestEdgeInsets = UIEdgeInsetsMake(-self.undoButton.top, -10, -10, -(self.view.width - self.undoButton.right));
+    self.buyButton.hitTestEdgeInsets = UIEdgeInsetsMake(-15, -15, -15, -15);
+    
     self.screenName = @"PDP";
 }
 
