@@ -129,6 +129,7 @@ static NSString *const FUCatalogTutorialShown = @"FUCatalogTutorialShown";
 
 - (void)configureLoadingView
 {
+    [FULoadingViewManager sharedManger].allowLoadingView = [FUProductManager sharedManager].productCount == 0;
     [FULoadingViewManager sharedManger].text = @"LOADING PRODUCTS";
 }
 

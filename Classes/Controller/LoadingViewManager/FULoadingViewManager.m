@@ -73,6 +73,11 @@ static NSString *const FULoadingViewManagerIndicatorKeyPath = @"networkActivityI
     }
     
     self.loadingView = [[FULoadingView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+    if (text.length == 0) {
+        text = @"LOADING PRODUCTS";
+    }
+    
     self.loadingView.loadingLabel.text = text;
     
     [self.loadingView showAnimated:YES];

@@ -76,7 +76,9 @@
 
 - (void)configureLoadingView
 {
-    [FULoadingViewManager sharedManger].text = @"LOADING CATEGORIES";
+    if ([FUCategoryManager sharedManager].categoryList.categories.count == 0) {
+        [FULoadingViewManager sharedManger].text = @"LOADING CATEGORIES";
+    }
 }
 
 #pragma mark - UITableViewDataSource
