@@ -46,6 +46,8 @@ static CGFloat const FUSearchViewControllerCategoriesDefaultTop = 88;
     [self.categoriesTableView registerNib:[FUCategoryTableViewCell nib] forCellReuseIdentifier:FUCategoryTableViewCellReuseIdentifier];
     
     [self setupAutoCompleteTextField];
+    
+    self.screenName = @"Search";
 }
 
 - (void)viewDidAppear:(BOOL)animated

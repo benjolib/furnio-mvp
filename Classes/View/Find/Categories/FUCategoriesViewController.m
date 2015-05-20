@@ -65,6 +65,8 @@
     [self.categoryTableView registerNib:[FUCategoryTableViewCell nib] forCellReuseIdentifier:FUCategoryTableViewCellReuseIdentifier];
     
     [self setupNotifications];
+    
+    self.screenName = @"Categories";
 }
 
 #pragma mark - FUViewController
@@ -76,7 +78,9 @@
 
 - (void)configureLoadingView
 {
-    [FULoadingViewManager sharedManger].text = @"LOADING CATEGORIES";
+    if ([FUCategoryManager sharedManager].categoryList.categories.count == 0) {
+        [FULoadingViewManager sharedManger].text = @"LOADING CATEGORIES";
+    }
 }
 
 #pragma mark - UITableViewDataSource

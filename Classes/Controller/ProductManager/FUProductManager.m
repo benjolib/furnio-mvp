@@ -15,13 +15,14 @@
 #import "FUFilterManager.h"
 #import "FUCategoryManager.h"
 #import "FURoomList.h"
+#import "FUOnboardingManager.h"
 
 #import <UIKit/UIKit.h>
 
 
 static NSUInteger const FUProductManagerRowLimit = 20;
 
-static NSUInteger const FUProductManagerPageSize = 200;
+static NSUInteger const FUProductManagerPageSize = 1000;
 
 NSString *const FUProductManagerDidFinishLoadingPageNotification = @"FUProductManagerDidFinishLoadingPageNotification";
 NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductManagerWillStartLoadingPageNotification";
@@ -266,6 +267,19 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
 
 #pragma mark - Setter
 
+- (void)setIsLoading:(BOOL)isLoading
+{
+    if (_isLoading == isLoading) {
+        return;
+    }
+    
+    _isLoading = isLoading;
+    
+    [FULoadingViewManager sharedManger].allowLoadingView = self.productCount == 0;
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = isLoading;
+}
+
 - (void)setCategory:(FUCategory *)category
 {
     if ((_category.identifier && category.identifier && [_category.identifier isEqualToNumber:category.identifier]) || (!_category && !category)) {
@@ -313,15 +327,15 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
 
 - (void)loadProducts
 {
-    if (self.isLoading) {
+    if (self.isLoading || ![FUOnboardingManager sharedManager].completedOnboarding) {
         return;
     }
-
-    self.isLoading = YES;
     
     if (!self.products) {
         self.products = [NSMutableArray array];
     }
+    
+    self.isLoading = YES;
 
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
@@ -348,7 +362,7 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:FUProductManagerWillStartLoadingPageNotification object:nil];
-    
+
     [JSONHTTPClient getJSONFromURLWithString:[self buildUrlString:FUAPIProducts withParams:parameters] params:nil completion:^(id json, JSONModelError *error) {
         FUProductList *productList = [[FUProductList alloc] initWithDictionary:json error:&error];
 

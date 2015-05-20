@@ -45,7 +45,7 @@
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright (c) 2013-2015 AFNetworking (http://afnetworking.com/)
+			<string>Copyright (c) 2011&#8211;2015 Alamofire Software Foundation (http://alamofire.org/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -161,7 +161,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright 2014. Arash Payan. This library is distributed under the terms of the MIT/X11.</string>
+			<string>Copyright 2015. Arash Payan. This library is distributed under the terms of the MIT/X11.</string>
 			<key>Title</key>
 			<string>Appirater</string>
 			<key>Type</key>
@@ -223,10 +223,9 @@ freely, subject to the following restrictions:
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright 2013 Google, Inc. All rights reserved.
-</string>
+			<string>Copyright 2009 - 2015 Google, Inc. All rights reserved.</string>
 			<key>Title</key>
-			<string>GoogleTagManager</string>
+			<string>GoogleAnalytics-iOS-SDK</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

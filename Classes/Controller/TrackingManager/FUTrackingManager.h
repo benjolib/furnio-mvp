@@ -34,4 +34,6 @@
 
 - (void)trackCatalogViewMode:(FUCollectionViewMode)viewMode;
 
+- (void)trackOnboardingResults:(NSArray *)results forScreenIndex:(NSUInteger)index;
+
 @end

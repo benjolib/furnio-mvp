@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FUFilterDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+#import <GAI.h>
+
+@interface FUFilterDetailViewController : GAITrackedViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSMutableDictionary *previousFilterItems;
 @property (nonatomic, strong) NSString *name;

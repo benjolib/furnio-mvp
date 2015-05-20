@@ -43,6 +43,8 @@
     self.personalizeButton.layer.borderWidth = 1.5f;
     self.personalizeButton.layer.borderColor = [[UIColor colorWithRed:244.0/255.0 green:170.0/255.0 blue:56.0/255.0 alpha:1.0] CGColor];
     
+    self.personalizeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    
 //    self.blurViewImage.blurRadius = 40.0f;
 //    self.blurViewImage.updateInterval = 0.1;
 //    
@@ -50,6 +52,8 @@
 //    self.blurViewButton.updateInterval = 0.1;
     
     [self setupTransition];
+    
+    self.screenName = @"Splash";
 }
 
 - (void)setupTransition

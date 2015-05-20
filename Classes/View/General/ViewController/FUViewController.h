@@ -11,7 +11,9 @@
 #import "FUNavigationBar.h"
 #import "FULoadingViewManager.h"
 
-@interface FUViewController : UIViewController
+#import <GAI.h>
+
+@interface FUViewController : GAITrackedViewController
 
 @property (strong, nonatomic) FUNavigationBar *navigationBar;
 

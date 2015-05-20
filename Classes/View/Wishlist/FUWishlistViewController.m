@@ -60,6 +60,8 @@
     self.selectedIndicesToShare = [NSMutableIndexSet indexSet];
     
     self.viewState = FUWishlistViewStateNormal;
+    
+    self.screenName = @"Wishlist";
 }
 
 #pragma mark - Actions

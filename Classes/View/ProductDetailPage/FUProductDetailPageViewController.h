@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import <GAI.h>
+
 @class FUProduct;
 
-@interface FUProductDetailPageViewController : UIViewController <UIScrollViewDelegate>
+@interface FUProductDetailPageViewController : GAITrackedViewController <UIScrollViewDelegate>
 
 @property (nonatomic, strong) FUProduct *product;
 

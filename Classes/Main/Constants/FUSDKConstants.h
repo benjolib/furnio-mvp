@@ -15,4 +15,6 @@
 
 #define FUSDKiTunesURL @"http://itunes.apple.com/app/id984065379"
 
+#define FUGoogleAnalyticsProperty @"UA-62788448-2"
+
 #endif

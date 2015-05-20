@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *nextButtonBottomSpaceConstraint;
 
 @property (weak, nonatomic) IBOutlet UIImageView *forwardArrow;
 
@@ -87,6 +88,8 @@
     [self setupNextButton];
     
     [self setupStep];
+    
+    self.screenName = @"Tutorial";
 }
 
 #pragma mark - Setup
@@ -99,6 +102,11 @@
     [self.nextButton setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor] size:self.nextButton.size] forState:UIControlStateNormal];
     
     [self.nextButton setBackgroundImage:[UIImage imageWithColor:FUColorOrange size:self.nextButton.size] forState:UIControlStateHighlighted];
+    
+    if ([UIScreen mainScreen].bounds.size.height < 568) {
+        self.nextButtonBottomSpaceConstraint.constant = 55;
+        [self.view layoutIfNeeded];
+    }
 }
 
 - (void)setupStep
@@ -248,7 +256,12 @@
         } break;
             
         case FUTutorialViewArrowCenter: {
-            imageName = nil; // TODO: missing asset
+            imageName = @"arrows-hand";
+            width = screenWidth * 0.9f;
+            CGFloat height = (782.0f / 694.0f) * width;
+            originX = screenWidth - width;
+            originY = [UIScreen mainScreen].bounds.size.height < 568 ? 25 : 64;
+            frame = CGRectMake(0, 0, width, height);
         } break;
             
         case FUTutorialViewArrowBottomCenter: {

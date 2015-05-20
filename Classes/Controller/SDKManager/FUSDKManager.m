@@ -16,6 +16,8 @@
 #import <AFNetworkActivityIndicatorManager.h>
 #import <AFNetworkReachabilityManager.h>
 #import <Adjust.h>
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 
 
 @implementation FUSDKManager
@@ -28,6 +30,7 @@
     [self setupFabric];
     [self setupAFNetworking];
     [self setupAdjust];
+    [self setupGoogleAnalytics];
     [self setupAppirater];
 }
 
@@ -80,6 +83,22 @@
     adjustConfig.eventBufferingEnabled = eventBufferingEnabled;
 
     [Adjust appDidLaunch:adjustConfig];
+}
+
+#pragma mark - Google Analytics
+
++ (void)setupGoogleAnalytics
+{
+    GAILogLevel logLevel = kGAILogLevelInfo;
+    
+#if STORE
+    logLevel = GAILogLevelNone;
+#endif
+    
+    [[GAI sharedInstance].logger setLogLevel:logLevel];
+
+    [GAI sharedInstance].dispatchInterval = 20;
+    [[GAI sharedInstance] trackerWithTrackingId:FUGoogleAnalyticsProperty];
 }
 
 #pragma mark - Appirater

@@ -53,6 +53,8 @@ static NSString *const FUCatalogTutorialShown = @"FUCatalogTutorialShown";
     self.horizontalCollectionView.furnCollectionDelegate = self;
 
     self.navigationController.navigationBarHidden = YES;
+    
+    self.screenName = @"Catalog";
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -65,6 +67,13 @@ static NSString *const FUCatalogTutorialShown = @"FUCatalogTutorialShown";
         for (FUCatalogColumnCollectionViewCell *cell in self.horizontalCollectionView.visibleCells) {
             [cell.verticalCollectionView reloadData];
         }
+    }
+    
+    if ([FUOnboardingManager sharedManager].completedOnboarding) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            [[FUProductManager sharedManager] filterSortProducts];
+        });
     }
 }
 
@@ -122,6 +131,7 @@ static NSString *const FUCatalogTutorialShown = @"FUCatalogTutorialShown";
 
 - (void)configureLoadingView
 {
+    [FULoadingViewManager sharedManger].allowLoadingView = [FUProductManager sharedManager].productCount == 0;
     [FULoadingViewManager sharedManger].text = @"LOADING PRODUCTS";
 }
 

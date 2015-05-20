@@ -14,9 +14,22 @@
 #import "FUCollectionView.h"
 #import "NSMutableDictionary+Tracking.h"
 
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
+#import <GoogleAnalytics-iOS-SDK/GAIEcommerceProduct.h>
+#import <GoogleAnalytics-iOS-SDK/GAIEcommerceProductAction.h>
+#import <GoogleAnalytics-iOS-SDK/GAIEcommerceFields.h>
+#import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
+
 #import <Adjust.h>
 
 #define DEPLOY_CALLBACK_PARAMETERS 0
+
+@interface FUTrackingManager ()
+
+@property (strong, nonatomic) id<GAITracker> tracker;
+
+@end
 
 @implementation FUTrackingManager
 
@@ -34,6 +47,17 @@
     return instance;
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    
+    if (self) {
+        self.tracker = [[GAI sharedInstance] defaultTracker];
+    }
+
+    return self;
+}
+
 #pragma mark - Tracking
 
 - (void)trackRateApp
@@ -44,11 +68,15 @@
 - (void)trackPDPBuyProduct:(FUProduct *)product
 {
     [self trackEventWithToken:@"q5wegn" product:product revenue:product.price];
+    
+    [self trackProduct:product actionName:kGAIPACheckout listName:@"Checkout" screenName:@"PDP Browser"];
 }
 
 - (void)trackPDPLikeProduct:(FUProduct *)product
 {
     [self trackEventWithToken:@"4lb05e" product:product];
+    
+    [self trackProduct:product actionName:kGAIPAAdd listName:@"Wishlist Add" screenName:@"Wishlist"];
 }
 
 - (void)trackPDPDislikeProduct:(FUProduct *)product
@@ -64,16 +92,34 @@
 - (void)trackWishlistRemoveProduct:(FUProduct *)product
 {
     [self trackEventWithToken:@"o07ap9" product:product];
+    
+    [self trackProduct:product actionName:kGAIPARemove listName:@"Wishlist Remove" screenName:@"Wishlist"];
 }
 
 - (void)trackWishlistShareProduct:(FUProduct *)product
 {
     [self trackEventWithToken:@"f9ygjy" product:product];
+    
+    [self trackProduct:product actionName:kGAIPAClick listName:@"Wishlist Share" screenName:@"Wishlist"];
 }
 
 - (void)trackCatalogViewMode:(FUCollectionViewMode)viewMode
 {
     [self trackEventWithToken:@"xlr8n5" viewMode:viewMode];
+}
+
+- (void)trackOnboardingResults:(NSArray *)results forScreenIndex:(NSUInteger)index
+{
+    NSString *value;
+    
+    if (results.count > 0) {
+        results = [results sortedArrayUsingDescriptors:@[ [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES] ]];
+        value = [results componentsJoinedByString:@", "];
+    } else {
+        value = @"<no selection>";
+    }
+
+    [self.tracker set:[GAIFields customDimensionForIndex:index] value:value];
 }
 
 #pragma mark - Private
@@ -155,6 +201,29 @@
     [callbackParameters setTrackingValue:modeString forKey:@"view_mode"];
     
     return callbackParameters;
+}
+
+- (void)trackProduct:(FUProduct *)product actionName:(NSString *)actionName listName:(NSString *)listName screenName:(NSString *)screenName
+{
+    GAIEcommerceProduct *commerce = [GAIEcommerceProduct new];
+    
+    [commerce setId:product.identifier];
+    [commerce setName:product.name];
+    [commerce setCategory:product.properties.category];
+    [commerce setBrand:product.properties.manufacturer];
+    [commerce setVariant:product.houzzURL.absoluteString];
+    [commerce setPrice:product.price];
+    
+    GAIEcommerceProductAction *action = [GAIEcommerceProductAction new];
+    [action setAction:actionName];
+    [action setProductActionList:listName];
+    
+    GAIDictionaryBuilder *builder = [GAIDictionaryBuilder createScreenView];
+    [builder setProductAction:action];
+    [builder addProduct:commerce];
+    
+    [self.tracker set:kGAIScreenName value:screenName];
+    [self.tracker send:[builder build]];
 }
 
 @end

@@ -17,7 +17,7 @@ If you're using [CocoaPods][cocoapods], you can add the following line to your
 `Podfile` and continue with [step 3](#step3):
 
 ```ruby
-pod 'Adjust', :git => 'git://github.com/adjust/ios_sdk.git', :tag => 'v4.2.3'
+pod 'Adjust', :git => 'git://github.com/adjust/ios_sdk.git', :tag => 'v4.2.4'
 ```
 
 ### 1. Get the SDK
@@ -195,9 +195,7 @@ ADJEvent *event = [ADJEvent eventWithEventToken:@"abc123"];
 
 This can be combined with callback parameters of course.
 
-Please note that while the currency token must be set, adjust will not perform
-a currency conversion. **You should always transmit revenues in the currency
-that you have set in your adjust dashboard.**
+When you set a currency token, adjust will automatically convert the incoming revenues into a reporting revenue of your choice. Read more about [currency conversion here.][currency-conversion]
 
 You can read more about revenue and event tracking in the [event tracking guide.][event-tracking]
 
@@ -376,6 +374,7 @@ You can read more about special partners and these integrations in our
 [callbacks-guide]: https://docs.adjust.com/en/callbacks
 [event-tracking]: https://docs.adjust.com/en/event-tracking
 [special-partners]: https://docs.adjust.com/en/special-partners
+[currency-conversion]: https://docs.adjust.com/en/event-tracking/#tracking-purchases-in-different-currencies
 
 ## License
 

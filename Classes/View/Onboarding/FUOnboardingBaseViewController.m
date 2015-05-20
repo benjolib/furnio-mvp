@@ -41,6 +41,8 @@
     [super viewDidLoad];
     
     [self setupTransition];
+    
+    self.screenName = @"Onboarding";
 }
 
 #pragma mark - FUViewController
