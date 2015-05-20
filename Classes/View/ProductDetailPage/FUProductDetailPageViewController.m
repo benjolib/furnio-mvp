@@ -351,7 +351,7 @@
     
     if (scrollView == self.verticalScrollView) {
         
-        if(scrollView.contentOffset.y < -20.0f) {
+        if(scrollView.contentOffset.y < -40.0f) {
             self.likeLabel.hidden = YES;
             self.detectDiscard = YES;
             self.likeContainer.backgroundColor = FUColorLightGray;
@@ -362,7 +362,7 @@
             self.likeContainer.backgroundColor = FUColorOrange;
         }
         
-        if (scrollView.contentOffset.y > 20.0f) {
+        if (scrollView.contentOffset.y > 40.0f) {
             self.discardLabel.hidden = YES;
             self.detectLike = YES;
             self.discardContainer.backgroundColor = FUColorOrange;
