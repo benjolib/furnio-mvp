@@ -24,6 +24,7 @@
 #import "UIView+Framing.h"
 #import "FUNavigationController.h"
 #import "UIControl+HitTest.h"
+#import "FUProductDetailFullscreenViewController.h"
 
 #define FUProductDetailTutorialShown @"FUProductDetailTutorialShown"
 
@@ -65,6 +66,8 @@
 @property (assign, nonatomic, getter=isSingleProduct) BOOL singleProduct;
 
 @property (strong, nonatomic) UIView *noProductView;
+
+@property (strong, nonatomic) FUProductDetailFullscreenViewController *productDetailFullscreenViewController;
 
 @end
 
@@ -122,13 +125,18 @@
     self.buyButton.hitTestEdgeInsets = UIEdgeInsetsMake(-15, -15, -15, -15);
     
     self.screenName = @"PDP";
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
     
     [self setupView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    if (self.productDetailFullscreenViewController) {
+        UIImageView *imageViewToShow = self.imageViews[self.productDetailFullscreenViewController.selectedImageIndex];
+        [self.imageScrollView scrollRectToVisible:imageViewToShow.frame animated:NO];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -252,7 +260,11 @@
         [self.imageViews addObject:imageView];
         [self.imageScrollView addSubview:imageView];
         pageIndex++;
-    }
+    }    
+    
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedImage)];
+    tapRecognizer.cancelsTouchesInView = NO;
+    [self.imageScrollView addGestureRecognizer:tapRecognizer];
     
     self.pageControl.currentPage = 0;
     self.pageControl.numberOfPages = [self.imageViews count];
@@ -265,11 +277,19 @@
     else {
         self.pageControl.hidden = NO;
         self.imageScrollView.bounces = YES;
-        self.imageScrollView.scrollEnabled = NO;
+        self.imageScrollView.scrollEnabled = YES;
     }
     
     CGSize pagesScrollViewSize = self.imageScrollView.frame.size;
     self.imageScrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * self.imageViews.count, pagesScrollViewSize.height);
+}
+
+- (void)tappedImage {
+    self.productDetailFullscreenViewController = [FUProductDetailFullscreenViewController new];
+    self.productDetailFullscreenViewController.imageURLs = self.product.imageURLs;
+    self.productDetailFullscreenViewController.selectedImageIndex = self.pageControl.currentPage;
+    FUNavigationController *searchNavigationController = [[FUNavigationController alloc] initWithRootViewController:self.productDetailFullscreenViewController];
+    [self.navigationController presentViewController:searchNavigationController animated:YES completion:nil];
 }
 
 - (void)updatePage {

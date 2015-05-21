@@ -12,7 +12,7 @@
 #define DEVICE_WIDTH deviceScreenWidth()
 #define DEVICE_HEIGHT deviceScreenHeight()
 
-CGFloat deviceScreenWidth()
+static CGFloat deviceScreenWidth()
 {
     static CGFloat screenWidth;
     static dispatch_once_t onceToken;
@@ -23,7 +23,7 @@ CGFloat deviceScreenWidth()
     return screenWidth;
 }
 
-CGFloat deviceScreenHeight()
+static CGFloat deviceScreenHeight()
 {
     static CGFloat screenHeight;
     static dispatch_once_t onceToken;
