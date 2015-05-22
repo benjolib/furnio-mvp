@@ -25,9 +25,13 @@
 
 @implementation FUSortingViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    
     self.title = @"SORTING";
+    self.screenName = @"Sorting";
+
     self.tableView.backgroundColor = [UIColor clearColor];
     
     self.sortingStrings = @[FUSortingNo, FUSortingPriceHighToLow, FUSortingPriceLowToHigh, FUSortingCategory, FUSortingMerchant, FUSortingAllTimePopular, FUSortingNewlyFeatured];
@@ -37,8 +41,10 @@
 }
 
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
+    
     [self.tableView reloadData];
 }
 
