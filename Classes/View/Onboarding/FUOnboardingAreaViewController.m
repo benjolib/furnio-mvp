@@ -11,6 +11,7 @@
 #import "FUOnboardingAreaCollectionViewCell.h"
 #import "FUColorConstants.h"
 #import "FUTrackingManager.h"
+#import "FUActionButton.h"
 
 static NSUInteger pageIndex = 0;
 
@@ -149,6 +150,7 @@ static NSUInteger pageIndex = 0;
     [UIView animateWithDuration:0.35f animations:^{
         self.nextLabel.alpha = allowToContinue;
         self.arrowImageView.alpha = allowToContinue;
+        self.startButton.alpha = allowToContinue;
     }];
 }
 
