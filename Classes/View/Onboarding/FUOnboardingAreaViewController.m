@@ -48,8 +48,10 @@ static NSUInteger pageIndex = 0;
     self.nextLabel.textColor = FUColorLightGray;
     self.arrowImageView.backgroundColor = FUColorOrange;
     self.arrowImageView.image = [UIImage imageNamed:@"double-arrow-down-white"];
-    
+
     pageIndex++;
+    
+    [self evaluateIndexCount];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -95,6 +97,8 @@ static NSUInteger pageIndex = 0;
         [self.selectedIndices addIndex:index];
     }
     
+    [self evaluateIndexCount];
+    
     [self.collectionView reloadData];
 }
 
@@ -132,6 +136,20 @@ static NSUInteger pageIndex = 0;
     [[FUFilterManager sharedManager] saveAllFilterItems:allFilterItems];
     
     [[FUTrackingManager sharedManager] trackOnboardingResults:titles forScreenIndex:pageIndex];
+}
+
+- (void)evaluateIndexCount
+{
+    BOOL allowToContinue = self.selectedIndices.count > 0;
+    
+    for (UIGestureRecognizer *gestureRecognizer in self.view.gestureRecognizers) {
+        gestureRecognizer.enabled = allowToContinue;
+    }
+
+    [UIView animateWithDuration:0.35f animations:^{
+        self.nextLabel.alpha = allowToContinue;
+        self.arrowImageView.alpha = allowToContinue;
+    }];
 }
 
 @end
