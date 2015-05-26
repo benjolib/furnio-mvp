@@ -12,6 +12,6 @@
 @interface FUProductDetailFullscreenViewController : FUViewController
 
 @property (nonatomic, strong) NSArray *imageURLs;
-@property (nonatomic, assign) NSUInteger selectedImageIndex;
+@property (nonatomic, assign) NSInteger selectedImageIndex;
 
 @end

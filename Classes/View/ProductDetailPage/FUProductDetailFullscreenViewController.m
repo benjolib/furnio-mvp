@@ -81,9 +81,10 @@
     [self.mainScrollView scrollRectToVisible:visibleRect animated:NO];
     
     [self.view insertSubview:self.mainScrollView atIndex:0];
-    
-    self.pageControl.currentPage = self.selectedImageIndex;
+
     self.pageControl.numberOfPages = [self.imageURLs count];
+    self.pageControl.currentPage = self.selectedImageIndex;
+
     
     if ([self.imageURLs count] == 1) {
         self.pageControl.hidden = YES;
