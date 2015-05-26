@@ -190,6 +190,9 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
     }
 
     [self.products removeAllObjects];
+    
+    _category = nil;
+    _searchQuery = nil;
 
     if (load) {
         if (self.previousProducts.count > 0) {
@@ -207,9 +210,6 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
     }
     
     [self.products removeAllObjects];
-    
-    _category = nil;
-    _searchQuery = nil;
     
     [self loadProducts];
 }
