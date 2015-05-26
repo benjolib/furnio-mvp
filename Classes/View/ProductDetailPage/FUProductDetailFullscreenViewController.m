@@ -19,11 +19,16 @@
 
 @implementation FUProductDetailFullscreenViewController
 
-- (void)viewDidLoad {
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.screenName = @"PDP Fullscreen";
+    
+    self.view.frame = [UIScreen mainScreen].bounds;
 
     [self setupImagePages];
-    
-    [super viewDidLoad];
 }
 
 - (BOOL)prefersStatusBarHidden
