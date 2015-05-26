@@ -86,21 +86,21 @@ static CGFloat const FUNotifyManagerMessageAnimationDuration = 0.35f;
     [self showMessageWithText:text backgroundColor:FUColorLightRed];
 }
 
-- (void)showMessageWithText:(NSString *)text backgroundColor:(UIColor *)backgroundColor hideAfterTimeInterval:(NSTimeInterval)timeInterval
+- (void)showMessageWithText:(NSString *)text backgroundColor:(UIColor *)backgroundColor hideAfterTimeInterval:(NSTimeInterval)timeInterval isTranslucent:(BOOL)isTranslucent
 {
-    [self showMessageWithText:text backgroundColor:backgroundColor];
+    [self showMessageWithText:text backgroundColor:backgroundColor isTranslucent:(BOOL)isTranslucent];
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(timeInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self hideMessage];
     });
 }
 
-- (void)showMessageWithText:(NSString *)text backgroundColor:(UIColor *)backgroundColor
+- (void)showMessageWithText:(NSString *)text backgroundColor:(UIColor *)backgroundColor isTranslucent:(BOOL)isTranslucent
 {
     if (self.messageLabel) {
         self.messageLabel.text = text;
     } else {
-        self.messageLabel = [self newMessageLabelWithBackgroundColor:backgroundColor];
+        self.messageLabel = [self newMessageLabelWithBackgroundColor:backgroundColor isTranslucent:isTranslucent];
         self.messageLabel.text = text;
         
         [self setupGestureRecognizers];
@@ -130,7 +130,7 @@ static CGFloat const FUNotifyManagerMessageAnimationDuration = 0.35f;
     }
 }
 
-- (UILabel *)newMessageLabelWithBackgroundColor:(UIColor *)backgroundColor
+- (UILabel *)newMessageLabelWithBackgroundColor:(UIColor *)backgroundColor isTranslucent:(BOOL)isTranslucent
 {
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
 
@@ -140,7 +140,7 @@ static CGFloat const FUNotifyManagerMessageAnimationDuration = 0.35f;
     messageLabel.textColor = [UIColor whiteColor];
     messageLabel.textAlignment = NSTextAlignmentCenter;
     messageLabel.numberOfLines = 0;
-    messageLabel.alpha = 0.8f;
+    messageLabel.alpha = isTranslucent ? 0.8f : 1;
     
     return messageLabel;
 }

@@ -109,7 +109,7 @@ static NSUInteger finishedCount;
         
         message = [message stringByAppendingString:messageSuffix];
 
-        [[FUNotifyManager sharedManager] showMessageWithText:message backgroundColor:backgroundColor hideAfterTimeInterval:3.0f];
+        [[FUNotifyManager sharedManager] showMessageWithText:message backgroundColor:backgroundColor hideAfterTimeInterval:3.0f isTranslucent:YES];
         
         NSLog(@"%@ completed: %@", activityType, completed ? @"YES" : @"NO");
         

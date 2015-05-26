@@ -80,6 +80,10 @@ static NSString *const FULoadingViewManagerIndicatorKeyPath = @"networkActivityI
     
     self.loadingView.loadingLabel.text = text;
     
+    CGFloat alpha = self.hideShadowBackground ? 0 : 0.5f;
+
+    self.loadingView.backgroundColor = [UIColor colorWithWhite:0 alpha:alpha];
+
     [self.loadingView showAnimated:YES];
 }
 

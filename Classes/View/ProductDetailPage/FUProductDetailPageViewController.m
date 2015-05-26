@@ -22,9 +22,11 @@
 #import "FUTrackingManager.h"
 #import "FUTutorialViewController.h"
 #import "UIView+Framing.h"
+#import "UIView+FUAnimations.h"
 #import "FUNavigationController.h"
 #import "UIControl+HitTest.h"
 #import "FUProductDetailFullscreenViewController.h"
+#import "FUNotifyManager.h"
 
 #define FUProductDetailTutorialShown @"FUProductDetailTutorialShown"
 
@@ -298,7 +300,12 @@
     self.pageControl.currentPage = page;
 }
 
-- (IBAction)clickedBuy:(id)sender {
+- (IBAction)clickedBuy:(UIButton *)sender
+{
+    [sender animateScaling];
+    
+    [[FUNotifyManager sharedManager] showMessageWithText:@"Opening product in browser" backgroundColor:FUColorLightGreen hideAfterTimeInterval:1.5f isTranslucent:NO];
+
     FUProductDetailBrowserViewController *productBrowserViewController = [[FUProductDetailBrowserViewController alloc] init];
     productBrowserViewController.product = self.product;
 
@@ -306,7 +313,10 @@
     [self.navigationController pushViewController:productBrowserViewController animated:YES];
 }
 
-- (IBAction)clickedClose:(id)sender {
+- (IBAction)clickedClose:(UIButton *)sender
+{
+    [sender animateScaling];
+
     [self.navigationController popViewControllerAnimated:YES];
 }
 

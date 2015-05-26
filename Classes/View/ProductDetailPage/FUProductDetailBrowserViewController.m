@@ -10,8 +10,9 @@
 #import "FUProduct.h"
 #import "FUSharingManager.h"
 #import "FUSeller.h"
+#import "FULoadingViewManager.h"
 
-@interface FUProductDetailBrowserViewController ()
+@interface FUProductDetailBrowserViewController () <UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationTitle;
@@ -20,13 +21,48 @@
 
 @implementation FUProductDetailBrowserViewController
 
+#pragma mark - Initialization
+
+- (void)dealloc
+{
+    self.webView.delegate = nil;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationTitle.title = self.product.seller.name;
     [self.webView loadRequest:[NSURLRequest requestWithURL:self.product.productURL]];
     
     self.screenName = @"PDP Browser";
+    
+    self.webView.delegate = self;
 }
+
+#pragma mark - UIViewController
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [FULoadingViewManager sharedManger].text = @"Loading";
+    [FULoadingViewManager sharedManger].hideShadowBackground = YES;
+    [FULoadingViewManager sharedManger].allowLoadingView = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [FULoadingViewManager sharedManger].text = @"LOADING PRODUCTS";
+    [FULoadingViewManager sharedManger].hideShadowBackground = NO;
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
+#pragma mark - Actions
 
 - (IBAction)close:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
@@ -38,9 +74,24 @@
     }];
 }
 
-- (BOOL)prefersStatusBarHidden
+#pragma mark - UIWebViewDelegate
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    return YES;
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+
 }
 
 @end

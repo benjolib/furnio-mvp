@@ -16,6 +16,8 @@
 
 @property (copy, nonatomic) NSString *text;
 
+@property (assign, nonatomic) BOOL hideShadowBackground;
+
 + (void)setup;
 
 + (instancetype)sharedManger;
