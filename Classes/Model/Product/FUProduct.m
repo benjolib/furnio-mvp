@@ -16,6 +16,7 @@
        @"id" : @"identifier",
        @"categories" : @"categories",
        @"houzz_url" : @"houzzURL",
+       @"visit_store_url" : @"storeURL",
        @"name" : @"name",
        @"price" : @"price",
        @"currency" : @"currency",
@@ -37,6 +38,15 @@
     }
     
     return nil;
+}
+
+- (NSURL<Ignore> *)productURL
+{
+    if (self.storeURL.absoluteString.length > 0) {
+        return self.storeURL;
+    } else {
+        return self.houzzURL;
+    }
 }
 
 #pragma mark - NSCoding

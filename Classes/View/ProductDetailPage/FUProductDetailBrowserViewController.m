@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationTitle.title = self.product.seller.name;
-    [self.webView loadRequest:[NSURLRequest requestWithURL:self.product.houzzURL]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:self.product.productURL]];
     
     self.screenName = @"PDP Browser";
 }

@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSArray *categories;
 
 @property (strong, nonatomic) NSURL *houzzURL;
+@property (strong, nonatomic) NSURL<Optional> *storeURL;
 
 @property (strong, nonatomic) NSString *name;
 
@@ -41,5 +42,6 @@
 @property (strong, nonatomic) FUProperties *properties;
 
 @property (strong, nonatomic, readonly) NSURL<Ignore> *catalogImageURL;
+@property (strong, nonatomic, readonly) NSURL<Ignore> *productURL;
 
 @end

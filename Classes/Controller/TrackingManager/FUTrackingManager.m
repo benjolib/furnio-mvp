@@ -181,7 +181,7 @@
     [dictionary setTrackingValue:product.name forKey:@"product_name"];
     [dictionary setTrackingValue:product.identifier forKey:@"product_sku"];
     [dictionary setTrackingValue:product.price.stringValue forKey:@"product_price"];
-    [dictionary setTrackingValue:product.houzzURL.absoluteString forKey:@"product_url"];
+    [dictionary setTrackingValue:product.productURL.absoluteString forKey:@"product_url"];
 
     [dictionary setTrackingValue:product.seller.name forKey:@"seller_name"];
     [dictionary setTrackingValue:product.seller.houzzURL.absoluteString forKey:@"seller_url"];
@@ -211,7 +211,7 @@
     [commerce setName:product.name];
     [commerce setCategory:product.properties.category];
     [commerce setBrand:product.properties.manufacturer];
-    [commerce setVariant:product.houzzURL.absoluteString];
+    [commerce setVariant:product.productURL.absoluteString];
     [commerce setPrice:product.price];
     
     GAIEcommerceProductAction *action = [GAIEcommerceProductAction new];
