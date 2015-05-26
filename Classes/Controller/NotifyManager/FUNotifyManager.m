@@ -83,7 +83,7 @@ static CGFloat const FUNotifyManagerMessageAnimationDuration = 0.35f;
 
 - (void)showMessageWithText:(NSString *)text
 {
-    [self showMessageWithText:text backgroundColor:FUColorLightRed];
+    [self showMessageWithText:text backgroundColor:FUColorLightRed isTranslucent:YES];
 }
 
 - (void)showMessageWithText:(NSString *)text backgroundColor:(UIColor *)backgroundColor hideAfterTimeInterval:(NSTimeInterval)timeInterval isTranslucent:(BOOL)isTranslucent
