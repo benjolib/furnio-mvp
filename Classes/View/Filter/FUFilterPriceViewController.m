@@ -56,7 +56,9 @@
     self.priceRangeSlider.stepValueContinuously = NO;
     self.priceRangeSlider.trackImage = [UIImage imageNamed:@"slider-orange-track"];
     self.priceRangeSlider.lowerHandleImageNormal = [UIImage imageNamed:@"min"];
+    self.priceRangeSlider.lowerHandleImageHighlighted = [UIImage imageNamed:@"min"];
     self.priceRangeSlider.upperHandleImageNormal = [UIImage imageNamed:@"max"];
+    self.priceRangeSlider.upperHandleImageHighlighted = [UIImage imageNamed:@"max"];
     
     self.priceRangeSlider.backgroundColor = [UIColor clearColor];
 }
@@ -100,7 +102,7 @@
     else {
         //MEDIUM and LIGHT GREY
         self.minPriceField.font = FUFontAvenirLight(17);
-        self.minPriceField.textColor = FUColorLightGray;
+        self.minPriceField.textColor = FUColorDarkGray;
     }
     
     if([self.currentFilterItems[FUMaxPriceKey] integerValue] < [FUMaxPriceDefaultValue integerValue]) {
@@ -111,7 +113,7 @@
     else {
         //MEDIUM and LIGHT GREY
         self.maxPriceField.font = FUFontAvenirLight(17);
-        self.maxPriceField.textColor = FUColorLightGray;
+        self.maxPriceField.textColor = FUColorDarkGray;
     }
 }
 

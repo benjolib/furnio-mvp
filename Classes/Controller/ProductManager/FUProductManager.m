@@ -115,14 +115,45 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
     return nil;
 }
 
+- (void)removeProductAfterLike:(FUProduct *)product
+{
+    [self.removedProducts addObject:product.identifier];
+    self.isDirty = YES;
+    [self removeAllProductsWithIdentifier:product.identifier];
+}
+
+- (void)removeProductAfterDiscard:(FUProduct *)product
+{
+    [self.removedProducts addObject:product.identifier];
+    self.isDirty = YES;
+    [self removeAllProductsWithIdentifier:product.identifier];
+}
+
+- (void)addProductAfterUndo:(FUProduct *)product
+{
+    [self.removedProducts removeObject:product.identifier];
+    self.isDirty = YES;
+    [self removeAllProductsWithIdentifier:product.identifier];
+}
+
+- (void)removeAllProductsWithIdentifier:(NSString *)productIdentifier
+{
+    NSMutableArray *productsToKeep = [NSMutableArray array];
+    for(FUProduct *product in self.products)
+    {
+        if(![product.identifier isEqualToString:productIdentifier])
+        {
+            [productsToKeep addObject:product];
+        }
+    }
+    self.products = productsToKeep;
+}
+
 - (void)removeProduct:(FUProduct *)product
 {
     [self.removedProducts addObject:product.identifier];
-
     self.isDirty = YES;
-
     [self.products removeObject:product];
-    [self.products removeObject: product];
 }
 
 - (void)addProduct:(FUProduct *)product {
@@ -137,10 +168,22 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
     }
     
     if ([self.removedProducts containsObject:nextProduct.identifier]) {
+        [self.products removeObject:nextProduct];
         nextProduct = [self nextProduct:nextProduct];
     }
 
     return nextProduct;
+}
+
+- (BOOL)containsProduct:(FUProduct *)product {
+    for(FUProduct *aProduct in self.products)
+    {
+        if([product.identifier isEqualToString:aProduct.identifier])
+        {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 
@@ -320,6 +363,7 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
         self.removedProducts = [NSMutableSet set];
     } else {
         self.removedProducts = [removedProducts mutableCopy];
+        NSLog(@"removedProducts %@", self.removedProducts);
     }
 
     self.isDirty = NO;
@@ -368,7 +412,12 @@ NSString *const FUProductManagerWillStartLoadingPageNotification = @"FUProductMa
 
         for (FUProduct *product in productList.products) {
             if (![self.removedProducts containsObject:product.identifier]) {
-                [self.products addObject:product];
+                if(![self containsProduct:product]) {
+                    [self.products addObject:product];
+                }
+            }
+            else {
+                NSLog(@"Product with id %@ not added", product.identifier);
             }
         }
         

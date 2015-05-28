@@ -27,22 +27,23 @@
     if (self.actionType == FUActionTypeLike) {
         //undo like
         [[FUWishlistManager sharedManager] removeProduct:self.product];
+        [[FUProductManager sharedManager] addProductAfterUndo:self.product];
     }
     else {
         //undo discard
-        [[FUProductManager sharedManager] addProduct:self.product];
+        [[FUProductManager sharedManager] addProductAfterUndo:self.product];
     }
 }
 
 - (void) execute {
     if (self.actionType == FUActionTypeLike) {
         //execute like
-        
         [[FUWishlistManager sharedManager] addProduct:self.product];
+        [[FUProductManager sharedManager] removeProductAfterLike:self.product];
     }
     else {
         //execute discard
-        [[FUProductManager sharedManager] removeProduct:self.product];
+        [[FUProductManager sharedManager] removeProductAfterDiscard:self.product];
     }
 }
 

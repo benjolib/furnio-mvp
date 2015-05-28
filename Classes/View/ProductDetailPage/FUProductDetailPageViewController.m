@@ -201,7 +201,7 @@
         
         // Find the view among nib contents (not too hard assuming there is only one view in it).
         self.noProductView = [nibContents lastObject];
-        self.noProductView.frame = CGRectMake(0, 60, DEVICE_WIDTH, DEVICE_HEIGHT - 50 - 20);
+        self.noProductView.frame = CGRectMake(0, 60, DEVICE_WIDTH, DEVICE_HEIGHT - 60 - 20);
         
         UIButton *goBackButton;
         
@@ -215,7 +215,7 @@
         goBackButton.layer.borderColor = [[UIColor colorWithRed:244.0/255.0 green:170.0/255.0 blue:56.0/255.0 alpha:1.0] CGColor];
         [goBackButton addTarget:self action:@selector(clickedClose:) forControlEvents:UIControlEventTouchUpInside];
         
-        [self.view addSubview:self.noProductView];
+        [self.view insertSubview:self.noProductView aboveSubview:self.verticalScrollView];
         
         self.verticalScrollView.scrollEnabled = NO;
         

@@ -44,13 +44,6 @@
     self.personalizeButton.layer.borderColor = [[UIColor colorWithRed:244.0/255.0 green:170.0/255.0 blue:56.0/255.0 alpha:1.0] CGColor];
     
     self.personalizeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    
-//    self.blurViewImage.blurRadius = 40.0f;
-//    self.blurViewImage.updateInterval = 0.1;
-//    
-//    self.blurViewButton.blurRadius = 40.0f;
-//    self.blurViewButton.updateInterval = 0.1;
-    
     [self setupTransition];
     
     self.screenName = @"Splash";
@@ -104,15 +97,11 @@
         window = [[UIApplication sharedApplication].windows objectAtIndex:0];
     }
 
-//    [window addSubview:self.blurViewImage];
-//    [window addSubview:self.blurViewButton];
     [window addSubview:self.logoImageView];
     [window addSubview:self.personalizeButton];
     self.personalizeButton.enabled = YES;
     
     [UIView animateWithDuration:1.0 animations:^{
-//        self.blurViewButton.hidden = YES;
-//        self.blurViewImage.hidden = YES;
         self.logoImageView.hidden = NO;
         self.personalizeButton.hidden = NO;
     }];

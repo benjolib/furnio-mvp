@@ -53,6 +53,10 @@ extern NSString *const FUProductManagerWillStartLoadingPageNotification;
 
 - (void)filterSortProducts;
 
+- (void)removeProductAfterLike:(FUProduct *)product;
+- (void)removeProductAfterDiscard:(FUProduct *)product;
+- (void)addProductAfterUndo:(FUProduct *)product;
+
 - (void)removeProduct:(FUProduct *)product;
 - (void)addProduct:(FUProduct *)product;
 
