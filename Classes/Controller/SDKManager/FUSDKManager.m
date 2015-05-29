@@ -92,7 +92,7 @@
     GAILogLevel logLevel = kGAILogLevelInfo;
     
 #if STORE
-    logLevel = GAILogLevelNone;
+    logLevel = kGAILogLevelNone;
 #endif
     
     [[GAI sharedInstance].logger setLogLevel:logLevel];
