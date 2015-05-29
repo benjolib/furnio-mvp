@@ -37,8 +37,6 @@ static NSString *const FUCatalogTutorialShown = @"FUCatalogTutorialShown";
 @property (weak, nonatomic) IBOutlet UIButton *sortButton;
 @property (weak, nonatomic) IBOutlet UIButton *viewModeButton;
 
-@property (assign, nonatomic) NSInteger lastIndex;
-
 @end
 
 
@@ -206,8 +204,6 @@ static NSString *const FUCatalogTutorialShown = @"FUCatalogTutorialShown";
 
 - (void)collectionView:(FUCollectionView *)collectionView didSelectProduct:(FUProduct *)product atIndex:(NSInteger)index
 {
-    self.lastIndex = index;
-
     FUProductDetailPageViewController *detailPageViewController = [FUProductDetailPageViewController new];
     detailPageViewController.product = product;
     

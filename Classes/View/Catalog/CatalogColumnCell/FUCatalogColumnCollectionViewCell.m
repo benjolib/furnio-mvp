@@ -48,9 +48,19 @@ NSString *const FUCatalogColumnCollectionViewCellScrollingDidFinishNotification 
 
 - (void)setViewMode:(FUCollectionViewMode)viewMode
 {
-    _viewMode = viewMode;
-    
-    self.verticalCollectionView.showsVerticalScrollIndicator = (viewMode == FUCollectionViewModeGrid);
+    if (_viewMode != viewMode) {
+        _viewMode = viewMode;
+        
+        self.verticalCollectionView.showsVerticalScrollIndicator = (viewMode == FUCollectionViewModeGrid);
+        
+        [self.verticalCollectionView reloadData];
+
+        if (self.viewMode == FUCollectionViewModeMatrix) {
+            [self scrollToCenterAnimated:NO];
+        } else {
+            [self scrollToTopAnimated:NO];
+        }
+    }
 }
 
 - (void)setColumnIndex:(NSUInteger)columnIndex
@@ -58,12 +68,6 @@ NSString *const FUCatalogColumnCollectionViewCellScrollingDidFinishNotification 
     _columnIndex = columnIndex;
 
     [self.verticalCollectionView reloadData];
-
-    if (self.viewMode == FUCollectionViewModeMatrix) {
-        [self scrollToCenterAnimated:NO];
-    } else {
-        [self scrollToTopAnimated:NO];
-    }
 }
 
 
